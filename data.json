@@ -5,8 +5,8 @@
     "name": "Jr Kings 2014 AAA",
     "tagline": "Help our players make it to the Quebec PeeWee Tournament!",
     "logo": "Images/crown_logo.png",
-    "contactEmail": "SAMPLE-jrkings@example.com",
-    "taxNote": "SAMPLE - Donations may be tax-deductible. Contact us for a receipt.",
+    "contactEmail": "jrkings2014aaa@gmail.com",
+    "taxNote": "Donations may be tax-deductible. Contact us for a receipt.",
     "sponsorContact": ""
   },
 
@@ -38,7 +38,7 @@
   "goal": {
     "target": 50000,
     "raised": 831,
-    "purpose": "Ice time & tournament travel ",
+    "purpose": "Your support helps with tournament costs, transportation, and lodging.",
     "deadline": "2026-02-08"
   },
 
@@ -87,7 +87,7 @@
   ],
 
   "donateLinks": [
-    { "label": "Venmo", "icon": "venmo", "url": "https://venmo.com/", "handle": "@LAJrKings2014AAA" }
+    { "label": "Venmo", "icon": "venmo", "url": "https://venmo.com/code?user_id=4693719575955224094&created=1790382194.316657&printed=1", "handle": "@LAJrKings2014AAA" }
 
   ],
 
