@@ -7,13 +7,14 @@
     "logo": "Images/crown_logo.png",
     "contactEmail": "SAMPLE-jrkings@example.com",
     "taxNote": "SAMPLE - Donations may be tax-deductible. Contact us for a receipt.",
-    "sponsorContact": "mailto:SAMPLE-jrkings@example.com?subject=Sponsorship"
+    "sponsorContact": ""
   },
 
   "nav": [
     { "label": "Home", "href": "index.html", "icon": "home" },
     { "label": "Players", "href": "players.html", "icon": "users" },
-    { "label": "Schedule", "href": "schedule.html", "icon": "calendar" }
+    { "label": "Schedule", "href": "schedule.html", "icon": "calendar" },
+    { "label": "Team Swag", "href": "swag.html", "icon": "shirt" }
   ],
 
   "teamPhoto": {
@@ -36,59 +37,62 @@
 
   "goal": {
     "target": 50000,
-    "raised": 6240,
-    "purpose": "SAMPLE - Ice time, tournament travel & new jerseys",
-    "deadline": "2026-12-15"
+    "raised": 300,
+    "purpose": "Ice time & tournament travel ",
+    "deadline": "2026-02-08"
   },
 
   "events": [
-    { "date": "2026-10-04", "time": "09:00", "title": "SAMPLE - Car Wash Fundraiser", "location": "Main St. Fire Station", "link": "" },
-    { "date": "2026-10-11", "time": "18:00", "title": "SAMPLE - Home Opener vs. Ducks", "location": "Community Ice Arena", "link": "" },
-    { "date": "2026-10-25", "time": "11:00", "title": "SAMPLE - Bake Sale", "location": "Community Ice Arena Lobby", "link": "" },
-    { "date": "2026-11-08", "time": "17:30", "title": "SAMPLE - Pasta Dinner & Silent Auction", "location": "St. Mary's Hall", "link": "" },
-    { "date": "2026-11-21", "time": "08:00", "title": "SAMPLE - Thanksgiving Tournament", "location": "Regional Sports Complex", "link": "" },
-    { "date": "2026-09-01", "time": "10:00", "title": "SAMPLE - Past event (hidden on Home, listed under Past Events on Schedule)", "location": "Anywhere", "link": "" }
+    { "date": "2026-11-23", "time": "09:00", "title": "Thanksgiving Tournament Booth", 
+    "location": "Toyota Sports Performance Center", "link": "https://www.jrkingshockey.com/tourneys" }
   ],
 
   "players": [
-    { "number": 1, "name": "SAMPLE - Alex Carter", "position": "Goalie", "photo": "" },
-    { "number": 4, "name": "SAMPLE - Ben Ortiz", "position": "Defense", "photo": "" },
-    { "number": 7, "name": "SAMPLE - Chris Lee", "position": "Forward", "photo": "" },
-    { "number": 9, "name": "SAMPLE - Dylan Park", "position": "Forward", "photo": "" },
-    { "number": 12, "name": "SAMPLE - Ethan Brooks", "position": "Center", "photo": "" },
-    { "number": 17, "name": "SAMPLE - Finn Walsh", "position": "Defense", "photo": "" },
-    { "number": 22, "name": "SAMPLE - Gabe Rossi", "position": "Forward", "photo": "" },
-    { "number": 30, "name": "SAMPLE - Henry Kim", "position": "Goalie", "photo": "" }
+    { "number": 1, "name": "Bastian (Bash) Daigle", "position": "Forward", "photo": "" },
+    { "number": 9, "name": "Benjamin (Benji) Adoumie", "position": "Forward", "photo": "" },
+    { "number": 7, "name": "Brooke Born", "position": "Defense", "photo": "" },
+    { "number": 51, "name": "Carter Perosio", "position": "Goalie", "photo": "" },
+    { "number": 85, "name": "Charlie Fox", "position": "Goalie", "photo": "" },
+    { "number": 17, "name": "Cru Martinson", "position": "Defense", "photo": "" },
+    { "number": 22, "name": "Eli Baker", "position": "Forward", "photo": "" },
+    { "number": 96, "name": "Henry Gathercole", "position": "Forward", "photo": "" },
+    { "number": 30, "name": "Hudson Jones", "position": "Defense", "photo": "" },
+    { "number": 16, "name": "Mark Rettele", "position": "Forward", "photo": "" },
+    { "number": 78, "name": "Micah Song", "position": "Forward", "photo": "" },
+    { "number": 78, "name": "Milo Su", "position": "Forward", "photo": "" },
+    { "number": 30, "name": "Nicolas Van Den Bosch", "position": "Defense", "photo": "" },
+    { "number": 30, "name": "Nixon Tebo", "position": "Forward", "photo": "" },
+    { "number": 87, "name": "Tristan Chang", "position": "Forward", "photo": "" },
+    { "number": 30, "name": "Vance Seeley", "position": "Forward", "photo": "" },
+    { "number": 71, "name": "Vincent Yang", "position": "Defense", "photo": "" }
+
+    
+  ],
+
+  "swag": [
+    { "name": "SAMPLE - Jr Kings T-Shirt", "price": 25, "image": "", "description": "Purple tee with the gold crown logo",
+      "sizes": ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M", "Adult L", "Adult XL"] },
+    { "name": "SAMPLE - Jr Kings Pajamas", "price": 35, "image": "", "description": "Cozy flannel pajama pants",
+      "sizes": ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M", "Adult L", "Adult XL"] }
   ],
 
   "donations": [
-    { "name": "SAMPLE - Smith Family", "amount": 100, "date": "2026-09-24", "message": "Go Kings!", "anonymous": false },
-    { "name": "SAMPLE - Joe's Pizza", "amount": 250, "date": "2026-09-22", "message": "", "anonymous": false },
-    { "name": "Hidden Name", "amount": 50, "date": "2026-09-20", "message": "Good luck this season!", "anonymous": true },
-    { "name": "SAMPLE - Grandma Rose", "amount": 75, "date": "2026-09-18", "message": "So proud of #12!", "anonymous": false },
-    { "name": "SAMPLE - The Nguyens", "amount": 40, "date": "2026-09-15", "message": "", "anonymous": false },
-    { "name": "SAMPLE - Coach Miller", "amount": 150, "date": "2026-09-10", "message": "Let's bring home a trophy.", "anonymous": false }
+    { "name": "SAMPLE - Smith Family", "amount": 100, "date": "2026-09-24", "message": "Go Kings!", "anonymous": false }
+
   ],
 
   "sponsors": [
-    { "name": "SAMPLE - Joe's Pizza", "tier": "Gold", "logo": "", "url": "" },
-    { "name": "SAMPLE - Rink Side Sports", "tier": "Gold", "logo": "", "url": "" },
-    { "name": "SAMPLE - Main St. Dental", "tier": "Silver", "logo": "", "url": "" },
-    { "name": "SAMPLE - Hometown Realty", "tier": "Silver", "logo": "", "url": "" },
-    { "name": "SAMPLE - Corner Coffee", "tier": "Bronze", "logo": "", "url": "" }
+    { "name": "SAMPLE - Joe's Pizza", "tier": "Gold", "logo": "", "url": "" }
+
   ],
 
   "donateLinks": [
-    { "label": "Venmo", "icon": "venmo", "url": "https://venmo.com/", "handle": "@SAMPLE-JrKings" },
-    { "label": "PayPal", "icon": "paypal", "url": "https://paypal.com/", "handle": "" },
-    { "label": "GoFundMe", "icon": "heart", "url": "https://gofundme.com/", "handle": "" },
-    { "label": "Zelle", "icon": "zelle", "url": "", "handle": "SAMPLE-jrkings@example.com" }
+    { "label": "Venmo", "icon": "venmo", "url": "https://venmo.com/", "handle": "@LAJrKings2014AAA" }
+
   ],
 
   "social": [
-    { "platform": "instagram", "handle": "@SAMPLE-jrkings", "url": "https://instagram.com/" },
-    { "platform": "facebook", "handle": "SAMPLE Jr Kings Hockey", "url": "https://facebook.com/" },
-    { "platform": "tiktok", "handle": "@SAMPLE-jrkings", "url": "https://tiktok.com/" },
-    { "platform": "youtube", "handle": "SAMPLE Jr Kings", "url": "https://youtube.com/" }
+    { "platform": "instagram", "handle": "jrkings2014aaa", "url": "https://instagram.com/" }
+
   ]
 }

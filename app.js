@@ -8,6 +8,7 @@ const DEFAULT_NAV = [
   { label: 'Home', href: 'index.html', icon: 'home' },
   { label: 'Players', href: 'players.html', icon: 'users' },
   { label: 'Schedule', href: 'schedule.html', icon: 'calendar' },
+  { label: 'Team Swag', href: 'swag.html', icon: 'shirt' },
 ];
 
 // Inline SVG icons (24x24 viewBox) so no external icon library is needed.
@@ -24,6 +25,7 @@ const ICONS = {
   home: { d: 'M12 3l9 8h-3v9h-5v-6h-2v6H6v-9H3l9-8z' },
   users: { d: 'M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm8 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM2 20c0-3.3 3.1-6 7-6s7 2.7 7 6v1H2v-1zm15.3-5.9c2.7.3 4.7 2.3 4.7 4.9v2h-4v-1c0-2.3-.2-4.3-.7-5.9z' },
   calendar: { rule: 'evenodd', d: 'M7 2h2v2h6V2h2v2h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2V2zM5 9v11h14V9H5z' },
+  shirt: { d: 'M8.5 3 3 5.5 1.5 10.5l3.5 1.3L6 10.5V21h12V10.5l1 1.3 3.5-1.3L21 5.5 15.5 3a3.5 3.5 0 0 1-7 0z' },
   link: { d: 'M10.6 13.4a1 1 0 0 1 0-1.4l3-3a1 1 0 1 1 1.4 1.4l-3 3a1 1 0 0 1-1.4 0zM8.5 20a4.5 4.5 0 0 1-3.2-7.7l2.5-2.5 1.4 1.4-2.5 2.5a2.5 2.5 0 0 0 3.5 3.5l2.5-2.5 1.4 1.4-2.5 2.5A4.5 4.5 0 0 1 8.5 20zm7.7-5.8-1.4-1.4 2.5-2.5a2.5 2.5 0 0 0-3.5-3.5l-2.5 2.5-1.4-1.4 2.5-2.5a4.5 4.5 0 0 1 6.4 6.4l-2.6 2.4z' },
 };
 ICONS.twitter = ICONS.x;
@@ -135,6 +137,47 @@ async function copyText(text, button) {
   }, 1600);
 }
 
+// mailto only works with a default mail app, so also offer webmail compose links.
+function emailLinks(email, { subject, body }) {
+  const to = encodeURIComponent(email);
+  const su = encodeURIComponent(subject);
+  const b = encodeURIComponent(body);
+  return {
+    mailto: `mailto:${email}?subject=${su}&body=${b}`,
+    gmail: `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${su}&body=${b}`,
+    outlook: `https://outlook.live.com/mail/0/deeplink/compose?to=${to}&subject=${su}&body=${b}`,
+  };
+}
+
+// Wires a mailto link plus a hidden "Email didn't open?" row (Gmail / Outlook.com / Copy)
+// that appears after the link is clicked. Call set(msg) whenever the message changes.
+function emailWithFallback(link, email, copyLabel = 'Copy email') {
+  const row = el('div', 'email-alt');
+  row.hidden = true;
+  const gmail = externalLink('#', 'btn btn-copy', 'Gmail');
+  const outlook = externalLink('#', 'btn btn-copy', 'Outlook.com');
+  const copy = el('button', 'btn btn-copy', copyLabel);
+  copy.type = 'button';
+  row.append(el('span', '', 'Email didn’t open? Use:'), gmail, outlook, copy);
+
+  let msg;
+  copy.addEventListener('click', () => copyText(`To: ${email}\nSubject: ${msg.subject}\n\n${msg.body}`, copy));
+  link.addEventListener('click', (ev) => {
+    if (!ev.defaultPrevented) row.hidden = false;
+  });
+
+  return {
+    row,
+    set(message) {
+      msg = message;
+      const links = emailLinks(email, msg);
+      link.href = links.mailto;
+      gmail.href = links.gmail;
+      outlook.href = links.outlook;
+    },
+  };
+}
+
 // ---------- shared shell (header, sidebar, footer) ----------
 // These templates are static markup only; all data is inserted afterwards with textContent.
 
@@ -222,12 +265,50 @@ function renderHeader(team = {}) {
   emailLink.href = email ? `mailto:${email}` : '#';
   $('tax-note').textContent = team.taxNote || '';
 
-  const becomeSponsor = $('become-sponsor');
-  if (becomeSponsor) {
-    const sponsorHref = safeUrl(team.sponsorContact) || (email ? `mailto:${email}?subject=Sponsorship` : '');
-    if (sponsorHref) becomeSponsor.href = sponsorHref;
-    else becomeSponsor.hidden = true;
+  renderBecomeSponsor(team);
+}
+
+function sponsorMessage(teamName) {
+  const team = teamName || 'the team';
+  return {
+    subject: `Sponsorship inquiry: ${team}`,
+    body: [
+      'Hi Jr Kings,',
+      '',
+      `We're interested in sponsoring ${team} on their trip to the Quebec International Pee-Wee Hockey Tournament.`,
+      '',
+      'Business name:',
+      'Contact name:',
+      'Phone:',
+      'Website:',
+      'Sponsorship level (Gold / Silver / Bronze / not sure):',
+      '',
+      'Please send us details on how to get involved.',
+      '',
+      'Thank you!',
+    ].join('\n'),
+  };
+}
+
+// A web form in team.sponsorContact wins; otherwise the link becomes a pre-filled email to contactEmail.
+function renderBecomeSponsor(team) {
+  const link = $('become-sponsor');
+  if (!link) return;
+  const contact = safeUrl(team.sponsorContact);
+  if (contact && !contact.startsWith('mailto:')) {
+    link.href = contact;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    return;
   }
+  const email = team.contactEmail || '';
+  if (!email) {
+    link.hidden = true;
+    return;
+  }
+  const mail = emailWithFallback(link, email);
+  mail.set(sponsorMessage(team.name));
+  link.after(mail.row);
 }
 
 function renderProgress(goal = {}) {
@@ -464,6 +545,101 @@ function renderPlayers(players = []) {
   }
 }
 
+// ---------- swag page ----------
+
+function swagOrderMessage(item, size) {
+  const label = size ? `${item.name} (${size})` : item.name;
+  const body = [
+    'Hi Jr Kings,',
+    '',
+    'I would like to order:',
+    `Item: ${item.name}`,
+    size ? `Size: ${size}` : null,
+    item.price != null ? `Price: ${money.format(Number(item.price))}` : null,
+    'Quantity: 1',
+    '',
+    'My name:',
+    'Phone:',
+    'Player (if any):',
+    '',
+    'Thank you!',
+  ].filter((line) => line != null).join('\n');
+  return { subject: `Swag order: ${label}`, body };
+}
+
+function renderSwag(items = [], email = '') {
+  const grid = $('swag');
+  if (!grid) return;
+  if (!items.length) return empty(grid, 'Swag coming soon.');
+
+  items.forEach((item, i) => {
+    const card = el('article', 'swag-item');
+
+    if (item.image) {
+      const img = el('img', 'swag-image');
+      img.src = item.image;
+      img.alt = item.name || '';
+      card.appendChild(img);
+    } else {
+      const placeholder = el('div', 'swag-image swag-placeholder');
+      placeholder.appendChild(icon('shirt'));
+      card.appendChild(placeholder);
+    }
+
+    const body = el('div', 'swag-body');
+    body.appendChild(el('p', 'swag-name', item.name));
+    if (item.price != null) body.appendChild(el('p', 'swag-price', money.format(Number(item.price))));
+    if (item.description) body.appendChild(el('p', 'swag-desc', item.description));
+
+    const sizes = Array.isArray(item.sizes) ? item.sizes : [];
+    let select = null;
+    const note = el('p', 'swag-note', 'Please choose a size.');
+    note.hidden = true;
+
+    if (sizes.length) {
+      const id = `swag-size-${i}`;
+      const label = el('label', 'swag-label', 'Size');
+      label.htmlFor = id;
+      select = el('select', 'swag-select');
+      select.id = id;
+      const prompt = el('option', '', 'Choose a size');
+      prompt.value = '';
+      select.appendChild(prompt);
+      for (const s of sizes) {
+        const opt = el('option', '', s);
+        opt.value = s;
+        select.appendChild(opt);
+      }
+      body.append(label, select);
+    }
+
+    if (email) {
+      const order = el('a', 'btn btn-gold swag-order', 'Order');
+      // Size check runs first so it can cancel the click before the fallback row shows.
+      order.addEventListener('click', (ev) => {
+        if (select && !select.value) {
+          ev.preventDefault();
+          note.hidden = false;
+          select.focus();
+        }
+      });
+      const mail = emailWithFallback(order, email, 'Copy order');
+      const update = () => mail.set(swagOrderMessage(item, select?.value));
+      update();
+      if (select) {
+        select.addEventListener('change', () => {
+          update();
+          if (select.value) note.hidden = true;
+        });
+      }
+      body.append(note, order, mail.row);
+    }
+
+    card.appendChild(body);
+    grid.appendChild(card);
+  });
+}
+
 // ---------- schedule page ----------
 
 function renderSchedule(events = []) {
@@ -523,6 +699,7 @@ async function init() {
 
     renderPlayers(data.players);
     renderSchedule(data.events);
+    renderSwag(data.swag, data.team?.contactEmail);
   } catch (err) {
     console.error(err);
     renderNav(DEFAULT_NAV);

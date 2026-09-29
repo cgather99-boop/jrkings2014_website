@@ -519,6 +519,74 @@ a.sponsor:hover { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold-li
 .player-meta { margin: 2px 0 0; color: var(--muted); font-size: 0.875rem; }
 .player-meta strong { color: var(--purple); }
 
+/* ---------- Swag ---------- */
+.swag-intro { margin: 0 0 18px; color: var(--muted); }
+.swag-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.swag-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.swag-item:hover { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold-light); }
+.swag-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: var(--purple-tint);
+}
+.swag-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--purple);
+}
+.swag-placeholder svg { width: 45%; height: 45%; fill: var(--gold); }
+.swag-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  padding: 14px 16px 16px;
+}
+.swag-name { margin: 0; font-weight: 700; color: var(--text); }
+.swag-price { margin: 0; font-weight: 800; font-size: 1.2rem; color: var(--purple); }
+.swag-desc { margin: 0 0 4px; color: var(--muted); font-size: 0.9rem; }
+.swag-label { margin-top: auto; font-size: 0.8rem; font-weight: 700; color: var(--purple); }
+.swag-select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+}
+.swag-select:focus-visible { outline: 3px solid var(--gold); outline-offset: 1px; border-color: var(--purple); }
+.swag-note { margin: 0; color: #B3261E; font-size: 0.85rem; font-weight: 600; }
+.swag-order { margin-top: 6px; width: 100%; }
+
+/* "Email didn't open?" fallback row (swag Order, Become a sponsor) */
+.email-alt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.email-alt[hidden] { display: none; }
+.email-alt span { flex-basis: 100%; }
+.email-alt .btn-copy { padding: 5px 10px; font-size: 0.8rem; }
+
 /* ---------- Footer ---------- */
 .site-footer {
   background: var(--purple-dark);
