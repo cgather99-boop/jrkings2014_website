@@ -25,8 +25,6 @@
 
   "about": {
     "title": "Quebec International Pee-Wee Hockey Tournament",
-    "logo": "Images/TourneyLogo.png",
-    "logoAlt": "Quebec International Pee-Wee Hockey Tournament logo",
     "paragraphs": [
       "The Quebec International Pee-Wee Hockey Tournament is one of the world’s premier youth hockey events, bringing together elite 11- and 12-year-old players from across Canada, the United States, and around the world. Held annually in Quebec City, the tournament provides young athletes with the opportunity to compete against high-level international competition in a world-class hockey environment.",
       "Participating offers benefits well beyond hockey. Players gain experience competing under pressure, adapt to different playing styles, build confidence and resilience, and develop lasting relationships with teammates and players from other cultures. Playing in front of large crowds at the Videotron Centre also creates a memorable experience that can inspire young athletes and reinforce the values of teamwork, sportsmanship, commitment, and personal growth."
@@ -48,22 +46,22 @@
   ],
 
   "players": [
-    { "number": 1, "name": "Bastian (Bash) Daigle", "position": "Forward", "photo": "" },
+    { "number": 11, "name": "Bastian (Bash) Daigle", "position": "Forward", "photo": "" },
     { "number": 9, "name": "Benjamin (Benji) Adoumie", "position": "Forward", "photo": "" },
-    { "number": 7, "name": "Brooke Born", "position": "Defense", "photo": "" },
+    { "number": 97, "name": "Brooke Born", "position": "Defense", "photo": "" },
     { "number": 51, "name": "Carter Perosio", "position": "Goalie", "photo": "" },
     { "number": 85, "name": "Charlie Fox", "position": "Goalie", "photo": "" },
-    { "number": 17, "name": "Cru Martinson", "position": "Defense", "photo": "" },
-    { "number": 22, "name": "Eli Baker", "position": "Forward", "photo": "" },
+    { "number": 21, "name": "Cru Martinson", "position": "Defense", "photo": "" },
+    { "number": 29, "name": "Eli Baker", "position": "Forward", "photo": "" },
     { "number": 96, "name": "Henry Gathercole", "position": "Forward", "photo": "" },
-    { "number": 30, "name": "Hudson Jones", "position": "Defense", "photo": "" },
+    { "number": 23, "name": "Hudson Jones", "position": "Defense", "photo": "" },
     { "number": 16, "name": "Mark Rettele", "position": "Forward", "photo": "" },
-    { "number": 78, "name": "Micah Song", "position": "Forward", "photo": "" },
+    { "number": 91, "name": "Micah Song", "position": "Forward", "photo": "" },
     { "number": 78, "name": "Milo Su", "position": "Forward", "photo": "" },
-    { "number": 30, "name": "Nicolas Van Den Bosch", "position": "Defense", "photo": "" },
-    { "number": 30, "name": "Nixon Tebo", "position": "Forward", "photo": "" },
+    { "number": 44, "name": "Nicolas Van Den Bosch", "position": "Defense", "photo": "" },
+    { "number": 79, "name": "Nixon Tebo", "position": "Forward", "photo": "" },
     { "number": 87, "name": "Tristan Chang", "position": "Forward", "photo": "" },
-    { "number": 30, "name": "Vance Seeley", "position": "Forward", "photo": "" },
+    { "number": 50, "name": "Vance Seeley", "position": "Forward", "photo": "" },
     { "number": 71, "name": "Vincent Yang", "position": "Defense", "photo": "" }
 
     
