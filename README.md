@@ -12,6 +12,8 @@ A small fundraising site (Home, Players, Schedule, Team Swag). **All content liv
 | `swag.html` | Team Swag page (merch you can order by email) |
 | `styles.css` | Purple and gold styling (colors are at the top under `:root`) |
 | `app.js` | Reads `data.json` and builds every page, including the shared header, sidebar, and footer |
+
+If you change `app.js` or `styles.css`, bump the `?v=` number where each page loads them (e.g. `app.js?v=2` → `app.js?v=3`) so browsers load the new version instead of an old saved copy.
 | `Images/` | Team logo; put sponsor logos in `Images/sponsors/` |
 
 ## Updating content
@@ -26,7 +28,7 @@ Open `data.json` in any text editor (Notepad or VS Code) and replace every value
 - **Team Swag:** add `{ "name": "...", "price": 25, "image": "", "description": "...", "sizes": ["Youth M", "Adult L"] }` to the `swag` list. For `image`, use a path like `Images/swag/tshirt.jpg`, or leave it `""` to show a shirt icon. Tapping **Order** opens the buyer's email app with a message to `team.contactEmail` that includes the item and chosen size. If their email app doesn't open (common on PCs that use Gmail or Outlook in a browser), **Gmail**, **Outlook.com**, and **Copy order** buttons appear under Order with the same pre-filled message. Use `"sizes": []` for one-size items.
 - **Recent activity:** add donations with `name`, `amount`, `date`, and an optional `message`. Set `"anonymous": true` to hide a donor's name. The 8 newest are shown.
 - **Sponsors:** shown under the sidebar menu on every page (at the bottom on phones). `tier` can be `Gold`, `Silver`, or `Bronze` (other names work too). For `logo`, use a path like `Images/sponsors/joes-pizza.png`, or leave it `""` to show initials. The **Become a sponsor** link opens a pre-filled sponsorship email to `team.contactEmail` (with Gmail / Outlook.com / Copy backups). To send people to a sign-up form instead, put its web address in `team.sponsorContact`.
-- **Donate links:** set `url` to your real Venmo, PayPal, or GoFundMe page. If there's no link (e.g. Zelle), leave `url` as `""` and fill in `handle`, and visitors get a Copy button instead.
+- **Donate links:** set `url` to your real Venmo, PayPal, or GoFundMe page. If there's no link (e.g. Zelle), leave `url` as `""` and fill in `handle`, and visitors get a Copy button instead. Add `"qr": "Images/zelle.png"` to show a QR code under that option (optionally with `"qrCaption"` for custom text under it).
 - **Social:** `platform` can be `instagram`, `facebook`, `tiktok`, `youtube`, or `x`. These show as icons in the top-right of the header and in the footer. Delete an entry to hide it.
 
 JSON rules: keep the quotes and commas, and put no comma after the last item in a list. If the page shows "could not load", paste the file into https://jsonlint.com to find the typo.

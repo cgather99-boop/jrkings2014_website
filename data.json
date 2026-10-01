@@ -85,7 +85,8 @@
   ],
 
   "donateLinks": [
-    { "label": "Venmo", "icon": "venmo", "url": "https://venmo.com/code?user_id=4693719575955224094&created=1790382194.316657&printed=1", "handle": "@LAJrKings2014AAA" }
+    { "label": "Venmo", "icon": "venmo", "url": "https://venmo.com/code?user_id=4693719575955224094&created=1790382194.316657&printed=1", "handle": "@LAJrKings2014AAA" },
+    { "label": "Zelle", "icon": "zelle", "url": "", "handle": "", "qr": "Images/zelle.png" }
 
   ],
 

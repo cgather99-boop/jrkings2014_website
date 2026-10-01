@@ -501,9 +501,18 @@ function renderDonate(links = []) {
   for (const d of links) {
     const row = el('div', 'donate-row');
     const url = safeUrl(d.url);
-    const main = url ? externalLink(url, 'btn btn-primary') : el('div', 'donate-static');
+    // No link but a QR code (e.g. Zelle): the button shows/hides the QR instead.
+    const qrToggle = !url && d.qr;
+    let main;
+    if (url) main = externalLink(url, 'btn btn-primary');
+    else if (qrToggle) {
+      main = el('button', 'btn btn-primary');
+      main.type = 'button';
+    } else main = el('div', 'donate-static');
     main.append(icon(d.icon || d.label), el('span', '', d.label));
+    const hint = qrToggle ? el('span', 'handle', 'Show QR code') : null;
     if (d.handle) main.appendChild(el('span', 'handle', d.handle));
+    else if (hint) main.appendChild(hint);
     row.appendChild(main);
 
     if (d.handle) {
@@ -514,6 +523,27 @@ function renderDonate(links = []) {
       row.appendChild(copy);
     }
     container.appendChild(row);
+
+    if (d.qr) {
+      const figure = el('figure', 'donate-qr');
+      const img = el('img');
+      img.src = d.qr;
+      img.alt = `${d.label} QR code`;
+      figure.append(img, el('figcaption', '', d.qrCaption || `Scan with your banking app to donate with ${d.label}`));
+      container.appendChild(figure);
+
+      if (qrToggle) {
+        figure.id = `donate-qr-${d.label.toLowerCase().replace(/\W+/g, '-')}`;
+        figure.hidden = true;
+        main.setAttribute('aria-controls', figure.id);
+        main.setAttribute('aria-expanded', 'false');
+        main.addEventListener('click', () => {
+          figure.hidden = !figure.hidden;
+          main.setAttribute('aria-expanded', String(!figure.hidden));
+          if (hint && !d.handle) hint.textContent = figure.hidden ? 'Show QR code' : 'Hide QR code';
+        });
+      }
+    }
   }
 }
 
