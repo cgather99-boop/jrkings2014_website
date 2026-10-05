@@ -1,5 +1,6 @@
-// Jr Kings fundraiser: builds the shared header/sidebar/footer and renders each page from data.json.
-// Volunteers should only need to edit data.json.
+// Team fundraiser: builds the shared header/sidebar/footer and renders each page from data.json.
+// Volunteers should only need to edit data.json (content) and theme.css (colors).
+// Nothing in this file is team-specific, so it can be copied unchanged to another team's site.
 
 const MAX_EVENTS = 5;
 const MAX_DONATIONS = 8;
@@ -184,9 +185,9 @@ function emailWithFallback(link, email, copyLabel = 'Copy email') {
 const HEADER_HTML = `
   <div class="header-inner">
     <a class="brand" href="index.html">
-      <img id="team-logo" class="logo" src="Images/crown_logo.png" alt="Team logo">
+      <img id="team-logo" class="logo" src="Images/logo.png" alt="Team logo">
       <div>
-        <p id="team-name" class="team-name">Jr Kings</p>
+        <p id="team-name" class="team-name"></p>
         <p id="team-tagline" class="tagline"></p>
       </div>
     </a>
@@ -205,7 +206,7 @@ const HEADER_HTML = `
 
 const SIDEBAR_HTML = `
   <ul id="nav-list" class="nav-list"></ul>
-  <a class="btn btn-gold sidebar-donate" href="index.html#donate">Donate Now</a>`;
+  <a class="btn btn-accent sidebar-donate" href="index.html#donate">Donate Now</a>`;
 
 const SPONSORS_HTML = `
   <h2 id="sponsors-title">Local Sponsors</h2>
@@ -213,7 +214,7 @@ const SPONSORS_HTML = `
   <a id="become-sponsor" class="link-cta" href="#">Become a sponsor →</a>`;
 
 const FOOTER_HTML = `
-  <img class="footer-logo" src="Images/crown_logo.png" alt="">
+  <img id="footer-logo" class="footer-logo" src="Images/logo.png" alt="">
   <p>Questions? Email <a id="contact-email" href="#"></a></p>
   <p id="tax-note" class="tax-note"></p>
   <div id="footer-social" class="footer-social"></div>`;
@@ -256,7 +257,10 @@ function renderHeader(team = {}) {
     const page = document.title.split('·')[0].trim();
     document.title = document.body.dataset.page === 'home' ? `${team.name} Fundraiser` : `${page} · ${team.name}`;
   }
-  if (team.logo) $('team-logo').src = team.logo;
+  if (team.logo) {
+    $('team-logo').src = team.logo;
+    $('footer-logo').src = team.logo;
+  }
   $('team-tagline').textContent = team.tagline || '';
 
   const email = team.contactEmail || '';
@@ -268,14 +272,20 @@ function renderHeader(team = {}) {
   renderBecomeSponsor(team);
 }
 
-function sponsorMessage(teamName) {
-  const team = teamName || 'the team';
+// Greeting name for pre-filled emails, e.g. "Hi Jr Kings,".
+function greetingName(team = {}) {
+  return team.shortName || team.name || 'there';
+}
+
+function sponsorMessage(team = {}) {
+  const name = team.name || 'the team';
+  const trip = team.tripName ? `on their trip to ${team.tripName}` : 'this season';
   return {
-    subject: `Sponsorship inquiry: ${team}`,
+    subject: `Sponsorship inquiry: ${name}`,
     body: [
-      'Hi Jr Kings,',
+      `Hi ${greetingName(team)},`,
       '',
-      `We're interested in sponsoring ${team} on their trip to the Quebec International Pee-Wee Hockey Tournament.`,
+      `We're interested in sponsoring ${name} ${trip}.`,
       '',
       'Business name:',
       'Contact name:',
@@ -307,7 +317,7 @@ function renderBecomeSponsor(team) {
     return;
   }
   const mail = emailWithFallback(link, email);
-  mail.set(sponsorMessage(team.name));
+  mail.set(sponsorMessage(team));
   link.after(mail.row);
 }
 
@@ -577,10 +587,10 @@ function renderPlayers(players = []) {
 
 // ---------- swag page ----------
 
-function swagOrderMessage(item, size) {
+function swagOrderMessage(team, item, size) {
   const label = size ? `${item.name} (${size})` : item.name;
   const body = [
-    'Hi Jr Kings,',
+    `Hi ${greetingName(team)},`,
     '',
     'I would like to order:',
     `Item: ${item.name}`,
@@ -597,10 +607,16 @@ function swagOrderMessage(item, size) {
   return { subject: `Swag order: ${label}`, body };
 }
 
-function renderSwag(items = [], email = '') {
+function renderSwag(items = [], team = {}, intro = '') {
   const grid = $('swag');
   if (!grid) return;
+  const introEl = $('swag-intro');
+  if (introEl) {
+    introEl.textContent = intro;
+    introEl.hidden = !intro;
+  }
   if (!items.length) return empty(grid, 'Swag coming soon.');
+  const email = team.contactEmail || '';
 
   items.forEach((item, i) => {
     const card = el('article', 'swag-item');
@@ -644,7 +660,7 @@ function renderSwag(items = [], email = '') {
     }
 
     if (email) {
-      const order = el('a', 'btn btn-gold swag-order', 'Order');
+      const order = el('a', 'btn btn-accent swag-order', 'Order');
       // Size check runs first so it can cancel the click before the fallback row shows.
       order.addEventListener('click', (ev) => {
         if (select && !select.value) {
@@ -654,7 +670,7 @@ function renderSwag(items = [], email = '') {
         }
       });
       const mail = emailWithFallback(order, email, 'Copy order');
-      const update = () => mail.set(swagOrderMessage(item, select?.value));
+      const update = () => mail.set(swagOrderMessage(team, item, select?.value));
       update();
       if (select) {
         select.addEventListener('change', () => {
@@ -729,7 +745,7 @@ async function init() {
 
     renderPlayers(data.players);
     renderSchedule(data.events);
-    renderSwag(data.swag, data.team?.contactEmail);
+    renderSwag(data.swag, data.team, data.swagIntro);
   } catch (err) {
     console.error(err);
     renderNav(DEFAULT_NAV);

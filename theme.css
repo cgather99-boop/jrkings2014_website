@@ -1,0 +1,32 @@
+/* Team colors. This is the only file to edit to re-color the site for another team.
+   Every page loads it before styles.css.
+
+   --primary       Main team color: headings, nav, buttons, avatars, links
+   --primary-dark  Darker shade of primary: footer background, button hover
+   --primary-tint  Very light shade of primary: hover backgrounds, progress bar track
+   --on-primary    Text/icon color on top of primary (usually white)
+
+   --accent        Second team color: progress bar, date badges, Donate button, underlines
+   --accent-light  Very light shade of accent: newest donation highlight, card hover glow
+   --accent-hover  Slightly darker accent for accent button hover
+   --on-accent     Text/icon color on top of accent (pick dark or white so it stays readable)
+
+   --text / --muted / --border / --bg / --surface: neutral page colors */
+
+:root {
+  --primary: #3F2A7E;
+  --primary-dark: #2A1B5C;
+  --primary-tint: #EEEAF7;
+  --on-primary: #FFFFFF;
+
+  --accent: #F4B223;
+  --accent-light: #FCE7B2;
+  --accent-hover: #E6A30F;
+  --on-accent: #2A1B5C;
+
+  --text: #1F1A2E;
+  --muted: #6B6580;
+  --border: #E2DDF0;
+  --bg: #FFFFFF;
+  --surface: #FFFFFF;
+}

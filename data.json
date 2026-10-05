@@ -3,8 +3,10 @@
 
   "team": {
     "name": "Jr Kings 2014 AAA",
+    "shortName": "Jr Kings",
+    "tripName": "the Quebec International Pee-Wee Hockey Tournament",
     "tagline": "Help our players make it to the Quebec PeeWee Tournament!",
-    "logo": "Images/crown_logo.png",
+    "logo": "Images/logo.png",
     "contactEmail": "jrkings2014aaa@gmail.com",
     "taxNote": "Donations may be tax-deductible. Contact us for a receipt.",
     "sponsorContact": ""
@@ -66,6 +68,8 @@
 
     
   ],
+
+  "swagIntro": "Show your Jr Kings pride! Pick a size and tap Order to email us your request. Every purchase supports the trip to Quebec.",
 
   "swag": [
     { "name": "SAMPLE - Jr Kings T-Shirt", "price": 25, "image": "", "description": "Purple tee with the gold crown logo",
