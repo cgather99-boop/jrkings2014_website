@@ -267,6 +267,7 @@ function renderHeader(team = {}) {
   const emailLink = $('contact-email');
   emailLink.textContent = email;
   emailLink.href = email ? `mailto:${email}` : '#';
+  emailLink.parentElement.hidden = !email;
   $('tax-note').textContent = team.taxNote || '';
 
   renderBecomeSponsor(team);
