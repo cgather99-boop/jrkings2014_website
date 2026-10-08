@@ -380,6 +380,35 @@ function renderTeamPhoto(photo) {
   figure.hidden = false;
 }
 
+function renderFundraisingAlert(alert) {
+  const section = $('fundraising-alert');
+  if (!section || !alert || (!alert.title && !alert.description)) return;
+
+  $('alert-title').textContent = alert.title || '';
+  $('alert-text').textContent = alert.description || '';
+
+  const media = $('alert-media');
+  if (alert.image) {
+    const img = el('img');
+    img.src = alert.image;
+    img.alt = alert.imageAlt || alert.title || '';
+    media.appendChild(img);
+  } else {
+    media.classList.add('alert-placeholder');
+    media.appendChild(icon('shirt'));
+  }
+
+  const url = safeUrl(alert.linkUrl);
+  if (url) {
+    const link = $('alert-link');
+    link.href = url;
+    link.textContent = alert.linkText || 'Learn more';
+    link.hidden = false;
+  }
+
+  section.hidden = false;
+}
+
 function renderAbout(about) {
   const section = $('about');
   const paragraphs = about?.paragraphs || [];
@@ -582,6 +611,18 @@ function renderPlayers(players = []) {
     if (p.number != null && p.position) meta.append(' · ');
     if (p.position) meta.append(p.position);
     card.appendChild(meta);
+
+    if (p.thankYou) card.appendChild(el('p', 'player-thanks', `“${p.thankYou}”`));
+    const supporters = Array.isArray(p.supporters) ? p.supporters.filter(Boolean) : [];
+    if (supporters.length) {
+      const box = el('div', 'player-supporters');
+      box.appendChild(el('p', 'player-supporters-title', `Supporters (${supporters.length})`));
+      const list = el('ul', 'supporter-list');
+      for (const name of supporters) list.appendChild(el('li', '', name));
+      box.appendChild(list);
+      card.appendChild(box);
+    }
+
     grid.appendChild(card);
   }
 }
@@ -738,6 +779,7 @@ async function init() {
     renderSocial(data.social);
 
     renderTeamPhoto(data.teamPhoto);
+    renderFundraisingAlert(data.fundraisingAlert);
     renderAbout(data.about);
     renderEvents(data.events);
     renderActivity(data.donations);

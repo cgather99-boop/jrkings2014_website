@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fundraiser</title>
   <link rel="icon" href="Images/logo.png">
-  <link rel="stylesheet" href="theme.css?v=4">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="theme.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body data-page="home">
   <!-- Header, sidebar, and footer are filled in by app.js (shared across pages). -->
@@ -27,6 +27,15 @@
             <img id="team-photo-img" src="" alt="">
             <figcaption id="team-photo-caption" hidden></figcaption>
           </figure>
+
+          <section id="fundraising-alert" class="card fundraising-alert" aria-labelledby="alert-title" hidden>
+            <div id="alert-media" class="alert-media"></div>
+            <div class="alert-body">
+              <h2 id="alert-title"></h2>
+              <p id="alert-text"></p>
+              <a id="alert-link" class="btn btn-accent" href="#" target="_blank" rel="noopener" hidden></a>
+            </div>
+          </section>
 
           <section id="about" class="card about" aria-labelledby="about-title" hidden>
             <img id="about-logo" class="about-logo" src="" alt="" hidden>
@@ -62,6 +71,6 @@
 
   <footer id="site-footer" class="site-footer"></footer>
 
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>

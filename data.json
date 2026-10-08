@@ -25,6 +25,15 @@
     "caption": ""
   },
 
+  "fundraisingAlert": {
+    "title": "Get Your Name on a Jr Kings T-Shirt!",
+    "image": "",
+    "imageAlt": "Jr Kings supporter T-shirt",
+    "description": "SAMPLE - We're making custom T-shirts that list the names of each player's supporters, personalized for every player. Add your name to show you're behind the team on the road to Quebec!",
+    "linkText": "Add your name",
+    "linkUrl": ""
+  },
+
   "about": {
     "title": "Quebec International Pee-Wee Hockey Tournament",
     "paragraphs": [
@@ -48,23 +57,25 @@
   ],
 
   "players": [
-    { "number": 11, "name": "Bastian (Bash) Daigle", "position": "Forward", "photo": "" },
-    { "number": 9, "name": "Benjamin (Benji) Adoumie", "position": "Forward", "photo": "" },
-    { "number": 97, "name": "Brooke Born", "position": "Defense", "photo": "" },
-    { "number": 51, "name": "Carter Perosio", "position": "Goalie", "photo": "" },
-    { "number": 85, "name": "Charlie Fox", "position": "Goalie", "photo": "" },
-    { "number": 21, "name": "Cru Martinson", "position": "Defense", "photo": "" },
-    { "number": 29, "name": "Eli Baker", "position": "Forward", "photo": "" },
-    { "number": 96, "name": "Henry Gathercole", "position": "Forward", "photo": "" },
-    { "number": 23, "name": "Hudson Jones", "position": "Defense", "photo": "" },
-    { "number": 16, "name": "Mark Rettele", "position": "Forward", "photo": "" },
-    { "number": 91, "name": "Micah Song", "position": "Forward", "photo": "" },
-    { "number": 78, "name": "Milo Su", "position": "Forward", "photo": "" },
-    { "number": 44, "name": "Nicolas Van Den Bosch", "position": "Defense", "photo": "" },
-    { "number": 79, "name": "Nixon Tebo", "position": "Forward", "photo": "" },
-    { "number": 87, "name": "Tristan Chang", "position": "Forward", "photo": "" },
-    { "number": 50, "name": "Vance Seeley", "position": "Forward", "photo": "" },
-    { "number": 71, "name": "Vincent Yang", "position": "Defense", "photo": "" }
+    { "number": 11, "name": "Bastian (Bash) Daigle", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
+    { "number": 9, "name": "Benjamin (Benji) Adoumie", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
+    { "number": 97, "name": "Brooke Born", "position": "Defense", "photo": "", "thankYou": "", "supporters": [] },
+    { "number": 51, "name": "Carter Perosio", "position": "Goalie", "photo": "", "thankYou": "", "supporters": [] },
+    { "number": 85, "name": "Charlie Fox", "position": "Goalie", "photo": "", "thankYou": "", "supporters": [] },
+    { "number": 21, "name": "Cru Martinson", "position": "Defense", "photo": "", "thankYou": "", "supporters": [] },
+    { "number": 29, "name": "Eli Baker", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
+    { "number": 96, "name": "Henry Gathercole", "position": "Forward", "photo": "",
+      "thankYou": "SAMPLE - Thank you for helping me get to Quebec!",
+      "supporters": ["SAMPLE - Grandma & Grandpa", "SAMPLE - The Smith Family"] },
+    { "number": 23, "name": "Hudson Jones", "position": "Defense", "photo": "", "thankYou": "", "supporters": [] },
+    { "number": 16, "name": "Mark Rettele", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
+    { "number": 91, "name": "Micah Song", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
+    { "number": 78, "name": "Milo Su", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
+    { "number": 44, "name": "Nicolas Van Den Bosch", "position": "Defense", "photo": "", "thankYou": "", "supporters": [] },
+    { "number": 79, "name": "Nixon Tebo", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
+    { "number": 87, "name": "Tristan Chang", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
+    { "number": 50, "name": "Vance Seeley", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
+    { "number": 71, "name": "Vincent Yang", "position": "Defense", "photo": "", "thankYou": "", "supporters": [] }
 
     
   ],
