@@ -297,9 +297,45 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   flex-direction: column;
   align-items: center;
   gap: 18px;
-  background: var(--accent-light);
-  border-top-color: var(--accent);
+  background: var(--accent);
+  border-color: var(--accent-hover);
+  border-top-color: var(--primary);
+  color: var(--on-accent);
 }
+/* On the gold tile, switch gold accents to purple so they stay visible. */
+.fundraising-alert h2::after { background: var(--primary); }
+.fundraising-alert .btn-accent { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+.fundraising-alert .btn-accent:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+.fundraising-alert .email-alt { color: var(--on-accent); }
+.alert-side { display: flex; flex-direction: column; align-items: center; flex: 0 0 auto; }
+/* Script "Merci!!!" tilted upward under the shirt image */
+.alert-note {
+  margin: 16px 0 0;
+  font-family: 'Pacifico', 'Brush Script MT', cursive;
+  font-size: 3.25rem;
+  line-height: 1.2;
+  color: var(--primary);
+  transform: rotate(-8deg);
+}
+
+/* Player dropdown + "Donate & add your name" in the alert */
+.pledge { display: flex; flex-direction: column; gap: 6px; max-width: 360px; margin-top: 4px; }
+.pledge-label { font-size: 0.85rem; font-weight: 800; color: var(--primary-dark); }
+.pledge-select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+}
+.pledge-select:focus-visible { outline: 3px solid var(--primary-dark); outline-offset: 1px; }
+.pledge-note { margin: 0; color: var(--primary-dark); font-size: 0.85rem; font-weight: 800; }
+.pledge-button { margin-top: 4px; }
+.alert-body .pledge-hint { margin: 0; font-size: 0.8rem; }
+.pledge-venmo { font-size: 0.85rem; font-weight: 700; color: var(--primary-dark); }
+.pledge-venmo[hidden] { display: none; }
 .alert-media {
   width: 140px;
   aspect-ratio: 1 / 1;
@@ -559,6 +595,7 @@ a.sponsor:hover { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accen
 .player-name { margin: 0; font-weight: 700; color: var(--text); }
 .player-meta { margin: 2px 0 0; color: var(--muted); font-size: 0.875rem; }
 .player-meta strong { color: var(--primary); }
+.player-flyer { display: inline-block; margin-top: 8px; font-size: 0.875rem; font-weight: 700; }
 .player-thanks { margin: 10px 0 0; color: var(--muted); font-size: 0.875rem; font-style: italic; }
 .player-supporters { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
 .player-supporters-title {

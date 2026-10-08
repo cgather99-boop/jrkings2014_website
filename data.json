@@ -20,16 +20,17 @@
   ],
 
   "teamPhoto": {
-    "src": "Images/team_photo.png",
+    "src": "Images/image0.jpeg",
     "alt": "Jr Kings players huddled around the net in purple and gold jerseys",
     "caption": ""
   },
 
   "fundraisingAlert": {
-    "title": "Get Your Name on a Jr Kings T-Shirt!",
-    "image": "",
-    "imageAlt": "Jr Kings supporter T-shirt",
-    "description": "SAMPLE - We're making custom T-shirts that list the names of each player's supporters, personalized for every player. Add your name to show you're behind the team on the road to Quebec!",
+    "title": "Show your Jr. King you got their back!",
+    "image": "Images/got_my_back.png",
+    "imageAlt": "Purple Jr Kings \"Got My Back\" T-shirt with supporters' names printed on the back",
+    "imageNote": "Merci!!!",
+    "description": "Hockey is a team sport—and every player needs a fan in their corner. Show your Jr. King you’ve got their back! A small donation will put your name on the back of their own T-shirt and help get them to Quebec. ",
     "linkText": "Add your name",
     "linkUrl": ""
   },
@@ -40,6 +41,8 @@
       "The Quebec International Pee-Wee Hockey Tournament is one of the world’s premier youth hockey events, bringing together elite 11- and 12-year-old players from across Canada, the United States, and around the world. Held annually in Quebec City, the tournament provides young athletes with the opportunity to compete against high-level international competition in a world-class hockey environment.",
       "Participating offers benefits well beyond hockey. Players gain experience competing under pressure, adapt to different playing styles, build confidence and resilience, and develop lasting relationships with teammates and players from other cultures. Playing in front of large crowds at the Videotron Centre also creates a memorable experience that can inspire young athletes and reinforce the values of teamwork, sportsmanship, commitment, and personal growth."
     ],
+    "logo": "Images/fleur_de_lis.png",
+    "logoAlt": "Fleur-de-lis",
     "linkText": "Visit the tournament website",
     "linkUrl": "https://www.tournoipee-wee.qc.ca/en/index.html"
   },
@@ -47,7 +50,7 @@
   "goal": {
     "target": 50000,
     "raised": 831,
-    "purpose": "Your support helps with tournament costs, transportation, and lodging.",
+    "purpose": "Your support helps with tournament costs, transportation, and lodging. Every dollar helps!",
     "deadline": "2026-02-08"
   },
 
@@ -57,25 +60,25 @@
   ],
 
   "players": [
-    { "number": 11, "name": "Bastian (Bash) Daigle", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
-    { "number": 9, "name": "Benjamin (Benji) Adoumie", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
-    { "number": 97, "name": "Brooke Born", "position": "Defense", "photo": "", "thankYou": "", "supporters": [] },
-    { "number": 51, "name": "Carter Perosio", "position": "Goalie", "photo": "", "thankYou": "", "supporters": [] },
-    { "number": 85, "name": "Charlie Fox", "position": "Goalie", "photo": "", "thankYou": "", "supporters": [] },
-    { "number": 21, "name": "Cru Martinson", "position": "Defense", "photo": "", "thankYou": "", "supporters": [] },
-    { "number": 29, "name": "Eli Baker", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
-    { "number": 96, "name": "Henry Gathercole", "position": "Forward", "photo": "",
+    { "number": 11, "name": "Bastian (Bash) Daigle", "position": "Forward", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 9, "name": "Benjamin (Benji) Adoumie", "position": "Forward", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 97, "name": "Brooke Born", "position": "Defense", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 51, "name": "Carter Perosio", "position": "Goalie", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 85, "name": "Charlie Fox", "position": "Goalie", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 21, "name": "Cru Martinson", "position": "Defense", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 29, "name": "Eli Baker", "position": "Forward", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 96, "name": "Henry Gathercole", "position": "Forward", "photo": "", "flyer": "", "venmo": "",
       "thankYou": "SAMPLE - Thank you for helping me get to Quebec!",
       "supporters": ["SAMPLE - Grandma & Grandpa", "SAMPLE - The Smith Family"] },
-    { "number": 23, "name": "Hudson Jones", "position": "Defense", "photo": "", "thankYou": "", "supporters": [] },
-    { "number": 16, "name": "Mark Rettele", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
-    { "number": 91, "name": "Micah Song", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
-    { "number": 78, "name": "Milo Su", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
-    { "number": 44, "name": "Nicolas Van Den Bosch", "position": "Defense", "photo": "", "thankYou": "", "supporters": [] },
-    { "number": 79, "name": "Nixon Tebo", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
-    { "number": 87, "name": "Tristan Chang", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
-    { "number": 50, "name": "Vance Seeley", "position": "Forward", "photo": "", "thankYou": "", "supporters": [] },
-    { "number": 71, "name": "Vincent Yang", "position": "Defense", "photo": "", "thankYou": "", "supporters": [] }
+    { "number": 23, "name": "Hudson Jones", "position": "Defense", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 16, "name": "Mark Rettele", "position": "Forward", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 91, "name": "Micah Song", "position": "Forward", "photo": "", "flyer": "Images/Flyer_Micah.jpeg", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 78, "name": "Milo Su", "position": "Forward", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 44, "name": "Nicolas Van Den Bosch", "position": "Defense", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 79, "name": "Nixon Tebo", "position": "Forward", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 87, "name": "Tristan Chang", "position": "Forward", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 50, "name": "Vance Seeley", "position": "Forward", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 71, "name": "Vincent Yang", "position": "Defense", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] }
 
     
   ],

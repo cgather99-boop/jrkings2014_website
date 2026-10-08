@@ -340,7 +340,7 @@ function renderProgress(goal = {}) {
   if (goal.deadline) {
     const left = daysBetween(today(), parseDate(goal.deadline));
     $('days-left').textContent =
-      left > 1 ? `${left} days left` : left === 1 ? '1 day left' : left === 0 ? 'Last day!' : 'Campaign ended';
+      left > 1 ? `${left} days left` : left === 1 ? '1 day left' : left === 0 ? 'Last day!' : 'Campaign achieved';
   }
 
   // Animate from 0 on the next frame.
@@ -380,7 +380,95 @@ function renderTeamPhoto(photo) {
   figure.hidden = false;
 }
 
-function renderFundraisingAlert(alert) {
+// A player's own Venmo link, falling back to the team Venmo in donateLinks.
+function venmoUrl(player, donateLinks = []) {
+  const team = donateLinks.find((d) => /venmo/i.test(d.icon || d.label || ''));
+  return safeUrl(player.venmo) || safeUrl(team?.url);
+}
+
+function shirtNameMessage(team, player) {
+  const who = player.number != null ? `${player.name} (#${player.number})` : player.name;
+  return {
+    subject: `Add my name to ${player.name}'s shirt`,
+    body: [
+      `Hi ${greetingName(team)},`,
+      '',
+      `I donated to support ${who}. Please add my name to their T-shirt.`,
+      '',
+      'Print my name on the shirt as:',
+      '',
+      'Donation amount:',
+      'Name on my Venmo payment:',
+      '',
+      'Thank you!',
+    ].join('\n'),
+  };
+}
+
+// Player dropdown + button: opens the player's Venmo in a new tab and a pre-filled email
+// to team.contactEmail where the donor says how their name should appear on the shirt.
+function renderShirtPledge(container, players = [], team = {}, donateLinks = []) {
+  const email = team.contactEmail || '';
+  const named = players.filter((p) => p.name);
+  if (!container || !email || !named.length) return;
+
+  const box = el('div', 'pledge');
+  const label = el('label', 'pledge-label', 'Choose your player');
+  label.htmlFor = 'pledge-player';
+  const select = el('select', 'pledge-select');
+  select.id = 'pledge-player';
+  const prompt = el('option', '', 'Select a player');
+  prompt.value = '';
+  select.appendChild(prompt);
+  const sorted = [...named].sort((a, b) => a.name.localeCompare(b.name));
+  sorted.forEach((p) => {
+    const opt = el('option', '', p.number != null ? `${p.name} #${p.number}` : p.name);
+    opt.value = String(named.indexOf(p));
+    select.appendChild(opt);
+  });
+
+  const note = el('p', 'pledge-note', 'Please choose a player.');
+  note.hidden = true;
+  const button = el('a', 'btn btn-primary pledge-button', 'Donate & add your name');
+  const hint = el('p', 'pledge-hint', 'Opens Venmo to donate, then an email where you tell us how your name should appear on the shirt.');
+  const venmoAgain = externalLink('#', 'pledge-venmo', '');
+  venmoAgain.hidden = true;
+
+  const selected = () => (select.value === '' ? null : named[Number(select.value)]);
+  // Runs before the email fallback's listener so it can cancel the click.
+  button.addEventListener('click', (ev) => {
+    const player = selected();
+    if (!player) {
+      ev.preventDefault();
+      note.hidden = false;
+      select.focus();
+      return;
+    }
+    const venmo = venmoUrl(player, donateLinks);
+    if (venmo) {
+      window.open(venmo, '_blank', 'noopener');
+      venmoAgain.hidden = false;
+    }
+  });
+  const mail = emailWithFallback(button, email);
+  const update = () => {
+    const player = selected();
+    mail.set(shirtNameMessage(team, player || { name: 'a player' }));
+    if (player) {
+      note.hidden = true;
+      const venmo = venmoUrl(player, donateLinks);
+      venmoAgain.href = venmo || '#';
+      venmoAgain.textContent = `Venmo didn’t open? Donate to ${player.name} on Venmo →`;
+    }
+  };
+  update();
+  select.addEventListener('change', update);
+
+  box.append(label, select, note, button, hint, venmoAgain, mail.row);
+  container.appendChild(box);
+}
+
+function renderFundraisingAlert(alert, data = {}) {
   const section = $('fundraising-alert');
   if (!section || !alert || (!alert.title && !alert.description)) return;
 
@@ -398,6 +486,12 @@ function renderFundraisingAlert(alert) {
     media.appendChild(icon('shirt'));
   }
 
+  if (alert.imageNote) {
+    const note = $('alert-note');
+    note.textContent = alert.imageNote;
+    note.hidden = false;
+  }
+
   const url = safeUrl(alert.linkUrl);
   if (url) {
     const link = $('alert-link');
@@ -406,6 +500,7 @@ function renderFundraisingAlert(alert) {
     link.hidden = false;
   }
 
+  renderShirtPledge(section.querySelector('.alert-body'), data.players, data.team, data.donateLinks);
   section.hidden = false;
 }
 
@@ -612,6 +707,16 @@ function renderPlayers(players = []) {
     if (p.position) meta.append(p.position);
     card.appendChild(meta);
 
+    const flyer = safeUrl(p.flyer);
+    if (flyer) {
+      const link = el('a', 'player-flyer', 'View flyer →');
+      link.href = flyer;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.setAttribute('aria-label', `View ${p.name || 'player'}'s fundraising flyer`);
+      card.appendChild(link);
+    }
+
     if (p.thankYou) card.appendChild(el('p', 'player-thanks', `“${p.thankYou}”`));
     const supporters = Array.isArray(p.supporters) ? p.supporters.filter(Boolean) : [];
     if (supporters.length) {
@@ -779,7 +884,7 @@ async function init() {
     renderSocial(data.social);
 
     renderTeamPhoto(data.teamPhoto);
-    renderFundraisingAlert(data.fundraisingAlert);
+    renderFundraisingAlert(data.fundraisingAlert, data);
     renderAbout(data.about);
     renderEvents(data.events);
     renderActivity(data.donations);
