@@ -473,7 +473,6 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   white-space: nowrap;
   min-width: 0;
 }
-.donate-row .btn-copy { flex: 0 0 auto; }
 .btn-copy {
   background: #fff;
   color: var(--primary);
@@ -566,22 +565,23 @@ a.sponsor:hover { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accen
 /* ---------- Players ---------- */
 .player-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
   align-items: start;
-  gap: 16px;
+  gap: 20px;
 }
 .player {
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 18px 14px;
+  padding: 24px 18px;
   text-align: center;
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 .player:hover { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-light); }
 .player-photo, .player-number {
-  width: 96px; height: 96px;
-  margin: 0 auto 10px;
-  border-radius: 50%;
+  width: 100%;
+  aspect-ratio: 2147 / 2778;
+  margin: 0 auto 14px;
+  border-radius: calc(var(--radius) / 2);
   border: 4px solid var(--accent);
 }
 .player-photo { object-fit: cover; display: block; }
@@ -589,10 +589,10 @@ a.sponsor:hover { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accen
   background: var(--primary);
   color: var(--on-primary);
   display: flex; align-items: center; justify-content: center;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 800;
 }
-.player-name { margin: 0; font-weight: 700; color: var(--text); }
+.player-name { margin: 0; font-size: 1.125rem; font-weight: 700; color: var(--text); }
 .player-meta { margin: 2px 0 0; color: var(--muted); font-size: 0.875rem; }
 .player-meta strong { color: var(--primary); }
 .player-flyer { display: inline-block; margin-top: 8px; font-size: 0.875rem; font-weight: 700; }

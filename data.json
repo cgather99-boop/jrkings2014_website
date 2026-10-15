@@ -20,7 +20,7 @@
   ],
 
   "teamPhoto": {
-    "src": "Images/image0.jpeg",
+    "src": "Images/team_photo_new.jpg",
     "alt": "Jr Kings players huddled around the net in purple and gold jerseys",
     "caption": ""
   },
@@ -49,9 +49,9 @@
 
   "goal": {
     "target": 50000,
-    "raised": 831,
+    "raised": 3822,
     "purpose": "Your support helps with tournament costs, transportation, and lodging. Every dollar helps!",
-    "deadline": "2026-02-08"
+    "deadline": "2027-02-08"
   },
 
   "events": [
@@ -60,51 +60,38 @@
   ],
 
   "players": [
-    { "number": 11, "name": "Bastian (Bash) Daigle", "position": "Forward", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 9, "name": "Benjamin (Benji) Adoumie", "position": "Forward", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 97, "name": "Brooke Born", "position": "Defense", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 51, "name": "Carter Perosio", "position": "Goalie", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 85, "name": "Charlie Fox", "position": "Goalie", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 21, "name": "Cru Martinson", "position": "Defense", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 29, "name": "Eli Baker", "position": "Forward", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 96, "name": "Henry Gathercole", "position": "Forward", "photo": "", "flyer": "", "venmo": "",
-      "thankYou": "SAMPLE - Thank you for helping me get to Quebec!",
-      "supporters": ["SAMPLE - Grandma & Grandpa", "SAMPLE - The Smith Family"] },
-    { "number": 23, "name": "Hudson Jones", "position": "Defense", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 16, "name": "Mark Rettele", "position": "Forward", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 91, "name": "Micah Song", "position": "Forward", "photo": "", "flyer": "Images/Flyer_Micah.jpeg", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 78, "name": "Milo Su", "position": "Forward", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 44, "name": "Nicolas Van Den Bosch", "position": "Defense", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 79, "name": "Nixon Tebo", "position": "Forward", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 87, "name": "Tristan Chang", "position": "Forward", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 50, "name": "Vance Seeley", "position": "Forward", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 71, "name": "Vincent Yang", "position": "Defense", "photo": "", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] }
+    { "number": 11, "name": "Bastian (Bash) Daigle", "position": "Forward", "photo": "Images/Headshots/Bash.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 9, "name": "Benjamin (Benji) Adoumie", "position": "Forward", "photo": "Images/Headshots/Benji.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 97, "name": "Brooke Born", "position": "Defense", "photo": "Images/Headshots/Brooke.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 51, "name": "Carter Perosio", "position": "Goalie", "photo": "Images/Headshots/Carter.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 85, "name": "Charlie Fox", "position": "Goalie", "photo": "Images/Headshots/Charlie.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 21, "name": "Cru Martinson", "position": "Defense", "photo": "Images/Headshots/Cru.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 29, "name": "Eli Baker", "position": "Forward", "photo": "Images/Headshots/Eli.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 96, "name": "Henry Gathercole", "position": "Forward", "photo": "Images/Headshots/Henry.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 23, "name": "Hudson Jones", "position": "Defense", "photo": "Images/Headshots/Hudson.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 16, "name": "Mark Rettele", "position": "Forward", "photo": "Images/Headshots/Mark.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 91, "name": "Micah Song", "position": "Forward", "photo": "Images/Headshots/Micah.png", "flyer": "Images/Flyer_Micah.jpeg", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 78, "name": "Milo Su", "position": "Forward", "photo": "Images/Headshots/Milo.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 44, "name": "Nicolas Van Den Bosch", "position": "Defense", "photo": "Images/Headshots/Nick.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 79, "name": "Nixon Tebo", "position": "Forward", "photo": "Images/Headshots/Nixon.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 87, "name": "Tristan Chang", "position": "Forward", "photo": "Images/Headshots/Tristan.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 50, "name": "Vance Seeley", "position": "Forward", "photo": "Images/Headshots/Vance.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 71, "name": "Vincent Yang", "position": "Defense", "photo": "Images/Headshots/Vincent.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] }
 
     
   ],
 
   "swagIntro": "Show your Jr Kings pride! Pick a size and tap Order to email us your request. Every purchase supports the trip to Quebec.",
 
-  "swag": [
-    { "name": "SAMPLE - Jr Kings T-Shirt", "price": 25, "image": "", "description": "Purple tee with the gold crown logo",
-      "sizes": ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M", "Adult L", "Adult XL"] },
-    { "name": "SAMPLE - Jr Kings Pajamas", "price": 35, "image": "", "description": "Cozy flannel pajama pants",
-      "sizes": ["Youth S", "Youth M", "Youth L", "Adult S", "Adult M", "Adult L", "Adult XL"] }
-  ],
+  "swag": [],
 
-  "donations": [
-    { "name": "SAMPLE - Smith Family", "amount": 100, "date": "2026-09-24", "message": "Go Kings!", "anonymous": false }
+  "donations": [],
 
-  ],
-
-  "sponsors": [
-    { "name": "SAMPLE - Joe's Pizza", "tier": "Gold", "logo": "", "url": "" }
-
-  ],
+  "sponsors": [],
 
   "donateLinks": [
     { "label": "Venmo", "icon": "venmo", "url": "https://venmo.com/code?user_id=4693719575955224094&created=1790382194.316657&printed=1", "handle": "@LAJrKings2014AAA" },
-    { "label": "Zelle", "icon": "zelle", "url": "", "handle": "", "qr": "Images/zelle.png" }
+    { "label": "Zelle", "icon": "zelle", "url": "", "handle": "", "qr": "Images/zelle.png?v=2" }
 
   ],
 

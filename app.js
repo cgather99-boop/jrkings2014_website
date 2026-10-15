@@ -649,14 +649,6 @@ function renderDonate(links = []) {
     if (d.handle) main.appendChild(el('span', 'handle', d.handle));
     else if (hint) main.appendChild(hint);
     row.appendChild(main);
-
-    if (d.handle) {
-      const copy = el('button', 'btn btn-copy', 'Copy');
-      copy.type = 'button';
-      copy.setAttribute('aria-label', `Copy ${d.label} handle ${d.handle}`);
-      copy.addEventListener('click', () => copyText(d.handle, copy));
-      row.appendChild(copy);
-    }
     container.appendChild(row);
 
     if (d.qr) {
