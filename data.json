@@ -18,6 +18,7 @@
 
   "reportNav": [
     { "label": "Finances", "href": "finances/", "icon": "chart" },
+    { "label": "Transactions", "href": "transactions/", "icon": "list" },
     { "label": "Extra Skaters", "href": "extraskaters/", "icon": "skate" }
   ],
 
@@ -56,11 +57,6 @@
       }
     ],
     "payNote": "On your phone? Tap the Venmo code to open Venmo, or send a Zelle payment to the email shown.",
-    "infoTitle": "Quebec Pee-Wee Tournament",
-    "info": [
-      "The Quebec International Pee-Wee Hockey Tournament is one of the most celebrated in youth hockey. Since 1960, it welcomes teams from around the globe.",
-      "Many NHL legends, including Wayne Gretzky, Mario Lemieux, and Connor McDavid, played in this tournament when they were our players’ age."
-    ],
     "linkText": "Add your name",
     "linkUrl": ""
   },

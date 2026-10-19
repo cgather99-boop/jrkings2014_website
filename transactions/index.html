@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Exported from the Jr Kings Fundraising finances app on Oct 19, 2026 8:11 AM.
+       Don't edit this file: use "Export HTML" in the finances app again to update it. -->
+  
+  <base href="../">
+  
+  <meta name="robots" content="noindex, nofollow">
+  <title>Transactions</title>
+  <link rel="icon" href="Images/logo.png">
+  <link rel="stylesheet" href="theme.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=18">
+  <style>
+    /* Report pages: colors come from the website's theme.css. */
+    .rpt { --rpt-pos: #2f7d5b; --rpt-neg: #b5473a; display: flex; flex-direction: column; gap: 20px; }
+    .rpt .card h1 { margin-bottom: 8px; }
+    .rpt-meta { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    .rpt-intro { margin: 10px 0 0; }
+    .rpt-stats { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-top: 16px; }
+    .rpt-stat { border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; background: var(--surface); }
+    .rpt-stat .label { color: var(--muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+    .rpt-stat .value { font-size: 1.45rem; font-weight: 800; color: var(--text); font-variant-numeric: tabular-nums; }
+    .rpt-stat .sub { color: var(--muted); font-size: 0.85rem; }
+    .rpt .pos { color: var(--rpt-pos); }
+    .rpt .neg { color: var(--rpt-neg); }
+    .rpt-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .rpt-scroll { overflow-x: auto; }
+    .rpt table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .rpt th, .rpt td { text-align: left; padding: 8px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .rpt th { color: var(--muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+    .rpt .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .rpt .nowrap { white-space: nowrap; }
+    .rpt tr.total td { font-weight: 800; border-top: 2px solid var(--text); border-bottom: 0; }
+    .rpt .small { font-size: 0.85rem; }
+    .rpt-muted { color: var(--muted); }
+    .rpt-bar-cell { width: 38%; }
+    .rpt-bar-track { display: flex; height: 10px; background: var(--primary-tint); border-radius: 5px; overflow: hidden; min-width: 60px; }
+    .rpt-bar { height: 100%; }
+    .rpt-bar.income { background: var(--rpt-pos); }
+    .rpt-bar.expense, .rpt-bar.over { background: var(--rpt-neg); }
+    .rpt-bar.spent { background: var(--primary); }
+    .rpt-bar.planned { opacity: 0.35; background-image: repeating-linear-gradient(45deg, transparent 0 3px, rgba(255, 255, 255, 0.7) 3px 5px); }
+    .rpt-goal-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; margin-bottom: 10px; }
+    .rpt-goal-raised { font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+    .rpt-goal-raised strong { font-size: 1.7rem; font-weight: 800; color: var(--primary); margin-right: 2px; }
+    .rpt-goal-pct { font-size: 1.05rem; color: var(--muted); }
+    .rpt-goal-pct strong { color: var(--primary); }
+    .rpt-goal-bar { height: 22px; border: 2px solid var(--primary); border-radius: 999px; background: var(--primary-tint); overflow: hidden; }
+    .rpt-goal-fill { height: 100%; min-width: 18px; border-radius: 999px; background: var(--accent); }
+    .rpt-chart { display: block; width: 100%; height: auto; }
+    .rpt-chip { display: inline-block; font-size: 0.78rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+    .rpt-chip.pos { background: #e7f4ec; color: #1f5e42; }
+    .rpt-chip.warn { background: #fff6e0; color: #7a4f00; }
+    .rpt-chip.neg { background: #fbe9e7; color: #9a3328; }
+    .rpt-note { margin: 12px 0 0; color: var(--muted); font-size: 0.85rem; }
+    .rpt-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0 0 10px; color: var(--muted); font-size: 0.85rem; }
+    .rpt-key { display: inline-block; width: 12px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+    /* Transactions page: one collapsible row per category */
+    .rpt-group-total { margin: -6px 0 12px; font-size: 1.05rem; }
+    .rpt-cat { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; background: var(--surface); }
+    .rpt-cat summary {
+      display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+      cursor: pointer; list-style: none; font-weight: 700;
+    }
+    .rpt-cat summary::-webkit-details-marker { display: none; }
+    .rpt-cat summary::before { content: "▸"; color: var(--primary); transition: transform 0.15s; }
+    .rpt-cat[open] summary::before { transform: rotate(90deg); }
+    .rpt-cat-name { flex: 1; min-width: 0; }
+    .rpt-cat-count {
+      min-width: 26px; padding: 1px 8px; border-radius: 999px; text-align: center;
+      background: var(--primary-tint); color: var(--primary); font-size: 0.8rem;
+    }
+    .rpt-cat-total { font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .rpt-cat table { margin: 0 0 6px; }
+    .rpt-cat th:first-child, .rpt-cat td:first-child { padding-left: 34px; }
+    @media (max-width: 600px) { .rpt .hide-sm { display: none; } }
+  </style>
+</head>
+<body data-page="transactions" data-nav="reportNav" data-no-donate data-no-social>
+  <!-- Header, sidebar, and footer are filled in by the website's app.js, like every other page. -->
+  <header id="site-header" class="site-header"></header>
+
+  <div class="layout">
+    <div class="left-col">
+      <nav id="sidebar" class="sidebar" aria-label="Site navigation"></nav>
+    </div>
+
+    <main class="content">
+      <div id="error" class="error" hidden></div>
+      <div class="rpt">
+
+<section class="card" aria-labelledby="rpt-title">
+  <h1 id="rpt-title">Transactions</h1>
+  <p class="rpt-meta">October 1, 2026 – October 19, 2026 · Updated October 19, 2026</p>
+  <p class="rpt-intro">Every bank transaction in this period, grouped by category. Open a category to see its transactions.
+    Names and bank details are left out.</p>
+  <div class="rpt-stats">
+    <div class="rpt-stat"><div class="label">Money in</div><div class="value pos">$4,485.00</div></div>
+    <div class="rpt-stat"><div class="label">Money out</div><div class="value neg">$3,569.82</div></div>
+    <div class="rpt-stat"><div class="label">Bank transactions</div><div class="value">26</div></div>
+  </div>
+</section>
+
+
+<section class="card" aria-labelledby="rpt-group-in">
+  <h2 id="rpt-group-in">Money in</h2>
+  <p class="rpt-group-total"><strong class="pos">$4,485.00</strong>
+    <span class="rpt-muted"> · 35 entries · 12 categories</span></p>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Popcorn Fundraiser</span>
+      <span class="rpt-cat-count">1</span>
+      <span class="rpt-cat-total">$1,960.00</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$1,960.00</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Extra Skaters at Clinics and Practice</span>
+      <span class="rpt-cat-count">12</span>
+      <span class="rpt-cat-total">$1,200.00</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Fri Oct 16, 2026</td><td>Cash deposit</td><td class="num">$60.00</td></tr>
+      
+        <tr><td class="nowrap">Wed Oct 14, 2026</td><td>Deposit</td><td class="num">$60.00</td></tr>
+      
+        <tr><td class="nowrap">Wed Oct 7, 2026</td><td>Bank transfer</td><td class="num">$60.00</td></tr>
+      
+        <tr><td class="nowrap">Wed Oct 7, 2026</td><td>Bank transfer</td><td class="num">$60.00</td></tr>
+      
+        <tr><td class="nowrap">Mon Oct 5, 2026</td><td>Bank transfer</td><td class="num">$60.00</td></tr>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Venmo</td><td class="num">$60.00</td></tr>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$120.00</td></tr>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$120.00</td></tr>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$180.00</td></tr>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$120.00</td></tr>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$120.00</td></tr>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$180.00</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Got Your Back T-Shirt Fundraiser</span>
+      <span class="rpt-cat-count">8</span>
+      <span class="rpt-cat-total">$444.75</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Fri Oct 16, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+      
+        <tr><td class="nowrap">Fri Oct 16, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+      
+        <tr><td class="nowrap">Fri Oct 16, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+      
+        <tr><td class="nowrap">Fri Oct 16, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+      
+        <tr><td class="nowrap">Fri Oct 16, 2026</td><td>Zelle</td><td class="num">$100.00</td></tr>
+      
+        <tr><td class="nowrap">Fri Oct 16, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
+      
+        <tr><td class="nowrap">Thu Oct 15, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
+      
+        <tr><td class="nowrap">Wed Oct 14, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Bake Me a Cake Fundraiser</span>
+      <span class="rpt-cat-count">1</span>
+      <span class="rpt-cat-total">$400.00</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$400.00</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Alo Yoga Raffle</span>
+      <span class="rpt-cat-count">1</span>
+      <span class="rpt-cat-total">$270.00</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$270.00</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Fill the Cup Raffle</span>
+      <span class="rpt-cat-count">1</span>
+      <span class="rpt-cat-total">$200.00</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$200.00</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Buy a Puck Fundraiser</span>
+      <span class="rpt-cat-count">1</span>
+      <span class="rpt-cat-total">$138.00</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$138.00</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Private Donation</span>
+      <span class="rpt-cat-count">2</span>
+      <span class="rpt-cat-total">$121.00</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Fri Oct 16, 2026</td><td>Bank transfer</td><td class="num">$100.00</td></tr>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$21.00</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Donations</span>
+      <span class="rpt-cat-count">5</span>
+      <span class="rpt-cat-total">$77.50</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Thu Oct 15, 2026</td><td>Zelle</td><td class="num">$75.00</td></tr>
+      
+        <tr><td class="nowrap">Tue Oct 13, 2026</td><td>Zelle</td><td class="num">$1.00</td></tr>
+      
+        <tr><td class="nowrap">Tue Oct 13, 2026</td><td>Zelle</td><td class="num">$1.50</td></tr>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Zelle</td><td class="num">$30.00</td></tr>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Zelle</td><td class="num">-$30.00</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Other Income</span>
+      <span class="rpt-cat-count">1</span>
+      <span class="rpt-cat-total">$0.21</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$0.21</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Snack Shack</span>
+      <span class="rpt-cat-count">1</span>
+      <span class="rpt-cat-total">-$76.46</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Thu Oct 15, 2026</td><td>Card purchase</td><td class="num">-$76.46</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Surfboard Fundraiser</span>
+      <span class="rpt-cat-count">1</span>
+      <span class="rpt-cat-total">-$250.00</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Fri Oct 2, 2026</td><td>Withdrawal</td><td class="num">-$250.00</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  
+</section>
+
+<section class="card" aria-labelledby="rpt-group-out">
+  <h2 id="rpt-group-out">Money out</h2>
+  <p class="rpt-group-total"><strong class="neg">$3,569.82</strong>
+    <span class="rpt-muted"> · 7 entries · 6 categories</span></p>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Coaches Costs</span>
+      <span class="rpt-cat-count">1</span>
+      <span class="rpt-cat-total">$1,279.63</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$1,279.63</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Tournament Registration</span>
+      <span class="rpt-cat-count">1</span>
+      <span class="rpt-cat-total">$1,250.00</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$1,250.00</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Tournament Patches</span>
+      <span class="rpt-cat-count">2</span>
+      <span class="rpt-cat-total">$842.00</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Wed Oct 14, 2026</td><td>Withdrawal</td><td class="num">$424.00</td></tr>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$418.00</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Other Expenses</span>
+      <span class="rpt-cat-count">1</span>
+      <span class="rpt-cat-total">$96.83</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Wed Oct 14, 2026</td><td>Bank payment</td><td class="num">$96.83</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Merchandise Costs</span>
+      <span class="rpt-cat-count">1</span>
+      <span class="rpt-cat-total">$50.78</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Thu Oct 15, 2026</td><td>Card purchase</td><td class="num">$50.78</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Supplies &amp; Printing</span>
+      <span class="rpt-cat-count">1</span>
+      <span class="rpt-cat-total">$50.58</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$50.58</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  
+</section>
+
+
+<p class="rpt-note">One bank deposit can be split across several categories (for example, a deposit covering several
+  fundraisers), so it can appear as several entries, each with part of its amount. Money out is shown as a positive amount;
+  a refund shows as a negative one.</p>
+
+      </div>
+    </main>
+  </div>
+
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <script src="app.js?v=21"></script>
+</body>
+</html>

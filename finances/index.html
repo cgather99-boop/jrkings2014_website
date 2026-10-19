@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Exported from the Jr Kings Fundraising finances app on Oct 18, 2026 9:32 PM.
+  <!-- Exported from the Jr Kings Fundraising finances app on Oct 19, 2026 8:11 AM.
        Don't edit this file: use "Export HTML" in the finances app again to update it. -->
   
   <base href="../">
@@ -12,7 +12,7 @@
   <title>Team Finances</title>
   <link rel="icon" href="Images/logo.png">
   <link rel="stylesheet" href="theme.css?v=6">
-  <link rel="stylesheet" href="styles.css?v=17">
+  <link rel="stylesheet" href="styles.css?v=18">
   <style>
     /* Report pages: colors come from the website's theme.css. */
     .rpt { --rpt-pos: #2f7d5b; --rpt-neg: #b5473a; display: flex; flex-direction: column; gap: 20px; }
@@ -58,10 +58,28 @@
     .rpt-note { margin: 12px 0 0; color: var(--muted); font-size: 0.85rem; }
     .rpt-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0 0 10px; color: var(--muted); font-size: 0.85rem; }
     .rpt-key { display: inline-block; width: 12px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+    /* Transactions page: one collapsible row per category */
+    .rpt-group-total { margin: -6px 0 12px; font-size: 1.05rem; }
+    .rpt-cat { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; background: var(--surface); }
+    .rpt-cat summary {
+      display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+      cursor: pointer; list-style: none; font-weight: 700;
+    }
+    .rpt-cat summary::-webkit-details-marker { display: none; }
+    .rpt-cat summary::before { content: "▸"; color: var(--primary); transition: transform 0.15s; }
+    .rpt-cat[open] summary::before { transform: rotate(90deg); }
+    .rpt-cat-name { flex: 1; min-width: 0; }
+    .rpt-cat-count {
+      min-width: 26px; padding: 1px 8px; border-radius: 999px; text-align: center;
+      background: var(--primary-tint); color: var(--primary); font-size: 0.8rem;
+    }
+    .rpt-cat-total { font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .rpt-cat table { margin: 0 0 6px; }
+    .rpt-cat th:first-child, .rpt-cat td:first-child { padding-left: 34px; }
     @media (max-width: 600px) { .rpt .hide-sm { display: none; } }
   </style>
 </head>
-<body data-page="finances" data-nav="reportNav" data-no-donate>
+<body data-page="finances" data-nav="reportNav" data-no-donate data-no-social>
   <!-- Header, sidebar, and footer are filled in by the website's app.js, like every other page. -->
   <header id="site-header" class="site-header"></header>
 
@@ -76,7 +94,7 @@
 
 <section class="card" aria-labelledby="rpt-title">
   <h1 id="rpt-title">Team Finances</h1>
-  <p class="rpt-meta">October 1, 2026 – October 18, 2026 · Updated October 18, 2026</p>
+  <p class="rpt-meta">October 1, 2026 – October 19, 2026 · Updated October 19, 2026</p>
   <p class="rpt-intro">Where the team's money comes from and where it goes. Figures come from the team bank account.</p>
   <div class="rpt-stats">
     <div class="rpt-stat"><div class="label">Starting balance</div><div class="value">$0.00</div></div>
@@ -84,7 +102,7 @@
     <div class="rpt-stat"><div class="label">Money in</div><div class="value pos">$4,485.00</div></div>
     <div class="rpt-stat"><div class="label">Money out</div><div class="value neg">$3,569.82</div></div>
     <div class="rpt-stat"><div class="label">Balance</div><div class="value">$915.18</div>
-      <div class="sub">as of Oct 18</div></div>
+      <div class="sub">as of Oct 19</div></div>
     
   </div>
 </section>
@@ -163,41 +181,41 @@ L 0 3.5
     <g id="xtick_2">
      <g id="line2d_2">
       <g>
-       <use xlink:href="#m81ba357302" x="139.595294" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="133.76" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_2">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="139.595294" y="197.686125" transform="rotate(-0 139.595294 197.686125)">05</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="133.76" y="197.686125" transform="rotate(-0 133.76 197.686125)">05</text>
      </g>
     </g>
     <g id="xtick_3">
      <g id="line2d_3">
       <g>
-       <use xlink:href="#m81ba357302" x="244.630588" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="232.96" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_3">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="244.630588" y="197.686125" transform="rotate(-0 244.630588 197.686125)">09</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="232.96" y="197.686125" transform="rotate(-0 232.96 197.686125)">09</text>
      </g>
     </g>
     <g id="xtick_4">
      <g id="line2d_4">
       <g>
-       <use xlink:href="#m81ba357302" x="349.665882" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="332.16" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_4">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="349.665882" y="197.686125" transform="rotate(-0 349.665882 197.686125)">13</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="332.16" y="197.686125" transform="rotate(-0 332.16 197.686125)">13</text>
      </g>
     </g>
     <g id="xtick_5">
      <g id="line2d_5">
       <g>
-       <use xlink:href="#m81ba357302" x="454.701176" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="431.36" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_5">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="454.701176" y="197.686125" transform="rotate(-0 454.701176 197.686125)">17</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="431.36" y="197.686125" transform="rotate(-0 431.36 197.686125)">17</text>
      </g>
     </g>
     <g id="text_6">
@@ -288,43 +306,43 @@ L 480.96 35.561898
    </g>
    <g id="FillBetweenPolyCollection_1">
     <defs>
-     <path id="m121a539f5f" d="M 34.56 -43.264 
+     <path id="m296be065d4" d="M 34.56 -43.264 
 L 34.56 -43.264 
 L 34.56 -43.264 
 L 34.56 -200.282816 
-L 60.818824 -200.282816 
-L 60.818824 -156.225909 
-L 139.595294 -156.225909 
-L 139.595294 -166.799567 
-L 192.112941 -166.799567 
-L 192.112941 -187.946882 
-L 349.665882 -187.946882 
-L 349.665882 -188.387451 
-L 375.924706 -188.387451 
-L 375.924706 -115.802816 
-L 402.183529 -115.802816 
-L 402.183529 -115.408066 
-L 428.442353 -115.408066 
-L 428.442353 -204.544 
+L 59.36 -200.282816 
+L 59.36 -156.225909 
+L 133.76 -156.225909 
+L 133.76 -166.799567 
+L 183.36 -166.799567 
+L 183.36 -187.946882 
+L 332.16 -187.946882 
+L 332.16 -188.387451 
+L 356.96 -188.387451 
+L 356.96 -115.802816 
+L 381.76 -115.802816 
+L 381.76 -115.408066 
+L 406.56 -115.408066 
+L 406.56 -204.544 
 L 480.96 -204.544 
 L 480.96 -204.544 
 L 480.96 -43.264 
 L 480.96 -43.264 
 L 480.96 -43.264 
-L 428.442353 -43.264 
-L 428.442353 -43.264 
-L 402.183529 -43.264 
-L 402.183529 -43.264 
-L 375.924706 -43.264 
-L 375.924706 -43.264 
-L 349.665882 -43.264 
-L 349.665882 -43.264 
-L 192.112941 -43.264 
-L 192.112941 -43.264 
-L 139.595294 -43.264 
-L 139.595294 -43.264 
-L 60.818824 -43.264 
-L 60.818824 -43.264 
+L 406.56 -43.264 
+L 406.56 -43.264 
+L 381.76 -43.264 
+L 381.76 -43.264 
+L 356.96 -43.264 
+L 356.96 -43.264 
+L 332.16 -43.264 
+L 332.16 -43.264 
+L 183.36 -43.264 
+L 183.36 -43.264 
+L 133.76 -43.264 
+L 133.76 -43.264 
+L 59.36 -43.264 
+L 59.36 -43.264 
 L 34.56 -43.264 
 L 34.56 -43.264 
 L 34.56 -43.264 
@@ -332,27 +350,27 @@ z
 " style="stroke: #1f4e8c; stroke-opacity: 0.08"/>
     </defs>
     <g clip-path="url(#p2590f56d1c)">
-     <use xlink:href="#m121a539f5f" x="0" y="219.808" style="fill: #1f4e8c; fill-opacity: 0.08; stroke: #1f4e8c; stroke-opacity: 0.08"/>
+     <use xlink:href="#m296be065d4" x="0" y="219.808" style="fill: #1f4e8c; fill-opacity: 0.08; stroke: #1f4e8c; stroke-opacity: 0.08"/>
     </g>
    </g>
    <g id="line2d_16">
     <path d="M 34.56 176.544 
 L 34.56 176.544 
 L 34.56 19.525184 
-L 60.818824 19.525184 
-L 60.818824 63.582091 
-L 139.595294 63.582091 
-L 139.595294 53.008433 
-L 192.112941 53.008433 
-L 192.112941 31.861118 
-L 349.665882 31.861118 
-L 349.665882 31.420549 
-L 375.924706 31.420549 
-L 375.924706 104.005184 
-L 402.183529 104.005184 
-L 402.183529 104.399934 
-L 428.442353 104.399934 
-L 428.442353 15.264 
+L 59.36 19.525184 
+L 59.36 63.582091 
+L 133.76 63.582091 
+L 133.76 53.008433 
+L 183.36 53.008433 
+L 183.36 31.861118 
+L 332.16 31.861118 
+L 332.16 31.420549 
+L 356.96 31.420549 
+L 356.96 104.005184 
+L 381.76 104.005184 
+L 381.76 104.399934 
+L 406.56 104.399934 
+L 406.56 15.264 
 L 480.96 15.264 
 L 480.96 15.264 
 " clip-path="url(#p2590f56d1c)" style="fill: none; stroke: #1f4e8c; stroke-width: 1.8; stroke-linecap: square"/>
@@ -639,7 +657,7 @@ L 480.96 184.608
 
 
 
-<p class="rpt-note">Updated October 18, 2026. Questions about the team's finances? Use the email address at the bottom of this page.</p>
+<p class="rpt-note">Updated October 19, 2026. Questions about the team's finances? Use the email address at the bottom of this page.</p>
 
       </div>
     </main>
@@ -647,6 +665,6 @@ L 480.96 184.608
 
   <footer id="site-footer" class="site-footer"></footer>
 
-  <script src="app.js?v=19"></script>
+  <script src="app.js?v=21"></script>
 </body>
 </html>

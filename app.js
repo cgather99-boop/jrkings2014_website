@@ -24,6 +24,7 @@ const ICONS = {
   calendar: { rule: 'evenodd', d: 'M7 2h2v2h6V2h2v2h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2V2zM5 9v11h14V9H5z' },
   shirt: { d: 'M8.5 3 3 5.5 1.5 10.5l3.5 1.3L6 10.5V21h12V10.5l1 1.3 3.5-1.3L21 5.5 15.5 3a3.5 3.5 0 0 1-7 0z' },
   chart: { d: 'M3 3h2v16h16v2H3V3zm4 9h3v6H7v-6zm5-5h3v11h-3V7zm5 3h3v8h-3v-8z' },
+  list: { d: 'M3 5h3v3H3V5zm5 .5h13v2H8v-2zM3 10.5h3v3H3v-3zm5 .5h13v2H8v-2zM3 16h3v3H3v-3zm5 .5h13v2H8v-2z' },
   skate: { d: 'M6 2h5v7.5l5.6 2.2a4 4 0 0 1 2.4 3.7V17H5V3a1 1 0 0 1 1-1zM3 19h17v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1z' },
   link: { d: 'M10.6 13.4a1 1 0 0 1 0-1.4l3-3a1 1 0 1 1 1.4 1.4l-3 3a1 1 0 0 1-1.4 0zM8.5 20a4.5 4.5 0 0 1-3.2-7.7l2.5-2.5 1.4 1.4-2.5 2.5a2.5 2.5 0 0 0 3.5 3.5l2.5-2.5 1.4 1.4-2.5 2.5A4.5 4.5 0 0 1 8.5 20zm7.7-5.8-1.4-1.4 2.5-2.5a2.5 2.5 0 0 0-3.5-3.5l-2.5 2.5-1.4-1.4 2.5-2.5a4.5 4.5 0 0 1 6.4 6.4l-2.6 2.4z' },
 };
@@ -227,6 +228,8 @@ function renderProgress(goal = {}) {
 }
 
 function renderSocial(social = []) {
+  // <body data-no-social>: no social media icons in this page's header or footer (the report pages).
+  if ('noSocial' in document.body.dataset) return;
   const valid = social.filter((s) => safeUrl(s.url));
   for (const s of valid) {
     const url = safeUrl(s.url);
