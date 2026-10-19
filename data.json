@@ -28,17 +28,41 @@
   },
 
   "fundraisingAlert": {
-    "title": "Show your Jr. King you got their back!",
-    "image": "Images/got_my_back.png",
-    "imageAlt": "Purple Jr Kings \"Got My Back\" T-shirt with supporters' names printed on the back",
-    "imageNote": "Merci!!!",
-    "description": "Hockey is a team sport—and every player needs a fan in their corner. Show your Jr. King you’ve got their back! A small donation will put your name on the back of their own T-shirt and help get them to Quebec. ",
+    "banner": "Images/got_my_back_banner.png",
+    "bannerAlt": "LA Jr. Kings 2014 AAA PeeWee. Got My Back: support our players’ journey to Quebec!",
+    "title": "Show them you’ve got their back on one unforgettable journey.",
+    "description": "",
+    "image": "Images/got_my_back_shirt.jpg",
+    "imageAlt": "Back of the purple “Got My Back” shirt: the player’s name, the names of their supporters, and “Merci to all who donated!”",
+    "imageNote": "",
+    "stepsTitle": "How it works",
+    "steps": [
+      "Scan the Zelle or Venmo code below.",
+      "In the payment note, write **your player’s name + your name** for the shirt.",
+      "Your name goes on the back of your player’s “Got My Back” shirt, and they’ll wear it in Quebec, carrying the names of the people who helped them get there."
+    ],
+    "payCodes": [
+      {
+        "label": "Zelle",
+        "qr": "Images/zelle_qr.png",
+        "handle": "jrkings2014aaa@gmail.com",
+        "url": ""
+      },
+      {
+        "label": "Venmo",
+        "qr": "Images/venmo_qr.png",
+        "handle": "@LAJrKings2014AAA",
+        "url": "https://venmo.com/code?user_id=4693719575955224094&created=1790382194.316657&printed=1"
+      }
+    ],
+    "payNote": "On your phone? Tap the Venmo code to open Venmo, or send a Zelle payment to the email shown.",
+    "infoTitle": "Quebec Pee-Wee Tournament",
+    "info": [
+      "The Quebec International Pee-Wee Hockey Tournament is one of the most celebrated in youth hockey. Since 1960, it welcomes teams from around the globe.",
+      "Many NHL legends, including Wayne Gretzky, Mario Lemieux, and Connor McDavid, played in this tournament when they were our players’ age."
+    ],
     "linkText": "Add your name",
-    "linkUrl": "",
-    "zelleSteps": [
-      "Scan the Zelle code below",
-      "In the Zelle memo write the player name and your name for the T-shirt"
-    ]
+    "linkUrl": ""
   },
 
   "about": {

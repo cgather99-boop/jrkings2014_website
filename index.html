@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
   <link rel="stylesheet" href="theme.css?v=6">
-  <link rel="stylesheet" href="styles.css?v=16">
+  <link rel="stylesheet" href="styles.css?v=17">
 </head>
 <body data-page="home">
   <!-- Header, sidebar, and footer are filled in by app.js (shared across pages). -->
@@ -31,14 +31,20 @@
           </figure>
 
           <section id="fundraising-alert" class="card fundraising-alert" aria-labelledby="alert-title" hidden>
-            <div class="alert-side">
-              <div id="alert-media" class="alert-media"></div>
-              <p id="alert-note" class="alert-note" hidden></p>
-            </div>
-            <div class="alert-body">
-              <h2 id="alert-title"></h2>
-              <p id="alert-text"></p>
-              <a id="alert-link" class="btn btn-accent" href="#" target="_blank" rel="noopener" hidden></a>
+            <img id="alert-banner" class="alert-banner" src="" alt="" hidden>
+            <div class="alert-grid">
+              <div class="alert-side">
+                <div id="alert-media" class="alert-media"></div>
+                <p id="alert-note" class="alert-note" hidden></p>
+              </div>
+              <div class="alert-body">
+                <h2 id="alert-title"></h2>
+                <p id="alert-text" hidden></p>
+                <div id="alert-steps" hidden></div>
+                <div id="alert-pay" class="alert-pay" hidden></div>
+                <div id="alert-info" class="alert-info" hidden></div>
+                <a id="alert-link" class="btn btn-accent" href="#" target="_blank" rel="noopener" hidden></a>
+              </div>
             </div>
           </section>
 
@@ -67,6 +73,6 @@
 
   <footer id="site-footer" class="site-footer"></footer>
 
-  <script src="app.js?v=18"></script>
+  <script src="app.js?v=19"></script>
 </body>
 </html>

@@ -112,67 +112,6 @@ function isCurrentPage(href) {
   }
 }
 
-async function copyText(text, button) {
-  try {
-    await navigator.clipboard.writeText(text);
-  } catch {
-    const ta = el('textarea');
-    ta.value = text;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    ta.remove();
-  }
-  const original = button.textContent;
-  button.textContent = 'Copied!';
-  button.classList.add('copied');
-  setTimeout(() => {
-    button.textContent = original;
-    button.classList.remove('copied');
-  }, 1600);
-}
-
-// mailto only works with a default mail app, so also offer webmail compose links.
-function emailLinks(email, { subject, body }) {
-  const to = encodeURIComponent(email);
-  const su = encodeURIComponent(subject);
-  const b = encodeURIComponent(body);
-  return {
-    mailto: `mailto:${email}?subject=${su}&body=${b}`,
-    gmail: `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${su}&body=${b}`,
-    outlook: `https://outlook.live.com/mail/0/deeplink/compose?to=${to}&subject=${su}&body=${b}`,
-  };
-}
-
-// Wires a mailto link plus a hidden "Email didn't open?" row (Gmail / Outlook.com / Copy)
-// that appears after the link is clicked. Call set(msg) whenever the message changes.
-function emailWithFallback(link, email, copyLabel = 'Copy email') {
-  const row = el('div', 'email-alt');
-  row.hidden = true;
-  const gmail = externalLink('#', 'btn btn-copy', 'Gmail');
-  const outlook = externalLink('#', 'btn btn-copy', 'Outlook.com');
-  const copy = el('button', 'btn btn-copy', copyLabel);
-  copy.type = 'button';
-  row.append(el('span', '', 'Email didn’t open? Use:'), gmail, outlook, copy);
-
-  let msg;
-  copy.addEventListener('click', () => copyText(`To: ${email}\nSubject: ${msg.subject}\n\n${msg.body}`, copy));
-  link.addEventListener('click', (ev) => {
-    if (!ev.defaultPrevented) row.hidden = false;
-  });
-
-  return {
-    row,
-    set(message) {
-      msg = message;
-      const links = emailLinks(email, msg);
-      link.href = links.mailto;
-      gmail.href = links.gmail;
-      outlook.href = links.outlook;
-    },
-  };
-}
-
 // ---------- shared shell (header, sidebar, footer) ----------
 // These templates are static markup only; all data is inserted afterwards with textContent.
 
@@ -260,11 +199,6 @@ function renderHeader(team = {}) {
   $('tax-note').textContent = team.taxNote || '';
 }
 
-// Greeting name for pre-filled emails, e.g. "Hi Jr Kings,".
-function greetingName(team = {}) {
-  return team.shortName || team.name || 'there';
-}
-
 function renderProgress(goal = {}) {
   const target = Number(goal.target) || 0;
   const raised = Number(goal.raised) || 0;
@@ -323,143 +257,88 @@ function renderTeamPhoto(photo) {
   figure.hidden = false;
 }
 
-// A player's own Venmo link, falling back to the team Venmo in donateLinks.
-function venmoUrl(player, donateLinks = []) {
-  const team = donateLinks.find((d) => /venmo/i.test(d.icon || d.label || ''));
-  return safeUrl(player.venmo) || safeUrl(team?.url);
-}
-
-function shirtNameMessage(team, player) {
-  const who = player.number != null ? `${player.name} (#${player.number})` : player.name;
-  return {
-    subject: `Add my name to ${player.name}'s shirt`,
-    body: [
-      `Hi ${greetingName(team)},`,
-      '',
-      `I donated to support ${who}. Please add my name to their T-shirt.`,
-      '',
-      'Print my name on the shirt as:',
-      '',
-      'Donation amount:',
-      'Name on my Venmo payment:',
-      '',
-      'Thank you!',
-    ].join('\n'),
-  };
-}
-
-// Zelle option for the T-shirt: numbered steps (fundraisingAlert.zelleSteps) and the team Zelle QR code
-// from donateLinks. Returns true if it was shown.
-function renderShirtZelle(container, steps = [], donateLinks = []) {
-  const zelle = donateLinks.find((d) => /zelle/i.test(d.icon || d.label || ''));
-  const lines = Array.isArray(steps) ? steps.filter(Boolean) : [];
-  if (!container || !zelle?.qr || !lines.length) return false;
-
-  const box = el('div', 'pledge-zelle');
-  const heading = el('p', 'pledge-heading');
-  heading.append(icon('zelle'), el('span', '', 'Pay with Zelle'));
-  const list = el('ol', 'pledge-steps');
-  for (const line of lines) list.appendChild(el('li', '', line));
-  const qr = el('img', 'pledge-qr');
-  qr.src = zelle.qr;
-  qr.alt = `${zelle.label || 'Zelle'} QR code for the team`;
-  box.append(heading, list, qr);
-  container.appendChild(box);
-  return true;
-}
-
-// Player dropdown + button: opens the player's Venmo in a new tab and a pre-filled email
-// to team.contactEmail where the donor says how their name should appear on the shirt.
-// afterZelle: a Zelle option is shown above, so this one is headed "Or pay with Venmo".
-function renderShirtPledge(container, players = [], team = {}, donateLinks = [], afterZelle = false) {
-  const email = team.contactEmail || '';
-  const named = players.filter((p) => p.name);
-  if (!container || !email || !named.length) return;
-
-  const box = el('div', 'pledge');
-  const label = el('label', 'pledge-label', 'Choose your player');
-  label.htmlFor = 'pledge-player';
-  const select = el('select', 'pledge-select');
-  select.id = 'pledge-player';
-  const prompt = el('option', '', 'Select a player');
-  prompt.value = '';
-  select.appendChild(prompt);
-  const sorted = [...named].sort((a, b) => a.name.localeCompare(b.name));
-  sorted.forEach((p) => {
-    const opt = el('option', '', p.number != null ? `${p.name} #${p.number}` : p.name);
-    opt.value = String(named.indexOf(p));
-    select.appendChild(opt);
+// Text with **bold** parts (e.g. "write **your player's name + your name**"); built with text nodes, never HTML.
+function richText(str) {
+  const frag = document.createDocumentFragment();
+  String(str).split(/\*\*(.+?)\*\*/).forEach((part, i) => {
+    if (part) frag.appendChild(i % 2 ? el('strong', 'alert-em', part) : document.createTextNode(part));
   });
-
-  const note = el('p', 'pledge-note', 'Please choose a player.');
-  note.hidden = true;
-  const button = el('a', 'btn btn-primary pledge-button', 'Donate & add your name');
-  const hint = el('p', 'pledge-hint', 'Opens Venmo to donate, then an email where you tell us how your name should appear on the shirt.');
-  const venmoAgain = externalLink('#', 'pledge-venmo', '');
-  venmoAgain.hidden = true;
-
-  const selected = () => (select.value === '' ? null : named[Number(select.value)]);
-  // Runs before the email fallback's listener so it can cancel the click.
-  button.addEventListener('click', (ev) => {
-    const player = selected();
-    if (!player) {
-      ev.preventDefault();
-      note.hidden = false;
-      select.focus();
-      return;
-    }
-    const venmo = venmoUrl(player, donateLinks);
-    if (venmo) {
-      window.open(venmo, '_blank', 'noopener');
-      venmoAgain.hidden = false;
-    }
-  });
-  const mail = emailWithFallback(button, email);
-  const update = () => {
-    const player = selected();
-    mail.set(shirtNameMessage(team, player || { name: 'a player' }));
-    if (player) {
-      note.hidden = true;
-      const venmo = venmoUrl(player, donateLinks);
-      venmoAgain.href = venmo || '#';
-      venmoAgain.textContent = `Venmo didn’t open? Donate to ${player.name} on Venmo →`;
-    }
-  };
-  update();
-  select.addEventListener('change', update);
-
-  if (afterZelle) {
-    box.classList.add('pledge-or');
-    const heading = el('p', 'pledge-heading');
-    heading.append(icon('venmo'), el('span', '', 'Or pay with Venmo'));
-    box.appendChild(heading);
-  }
-  box.append(label, select, note, button, hint, venmoAgain, mail.row);
-  container.appendChild(box);
+  return frag;
 }
 
-function renderFundraisingAlert(alert, data = {}) {
+// "Got My Back" box: banner, shirt image, headline, numbered steps, payment QR codes, tournament facts.
+function renderFundraisingAlert(alert) {
   const section = $('fundraising-alert');
-  if (!section || !alert || (!alert.title && !alert.description)) return;
+  if (!section || !alert || !alert.title) return;
 
-  $('alert-title').textContent = alert.title || '';
-  $('alert-text').textContent = alert.description || '';
+  if (alert.banner) {
+    const banner = $('alert-banner');
+    banner.src = alert.banner;
+    banner.alt = alert.bannerAlt || '';
+    banner.hidden = false;
+  }
+  $('alert-title').textContent = alert.title;
+  if (alert.description) {
+    $('alert-text').textContent = alert.description;
+    $('alert-text').hidden = false;
+  }
 
   const media = $('alert-media');
   if (alert.image) {
     const img = el('img');
     img.src = alert.image;
-    img.alt = alert.imageAlt || alert.title || '';
+    img.alt = alert.imageAlt || '';
     media.appendChild(img);
   } else {
     media.classList.add('alert-placeholder');
     media.appendChild(icon('shirt'));
   }
-
   if (alert.imageNote) {
-    const note = $('alert-note');
-    note.textContent = alert.imageNote;
-    note.hidden = false;
+    $('alert-note').textContent = alert.imageNote;
+    $('alert-note').hidden = false;
+  }
+
+  const steps = (alert.steps || []).filter(Boolean);
+  if (steps.length) {
+    const box = $('alert-steps');
+    box.appendChild(el('h3', 'alert-subhead', alert.stepsTitle || 'How it works'));
+    const list = el('ol', 'alert-steps');
+    for (const s of steps) {
+      const li = el('li');
+      li.appendChild(richText(s));
+      list.appendChild(li);
+    }
+    box.appendChild(list);
+    box.hidden = false;
+  }
+
+  // QR code cards. A card with a url is also a link (on a phone, tap it instead of scanning).
+  const codes = (alert.payCodes || []).filter((c) => c.qr);
+  if (codes.length) {
+    const pay = $('alert-pay');
+    const grid = el('div', 'pay-grid');
+    for (const c of codes) {
+      const url = safeUrl(c.url);
+      const card = url ? externalLink(url, 'pay-card') : el('div', 'pay-card');
+      const img = el('img', 'pay-qr');
+      img.src = c.qr;
+      img.alt = `${c.label} QR code${c.handle ? ` for ${c.handle}` : ''}`;
+      card.append(img, el('span', `pay-brand pay-${String(c.label).toLowerCase()}`, c.label));
+      if (c.handle) card.appendChild(el('span', 'pay-handle', String(c.handle).replace(/(.)@/, '$1​@')));
+      if (url) card.appendChild(el('span', 'pay-tap', 'Tap to open'));
+      grid.appendChild(card);
+    }
+    pay.appendChild(grid);
+    if (alert.payNote) pay.appendChild(el('p', 'pay-note', alert.payNote));
+    pay.hidden = false;
+  }
+
+  const info = (alert.info || []).filter(Boolean);
+  if (info.length) {
+    const box = $('alert-info');
+    if (alert.infoTitle) box.appendChild(el('h3', 'alert-subhead', alert.infoTitle));
+    for (const p of info) box.appendChild(el('p', '', p));
+    box.hidden = false;
   }
 
   const url = safeUrl(alert.linkUrl);
@@ -469,10 +348,6 @@ function renderFundraisingAlert(alert, data = {}) {
     link.textContent = alert.linkText || 'Learn more';
     link.hidden = false;
   }
-
-  const body = section.querySelector('.alert-body');
-  const zelleShown = renderShirtZelle(body, alert.zelleSteps, data.donateLinks);
-  renderShirtPledge(body, data.players, data.team, data.donateLinks, zelleShown);
   section.hidden = false;
 }
 
@@ -556,7 +431,8 @@ function renderPlayers(players = []) {
   if (!grid) return;
   if (!players.length) return empty(grid, 'Roster coming soon.');
 
-  const sorted = [...players].sort((a, b) => (Number(a.number) || 999) - (Number(b.number) || 999));
+  // Alphabetical by first name (the name as written, e.g. "Bastian (Bash) Daigle" sorts under B).
+  const sorted = [...players].sort((a, b) => String(a.name || '').localeCompare(String(b.name || ''), 'en', { sensitivity: 'base' }));
   for (const p of sorted) {
     const card = el('article', 'player');
     if (p.photo) {
@@ -616,7 +492,7 @@ async function init() {
     renderSocial(data.social);
 
     renderTeamPhoto(data.teamPhoto);
-    renderFundraisingAlert(data.fundraisingAlert, data);
+    renderFundraisingAlert(data.fundraisingAlert);
     renderAbout(data.about);
     renderDonate(data.donateLinks);
 

@@ -271,86 +271,104 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   text-align: center;
 }
 
-/* ---------- Fundraising alert (below team photo) ---------- */
+/* ---------- "Got My Back" box (below team photo), styled after the printed flyer ---------- */
 .fundraising-alert {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-  background: var(--accent);
-  border-color: var(--accent-hover);
-  border-top-color: var(--primary);
-  color: var(--on-accent);
+  background: linear-gradient(180deg, #F4F6FD 0%, #E7ECF9 100%);
+  border-color: var(--border);
+  color: var(--text);
+  overflow: hidden;
 }
-/* On the gold tile, switch gold accents to purple so they stay visible. */
-.fundraising-alert h2::after { background: var(--primary); }
-.fundraising-alert .btn-accent { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
-.fundraising-alert .btn-accent:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
-.fundraising-alert .email-alt { color: var(--on-accent); }
-.alert-side { display: flex; flex-direction: column; align-items: center; flex: 0 0 auto; }
-/* Script "Merci!!!" tilted upward under the shirt image */
+.alert-banner {
+  display: block;
+  width: calc(100% + 40px);
+  max-width: none;
+  height: auto;
+  margin: -20px -20px 18px;
+}
+.alert-grid { display: flex; flex-direction: column; gap: 20px; }
+.alert-side { display: flex; flex-direction: column; align-items: center; }
+.alert-media {
+  width: 100%;
+  max-width: 300px;
+  border: 4px solid var(--accent);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(42, 27, 92, 0.18);
+}
+.alert-media img { display: block; width: 100%; height: auto; }
+.alert-placeholder { display: flex; align-items: center; justify-content: center; aspect-ratio: 1 / 1; background: var(--primary); }
+.alert-placeholder svg { width: 55%; height: 55%; fill: var(--accent); }
+/* Optional script note under the image (e.g. "Merci!!!") */
 .alert-note {
   margin: 16px 0 0;
   font-family: 'Pacifico', 'Brush Script MT', cursive;
-  font-size: 3.25rem;
+  font-size: 2.6rem;
   line-height: 1.2;
   color: var(--primary);
   transform: rotate(-8deg);
 }
-
-/* Player dropdown + "Donate & add your name" in the alert */
-.pledge { display: flex; flex-direction: column; gap: 6px; max-width: 360px; margin-top: 4px; }
-.pledge-label { font-size: 0.85rem; font-weight: 800; color: var(--primary-dark); }
-.pledge-select {
-  width: 100%;
-  padding: 9px 12px;
-  border: 2px solid var(--primary);
-  border-radius: 10px;
+.alert-body { min-width: 0; }
+.alert-body p { margin: 0 0 10px; }
+/* Headline between two gold rules, like the flyer */
+.fundraising-alert #alert-title {
+  margin: 0 0 18px;
+  padding: 12px 0;
+  border-top: 3px solid var(--accent);
+  border-bottom: 3px solid var(--accent);
+  text-align: center;
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 900;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.fundraising-alert #alert-title::after { display: none; }
+.alert-subhead {
+  margin: 0 0 10px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--accent);
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--primary-dark);
+}
+.alert-steps { list-style: none; counter-reset: step; margin: 0 0 16px; padding: 0; }
+.alert-steps li { counter-increment: step; position: relative; padding-left: 34px; margin-bottom: 8px; font-weight: 600; }
+.alert-steps li::before {
+  content: counter(step);
+  position: absolute; left: 0; top: 0;
+  width: 24px; height: 24px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--primary); color: var(--on-primary);
+  font-size: 0.8rem; font-weight: 800;
+}
+.alert-em { color: #8A1E5F; font-weight: 800; }
+.alert-pay { margin-bottom: 16px; }
+.pay-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+.pay-card {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 12px 10px 10px;
   background: #fff;
+  border: 3px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(42, 27, 92, 0.12);
   color: var(--text);
-  font: inherit;
+  text-decoration: none;
 }
-.pledge-select:focus-visible { outline: 3px solid var(--primary-dark); outline-offset: 1px; }
-.pledge-note { margin: 0; color: var(--primary-dark); font-size: 0.85rem; font-weight: 800; }
-.pledge-button { margin-top: 4px; }
-.alert-body .pledge-hint { margin: 0; font-size: 0.8rem; }
-.pledge-venmo { font-size: 0.85rem; font-weight: 700; color: var(--primary-dark); }
-.pledge-venmo[hidden] { display: none; }
-/* Zelle option above the Venmo pledge */
-.pledge-zelle { max-width: 360px; margin-top: 4px; }
-.alert-body .pledge-heading {
-  display: flex; align-items: center; gap: 8px;
-  margin: 0 0 6px; font-weight: 800; color: var(--primary-dark);
-}
-.pledge-heading svg { width: 20px; height: 20px; fill: currentColor; flex: 0 0 auto; }
-.pledge-steps { margin: 0 0 10px; padding-left: 1.4em; color: var(--primary-dark); }
-.pledge-steps li + li { margin-top: 4px; }
-.pledge-qr {
-  display: block; width: 260px; max-width: 100%; height: auto;
-  padding: 8px; background: #fff; border: 2px solid var(--primary); border-radius: 12px;
-  image-rendering: pixelated;
-}
-.pledge.pledge-or { margin-top: 18px; padding-top: 16px; border-top: 2px dashed var(--primary); }
-.alert-media {
-  width: 140px;
-  aspect-ratio: 1 / 1;
-  flex: 0 0 auto;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #fff;
-}
-.alert-media img { display: block; width: 100%; height: 100%; object-fit: contain; }
-.alert-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--primary);
-}
-.alert-placeholder svg { width: 55%; height: 55%; fill: var(--accent); }
-.alert-body p { margin: 0 0 12px; }
-@container (min-width: 520px) {
-  .fundraising-alert { flex-direction: row; align-items: flex-start; gap: 24px; }
-  .alert-media { width: 160px; }
+a.pay-card:hover { border-color: var(--primary); }
+.pay-qr { display: block; width: 100%; max-width: 170px; height: auto; image-rendering: pixelated; }
+.pay-brand { margin-top: 6px; font-size: 1.35rem; font-weight: 900; line-height: 1.1; }
+.pay-zelle { color: #6D1ED4; }
+.pay-venmo { color: #008CFF; font-style: italic; text-transform: lowercase; }
+.pay-handle { font-size: 0.75rem; color: var(--muted); overflow-wrap: break-word; text-align: center; }
+.pay-tap { font-size: 0.75rem; font-weight: 700; color: var(--primary); }
+.pay-note { margin: 8px 0 0; font-size: 0.85rem; color: var(--muted); }
+.alert-info p { font-size: 0.95rem; }
+@container (min-width: 560px) {
+  .alert-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr); align-items: start; gap: 24px; }
 }
 
 /* ---------- About / tournament writeup ---------- */
@@ -385,14 +403,6 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   white-space: nowrap;
   min-width: 0;
 }
-.btn-copy {
-  background: #fff;
-  color: var(--primary);
-  padding: 8px 12px;
-  font-size: 0.85rem;
-}
-.btn-copy:hover { background: var(--primary-tint); }
-.btn-copy.copied { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .donate-static {
   flex: 1;
   min-width: 0;
@@ -485,53 +495,6 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   color: var(--primary);
   font-size: 0.8rem;
   font-weight: 600;
-}
-
-/* "Email didn't open?" fallback row (Donate & add your name) */
-.email-alt {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 0.8rem;
-}
-.email-alt[hidden] { display: none; }
-.email-alt span { flex-basis: 100%; }
-.email-alt .btn-copy { padding: 5px 10px; font-size: 0.8rem; }
-
-/* ---------- Footer ---------- */
-.site-footer {
-  background: var(--primary-dark);
-  color: var(--on-primary);
-  border-top: 4px solid var(--accent);
-  padding: 28px 16px;
-  text-align: center;
-}
-.site-footer a { color: var(--accent); }
-.footer-logo { width: 56px; }
-.site-footer p { margin: 6px 0; }
-.tax-note { font-size: 0.85rem; opacity: 0.8; }
-.footer-social { display: flex; justify-content: center; gap: 12px; margin-top: 12px; }
-.footer-social a {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--on-primary);
-  display: flex; align-items: center; justify-content: center;
-}
-.footer-social a:hover { background: var(--accent); color: var(--on-accent); }
-.footer-social svg { width: 18px; height: 18px; fill: currentColor; }
-
-/* ---------- Error ---------- */
-.error {
-  background: #FDECEC;
-  border: 1px solid #F3B7B7;
-  color: #8A1C1C;
-  border-radius: var(--radius);
-  padding: 14px 18px;
-  margin-bottom: 20px;
 }
 
 @media (prefers-reduced-motion: reduce) {
