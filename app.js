@@ -211,6 +211,8 @@ const FOOTER_HTML = `
 function buildShell() {
   $('site-header').innerHTML = HEADER_HTML;
   $('sidebar').innerHTML = SIDEBAR_HTML;
+  // <body data-no-donate>: no Donate Now button in this page's sidebar (the report pages).
+  if ('noDonate' in document.body.dataset) document.querySelector('.sidebar-donate')?.remove();
   $('site-footer').innerHTML = FOOTER_HTML;
 
   // Keep --header-h in sync so the sticky sidebar and anchor scrolling sit below the header.
@@ -220,10 +222,9 @@ function buildShell() {
   new ResizeObserver(setHeight).observe(header);
 }
 
-// extra: more links for this page only, appended after the main menu (see data-extra-nav below).
-function renderNav(nav, extra = []) {
+function renderNav(nav) {
   const list = $('nav-list');
-  const items = [...(Array.isArray(nav) && nav.length ? nav : DEFAULT_NAV), ...(Array.isArray(extra) ? extra : [])];
+  const items = Array.isArray(nav) && nav.length ? nav : DEFAULT_NAV;
   list.replaceChildren();
 
   for (const item of items) {
@@ -607,8 +608,9 @@ async function init() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
 
-    // <body data-extra-nav="reportNav"> adds data.reportNav to this page's menu (the unlisted report pages).
-    renderNav(data.nav, data[document.body.dataset.extraNav]);
+    // <body data-nav="reportNav"> gives this page its own menu instead of data.nav (the unlisted report pages).
+    const ownNav = data[document.body.dataset.nav];
+    renderNav(Array.isArray(ownNav) && ownNav.length ? ownNav : data.nav);
     renderHeader(data.team);
     renderProgress(data.goal);
     renderSocial(data.social);

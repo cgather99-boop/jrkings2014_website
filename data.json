@@ -17,6 +17,7 @@
   ],
 
   "reportNav": [
+    { "label": "Finances", "href": "finances/", "icon": "chart" },
     { "label": "Extra Skaters", "href": "extraskaters/", "icon": "skate" }
   ],
 
