@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Exported from the Jr Kings Fundraising finances app on Oct 18, 2026 9:32 PM.
+       Don't edit this file: use "Export HTML" in the finances app again to update it. -->
+  
+  <base href="../">
+  
+  <meta name="robots" content="noindex, nofollow">
+  <title>Team Finances</title>
+  <link rel="icon" href="Images/logo.png">
+  <link rel="stylesheet" href="theme.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=16">
+  <style>
+    /* Report pages: colors come from the website's theme.css. */
+    .rpt { --rpt-pos: #2f7d5b; --rpt-neg: #b5473a; display: flex; flex-direction: column; gap: 20px; }
+    .rpt .card h1 { margin-bottom: 8px; }
+    .rpt-meta { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    .rpt-intro { margin: 10px 0 0; }
+    .rpt-stats { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-top: 16px; }
+    .rpt-stat { border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; background: var(--surface); }
+    .rpt-stat .label { color: var(--muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+    .rpt-stat .value { font-size: 1.45rem; font-weight: 800; color: var(--text); font-variant-numeric: tabular-nums; }
+    .rpt-stat .sub { color: var(--muted); font-size: 0.85rem; }
+    .rpt .pos { color: var(--rpt-pos); }
+    .rpt .neg { color: var(--rpt-neg); }
+    .rpt-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .rpt-scroll { overflow-x: auto; }
+    .rpt table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .rpt th, .rpt td { text-align: left; padding: 8px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .rpt th { color: var(--muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+    .rpt .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .rpt .nowrap { white-space: nowrap; }
+    .rpt tr.total td { font-weight: 800; border-top: 2px solid var(--text); border-bottom: 0; }
+    .rpt .small { font-size: 0.85rem; }
+    .rpt-muted { color: var(--muted); }
+    .rpt-bar-cell { width: 38%; }
+    .rpt-bar-track { display: flex; height: 10px; background: var(--primary-tint); border-radius: 5px; overflow: hidden; min-width: 60px; }
+    .rpt-bar { height: 100%; }
+    .rpt-bar.income { background: var(--rpt-pos); }
+    .rpt-bar.expense, .rpt-bar.over { background: var(--rpt-neg); }
+    .rpt-bar.spent { background: var(--primary); }
+    .rpt-bar.planned { opacity: 0.35; background-image: repeating-linear-gradient(45deg, transparent 0 3px, rgba(255, 255, 255, 0.7) 3px 5px); }
+    .rpt-goal-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; margin-bottom: 10px; }
+    .rpt-goal-raised { font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+    .rpt-goal-raised strong { font-size: 1.7rem; font-weight: 800; color: var(--primary); margin-right: 2px; }
+    .rpt-goal-pct { font-size: 1.05rem; color: var(--muted); }
+    .rpt-goal-pct strong { color: var(--primary); }
+    .rpt-goal-bar { height: 22px; border: 2px solid var(--primary); border-radius: 999px; background: var(--primary-tint); overflow: hidden; }
+    .rpt-goal-fill { height: 100%; min-width: 18px; border-radius: 999px; background: var(--accent); }
+    .rpt-chart { display: block; width: 100%; height: auto; }
+    .rpt-chip { display: inline-block; font-size: 0.78rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+    .rpt-chip.pos { background: #e7f4ec; color: #1f5e42; }
+    .rpt-chip.warn { background: #fff6e0; color: #7a4f00; }
+    .rpt-chip.neg { background: #fbe9e7; color: #9a3328; }
+    .rpt-note { margin: 12px 0 0; color: var(--muted); font-size: 0.85rem; }
+    .rpt-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0 0 10px; color: var(--muted); font-size: 0.85rem; }
+    .rpt-key { display: inline-block; width: 12px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+    @media (max-width: 600px) { .rpt .hide-sm { display: none; } }
+  </style>
+</head>
+<body data-page="finances" data-extra-nav="reportNav">
+  <!-- Header, sidebar, and footer are filled in by the website's app.js, like every other page. -->
+  <header id="site-header" class="site-header"></header>
+
+  <div class="layout">
+    <div class="left-col">
+      <nav id="sidebar" class="sidebar" aria-label="Site navigation"></nav>
+    </div>
+
+    <main class="content">
+      <div id="error" class="error" hidden></div>
+      <div class="rpt">
+
+<section class="card" aria-labelledby="rpt-title">
+  <h1 id="rpt-title">Team Finances</h1>
+  <p class="rpt-meta">October 1, 2026 – October 18, 2026 · Updated October 18, 2026</p>
+  <p class="rpt-intro">Where the team's money comes from and where it goes. Figures come from the team bank account.</p>
+  <div class="rpt-stats">
+    <div class="rpt-stat"><div class="label">Starting balance</div><div class="value">$0.00</div></div>
+    
+    <div class="rpt-stat"><div class="label">Money in</div><div class="value pos">$4,485.00</div></div>
+    <div class="rpt-stat"><div class="label">Money out</div><div class="value neg">$3,569.82</div></div>
+    <div class="rpt-stat"><div class="label">Balance</div><div class="value">$915.18</div>
+      <div class="sub">as of Oct 18</div></div>
+    
+  </div>
+</section>
+
+
+<section class="card" aria-labelledby="rpt-goal-title">
+  <h2 id="rpt-goal-title">Fundraising goal: Quebec Budget</h2>
+  <div class="rpt-goal-head">
+    <span class="rpt-goal-raised"><strong>$4,485</strong> raised of $61,597</span>
+    <span class="rpt-goal-pct"><strong>7%</strong> of the goal · $57,112 to go</span>
+  </div>
+  <div class="rpt-goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+       aria-valuenow="7"
+       aria-label="$4,485 raised of $61,597">
+    <div class="rpt-goal-fill" style="width: 7.3%"></div>
+  </div>
+  <p class="rpt-intro">Your support helps with tournament costs, transportation, and lodging. Every dollar helps!</p>
+  <p class="rpt-note">Money raised from October 1, 2026 to February 28, 2027,
+    compared with the total planned budget.</p>
+</section>
+
+
+<section class="card" aria-labelledby="rpt-balance-title">
+  <h2 id="rpt-balance-title">Balance over time</h2>
+  <svg class="rpt-chart" role="img" aria-label="Bank balance over time" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 488.16 219.808" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 219.808 
+L 488.16 219.808 
+L 488.16 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 34.56 184.608 
+L 480.96 184.608 
+L 480.96 7.2 
+L 34.56 7.2 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m81ba357302" d="M 0 0 
+L 0 3.5 
+" style="stroke: #5b6470; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m81ba357302" x="34.56" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="34.56" y="197.686125" transform="rotate(-0 34.56 197.686125)">Oct</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m81ba357302" x="139.595294" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="139.595294" y="197.686125" transform="rotate(-0 139.595294 197.686125)">05</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m81ba357302" x="244.630588" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="244.630588" y="197.686125" transform="rotate(-0 244.630588 197.686125)">09</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m81ba357302" x="349.665882" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="349.665882" y="197.686125" transform="rotate(-0 349.665882 197.686125)">13</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m81ba357302" x="454.701176" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="454.701176" y="197.686125" transform="rotate(-0 454.701176 197.686125)">17</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="480.96" y="210.205656" transform="rotate(-0 480.96 210.205656)">2026-Oct</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_6">
+      <path d="M 34.56 176.544 
+L 480.96 176.544 
+" clip-path="url(#p2590f56d1c)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_7">
+      <defs>
+       <path id="m898c8d45ed" d="M 0 0 
+L -3.5 0 
+" style="stroke: #5b6470; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m898c8d45ed" x="34.56" y="176.544" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="27.56" y="179.583375" transform="rotate(-0 27.56 179.583375)">$0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_8">
+      <path d="M 34.56 141.298475 
+L 480.96 141.298475 
+" clip-path="url(#p2590f56d1c)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m898c8d45ed" x="34.56" y="141.298475" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="27.56" y="144.33785" transform="rotate(-0 27.56 144.33785)">$200</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_10">
+      <path d="M 34.56 106.052949 
+L 480.96 106.052949 
+" clip-path="url(#p2590f56d1c)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m898c8d45ed" x="34.56" y="106.052949" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="27.56" y="109.092324" transform="rotate(-0 27.56 109.092324)">$400</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_12">
+      <path d="M 34.56 70.807424 
+L 480.96 70.807424 
+" clip-path="url(#p2590f56d1c)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#m898c8d45ed" x="34.56" y="70.807424" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="27.56" y="73.846799" transform="rotate(-0 27.56 73.846799)">$600</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_14">
+      <path d="M 34.56 35.561898 
+L 480.96 35.561898 
+" clip-path="url(#p2590f56d1c)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m898c8d45ed" x="34.56" y="35.561898" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="27.56" y="38.601273" transform="rotate(-0 27.56 38.601273)">$800</text>
+     </g>
+    </g>
+   </g>
+   <g id="FillBetweenPolyCollection_1">
+    <defs>
+     <path id="m121a539f5f" d="M 34.56 -43.264 
+L 34.56 -43.264 
+L 34.56 -43.264 
+L 34.56 -200.282816 
+L 60.818824 -200.282816 
+L 60.818824 -156.225909 
+L 139.595294 -156.225909 
+L 139.595294 -166.799567 
+L 192.112941 -166.799567 
+L 192.112941 -187.946882 
+L 349.665882 -187.946882 
+L 349.665882 -188.387451 
+L 375.924706 -188.387451 
+L 375.924706 -115.802816 
+L 402.183529 -115.802816 
+L 402.183529 -115.408066 
+L 428.442353 -115.408066 
+L 428.442353 -204.544 
+L 480.96 -204.544 
+L 480.96 -204.544 
+L 480.96 -43.264 
+L 480.96 -43.264 
+L 480.96 -43.264 
+L 428.442353 -43.264 
+L 428.442353 -43.264 
+L 402.183529 -43.264 
+L 402.183529 -43.264 
+L 375.924706 -43.264 
+L 375.924706 -43.264 
+L 349.665882 -43.264 
+L 349.665882 -43.264 
+L 192.112941 -43.264 
+L 192.112941 -43.264 
+L 139.595294 -43.264 
+L 139.595294 -43.264 
+L 60.818824 -43.264 
+L 60.818824 -43.264 
+L 34.56 -43.264 
+L 34.56 -43.264 
+L 34.56 -43.264 
+z
+" style="stroke: #1f4e8c; stroke-opacity: 0.08"/>
+    </defs>
+    <g clip-path="url(#p2590f56d1c)">
+     <use xlink:href="#m121a539f5f" x="0" y="219.808" style="fill: #1f4e8c; fill-opacity: 0.08; stroke: #1f4e8c; stroke-opacity: 0.08"/>
+    </g>
+   </g>
+   <g id="line2d_16">
+    <path d="M 34.56 176.544 
+L 34.56 176.544 
+L 34.56 19.525184 
+L 60.818824 19.525184 
+L 60.818824 63.582091 
+L 139.595294 63.582091 
+L 139.595294 53.008433 
+L 192.112941 53.008433 
+L 192.112941 31.861118 
+L 349.665882 31.861118 
+L 349.665882 31.420549 
+L 375.924706 31.420549 
+L 375.924706 104.005184 
+L 402.183529 104.005184 
+L 402.183529 104.399934 
+L 428.442353 104.399934 
+L 428.442353 15.264 
+L 480.96 15.264 
+L 480.96 15.264 
+" clip-path="url(#p2590f56d1c)" style="fill: none; stroke: #1f4e8c; stroke-width: 1.8; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 34.56 184.608 
+L 34.56 7.2 
+" style="fill: none; stroke: #d9dde3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 34.56 184.608 
+L 480.96 184.608 
+" style="fill: none; stroke: #d9dde3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p2590f56d1c">
+   <rect x="34.56" y="7.2" width="446.4" height="177.408"/>
+  </clipPath>
+ </defs>
+</svg>
+
+  
+</section>
+
+<div class="rpt-grid">
+  <section class="card" aria-labelledby="rpt-income-title">
+    <h2 id="rpt-income-title">Money in, by category</h2>
+    <table>
+      
+      <tr><td>Popcorn Fundraiser</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 100%"></div></div></td>
+        <td class="num">$1,960.00</td></tr>
+      
+      <tr><td>Extra Skaters at Clinics and Practice</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 61%"></div></div></td>
+        <td class="num">$1,200.00</td></tr>
+      
+      <tr><td>Got Your Back T-Shirt Fundraiser</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 23%"></div></div></td>
+        <td class="num">$444.75</td></tr>
+      
+      <tr><td>Bake Me a Cake Fundraiser</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 20%"></div></div></td>
+        <td class="num">$400.00</td></tr>
+      
+      <tr><td>Alo Yoga Raffle</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 14%"></div></div></td>
+        <td class="num">$270.00</td></tr>
+      
+      <tr><td>Fill the Cup Raffle</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 10%"></div></div></td>
+        <td class="num">$200.00</td></tr>
+      
+      <tr><td>Buy a Puck Fundraiser</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 7%"></div></div></td>
+        <td class="num">$138.00</td></tr>
+      
+      <tr><td>Private Donation</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 6%"></div></div></td>
+        <td class="num">$121.00</td></tr>
+      
+      <tr><td>Donations</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 4%"></div></div></td>
+        <td class="num">$77.50</td></tr>
+      
+      <tr><td>Other Income</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 0%"></div></div></td>
+        <td class="num">$0.21</td></tr>
+      
+      <tr><td>Snack Shack</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 0%"></div></div></td>
+        <td class="num">-$76.46</td></tr>
+      
+      <tr><td>Surfboard Fundraiser</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 0%"></div></div></td>
+        <td class="num">-$250.00</td></tr>
+      
+      <tr class="total"><td>Total</td><td class="hide-sm"></td><td class="num">$4,485.00</td></tr>
+    </table>
+  </section>
+  <section class="card" aria-labelledby="rpt-expense-title">
+    <h2 id="rpt-expense-title">Money out, by category</h2>
+    <table>
+      
+      <tr><td>Coaches Costs</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar expense" style="width: 100%"></div></div></td>
+        <td class="num">$1,279.63</td></tr>
+      
+      <tr><td>Tournament Registration</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar expense" style="width: 98%"></div></div></td>
+        <td class="num">$1,250.00</td></tr>
+      
+      <tr><td>Tournament Patches</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar expense" style="width: 66%"></div></div></td>
+        <td class="num">$842.00</td></tr>
+      
+      <tr><td>Other Expenses</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar expense" style="width: 8%"></div></div></td>
+        <td class="num">$96.83</td></tr>
+      
+      <tr><td>Merchandise Costs</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar expense" style="width: 4%"></div></div></td>
+        <td class="num">$50.78</td></tr>
+      
+      <tr><td>Supplies &amp; Printing</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar expense" style="width: 4%"></div></div></td>
+        <td class="num">$50.58</td></tr>
+      
+      <tr class="total"><td>Total</td><td class="hide-sm"></td><td class="num">$3,569.82</td></tr>
+    </table>
+  </section>
+</div>
+
+
+<section class="card" aria-labelledby="rpt-budget-title">
+  <h2 id="rpt-budget-title">Spending against the budget</h2>
+  <div class="rpt-scroll">
+  <table>
+    <thead><tr><th>Category</th><th class="num">Budget</th><th class="num">Spent</th><th class="num">Remaining</th>
+      <th class="rpt-bar-cell hide-sm">Used</th></tr></thead>
+    <tbody>
+    
+      <tr>
+        <td>Bank &amp; Payment Fees</td>
+        <td class="num">$250.00</td>
+        <td class="num">$0.00</td>
+        <td class="num ">$250.00</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 0.0%"></div></div>
+          <span class="rpt-muted small">0%</span>
+        </td>
+      </tr>
+    
+      <tr>
+        <td>Charter Bus</td>
+        <td class="num">$22,392.00</td>
+        <td class="num">$0.00</td>
+        <td class="num ">$22,392.00</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 0.0%"></div></div>
+          <span class="rpt-muted small">0%</span>
+        </td>
+      </tr>
+    
+      <tr>
+        <td>Coaches Costs</td>
+        <td class="num">$9,540.00</td>
+        <td class="num">$1,279.63</td>
+        <td class="num ">$8,260.37</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 13.4%"></div></div>
+          <span class="rpt-muted small">13%</span>
+        </td>
+      </tr>
+    
+      <tr>
+        <td>Ice Time</td>
+        <td class="num">$1,500.00</td>
+        <td class="num">$0.00</td>
+        <td class="num ">$1,500.00</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 0.0%"></div></div>
+          <span class="rpt-muted small">0%</span>
+        </td>
+      </tr>
+    
+      <tr>
+        <td>Meals</td>
+        <td class="num">$4,500.00</td>
+        <td class="num">$0.00</td>
+        <td class="num ">$4,500.00</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 0.0%"></div></div>
+          <span class="rpt-muted small">0%</span>
+        </td>
+      </tr>
+    
+      <tr>
+        <td>Merchandise Costs</td>
+        <td class="num">$6,000.00</td>
+        <td class="num">$50.78</td>
+        <td class="num ">$5,949.22</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 0.8%"></div></div>
+          <span class="rpt-muted small">1%</span>
+        </td>
+      </tr>
+    
+      <tr>
+        <td>Other Expenses</td>
+        <td class="num">$6,175.00</td>
+        <td class="num">$96.83</td>
+        <td class="num ">$6,078.17</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 1.6%"></div></div>
+          <span class="rpt-muted small">2%</span>
+        </td>
+      </tr>
+    
+      <tr>
+        <td>Supplies &amp; Printing</td>
+        <td class="num">$250.00</td>
+        <td class="num">$50.58</td>
+        <td class="num ">$199.42</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 20.2%"></div></div>
+          <span class="rpt-muted small">20%</span>
+        </td>
+      </tr>
+    
+      <tr>
+        <td>Team Activities &amp; Entertainment</td>
+        <td class="num">$5,890.00</td>
+        <td class="num">$0.00</td>
+        <td class="num ">$5,890.00</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 0.0%"></div></div>
+          <span class="rpt-muted small">0%</span>
+        </td>
+      </tr>
+    
+      <tr>
+        <td>Tournament Patches</td>
+        <td class="num">$850.00</td>
+        <td class="num">$842.00</td>
+        <td class="num ">$8.00</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 99.1%"></div></div>
+          <span class="rpt-muted small">99%</span>
+        </td>
+      </tr>
+    
+      <tr>
+        <td>Tournament Registration</td>
+        <td class="num">$1,250.00</td>
+        <td class="num">$1,250.00</td>
+        <td class="num ">$0.00</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 100.0%"></div></div>
+          <span class="rpt-muted small">100%</span>
+        </td>
+      </tr>
+    
+      <tr>
+        <td>Trading Pins</td>
+        <td class="num">$3,000.00</td>
+        <td class="num">$0.00</td>
+        <td class="num ">$3,000.00</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 0.0%"></div></div>
+          <span class="rpt-muted small">0%</span>
+        </td>
+      </tr>
+    
+    </tbody>
+    <tfoot><tr class="total"><td>Total</td><td class="num">$61,597.00</td><td class="num">$3,569.82</td>
+      <td class="num ">$58,027.18</td><td class="hide-sm"></td></tr></tfoot>
+  </table>
+  </div>
+  
+</section>
+
+
+<section class="card" aria-labelledby="rpt-month-title">
+  <h2 id="rpt-month-title">Month by month</h2>
+  
+  <div class="rpt-scroll">
+  <table>
+    <thead><tr><th>Month</th><th class="num">Money in</th><th class="num">Money out</th><th class="num">Net</th><th class="num">Ending balance</th></tr></thead>
+    <tbody>
+    
+      <tr><td class="nowrap">October 2026</td><td class="num">$4,485.00</td><td class="num">$3,569.82</td>
+        <td class="num ">$915.18</td><td class="num">$915.18</td></tr>
+    
+    </tbody>
+    <tfoot><tr class="total"><td>Total</td><td class="num">$4,485.00</td><td class="num">$3,569.82</td>
+      <td class="num ">$915.18</td><td class="num">$915.18</td></tr></tfoot>
+  </table>
+  </div>
+  
+</section>
+
+
+
+<p class="rpt-note">Updated October 18, 2026. Questions about the team's finances? Use the email address at the bottom of this page.</p>
+
+      </div>
+    </main>
+  </div>
+
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <script src="app.js?v=17"></script>
+</body>
+</html>

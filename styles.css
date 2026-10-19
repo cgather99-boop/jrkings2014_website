@@ -152,12 +152,10 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
 }
 .sidebar-donate { padding-block: 8px; }
 
-/* Left column = sidebar menu + Local Sponsors.
-   Phones: the menu sits above the content and sponsors drop to the bottom of the page. */
+/* Left column = sidebar menu. Phones: the menu sits above the content. */
 .left-col { display: contents; }
 .sidebar { order: 0; }
 .content { order: 1; }
-.sponsors-card { order: 2; }
 
 @media (min-width: 900px) {
   .layout { grid-template-columns: 240px minmax(0, 1fr); gap: 24px; padding-top: 24px; }
@@ -168,7 +166,7 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
     position: sticky;
     top: calc(var(--header-h) + 24px);
     align-self: start;
-    /* If the sponsor list gets long, the column scrolls on its own instead of being cut off. */
+    /* On a short window the column scrolls on its own instead of being cut off. */
     max-height: calc(100vh - var(--header-h) - 48px);
     overflow-y: auto;
     padding: 0 6px 6px;
@@ -179,33 +177,15 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   .nav-link { padding: 10px 14px; }
   .sidebar-donate { margin-top: 8px; }
 
-  /* Compact sponsor list for the narrow column */
-  .sponsors-card { padding: 16px; }
-  .sponsors-card h2 { font-size: 1.1rem; }
-  .sponsors-card .sponsor-grid { grid-template-columns: 1fr; gap: 6px; }
-  .sponsors-card .sponsor {
-    flex-direction: row;
-    justify-content: flex-start;
-    min-height: 0;
-    padding: 8px 10px;
-    text-align: left;
-    gap: 10px;
-    font-size: 0.85rem;
-  }
-  .sponsors-card .sponsor img { max-height: 32px; max-width: 64px; }
-  .sponsors-card .sponsor-initials { width: 32px; height: 32px; font-size: 0.75rem; flex: 0 0 auto; }
-  .sponsors-card .tier { margin-bottom: 10px; }
 }
 
-/* ---------- Home: main column + right column (Donate Now, Recent Activity) ---------- */
-/* Phones/tablets: one column in this order: about, donate, activity, events */
+/* ---------- Home: main column + right column (Donate Now) ---------- */
+/* Phones/tablets: one column in this order: about, donate */
 .home-grid { display: flex; flex-direction: column; gap: 20px; }
 .home-main, .home-aside { display: contents; }
 .team-photo, .fundraising-alert { order: 0; }
 .about { order: 1; }
 .order-donate { order: 2; }
-.order-activity { order: 3; }
-.order-events { order: 4; }
 
 @media (min-width: 1200px) {
   .home-grid {
@@ -336,6 +316,21 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
 .alert-body .pledge-hint { margin: 0; font-size: 0.8rem; }
 .pledge-venmo { font-size: 0.85rem; font-weight: 700; color: var(--primary-dark); }
 .pledge-venmo[hidden] { display: none; }
+/* Zelle option above the Venmo pledge */
+.pledge-zelle { max-width: 360px; margin-top: 4px; }
+.alert-body .pledge-heading {
+  display: flex; align-items: center; gap: 8px;
+  margin: 0 0 6px; font-weight: 800; color: var(--primary-dark);
+}
+.pledge-heading svg { width: 20px; height: 20px; fill: currentColor; flex: 0 0 auto; }
+.pledge-steps { margin: 0 0 10px; padding-left: 1.4em; color: var(--primary-dark); }
+.pledge-steps li + li { margin-top: 4px; }
+.pledge-qr {
+  display: block; width: 260px; max-width: 100%; height: auto;
+  padding: 8px; background: #fff; border: 2px solid var(--primary); border-radius: 12px;
+  image-rendering: pixelated;
+}
+.pledge.pledge-or { margin-top: 18px; padding-top: 16px; border-top: 2px dashed var(--primary); }
 .alert-media {
   width: 140px;
   aspect-ratio: 1 / 1;
@@ -373,89 +368,6 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   .about { flex-direction: row; align-items: flex-start; gap: 28px; padding: 28px; }
   .about-logo { width: 190px; }
 }
-
-/* ---------- Events (home + schedule) ---------- */
-.event-list, .activity-list { list-style: none; margin: 0; padding: 0; }
-.event {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-}
-.event:last-child { border-bottom: 0; }
-.event.past { opacity: 0.6; }
-.date-badge {
-  flex: 0 0 56px;
-  height: 60px;
-  border-radius: 10px;
-  background: var(--accent);
-  color: var(--on-accent);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  line-height: 1.1;
-}
-.event.past .date-badge { background: var(--primary-tint); color: var(--primary); }
-.date-badge .month { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
-.date-badge .day { font-size: 1.5rem; font-weight: 800; }
-.event-title { font-weight: 700; color: var(--text); margin: 0; }
-.event-title a { color: inherit; }
-.event-meta { margin: 0; color: var(--muted); font-size: 0.875rem; }
-.status-chip {
-  display: inline-block;
-  margin-left: 6px;
-  padding: 0 8px;
-  border-radius: 999px;
-  background: var(--primary-tint);
-  color: var(--primary);
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  vertical-align: middle;
-}
-
-.month-heading {
-  margin: 20px 0 4px;
-  color: var(--primary);
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.month-heading:first-child { margin-top: 0; }
-.past-events { margin-top: 24px; }
-.past-events summary {
-  cursor: pointer;
-  font-weight: 700;
-  color: var(--primary);
-  padding: 8px 0;
-}
-
-/* ---------- Activity ---------- */
-.activity-item {
-  display: flex;
-  gap: 12px;
-  padding: 10px;
-  border-radius: 10px;
-}
-.activity-item + .activity-item { margin-top: 4px; }
-.activity-item.newest { background: var(--accent-light); }
-.avatar {
-  flex: 0 0 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: var(--primary);
-  color: var(--on-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-}
-.activity-text { margin: 0; }
-.activity-text strong { color: var(--primary); }
-.activity-message { margin: 2px 0 0; font-style: italic; color: var(--muted); font-size: 0.9rem; }
-.activity-time { color: var(--muted); font-size: 0.8rem; }
 
 /* ---------- Donate ---------- */
 .card-donate { border-top-color: var(--accent); }
@@ -512,55 +424,6 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   image-rendering: pixelated;
 }
 .donate-qr figcaption { color: var(--muted); font-size: 0.85rem; }
-
-/* ---------- Sponsors ---------- */
-.tier { margin-bottom: 14px; }
-.tier-chip {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 2px 10px;
-  border-radius: 999px;
-  margin-bottom: 8px;
-}
-.tier-gold .tier-chip { background: var(--accent); color: var(--on-accent); }
-.tier-silver .tier-chip { background: #E4E4EA; color: #3d3d4a; }
-.tier-bronze .tier-chip { background: #EBCBA8; color: #5a3517; }
-.tier-other .tier-chip { background: var(--primary-tint); color: var(--primary); }
-.sponsor-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 10px;
-}
-.sponsor {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  min-height: 90px;
-  padding: 10px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  text-align: center;
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-a.sponsor:hover { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-light); }
-.sponsor img { max-height: 48px; object-fit: contain; }
-.sponsor-initials {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: var(--primary-tint);
-  color: var(--primary);
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 800;
-}
 
 /* ---------- Players ---------- */
 .player-grid {
@@ -624,61 +487,7 @@ a.sponsor:hover { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accen
   font-weight: 600;
 }
 
-/* ---------- Swag ---------- */
-.swag-intro { margin: 0 0 18px; color: var(--muted); }
-.swag-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 16px;
-}
-.swag-item {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-.swag-item:hover { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-light); }
-.swag-image {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  background: var(--primary-tint);
-}
-.swag-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--primary);
-}
-.swag-placeholder svg { width: 45%; height: 45%; fill: var(--accent); }
-.swag-body {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  flex: 1;
-  padding: 14px 16px 16px;
-}
-.swag-name { margin: 0; font-weight: 700; color: var(--text); }
-.swag-price { margin: 0; font-weight: 800; font-size: 1.2rem; color: var(--primary); }
-.swag-desc { margin: 0 0 4px; color: var(--muted); font-size: 0.9rem; }
-.swag-label { margin-top: auto; font-size: 0.8rem; font-weight: 700; color: var(--primary); }
-.swag-select {
-  width: 100%;
-  padding: 9px 12px;
-  border: 2px solid var(--border);
-  border-radius: 10px;
-  background: #fff;
-  color: var(--text);
-  font: inherit;
-}
-.swag-select:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; border-color: var(--primary); }
-.swag-note { margin: 0; color: #B3261E; font-size: 0.85rem; font-weight: 600; }
-.swag-order { margin-top: 6px; width: 100%; }
-
-/* "Email didn't open?" fallback row (swag Order, Become a sponsor) */
+/* "Email didn't open?" fallback row (Donate & add your name) */
 .email-alt {
   display: flex;
   flex-wrap: wrap;
@@ -730,8 +539,6 @@ a.sponsor:hover { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accen
 }
 
 /* ---------- Phone refinements ---------- */
-.card .month-heading::after { display: none; }
-
 @media (max-width: 899px) {
   .nav-list { flex: 1 1 100%; justify-content: space-between; }
   .sidebar-donate { flex: 1 1 100%; }

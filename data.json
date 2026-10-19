@@ -8,15 +8,16 @@
     "tagline": "Help our players make it to the Quebec PeeWee Tournament!",
     "logo": "Images/logo.png",
     "contactEmail": "jrkings2014aaa@gmail.com",
-    "taxNote": "Donations may be tax-deductible. Contact us for a receipt.",
-    "sponsorContact": ""
+    "taxNote": "Donations may be tax-deductible. Contact us for a receipt."
   },
 
   "nav": [
     { "label": "Home", "href": "index.html", "icon": "home" },
-    { "label": "Players", "href": "players.html", "icon": "users" },
-    { "label": "Schedule", "href": "schedule.html", "icon": "calendar" },
-    { "label": "Team Swag", "href": "swag.html", "icon": "shirt" }
+    { "label": "Players", "href": "players.html", "icon": "users" }
+  ],
+
+  "reportNav": [
+    { "label": "Extra Skaters", "href": "extraskaters/", "icon": "skate" }
   ],
 
   "teamPhoto": {
@@ -32,7 +33,11 @@
     "imageNote": "Merci!!!",
     "description": "Hockey is a team sport—and every player needs a fan in their corner. Show your Jr. King you’ve got their back! A small donation will put your name on the back of their own T-shirt and help get them to Quebec. ",
     "linkText": "Add your name",
-    "linkUrl": ""
+    "linkUrl": "",
+    "zelleSteps": [
+      "Scan the Zelle code below",
+      "In the Zelle memo write the player name and your name for the T-shirt"
+    ]
   },
 
   "about": {
@@ -49,15 +54,10 @@
 
   "goal": {
     "target": 50000,
-    "raised": 3822,
+    "raised": 4485,
     "purpose": "Your support helps with tournament costs, transportation, and lodging. Every dollar helps!",
     "deadline": "2027-02-08"
   },
-
-  "events": [
-    { "date": "2026-11-23", "time": "09:00", "title": "Thanksgiving Tournament Booth", 
-    "location": "Toyota Sports Performance Center", "link": "https://www.jrkingshockey.com/tourneys" }
-  ],
 
   "players": [
     { "number": 11, "name": "Bastian (Bash) Daigle", "position": "Forward", "photo": "Images/Headshots/Bash.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
@@ -65,12 +65,12 @@
     { "number": 97, "name": "Brooke Born", "position": "Defense", "photo": "Images/Headshots/Brooke.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
     { "number": 51, "name": "Carter Perosio", "position": "Goalie", "photo": "Images/Headshots/Carter.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
     { "number": 85, "name": "Charlie Fox", "position": "Goalie", "photo": "Images/Headshots/Charlie.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 21, "name": "Cru Martinson", "position": "Defense", "photo": "Images/Headshots/Cru.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 21, "name": "Cru Martinson", "position": "Defense", "photo": "Images/Headshots/Cru.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": ["Burton Family"] },
     { "number": 29, "name": "Eli Baker", "position": "Forward", "photo": "Images/Headshots/Eli.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
     { "number": 96, "name": "Henry Gathercole", "position": "Forward", "photo": "Images/Headshots/Henry.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
     { "number": 23, "name": "Hudson Jones", "position": "Defense", "photo": "Images/Headshots/Hudson.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
     { "number": 16, "name": "Mark Rettele", "position": "Forward", "photo": "Images/Headshots/Mark.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 91, "name": "Micah Song", "position": "Forward", "photo": "Images/Headshots/Micah.png", "flyer": "Images/Flyer_Micah.jpeg", "venmo": "", "thankYou": "", "supporters": [] },
+    { "number": 91, "name": "Micah Song", "position": "Forward", "photo": "Images/Headshots/Micah.png", "flyer": "Images/Flyer_Micah.jpeg", "venmo": "", "thankYou": "", "supporters": ["Master Toys & Novelties","Charlotte Conn","Emery Kim","The Engstroms","Austin & Esther Chung","TOSHIMACLAN","The Nguy Family","Miles Kalavsky","Ikegami Family","Remy Dam & Family","The Yap Family","James Lee"] },
     { "number": 78, "name": "Milo Su", "position": "Forward", "photo": "Images/Headshots/Milo.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
     { "number": 44, "name": "Nicolas Van Den Bosch", "position": "Defense", "photo": "Images/Headshots/Nick.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
     { "number": 79, "name": "Nixon Tebo", "position": "Forward", "photo": "Images/Headshots/Nixon.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
@@ -81,13 +81,8 @@
     
   ],
 
-  "swagIntro": "Show your Jr Kings pride! Pick a size and tap Order to email us your request. Every purchase supports the trip to Quebec.",
 
-  "swag": [],
 
-  "donations": [],
-
-  "sponsors": [],
 
   "donateLinks": [
     { "label": "Venmo", "icon": "venmo", "url": "https://venmo.com/code?user_id=4693719575955224094&created=1790382194.316657&printed=1", "handle": "@LAJrKings2014AAA" },

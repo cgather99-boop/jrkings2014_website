@@ -2,14 +2,10 @@
 // Volunteers should only need to edit data.json (content) and theme.css (colors).
 // Nothing in this file is team-specific, so it can be copied unchanged to another team's site.
 
-const MAX_EVENTS = 5;
-const MAX_DONATIONS = 8;
 
 const DEFAULT_NAV = [
   { label: 'Home', href: 'index.html', icon: 'home' },
   { label: 'Players', href: 'players.html', icon: 'users' },
-  { label: 'Schedule', href: 'schedule.html', icon: 'calendar' },
-  { label: 'Team Swag', href: 'swag.html', icon: 'shirt' },
 ];
 
 // Inline SVG icons (24x24 viewBox) so no external icon library is needed.
@@ -27,15 +23,13 @@ const ICONS = {
   users: { d: 'M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm8 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM2 20c0-3.3 3.1-6 7-6s7 2.7 7 6v1H2v-1zm15.3-5.9c2.7.3 4.7 2.3 4.7 4.9v2h-4v-1c0-2.3-.2-4.3-.7-5.9z' },
   calendar: { rule: 'evenodd', d: 'M7 2h2v2h6V2h2v2h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2V2zM5 9v11h14V9H5z' },
   shirt: { d: 'M8.5 3 3 5.5 1.5 10.5l3.5 1.3L6 10.5V21h12V10.5l1 1.3 3.5-1.3L21 5.5 15.5 3a3.5 3.5 0 0 1-7 0z' },
+  chart: { d: 'M3 3h2v16h16v2H3V3zm4 9h3v6H7v-6zm5-5h3v11h-3V7zm5 3h3v8h-3v-8z' },
+  skate: { d: 'M6 2h5v7.5l5.6 2.2a4 4 0 0 1 2.4 3.7V17H5V3a1 1 0 0 1 1-1zM3 19h17v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1z' },
   link: { d: 'M10.6 13.4a1 1 0 0 1 0-1.4l3-3a1 1 0 1 1 1.4 1.4l-3 3a1 1 0 0 1-1.4 0zM8.5 20a4.5 4.5 0 0 1-3.2-7.7l2.5-2.5 1.4 1.4-2.5 2.5a2.5 2.5 0 0 0 3.5 3.5l2.5-2.5 1.4 1.4-2.5 2.5A4.5 4.5 0 0 1 8.5 20zm7.7-5.8-1.4-1.4 2.5-2.5a2.5 2.5 0 0 0-3.5-3.5l-2.5 2.5-1.4-1.4 2.5-2.5a4.5 4.5 0 0 1 6.4 6.4l-2.6 2.4z' },
 };
 ICONS.twitter = ICONS.x;
 
 const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
-const monthFmt = new Intl.DateTimeFormat('en-US', { month: 'short' });
-const monthYearFmt = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' });
-const weekdayFmt = new Intl.DateTimeFormat('en-US', { weekday: 'short' });
-const relFmt = new Intl.RelativeTimeFormat('en-US', { numeric: 'auto' });
 
 const $ = (id) => document.getElementById(id);
 
@@ -54,13 +48,6 @@ function today() {
 
 function daysBetween(a, b) {
   return Math.round((b - a) / 86400000);
-}
-
-function formatTime(hhmm) {
-  if (!hhmm) return '';
-  const [h, m] = hhmm.split(':').map(Number);
-  const suffix = h >= 12 ? 'PM' : 'AM';
-  return `${((h + 11) % 12) + 1}:${String(m || 0).padStart(2, '0')} ${suffix}`;
 }
 
 // Only allow web and email links from data.json.
@@ -113,9 +100,16 @@ function empty(container, message) {
   container.appendChild(el(container.tagName === 'UL' ? 'li' : 'p', 'empty', message));
 }
 
-function currentPageFile() {
-  const file = location.pathname.split('/').pop();
-  return file || 'index.html';
+// True when a menu link points at the page being viewed. Links are resolved against the page's base URL,
+// so this also works for pages in a subfolder (e.g. finances/, whose <base href="../"> is the site root).
+// "folder/" and "folder/index.html" count as the same page.
+function isCurrentPage(href) {
+  const path = (p) => p.replace(/\/index\.html$/, '/');
+  try {
+    return path(new URL(href.split('#')[0], document.baseURI).pathname) === path(location.pathname);
+  } catch {
+    return false;
+  }
 }
 
 async function copyText(text, button) {
@@ -208,11 +202,6 @@ const SIDEBAR_HTML = `
   <ul id="nav-list" class="nav-list"></ul>
   <a class="btn btn-accent sidebar-donate" href="index.html#donate">Donate Now</a>`;
 
-const SPONSORS_HTML = `
-  <h2 id="sponsors-title">Local Sponsors</h2>
-  <div id="sponsors"></div>
-  <a id="become-sponsor" class="link-cta" href="#">Become a sponsor →</a>`;
-
 const FOOTER_HTML = `
   <img id="footer-logo" class="footer-logo" src="Images/logo.png" alt="">
   <p>Questions? Email <a id="contact-email" href="#"></a></p>
@@ -222,7 +211,6 @@ const FOOTER_HTML = `
 function buildShell() {
   $('site-header').innerHTML = HEADER_HTML;
   $('sidebar').innerHTML = SIDEBAR_HTML;
-  $('sponsors-card').innerHTML = SPONSORS_HTML;
   $('site-footer').innerHTML = FOOTER_HTML;
 
   // Keep --header-h in sync so the sticky sidebar and anchor scrolling sit below the header.
@@ -232,10 +220,10 @@ function buildShell() {
   new ResizeObserver(setHeight).observe(header);
 }
 
-function renderNav(nav) {
+// extra: more links for this page only, appended after the main menu (see data-extra-nav below).
+function renderNav(nav, extra = []) {
   const list = $('nav-list');
-  const items = Array.isArray(nav) && nav.length ? nav : DEFAULT_NAV;
-  const current = currentPageFile();
+  const items = [...(Array.isArray(nav) && nav.length ? nav : DEFAULT_NAV), ...(Array.isArray(extra) ? extra : [])];
   list.replaceChildren();
 
   for (const item of items) {
@@ -243,7 +231,7 @@ function renderNav(nav) {
     const a = el('a', 'nav-link');
     a.href = href;
     a.append(icon(item.icon || 'link'), el('span', '', item.label));
-    if (href.split('#')[0] === current) a.setAttribute('aria-current', 'page');
+    if (isCurrentPage(href)) a.setAttribute('aria-current', 'page');
     const li = el('li');
     li.appendChild(a);
     list.appendChild(li);
@@ -269,57 +257,11 @@ function renderHeader(team = {}) {
   emailLink.href = email ? `mailto:${email}` : '#';
   emailLink.parentElement.hidden = !email;
   $('tax-note').textContent = team.taxNote || '';
-
-  renderBecomeSponsor(team);
 }
 
 // Greeting name for pre-filled emails, e.g. "Hi Jr Kings,".
 function greetingName(team = {}) {
   return team.shortName || team.name || 'there';
-}
-
-function sponsorMessage(team = {}) {
-  const name = team.name || 'the team';
-  const trip = team.tripName ? `on their trip to ${team.tripName}` : 'this season';
-  return {
-    subject: `Sponsorship inquiry: ${name}`,
-    body: [
-      `Hi ${greetingName(team)},`,
-      '',
-      `We're interested in sponsoring ${name} ${trip}.`,
-      '',
-      'Business name:',
-      'Contact name:',
-      'Phone:',
-      'Website:',
-      'Sponsorship level (Gold / Silver / Bronze / not sure):',
-      '',
-      'Please send us details on how to get involved.',
-      '',
-      'Thank you!',
-    ].join('\n'),
-  };
-}
-
-// A web form in team.sponsorContact wins; otherwise the link becomes a pre-filled email to contactEmail.
-function renderBecomeSponsor(team) {
-  const link = $('become-sponsor');
-  if (!link) return;
-  const contact = safeUrl(team.sponsorContact);
-  if (contact && !contact.startsWith('mailto:')) {
-    link.href = contact;
-    link.target = '_blank';
-    link.rel = 'noopener';
-    return;
-  }
-  const email = team.contactEmail || '';
-  if (!email) {
-    link.hidden = true;
-    return;
-  }
-  const mail = emailWithFallback(link, email);
-  mail.set(sponsorMessage(team));
-  link.after(mail.row);
 }
 
 function renderProgress(goal = {}) {
@@ -405,9 +347,30 @@ function shirtNameMessage(team, player) {
   };
 }
 
+// Zelle option for the T-shirt: numbered steps (fundraisingAlert.zelleSteps) and the team Zelle QR code
+// from donateLinks. Returns true if it was shown.
+function renderShirtZelle(container, steps = [], donateLinks = []) {
+  const zelle = donateLinks.find((d) => /zelle/i.test(d.icon || d.label || ''));
+  const lines = Array.isArray(steps) ? steps.filter(Boolean) : [];
+  if (!container || !zelle?.qr || !lines.length) return false;
+
+  const box = el('div', 'pledge-zelle');
+  const heading = el('p', 'pledge-heading');
+  heading.append(icon('zelle'), el('span', '', 'Pay with Zelle'));
+  const list = el('ol', 'pledge-steps');
+  for (const line of lines) list.appendChild(el('li', '', line));
+  const qr = el('img', 'pledge-qr');
+  qr.src = zelle.qr;
+  qr.alt = `${zelle.label || 'Zelle'} QR code for the team`;
+  box.append(heading, list, qr);
+  container.appendChild(box);
+  return true;
+}
+
 // Player dropdown + button: opens the player's Venmo in a new tab and a pre-filled email
 // to team.contactEmail where the donor says how their name should appear on the shirt.
-function renderShirtPledge(container, players = [], team = {}, donateLinks = []) {
+// afterZelle: a Zelle option is shown above, so this one is headed "Or pay with Venmo".
+function renderShirtPledge(container, players = [], team = {}, donateLinks = [], afterZelle = false) {
   const email = team.contactEmail || '';
   const named = players.filter((p) => p.name);
   if (!container || !email || !named.length) return;
@@ -464,6 +427,12 @@ function renderShirtPledge(container, players = [], team = {}, donateLinks = [])
   update();
   select.addEventListener('change', update);
 
+  if (afterZelle) {
+    box.classList.add('pledge-or');
+    const heading = el('p', 'pledge-heading');
+    heading.append(icon('venmo'), el('span', '', 'Or pay with Venmo'));
+    box.appendChild(heading);
+  }
   box.append(label, select, note, button, hint, venmoAgain, mail.row);
   container.appendChild(box);
 }
@@ -500,7 +469,9 @@ function renderFundraisingAlert(alert, data = {}) {
     link.hidden = false;
   }
 
-  renderShirtPledge(section.querySelector('.alert-body'), data.players, data.team, data.donateLinks);
+  const body = section.querySelector('.alert-body');
+  const zelleShown = renderShirtZelle(body, alert.zelleSteps, data.donateLinks);
+  renderShirtPledge(body, data.players, data.team, data.donateLinks, zelleShown);
   section.hidden = false;
 }
 
@@ -529,103 +500,6 @@ function renderAbout(about) {
   }
 
   section.hidden = false;
-}
-
-function eventItem(e, isPast = false) {
-  const date = parseDate(e.date);
-  const li = el('li', isPast ? 'event past' : 'event');
-
-  const badge = el('div', 'date-badge');
-  badge.append(el('span', 'month', monthFmt.format(date)), el('span', 'day', String(date.getDate())));
-
-  const body = el('div');
-  const title = el('p', 'event-title');
-  const link = safeUrl(e.link);
-  title.appendChild(link ? externalLink(link, '', e.title) : document.createTextNode(e.title || ''));
-  if (isPast) title.appendChild(el('span', 'status-chip', 'Completed'));
-  const meta = [weekdayFmt.format(date), formatTime(e.time), e.location].filter(Boolean).join(' · ');
-  body.append(title, el('p', 'event-meta', meta));
-
-  li.append(badge, body);
-  return li;
-}
-
-function sortEvents(events) {
-  return events
-    .filter((e) => e.date)
-    .sort((a, b) => parseDate(a.date) - parseDate(b.date) || String(a.time).localeCompare(String(b.time)));
-}
-
-function renderEvents(events = []) {
-  const list = $('events');
-  if (!list) return;
-  const now = today();
-  const upcoming = sortEvents(events).filter((e) => parseDate(e.date) >= now).slice(0, MAX_EVENTS);
-  if (!upcoming.length) return empty(list, 'No upcoming events yet. Check back soon!');
-  for (const e of upcoming) list.appendChild(eventItem(e));
-}
-
-function renderActivity(donations = []) {
-  const list = $('activity');
-  if (!list) return;
-  const now = today();
-  const recent = donations
-    .filter((d) => d.date && Number(d.amount) > 0)
-    .sort((a, b) => parseDate(b.date) - parseDate(a.date))
-    .slice(0, MAX_DONATIONS);
-
-  if (!recent.length) return empty(list, 'Be the first to donate!');
-
-  recent.forEach((d, i) => {
-    const name = d.anonymous ? 'A generous supporter' : d.name;
-    const li = el('li', i === 0 ? 'activity-item newest' : 'activity-item');
-    li.appendChild(el('div', 'avatar', d.anonymous ? '♥' : initials(d.name)));
-
-    const body = el('div');
-    const text = el('p', 'activity-text');
-    text.append(el('strong', '', name), ` donated ${money.format(Number(d.amount))} `);
-    const ago = daysBetween(now, parseDate(d.date));
-    text.appendChild(el('span', 'activity-time', `· ${relFmt.format(ago, 'day')}`));
-    body.appendChild(text);
-    if (d.message) body.appendChild(el('p', 'activity-message', `“${d.message}”`));
-
-    li.appendChild(body);
-    list.appendChild(li);
-  });
-}
-
-function renderSponsors(sponsors = []) {
-  const container = $('sponsors');
-  if (!container) return;
-  if (!sponsors.length) return empty(container, 'Your business could be here!');
-
-  const order = ['Gold', 'Silver', 'Bronze'];
-  const tiers = [...new Set(sponsors.map((s) => s.tier || 'Supporter'))]
-    .sort((a, b) => (order.indexOf(a) + 1 || 99) - (order.indexOf(b) + 1 || 99));
-
-  for (const tier of tiers) {
-    const known = order.includes(tier) ? tier.toLowerCase() : 'other';
-    const section = el('div', `tier tier-${known}`);
-    section.appendChild(el('span', 'tier-chip', tier));
-
-    const grid = el('div', 'sponsor-grid');
-    for (const s of sponsors.filter((x) => (x.tier || 'Supporter') === tier)) {
-      const url = safeUrl(s.url);
-      const card = url ? externalLink(url, 'sponsor') : el('div', 'sponsor');
-      if (s.logo) {
-        const img = el('img');
-        img.src = s.logo;
-        img.alt = '';
-        card.appendChild(img);
-      } else {
-        card.appendChild(el('span', 'sponsor-initials', initials(s.name)));
-      }
-      card.appendChild(el('span', '', s.name));
-      grid.appendChild(card);
-    }
-    section.appendChild(grid);
-    container.appendChild(section);
-  }
 }
 
 function renderDonate(links = []) {
@@ -713,7 +587,7 @@ function renderPlayers(players = []) {
     const supporters = Array.isArray(p.supporters) ? p.supporters.filter(Boolean) : [];
     if (supporters.length) {
       const box = el('div', 'player-supporters');
-      box.appendChild(el('p', 'player-supporters-title', `Supporters (${supporters.length})`));
+      box.appendChild(el('p', 'player-supporters-title', `Got My Back (${supporters.length})`));
       const list = el('ul', 'supporter-list');
       for (const name of supporters) list.appendChild(el('li', '', name));
       box.appendChild(list);
@@ -721,143 +595,6 @@ function renderPlayers(players = []) {
     }
 
     grid.appendChild(card);
-  }
-}
-
-// ---------- swag page ----------
-
-function swagOrderMessage(team, item, size) {
-  const label = size ? `${item.name} (${size})` : item.name;
-  const body = [
-    `Hi ${greetingName(team)},`,
-    '',
-    'I would like to order:',
-    `Item: ${item.name}`,
-    size ? `Size: ${size}` : null,
-    item.price != null ? `Price: ${money.format(Number(item.price))}` : null,
-    'Quantity: 1',
-    '',
-    'My name:',
-    'Phone:',
-    'Player (if any):',
-    '',
-    'Thank you!',
-  ].filter((line) => line != null).join('\n');
-  return { subject: `Swag order: ${label}`, body };
-}
-
-function renderSwag(items = [], team = {}, intro = '') {
-  const grid = $('swag');
-  if (!grid) return;
-  const introEl = $('swag-intro');
-  if (introEl) {
-    introEl.textContent = intro;
-    introEl.hidden = !intro;
-  }
-  if (!items.length) return empty(grid, 'Swag coming soon.');
-  const email = team.contactEmail || '';
-
-  items.forEach((item, i) => {
-    const card = el('article', 'swag-item');
-
-    if (item.image) {
-      const img = el('img', 'swag-image');
-      img.src = item.image;
-      img.alt = item.name || '';
-      card.appendChild(img);
-    } else {
-      const placeholder = el('div', 'swag-image swag-placeholder');
-      placeholder.appendChild(icon('shirt'));
-      card.appendChild(placeholder);
-    }
-
-    const body = el('div', 'swag-body');
-    body.appendChild(el('p', 'swag-name', item.name));
-    if (item.price != null) body.appendChild(el('p', 'swag-price', money.format(Number(item.price))));
-    if (item.description) body.appendChild(el('p', 'swag-desc', item.description));
-
-    const sizes = Array.isArray(item.sizes) ? item.sizes : [];
-    let select = null;
-    const note = el('p', 'swag-note', 'Please choose a size.');
-    note.hidden = true;
-
-    if (sizes.length) {
-      const id = `swag-size-${i}`;
-      const label = el('label', 'swag-label', 'Size');
-      label.htmlFor = id;
-      select = el('select', 'swag-select');
-      select.id = id;
-      const prompt = el('option', '', 'Choose a size');
-      prompt.value = '';
-      select.appendChild(prompt);
-      for (const s of sizes) {
-        const opt = el('option', '', s);
-        opt.value = s;
-        select.appendChild(opt);
-      }
-      body.append(label, select);
-    }
-
-    if (email) {
-      const order = el('a', 'btn btn-accent swag-order', 'Order');
-      // Size check runs first so it can cancel the click before the fallback row shows.
-      order.addEventListener('click', (ev) => {
-        if (select && !select.value) {
-          ev.preventDefault();
-          note.hidden = false;
-          select.focus();
-        }
-      });
-      const mail = emailWithFallback(order, email, 'Copy order');
-      const update = () => mail.set(swagOrderMessage(team, item, select?.value));
-      update();
-      if (select) {
-        select.addEventListener('change', () => {
-          update();
-          if (select.value) note.hidden = true;
-        });
-      }
-      body.append(note, order, mail.row);
-    }
-
-    card.appendChild(body);
-    grid.appendChild(card);
-  });
-}
-
-// ---------- schedule page ----------
-
-function renderSchedule(events = []) {
-  const container = $('schedule');
-  if (!container) return;
-  const now = today();
-  const sorted = sortEvents(events);
-  const upcoming = sorted.filter((e) => parseDate(e.date) >= now);
-  const past = sorted.filter((e) => parseDate(e.date) < now).reverse();
-
-  if (!upcoming.length) empty(container, 'No upcoming events yet. Check back soon!');
-
-  // Group upcoming events by month.
-  let currentMonth = '';
-  let list = null;
-  for (const e of upcoming) {
-    const month = monthYearFmt.format(parseDate(e.date));
-    if (month !== currentMonth) {
-      currentMonth = month;
-      container.appendChild(el('h2', 'month-heading', month));
-      list = el('ul', 'event-list');
-      container.appendChild(list);
-    }
-    list.appendChild(eventItem(e));
-  }
-
-  if (past.length) {
-    const details = el('details', 'past-events');
-    details.appendChild(el('summary', '', `Past Events (${past.length})`));
-    const pastList = el('ul', 'event-list');
-    for (const e of past) pastList.appendChild(eventItem(e, true));
-    details.appendChild(pastList);
-    container.appendChild(details);
   }
 }
 
@@ -870,7 +607,8 @@ async function init() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
 
-    renderNav(data.nav);
+    // <body data-extra-nav="reportNav"> adds data.reportNav to this page's menu (the unlisted report pages).
+    renderNav(data.nav, data[document.body.dataset.extraNav]);
     renderHeader(data.team);
     renderProgress(data.goal);
     renderSocial(data.social);
@@ -878,14 +616,9 @@ async function init() {
     renderTeamPhoto(data.teamPhoto);
     renderFundraisingAlert(data.fundraisingAlert, data);
     renderAbout(data.about);
-    renderEvents(data.events);
-    renderActivity(data.donations);
-    renderSponsors(data.sponsors);
     renderDonate(data.donateLinks);
 
     renderPlayers(data.players);
-    renderSchedule(data.events);
-    renderSwag(data.swag, data.team, data.swagIntro);
   } catch (err) {
     console.error(err);
     renderNav(DEFAULT_NAV);

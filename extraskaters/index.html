@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Exported from the Jr Kings Fundraising finances app on Oct 18, 2026 9:29 PM.
+       Don't edit this file: use "Export HTML" in the finances app again to update it. -->
+  
+  <base href="../">
+  
+  <meta name="robots" content="noindex, nofollow">
+  <title>Extra Skaters</title>
+  <link rel="icon" href="Images/logo.png">
+  <link rel="stylesheet" href="theme.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=16">
+  <style>
+    /* Report pages: colors come from the website's theme.css. */
+    .rpt { --rpt-pos: #2f7d5b; --rpt-neg: #b5473a; display: flex; flex-direction: column; gap: 20px; }
+    .rpt .card h1 { margin-bottom: 8px; }
+    .rpt-meta { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    .rpt-intro { margin: 10px 0 0; }
+    .rpt-stats { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-top: 16px; }
+    .rpt-stat { border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; background: var(--surface); }
+    .rpt-stat .label { color: var(--muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+    .rpt-stat .value { font-size: 1.45rem; font-weight: 800; color: var(--text); font-variant-numeric: tabular-nums; }
+    .rpt-stat .sub { color: var(--muted); font-size: 0.85rem; }
+    .rpt .pos { color: var(--rpt-pos); }
+    .rpt .neg { color: var(--rpt-neg); }
+    .rpt-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .rpt-scroll { overflow-x: auto; }
+    .rpt table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .rpt th, .rpt td { text-align: left; padding: 8px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .rpt th { color: var(--muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+    .rpt .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .rpt .nowrap { white-space: nowrap; }
+    .rpt tr.total td { font-weight: 800; border-top: 2px solid var(--text); border-bottom: 0; }
+    .rpt .small { font-size: 0.85rem; }
+    .rpt-muted { color: var(--muted); }
+    .rpt-bar-cell { width: 38%; }
+    .rpt-bar-track { display: flex; height: 10px; background: var(--primary-tint); border-radius: 5px; overflow: hidden; min-width: 60px; }
+    .rpt-bar { height: 100%; }
+    .rpt-bar.income { background: var(--rpt-pos); }
+    .rpt-bar.expense, .rpt-bar.over { background: var(--rpt-neg); }
+    .rpt-bar.spent { background: var(--primary); }
+    .rpt-bar.planned { opacity: 0.35; background-image: repeating-linear-gradient(45deg, transparent 0 3px, rgba(255, 255, 255, 0.7) 3px 5px); }
+    .rpt-goal-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; margin-bottom: 10px; }
+    .rpt-goal-raised { font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+    .rpt-goal-raised strong { font-size: 1.7rem; font-weight: 800; color: var(--primary); margin-right: 2px; }
+    .rpt-goal-pct { font-size: 1.05rem; color: var(--muted); }
+    .rpt-goal-pct strong { color: var(--primary); }
+    .rpt-goal-bar { height: 22px; border: 2px solid var(--primary); border-radius: 999px; background: var(--primary-tint); overflow: hidden; }
+    .rpt-goal-fill { height: 100%; min-width: 18px; border-radius: 999px; background: var(--accent); }
+    .rpt-chart { display: block; width: 100%; height: auto; }
+    .rpt-chip { display: inline-block; font-size: 0.78rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+    .rpt-chip.pos { background: #e7f4ec; color: #1f5e42; }
+    .rpt-chip.warn { background: #fff6e0; color: #7a4f00; }
+    .rpt-chip.neg { background: #fbe9e7; color: #9a3328; }
+    .rpt-note { margin: 12px 0 0; color: var(--muted); font-size: 0.85rem; }
+    .rpt-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0 0 10px; color: var(--muted); font-size: 0.85rem; }
+    .rpt-key { display: inline-block; width: 12px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+    @media (max-width: 600px) { .rpt .hide-sm { display: none; } }
+  </style>
+</head>
+<body data-page="extraskaters" data-extra-nav="reportNav">
+  <!-- Header, sidebar, and footer are filled in by the website's app.js, like every other page. -->
+  <header id="site-header" class="site-header"></header>
+
+  <div class="layout">
+    <div class="left-col">
+      <nav id="sidebar" class="sidebar" aria-label="Site navigation"></nav>
+    </div>
+
+    <main class="content">
+      <div id="error" class="error" hidden></div>
+      <div class="rpt">
+
+<section class="card" aria-labelledby="rpt-title">
+  <h1 id="rpt-title">Extra Skaters at Practice</h1>
+  <p class="rpt-meta">August 15, 2026 – October 20, 2026 · Updated October 18, 2026</p>
+  <p class="rpt-intro">Extra skaters who join a team practice pay $60.00 each.
+    This page shows every practice, how many extra skaters came, and what has been paid.</p>
+  <div class="rpt-stats">
+    <div class="rpt-stat"><div class="label">Practices</div><div class="value">27</div></div>
+    <div class="rpt-stat"><div class="label">Extra skaters attended</div><div class="value">30</div>
+      <div class="sub">$1,800.00 due</div></div>
+    <div class="rpt-stat"><div class="label">Extra skaters paid</div><div class="value pos">20</div>
+      <div class="sub">$1,200.00 received</div></div>
+    <div class="rpt-stat"><div class="label">Balance due</div><div class="value neg">$600.00</div>
+      <div class="sub">practices so far</div></div>
+  </div>
+</section>
+
+
+<section class="card" aria-labelledby="rpt-week-title">
+  <h2 id="rpt-week-title">Expected and paid, by week</h2>
+  <svg class="rpt-chart" role="img" aria-label="Expected and paid amounts for extra skaters, by week" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 488.16 229.896625" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 229.896625 
+L 488.16 229.896625 
+L 488.16 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 34.56 195.696 
+L 480.96 195.696 
+L 480.96 7.2 
+L 34.56 7.2 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m6229f6c047" d="M 0 0 
+L 0 3.5 
+" style="stroke: #5b6470; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m6229f6c047" x="55.145621" y="195.696" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="55.145621" y="208.774125" transform="rotate(-0 55.145621 208.774125)">Aug 10</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m6229f6c047" x="95.668497" y="195.696" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="95.668497" y="208.774125" transform="rotate(-0 95.668497 208.774125)">Aug 17</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m6229f6c047" x="136.191373" y="195.696" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="136.191373" y="208.774125" transform="rotate(-0 136.191373 208.774125)">Aug 24</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m6229f6c047" x="176.714248" y="195.696" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="176.714248" y="208.774125" transform="rotate(-0 176.714248 208.774125)">Aug 31</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m6229f6c047" x="217.237124" y="195.696" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="217.237124" y="208.774125" transform="rotate(-0 217.237124 208.774125)">Sep 7</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m6229f6c047" x="257.76" y="195.696" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="257.76" y="208.774125" transform="rotate(-0 257.76 208.774125)">Sep 14</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m6229f6c047" x="298.282876" y="195.696" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="298.282876" y="208.774125" transform="rotate(-0 298.282876 208.774125)">Sep 21</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m6229f6c047" x="338.805752" y="195.696" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="338.805752" y="208.774125" transform="rotate(-0 338.805752 208.774125)">Sep 28</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m6229f6c047" x="379.328627" y="195.696" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="379.328627" y="208.774125" transform="rotate(-0 379.328627 208.774125)">Oct 5</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m6229f6c047" x="419.851503" y="195.696" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="419.851503" y="208.774125" transform="rotate(-0 419.851503 208.774125)">Oct 12</text>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m6229f6c047" x="460.374379" y="195.696" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="460.374379" y="208.774125" transform="rotate(-0 460.374379 208.774125)">Oct 19</text>
+     </g>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="257.76" y="220.77475" transform="rotate(-0 257.76 220.77475)">Week starting (Monday)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_12">
+      <path d="M 34.56 195.696 
+L 480.96 195.696 
+" clip-path="url(#p462490ef3c)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_13">
+      <defs>
+       <path id="m6db8286268" d="M 0 0 
+L -3.5 0 
+" style="stroke: #5b6470; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m6db8286268" x="34.56" y="195.696" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="27.56" y="198.735375" transform="rotate(-0 27.56 198.735375)">$0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_14">
+      <path d="M 34.56 174.324571 
+L 480.96 174.324571 
+" clip-path="url(#p462490ef3c)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m6db8286268" x="34.56" y="174.324571" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="27.56" y="177.363946" transform="rotate(-0 27.56 177.363946)">$50</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_16">
+      <path d="M 34.56 152.953143 
+L 480.96 152.953143 
+" clip-path="url(#p462490ef3c)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#m6db8286268" x="34.56" y="152.953143" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="27.56" y="155.992518" transform="rotate(-0 27.56 155.992518)">$100</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_18">
+      <path d="M 34.56 131.581714 
+L 480.96 131.581714 
+" clip-path="url(#p462490ef3c)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#m6db8286268" x="34.56" y="131.581714" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="27.56" y="134.621089" transform="rotate(-0 27.56 134.621089)">$150</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_20">
+      <path d="M 34.56 110.210286 
+L 480.96 110.210286 
+" clip-path="url(#p462490ef3c)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_21">
+      <g>
+       <use xlink:href="#m6db8286268" x="34.56" y="110.210286" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="27.56" y="113.249661" transform="rotate(-0 27.56 113.249661)">$200</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_22">
+      <path d="M 34.56 88.838857 
+L 480.96 88.838857 
+" clip-path="url(#p462490ef3c)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_23">
+      <g>
+       <use xlink:href="#m6db8286268" x="34.56" y="88.838857" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="27.56" y="91.878232" transform="rotate(-0 27.56 91.878232)">$250</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_24">
+      <path d="M 34.56 67.467429 
+L 480.96 67.467429 
+" clip-path="url(#p462490ef3c)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_25">
+      <g>
+       <use xlink:href="#m6db8286268" x="34.56" y="67.467429" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="27.56" y="70.506804" transform="rotate(-0 27.56 70.506804)">$300</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_26">
+      <path d="M 34.56 46.096 
+L 480.96 46.096 
+" clip-path="url(#p462490ef3c)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_27">
+      <g>
+       <use xlink:href="#m6db8286268" x="34.56" y="46.096" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="27.56" y="49.135375" transform="rotate(-0 27.56 49.135375)">$350</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_28">
+      <path d="M 34.56 24.724571 
+L 480.96 24.724571 
+" clip-path="url(#p462490ef3c)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_29">
+      <g>
+       <use xlink:href="#m6db8286268" x="34.56" y="24.724571" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="27.56" y="27.763946" transform="rotate(-0 27.56 27.763946)">$400</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 38.936471 195.696 
+L 55.145621 195.696 
+L 55.145621 195.696 
+L 38.936471 195.696 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #3b2a87"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 79.459346 195.696 
+L 95.668497 195.696 
+L 95.668497 93.113143 
+L 79.459346 93.113143 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #3b2a87"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 119.982222 195.696 
+L 136.191373 195.696 
+L 136.191373 118.758857 
+L 119.982222 118.758857 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #3b2a87"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 160.505098 195.696 
+L 176.714248 195.696 
+L 176.714248 144.404571 
+L 160.505098 144.404571 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #3b2a87"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 201.027974 195.696 
+L 217.237124 195.696 
+L 217.237124 195.696 
+L 201.027974 195.696 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #3b2a87"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 241.55085 195.696 
+L 257.76 195.696 
+L 257.76 67.467429 
+L 241.55085 67.467429 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #3b2a87"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 282.073725 195.696 
+L 298.282876 195.696 
+L 298.282876 67.467429 
+L 282.073725 67.467429 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #3b2a87"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 322.596601 195.696 
+L 338.805752 195.696 
+L 338.805752 93.113143 
+L 322.596601 93.113143 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #3b2a87"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 363.119477 195.696 
+L 379.328627 195.696 
+L 379.328627 195.696 
+L 363.119477 195.696 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #3b2a87"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 403.642353 195.696 
+L 419.851503 195.696 
+L 419.851503 16.176 
+L 403.642353 16.176 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #3b2a87"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 444.165229 195.696 
+L 460.374379 195.696 
+L 460.374379 195.696 
+L 444.165229 195.696 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #3b2a87"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 55.145621 195.696 
+L 71.354771 195.696 
+L 71.354771 195.696 
+L 55.145621 195.696 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #f6b11c"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 95.668497 195.696 
+L 111.877647 195.696 
+L 111.877647 93.113143 
+L 95.668497 93.113143 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #f6b11c"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 136.191373 195.696 
+L 152.400523 195.696 
+L 152.400523 118.758857 
+L 136.191373 118.758857 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #f6b11c"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 176.714248 195.696 
+L 192.923399 195.696 
+L 192.923399 144.404571 
+L 176.714248 144.404571 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #f6b11c"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 217.237124 195.696 
+L 233.446275 195.696 
+L 233.446275 195.696 
+L 217.237124 195.696 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #f6b11c"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 257.76 195.696 
+L 273.96915 195.696 
+L 273.96915 144.404571 
+L 257.76 144.404571 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #f6b11c"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 298.282876 195.696 
+L 314.492026 195.696 
+L 314.492026 118.758857 
+L 298.282876 118.758857 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #f6b11c"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 338.805752 195.696 
+L 355.014902 195.696 
+L 355.014902 93.113143 
+L 338.805752 93.113143 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #f6b11c"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 379.328627 195.696 
+L 395.537778 195.696 
+L 395.537778 195.696 
+L 379.328627 195.696 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #f6b11c"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 419.851503 195.696 
+L 436.060654 195.696 
+L 436.060654 144.404571 
+L 419.851503 144.404571 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #f6b11c"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 460.374379 195.696 
+L 476.583529 195.696 
+L 476.583529 195.696 
+L 460.374379 195.696 
+z
+" clip-path="url(#p462490ef3c)" style="fill: #f6b11c"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 34.56 195.696 
+L 34.56 7.2 
+" style="fill: none; stroke: #d9dde3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 34.56 195.696 
+L 480.96 195.696 
+" style="fill: none; stroke: #d9dde3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="patch_27">
+     <path d="M 41.76 20.47875 
+L 57.76 20.47875 
+L 57.76 14.87875 
+L 41.76 14.87875 
+z
+" style="fill: #3b2a87"/>
+    </g>
+    <g id="text_22">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="64.16" y="20.47875" transform="rotate(-0 64.16 20.47875)">Expected (skaters × price)</text>
+    </g>
+    <g id="patch_28">
+     <path d="M 41.76 32.479375 
+L 57.76 32.479375 
+L 57.76 26.879375 
+L 41.76 26.879375 
+z
+" style="fill: #f6b11c"/>
+    </g>
+    <g id="text_23">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="64.16" y="32.479375" transform="rotate(-0 64.16 32.479375)">Paid (in the bank)</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p462490ef3c">
+   <rect x="34.56" y="7.2" width="446.4" height="188.496"/>
+  </clipPath>
+ </defs>
+</svg>
+
+</section>
+
+
+
+<section class="card" aria-labelledby="rpt-month-title">
+  <h2 id="rpt-month-title">By month</h2>
+  <div class="rpt-scroll">
+  <table>
+    <thead><tr><th>Month</th><th class="num">Practices</th><th class="num">Extra skaters</th><th class="num">Due</th>
+      <th class="num">Paid</th><th class="num">Balance due</th></tr></thead>
+    <tbody>
+    
+      <tr><td class="nowrap">October 2026</td><td class="num">8</td><td class="num">9</td>
+        <td class="num">$540.00</td><td class="num">$240.00</td>
+        <td class="num neg">$300.00</td></tr>
+    
+      <tr><td class="nowrap">September 2026</td><td class="num">11</td><td class="num">14</td>
+        <td class="num">$840.00</td><td class="num">$540.00</td>
+        <td class="num neg">$300.00</td></tr>
+    
+      <tr><td class="nowrap">August 2026</td><td class="num">8</td><td class="num">7</td>
+        <td class="num">$420.00</td><td class="num">$420.00</td>
+        <td class="num ">$0.00</td></tr>
+    
+    </tbody>
+    <tfoot><tr class="total"><td>Total</td><td class="num">27</td><td class="num">30</td>
+      <td class="num">$1,800.00</td><td class="num">$1,200.00</td>
+      <td class="num neg">$600.00</td></tr></tfoot>
+  </table>
+  </div>
+</section>
+
+
+<section class="card" aria-labelledby="rpt-list-title">
+  <h2 id="rpt-list-title">Every practice, newest first</h2>
+  
+  <div class="rpt-scroll">
+  <table>
+    <thead><tr><th>Practice</th><th>Rink</th><th class="num">Extra skaters</th><th class="num">Due</th><th class="num">Paid</th>
+      <th>Status</th><th class="hide-sm">Notes</th></tr></thead>
+    <tbody>
+    
+      <tr><td class="nowrap">Tue Oct 20, 2026 <span class="rpt-chip">Upcoming</span></td>
+        <td>TSPC</td>
+        <td class="num">0</td>
+        <td class="num"></td>
+        <td class="num"></td>
+        <td><span class="rpt-chip ">No extra skaters</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Sun Oct 18, 2026</td>
+        <td>Lakewood</td>
+        <td class="num">3</td>
+        <td class="num">$180.00</td>
+        <td class="num"></td>
+        <td><span class="rpt-chip neg">Not paid yet</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Sat Oct 17, 2026</td>
+        <td>Lakewood</td>
+        <td class="num">1</td>
+        <td class="num">$60.00</td>
+        <td class="num"></td>
+        <td><span class="rpt-chip neg">Not paid yet</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Thu Oct 15, 2026</td>
+        <td>TSPC</td>
+        <td class="num">2</td>
+        <td class="num">$120.00</td>
+        <td class="num">$60.00</td>
+        <td><span class="rpt-chip warn">Partly paid: $60.00 still due</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Tue Oct 13, 2026</td>
+        <td>LA Kings Iceland</td>
+        <td class="num">1</td>
+        <td class="num">$60.00</td>
+        <td class="num">$60.00</td>
+        <td><span class="rpt-chip pos">Paid</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Tue Oct 6, 2026</td>
+        <td>LA Kings Iceland</td>
+        <td class="num">0</td>
+        <td class="num"></td>
+        <td class="num"></td>
+        <td><span class="rpt-chip ">No extra skaters</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Sat Oct 3, 2026</td>
+        <td>Lakewood</td>
+        <td class="num">0</td>
+        <td class="num"></td>
+        <td class="num"></td>
+        <td><span class="rpt-chip ">No extra skaters</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Thu Oct 1, 2026</td>
+        <td>TSPC</td>
+        <td class="num">2</td>
+        <td class="num">$120.00</td>
+        <td class="num">$120.00</td>
+        <td><span class="rpt-chip pos">Paid</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Tue Sep 29, 2026</td>
+        <td>LA Kings Iceland</td>
+        <td class="num">2</td>
+        <td class="num">$120.00</td>
+        <td class="num">$120.00</td>
+        <td><span class="rpt-chip pos">Paid</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Sun Sep 27, 2026</td>
+        <td>Lakewood</td>
+        <td class="num">0</td>
+        <td class="num"></td>
+        <td class="num"></td>
+        <td><span class="rpt-chip ">No extra skaters</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Sat Sep 26, 2026</td>
+        <td>Lakewood</td>
+        <td class="num">0</td>
+        <td class="num"></td>
+        <td class="num"></td>
+        <td><span class="rpt-chip ">No extra skaters</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Thu Sep 24, 2026</td>
+        <td>TSPC</td>
+        <td class="num">3</td>
+        <td class="num">$180.00</td>
+        <td class="num">$180.00</td>
+        <td><span class="rpt-chip pos">Paid</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Tue Sep 22, 2026</td>
+        <td>LA Kings Iceland</td>
+        <td class="num">2</td>
+        <td class="num">$120.00</td>
+        <td class="num"></td>
+        <td><span class="rpt-chip neg">Not paid yet</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Sun Sep 20, 2026</td>
+        <td>Lakewood</td>
+        <td class="num">0</td>
+        <td class="num"></td>
+        <td class="num"></td>
+        <td><span class="rpt-chip ">No extra skaters</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Sat Sep 19, 2026</td>
+        <td>Lakewood</td>
+        <td class="num">1</td>
+        <td class="num">$60.00</td>
+        <td class="num"></td>
+        <td><span class="rpt-chip neg">Not paid yet</span></td>
+        <td class="hide-sm rpt-muted small">2 hrs</td></tr>
+    
+      <tr><td class="nowrap">Thu Sep 17, 2026</td>
+        <td>TSPC</td>
+        <td class="num">2</td>
+        <td class="num">$120.00</td>
+        <td class="num">$120.00</td>
+        <td><span class="rpt-chip pos">Paid</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Tue Sep 15, 2026</td>
+        <td>LA Kings Iceland</td>
+        <td class="num">2</td>
+        <td class="num">$120.00</td>
+        <td class="num"></td>
+        <td><span class="rpt-chip neg">Not paid yet</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Tue Sep 8, 2026</td>
+        <td>LA Kings Iceland</td>
+        <td class="num">0</td>
+        <td class="num"></td>
+        <td class="num"></td>
+        <td><span class="rpt-chip ">No extra skaters</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Tue Sep 1, 2026</td>
+        <td>LA Kings Iceland</td>
+        <td class="num">2</td>
+        <td class="num">$120.00</td>
+        <td class="num">$120.00</td>
+        <td><span class="rpt-chip pos">Paid</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Sun Aug 30, 2026</td>
+        <td>Lakewood</td>
+        <td class="num">0</td>
+        <td class="num"></td>
+        <td class="num"></td>
+        <td><span class="rpt-chip ">No extra skaters</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Sat Aug 29, 2026</td>
+        <td>Lakewood</td>
+        <td class="num">0</td>
+        <td class="num"></td>
+        <td class="num"></td>
+        <td><span class="rpt-chip ">No extra skaters</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Thu Aug 27, 2026</td>
+        <td>TSPC</td>
+        <td class="num">3</td>
+        <td class="num">$180.00</td>
+        <td class="num">$180.00</td>
+        <td><span class="rpt-chip pos">Paid</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Tue Aug 25, 2026</td>
+        <td>LA Kings Iceland</td>
+        <td class="num">0</td>
+        <td class="num"></td>
+        <td class="num"></td>
+        <td><span class="rpt-chip ">No extra skaters</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Sat Aug 22, 2026</td>
+        <td>TSPC</td>
+        <td class="num">0</td>
+        <td class="num"></td>
+        <td class="num"></td>
+        <td><span class="rpt-chip ">No extra skaters</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Thu Aug 20, 2026</td>
+        <td>TSPC</td>
+        <td class="num">2</td>
+        <td class="num">$120.00</td>
+        <td class="num">$120.00</td>
+        <td><span class="rpt-chip pos">Paid</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Tue Aug 18, 2026</td>
+        <td>LA Kings Iceland</td>
+        <td class="num">2</td>
+        <td class="num">$120.00</td>
+        <td class="num">$120.00</td>
+        <td><span class="rpt-chip pos">Paid</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+      <tr><td class="nowrap">Sat Aug 15, 2026</td>
+        <td>TSPC</td>
+        <td class="num">0</td>
+        <td class="num"></td>
+        <td class="num"></td>
+        <td><span class="rpt-chip ">No extra skaters</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
+    </tbody>
+    <tfoot><tr class="total"><td colspan="2">Total</td><td class="num">30</td>
+      <td class="num">$1,800.00</td><td class="num">$1,200.00</td><td></td><td class="hide-sm"></td></tr></tfoot>
+  </table>
+  </div>
+  
+  
+  <p class="rpt-note">Paid skaters = amount received ÷ $60.00. Balance due counts practices up to today
+    that haven't been fully paid for.</p>
+</section>
+
+      </div>
+    </main>
+  </div>
+
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <script src="app.js?v=17"></script>
+</body>
+</html>
