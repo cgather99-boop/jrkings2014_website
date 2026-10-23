@@ -13,7 +13,13 @@
 
   "nav": [
     { "label": "Home", "href": "index.html", "icon": "home" },
-    { "label": "Players", "href": "players.html", "icon": "users" }
+    { "label": "Players", "href": "players.html", "icon": "users" },
+    { "label": "Fundraisers", "children": [
+      { "label": "Got My Back", "href": "index.html#fundraising-alert", "icon": "shirt" },
+      { "label": "50/50 Raffle", "href": "index.html#fifty-fifty", "icon": "ticket" },
+      { "label": "Kings Night", "href": "index.html#go-kings", "icon": "crown" },
+      { "label": "Surfboard", "href": "index.html#surfboard", "icon": "wave" }
+    ] }
   ],
 
   "reportNav": [
@@ -56,7 +62,8 @@
         "url": "https://venmo.com/code?user_id=4693719575955224094&created=1790382194.316657&printed=1"
       }
     ],
-    "payNote": "On your phone? Tap the Venmo code to open Venmo, or send a Zelle payment to the email shown.",
+    "payNote": "On your phone? Tap the Venmo code to open Venmo, or send a Zelle payment to the email shown. Pick your player first: when you tap a code, an email to the team pulls up with your player and shirt name filled in, so just add the amount and hit send.",
+    "emailSubject": "Got My Back",
     "linkText": "Add your name",
     "linkUrl": ""
   },
@@ -71,6 +78,39 @@
     "logoAlt": "Fleur-de-lis",
     "linkText": "Visit the tournament website",
     "linkUrl": "https://www.tournoipee-wee.qc.ca/en/index.html"
+  },
+
+  "fiftyFifty": {
+    "kicker": "50/50 Raffle",
+    "title": "Feeling lucky?",
+    "jackpot": 500,
+    "jackpotNote": "Half the pot goes to the winner, half sends the team to Quebec!",
+    "drawDate": "2026-11-15",
+    "drawTime": "19:00",
+    "drawPlace": "SAMPLE - Toyota Sports Performance Center",
+    "ticketInfo": "SAMPLE - 1 ticket $10 · 3 tickets $25",
+    "buttonText": "Get my tickets!",
+    "buttonUrl": "https://venmo.com/code?user_id=4693719575955224094&created=1790382194.316657&printed=1",
+    "note": "SAMPLE - Put “50/50 + your name” in the Venmo note. Need not be present to win.",
+    "winner": ""
+  },
+
+  "surfboard": {
+    "kicker": "Surfboard Fundraiser",
+    "title": "Catch the wave!",
+    "boardText": "JR KINGS",
+    "text": "SAMPLE - Describe the surfboard fundraiser here: what the board is, how to take part, and when it ends.",
+    "buttonText": "Participate",
+    "buttonUrl": "",
+    "note": ""
+  },
+
+  "kingsGame": {
+    "game": "LA Kings vs San Jose Sharks",
+    "date": "Dec 9",
+    "text": "$10 off each ticket sold helps get the kids to Quebec!",
+    "emailText": "Request tickets",
+    "emailSubject": "LA Kings vs Sharks tickets (Dec 9)"
   },
 
   "goal": {
@@ -111,8 +151,5 @@
 
   ],
 
-  "social": [
-    { "platform": "instagram", "handle": "jrkings2014aaa", "url": "https://www.instagram.com/jrkings2014aaa?stkn=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr" }
-
-  ]
+  "social": []
 }

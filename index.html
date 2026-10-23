@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
   <link rel="stylesheet" href="theme.css?v=6">
-  <link rel="stylesheet" href="styles.css?v=18">
+  <link rel="stylesheet" href="styles.css?v=21">
 </head>
 <body data-page="home">
   <!-- Header, sidebar, and footer are filled in by app.js (shared across pages). -->
@@ -48,6 +48,101 @@
             </div>
           </section>
 
+          <!-- 50/50 raffle and Geaux Kings side by side (stacked on narrow screens) -->
+          <div class="promo-row">
+            <section id="fifty-fifty" class="card fifty" aria-labelledby="fifty-title" hidden>
+              <div class="fifty-sparkles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <p id="fifty-kicker" class="fifty-kicker"></p>
+              <h2 id="fifty-title" class="fifty-title"></h2>
+
+              <div class="fifty-ticket">
+                <span class="fifty-label">Current jackpot</span>
+                <strong id="fifty-jackpot" class="fifty-jackpot">$0</strong>
+                <span id="fifty-jackpot-note" class="fifty-split" hidden></span>
+              </div>
+
+              <div class="fifty-draw">
+                <p class="fifty-label">Drawing</p>
+                <p id="fifty-date" class="fifty-date"></p>
+                <p id="fifty-place" class="fifty-place" hidden></p>
+                <div id="fifty-countdown" class="fifty-countdown" aria-hidden="true"></div>
+                <p id="fifty-done" class="fifty-done" hidden></p>
+              </div>
+
+              <p id="fifty-tickets" class="fifty-tickets" hidden></p>
+              <a id="fifty-btn" class="btn fifty-btn" href="#donate">
+                <span id="fifty-btn-text"></span>
+                <span class="fifty-btn-icon" aria-hidden="true">🎟️</span>
+              </a>
+              <p id="fifty-note" class="fifty-note" hidden></p>
+            </section>
+
+            <!-- Cheer tile in LA Kings black and silver. Tap it for a burst of confetti. -->
+            <section id="go-kings" class="go-kings" aria-label="Geaux Kings Geaux!">
+              <button id="go-kings-cheer" class="go-kings-cheer" type="button" aria-label="Geaux Kings Geaux! Tap to cheer">
+                <svg class="go-kings-crown" viewBox="0 0 64 40" aria-hidden="true">
+                  <path d="M4 34 0 8l16 12L32 0l16 20L64 8l-4 26z"/>
+                  <rect x="4" y="35" width="56" height="5" rx="1"/>
+                  <circle cx="0" cy="8" r="3.5"/><circle cx="32" cy="2" r="3.5"/><circle cx="64" cy="8" r="3.5"/>
+                </svg>
+                <span class="go-kings-text" aria-hidden="true">
+                  <span class="go-kings-go">Geaux</span>
+                  <span class="go-kings-name">Kings</span>
+                  <span class="go-kings-go">Geaux!</span>
+                </span>
+                <span class="go-kings-tap" aria-hidden="true">Tap to cheer</span>
+              </button>
+              <div id="go-kings-event" class="go-kings-event" hidden>
+                <p class="go-kings-join">Join us at</p>
+                <p id="go-kings-game" class="go-kings-game"></p>
+                <p id="go-kings-date" class="go-kings-date" hidden></p>
+                <p id="go-kings-text" class="go-kings-info" hidden></p>
+                <a id="go-kings-email" class="go-kings-btn" href="#" hidden></a>
+                <p id="go-kings-address" class="go-kings-address" hidden></p>
+              </div>
+            </section>
+          </div>
+
+          <!-- Surfboard fundraiser: a board bobbing on the waves, with a participate button -->
+          <section id="surfboard" class="card surf" aria-labelledby="surf-title" hidden>
+            <div class="surf-sun" aria-hidden="true"></div>
+            <p id="surf-kicker" class="surf-kicker"></p>
+            <h2 id="surf-title" class="surf-title"></h2>
+            <div class="surf-scene" aria-hidden="true">
+              <svg class="surf-board" viewBox="0 0 600 160">
+                <defs>
+                  <clipPath id="surf-board-shape">
+                    <path d="M20 80C20 44 110 28 300 28c170 0 255 22 292 52-37 30-122 52-292 52C110 132 20 116 20 80z"/>
+                  </clipPath>
+                  <linearGradient id="surf-board-shine" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#fff" stop-opacity="0.55"/>
+                    <stop offset="0.45" stop-color="#fff" stop-opacity="0"/>
+                    <stop offset="1" stop-color="#000" stop-opacity="0.12"/>
+                  </linearGradient>
+                </defs>
+                <g clip-path="url(#surf-board-shape)">
+                  <rect class="surf-board-deck" width="600" height="160"/>
+                  <rect class="surf-board-stripe" x="120" width="34" height="160"/>
+                  <rect class="surf-board-stripe" x="164" width="12" height="160"/>
+                  <rect class="surf-board-stripe" x="446" width="12" height="160"/>
+                  <line class="surf-board-stringer" x1="20" y1="80" x2="592" y2="80"/>
+                  <rect width="600" height="160" fill="url(#surf-board-shine)"/>
+                </g>
+                <path class="surf-board-rail" d="M20 80C20 44 110 28 300 28c170 0 255 22 292 52-37 30-122 52-292 52C110 132 20 116 20 80z"/>
+                <text id="surf-board-text" class="surf-board-text" x="310" y="92" text-anchor="middle"></text>
+              </svg>
+              <svg class="surf-waves" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                <path d="M0 30c50-20 100-20 150 0s100 20 150 0 100-20 150 0 100 20 150 0 100-20 150 0 100 20 150 0 100-20 150 0 100 20 150 0v30H0z"/>
+              </svg>
+            </div>
+            <p id="surf-text" class="surf-text" hidden></p>
+            <a id="surf-btn" class="btn surf-btn" href="#donate">
+              <span id="surf-btn-text"></span>
+              <span class="surf-btn-icon" aria-hidden="true">🤙</span>
+            </a>
+            <p id="surf-note" class="surf-note" hidden></p>
+          </section>
+
           <section id="about" class="card about" aria-labelledby="about-title" hidden>
             <img id="about-logo" class="about-logo" src="" alt="" hidden>
             <div class="about-body">
@@ -73,6 +168,6 @@
 
   <footer id="site-footer" class="site-footer"></footer>
 
-  <script src="app.js?v=21"></script>
+  <script src="app.js?v=24"></script>
 </body>
 </html>

@@ -152,6 +152,23 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
 }
 .sidebar-donate { padding-block: 8px; }
 
+/* Nav group (e.g. "Fundraisers"): small heading with its links underneath */
+.nav-group { flex: 1 1 100%; }
+.nav-group-title {
+  display: block;
+  margin: 8px 14px 4px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.nav-sublist { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+.nav-sublist .nav-link { font-size: 0.95rem; }
+.nav-sublist .nav-link svg { width: 18px; height: 18px; }
+
 /* Left column = sidebar menu. Phones: the menu sits above the content. */
 .left-col { display: contents; }
 .sidebar { order: 0; }
@@ -175,6 +192,8 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   .sidebar { flex-direction: column; align-items: stretch; padding: 12px; }
   .nav-list { flex-direction: column; }
   .nav-link { padding: 10px 14px; }
+  .nav-sublist { flex-direction: column; padding-left: 10px; }
+  .nav-sublist .nav-link { padding-block: 8px; }
   .sidebar-donate { margin-top: 8px; }
 
 }
@@ -358,7 +377,21 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   color: var(--text);
   text-decoration: none;
 }
-a.pay-card:hover { border-color: var(--primary); }
+button.pay-card { font: inherit; cursor: pointer; }
+a.pay-card:hover, button.pay-card:hover { border-color: var(--primary); }
+.pay-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 12px; }
+.pay-field { display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; font-weight: 700; color: var(--primary-dark); }
+.pay-field select, .pay-field input {
+  min-width: 0;
+  padding: 8px 10px;
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  font-weight: 400;
+}
+.pay-field select:focus, .pay-field input:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
 .pay-qr { display: block; width: 100%; max-width: 170px; height: auto; image-rendering: pixelated; }
 .pay-brand { margin-top: 6px; font-size: 1.35rem; font-weight: 900; line-height: 1.1; }
 .pay-zelle { color: #6D1ED4; }
@@ -385,6 +418,447 @@ a.pay-card:hover { border-color: var(--primary); }
 @container (min-width: 640px) {
   .about { flex-direction: row; align-items: flex-start; gap: 28px; padding: 28px; }
   .about-logo { width: 190px; }
+}
+
+/* ---------- 50/50 raffle + Geaux Kings row (home, under the Got My Back box) ---------- */
+.promo-row { order: 0; display: grid; gap: 20px; }
+@container (min-width: 600px) {
+  .promo-row { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; }
+}
+
+/* ---------- Surfboard fundraiser (home, under the 50/50 + Kings row) ----------
+   Beach colors of its own: sky-to-sea blue, a gold board with purple stripes. */
+.surf {
+  --surf-sky: #8FD8F0;
+  --surf-sea: #1C8FB5;
+  --surf-deep: #0E5E7E;
+  order: 0;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: #FFFFFF;
+  border: 3px solid var(--surf-sea);
+  background: linear-gradient(180deg, var(--surf-sky) 0%, #4FB6D8 45%, var(--surf-sea) 72%, var(--surf-deep) 100%);
+}
+.surf > *:not(.surf-sun) { position: relative; }
+.surf-sun {
+  position: absolute;
+  top: -40px; right: -30px;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFF6C9 0 40%, var(--accent) 41% 60%, transparent 61%);
+  opacity: 0.9;
+}
+.surf-kicker {
+  display: inline-block;
+  margin: 0 0 4px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: #FFFFFF;
+  color: var(--surf-deep);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: rotate(-3deg);
+  box-shadow: 0 3px 0 var(--surf-deep);
+}
+.card .surf-title {
+  margin: 4px 0 0;
+  color: #FFFFFF;
+  font-family: 'Pacifico', 'Brush Script MT', cursive;
+  font-weight: 400;
+  font-size: 2.2rem;
+  line-height: 1.25;
+  text-shadow: 0 3px 0 var(--surf-deep);
+}
+.card .surf-title::after { display: none; }
+
+/* The board rides above the waves, bobbing gently */
+.surf-scene { position: relative; margin: 4px -20px 0; padding: 0 20px; }
+.surf-board {
+  display: block;
+  width: min(100%, 560px);
+  height: auto;
+  margin: 0 auto -18px;
+  filter: drop-shadow(0 10px 6px rgba(14, 94, 126, 0.45));
+  animation: surf-bob 3.2s ease-in-out infinite;
+  transform-origin: 50% 70%;
+}
+.surf-board-deck { fill: var(--accent); }
+.surf-board-stripe { fill: var(--primary); }
+.surf-board-stringer { stroke: var(--primary-dark); stroke-width: 2; stroke-opacity: 0.35; }
+.surf-board-rail { fill: none; stroke: var(--primary-dark); stroke-width: 4; }
+.surf-board-text {
+  fill: var(--primary);
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 34px;
+  font-style: italic;
+  letter-spacing: 3px;
+}
+@keyframes surf-bob {
+  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+  50% { transform: translateY(-8px) rotate(1.5deg); }
+}
+.surf-waves {
+  display: block;
+  width: 200%;
+  height: 34px;
+  fill: rgba(255, 255, 255, 0.55);
+  animation: surf-roll 6s linear infinite;
+}
+@keyframes surf-roll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.surf-text { margin: 14px auto 0; max-width: 46ch; font-weight: 600; text-shadow: 0 1px 2px rgba(14, 94, 126, 0.6); }
+.surf-btn {
+  position: relative;
+  margin-top: 16px;
+  min-width: 220px;
+  padding-block: 14px;
+  font-size: 1.15rem;
+  font-weight: 900;
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  color: var(--surf-deep);
+  box-shadow: 0 5px 0 var(--surf-deep), 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+.surf-btn:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.surf-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--surf-deep); }
+.surf-btn-icon { display: inline-block; font-size: 1.3rem; transition: transform 0.2s; }
+.surf-btn:hover .surf-btn-icon { transform: rotate(-20deg) scale(1.2); }
+.surf-note { margin: 12px 0 0; font-size: 0.8rem; opacity: 0.9; }
+
+/* ---------- 50/50 raffle ---------- */
+.fifty {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: var(--on-primary);
+  border: 3px solid var(--accent);
+  background:
+    radial-gradient(circle at 15% 10%, color-mix(in srgb, var(--accent) 30%, transparent) 0 60px, transparent 61px),
+    radial-gradient(circle at 95% 85%, color-mix(in srgb, var(--on-primary) 10%, transparent) 0 80px, transparent 81px),
+    linear-gradient(160deg, var(--primary) 0%, var(--primary-dark) 100%);
+}
+.fifty > *:not(.fifty-sparkles) { position: relative; }
+
+/* Twinkling stars scattered behind the content */
+.fifty-sparkles i {
+  position: absolute;
+  width: 14px; height: 14px;
+  background: var(--accent);
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  animation: fifty-twinkle 2.4s ease-in-out infinite;
+}
+.fifty-sparkles i:nth-child(1) { top: 8%;  left: 8%;  animation-delay: 0s; }
+.fifty-sparkles i:nth-child(2) { top: 14%; right: 10%; width: 10px; height: 10px; animation-delay: 0.6s; }
+.fifty-sparkles i:nth-child(3) { top: 42%; left: 4%;  width: 8px;  height: 8px;  animation-delay: 1.2s; }
+.fifty-sparkles i:nth-child(4) { top: 38%; right: 5%; animation-delay: 1.8s; }
+.fifty-sparkles i:nth-child(5) { bottom: 18%; left: 9%; width: 10px; height: 10px; animation-delay: 0.9s; }
+.fifty-sparkles i:nth-child(6) { bottom: 8%; right: 14%; width: 8px; height: 8px; animation-delay: 1.5s; background: var(--on-primary); }
+.fifty-sparkles i:nth-child(7) { top: 62%; right: 3%; width: 9px; height: 9px; animation-delay: 0.3s; background: var(--on-primary); }
+@keyframes fifty-twinkle {
+  0%, 100% { transform: scale(0.4) rotate(0deg); opacity: 0.3; }
+  50% { transform: scale(1.1) rotate(45deg); opacity: 1; }
+}
+
+.fifty-kicker {
+  display: inline-block;
+  margin: 0 0 4px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: rotate(-3deg);
+  box-shadow: 0 3px 0 var(--primary-dark);
+}
+.card .fifty-title {
+  margin: 4px 0 14px;
+  color: var(--accent);
+  font-family: 'Pacifico', 'Brush Script MT', cursive;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.25;
+  text-shadow: 0 3px 0 var(--primary-dark);
+}
+.card .fifty-title::after { display: none; }
+
+.fifty-label {
+  display: block;
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* Jackpot on a ticket stub: notched sides and a dashed tear line */
+.fifty-ticket {
+  margin: 0 -4px 16px;
+  padding: 14px 22px 12px;
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: 10px;
+  -webkit-mask: radial-gradient(circle 12px at 0 50%, #0000 98%, #000) left / 51% 100% no-repeat,
+                radial-gradient(circle 12px at 100% 50%, #0000 98%, #000) right / 51% 100% no-repeat;
+          mask: radial-gradient(circle 12px at 0 50%, #0000 98%, #000) left / 51% 100% no-repeat,
+                radial-gradient(circle 12px at 100% 50%, #0000 98%, #000) right / 51% 100% no-repeat;
+  outline: 2px dashed color-mix(in srgb, var(--on-accent) 35%, transparent);
+  outline-offset: -8px;
+  transform: rotate(-1.5deg);
+  animation: fifty-bob 3.5s ease-in-out infinite;
+}
+@keyframes fifty-bob {
+  0%, 100% { transform: rotate(-1.5deg) translateY(0); }
+  50% { transform: rotate(1deg) translateY(-4px); }
+}
+.fifty-jackpot {
+  display: block;
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+.fifty-jackpot.is-landed { animation: fifty-pop 0.45s cubic-bezier(0.3, 1.8, 0.5, 1); }
+@keyframes fifty-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.fifty-split { display: block; margin-top: 4px; font-size: 0.8rem; font-weight: 700; }
+
+.fifty-draw { margin-bottom: 14px; }
+.fifty-date { margin: 2px 0 0; font-size: 1.05rem; font-weight: 800; }
+.fifty-place { margin: 0; font-size: 0.85rem; opacity: 0.85; }
+.fifty-countdown { display: flex; justify-content: center; gap: 6px; margin-top: 10px; }
+.fifty-unit {
+  min-width: 54px;
+  padding: 6px 4px 4px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--on-primary) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--on-primary) 22%, transparent);
+  display: flex; flex-direction: column; align-items: center;
+}
+.fifty-unit b { font-size: 1.4rem; line-height: 1.1; color: var(--accent); font-variant-numeric: tabular-nums; }
+.fifty-unit small { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.85; }
+.fifty-done { margin: 10px 0 0; font-weight: 800; color: var(--accent); }
+
+.fifty-tickets { margin: 0 0 10px; font-weight: 700; font-size: 0.9rem; }
+.fifty-btn {
+  position: relative;
+  width: 100%;
+  padding-block: 14px;
+  font-size: 1.15rem;
+  font-weight: 900;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 5px 0 var(--accent-hover), 0 8px 18px rgba(0, 0, 0, 0.25);
+  animation: fifty-nudge 4s ease-in-out infinite;
+}
+.fifty-btn:hover { background: var(--accent-hover); border-color: var(--accent-hover); animation: fifty-wiggle 0.5s ease-in-out; }
+.fifty-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--accent-hover); }
+.fifty-btn-icon { display: inline-block; font-size: 1.3rem; transition: transform 0.2s; }
+.fifty-btn:hover .fifty-btn-icon { transform: rotate(-15deg) scale(1.2); }
+@keyframes fifty-nudge {
+  0%, 86%, 100% { transform: rotate(0); }
+  89% { transform: rotate(-2deg); }
+  92% { transform: rotate(2deg); }
+  95% { transform: rotate(-1deg); }
+}
+@keyframes fifty-wiggle {
+  0%, 100% { transform: rotate(0) scale(1.02); }
+  25% { transform: rotate(-2deg) scale(1.04); }
+  75% { transform: rotate(2deg) scale(1.04); }
+}
+.fifty-note { margin: 12px 0 0; font-size: 0.8rem; opacity: 0.85; }
+
+/* Confetti burst from the button (added by app.js) */
+.confetti-bit {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 8px; height: 12px;
+  border-radius: 2px;
+  pointer-events: none;
+  animation: confetti-fly 0.9s cubic-bezier(0.2, 0.7, 0.4, 1) forwards;
+}
+@keyframes confetti-fly {
+  from { transform: translate(-50%, -50%) rotate(0); opacity: 1; }
+  to { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy) + 60px)) rotate(var(--spin)); opacity: 0; }
+}
+
+/* ---------- "Geaux KINGS Geaux!" tile (home, next to the 50/50 raffle) ----------
+   Deliberately uses the LA Kings' NHL black and silver instead of the theme colors. */
+.go-kings {
+  --kings-black: #111111;
+  --kings-silver: #A2AAAD;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 22px 16px 14px;
+  border: 3px solid var(--kings-silver);
+  border-radius: var(--radius);
+  background:
+    repeating-linear-gradient(-45deg, transparent 0 18px, rgba(255, 255, 255, 0.04) 18px 36px),
+    radial-gradient(ellipse at 50% 0%, #3A3A3A 0%, var(--kings-black) 70%);
+  box-shadow: inset 0 0 0 2px var(--kings-black), inset 0 0 0 4px rgba(162, 170, 173, 0.45), var(--shadow);
+  color: #FFFFFF;
+  text-align: center;
+}
+.go-kings > * { position: relative; }
+.go-kings-cheer {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+/* A light sheen sweeps across every few seconds */
+.go-kings::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.18) 50%, transparent 65%);
+  transform: translateX(-100%);
+  animation: go-kings-sheen 5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes go-kings-sheen {
+  0%, 60% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.go-kings-crown {
+  display: block;
+  width: 64px;
+  height: auto;
+  margin: 0 auto 6px;
+  overflow: visible;
+  fill: var(--kings-silver);
+  filter: drop-shadow(0 2px 0 #000);
+  animation: go-kings-bounce 2.4s ease-in-out infinite;
+}
+@keyframes go-kings-bounce {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-4px) rotate(4deg); }
+}
+.go-kings-text {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 10px;
+  font-family: Impact, "Arial Black", "Franklin Gothic Heavy", sans-serif;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.go-kings-go {
+  font-size: 1.3rem;
+  color: var(--kings-silver);
+  letter-spacing: 0.04em;
+}
+.go-kings-name {
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  padding-right: 4px; /* room for the drop shadow */
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 45%, #C9CED1 55%, #8C9396 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 1px #000;
+  filter: drop-shadow(3px 3px 0 #000) drop-shadow(0 0 1px var(--kings-silver));
+}
+.go-kings-tap {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kings-silver);
+  opacity: 0.8;
+}
+.go-kings-cheer:hover .go-kings-crown { fill: #FFFFFF; }
+.go-kings-cheer:active { transform: translateY(1px); }
+
+/* Game night details under the cheer */
+.go-kings-event {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 2px solid rgba(162, 170, 173, 0.35);
+}
+.go-kings-event p { margin: 0; }
+.go-kings-join {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kings-silver);
+}
+.go-kings-game {
+  margin-top: 2px !important;
+  font-family: Impact, "Arial Black", "Franklin Gothic Heavy", sans-serif;
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.go-kings-date {
+  display: inline-block;
+  margin-top: 8px !important;
+  padding: 3px 14px;
+  border-radius: 999px;
+  background: var(--kings-silver);
+  color: var(--kings-black);
+  font-weight: 900;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
+}
+.go-kings-info { margin-top: 10px !important; font-size: 0.9rem; line-height: 1.4; }
+.go-kings-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 2px solid #FFFFFF;
+  background: #FFFFFF;
+  color: var(--kings-black);
+  font-weight: 900;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.go-kings-btn:hover { background: transparent; color: #FFFFFF; }
+.go-kings-address {
+  margin-top: 6px !important;
+  font-size: 0.8rem;
+  color: var(--kings-silver);
+  overflow-wrap: anywhere;
+}
+.go-kings.is-cheering { animation: go-kings-shake 0.5s ease-in-out; }
+@keyframes go-kings-shake {
+  0%, 100% { transform: rotate(0) scale(1); }
+  20% { transform: rotate(-3deg) scale(1.04); }
+  40% { transform: rotate(3deg) scale(1.04); }
+  60% { transform: rotate(-2deg) scale(1.02); }
+  80% { transform: rotate(1deg) scale(1.01); }
 }
 
 /* ---------- Donate ---------- */
@@ -532,6 +1006,9 @@ a.pay-card:hover { border-color: var(--primary); }
 
 @media (prefers-reduced-motion: reduce) {
   .progress-fill { transition: none; }
+  .fifty-sparkles i, .fifty-ticket, .fifty-btn, .fifty-btn:hover { animation: none; }
+  .go-kings::before, .go-kings-crown { animation: none; }
+  .surf-board, .surf-waves { animation: none; }
 }
 
 /* ---------- Phone refinements ---------- */

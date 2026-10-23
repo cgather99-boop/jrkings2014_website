@@ -26,6 +26,9 @@ const ICONS = {
   chart: { d: 'M3 3h2v16h16v2H3V3zm4 9h3v6H7v-6zm5-5h3v11h-3V7zm5 3h3v8h-3v-8z' },
   list: { d: 'M3 5h3v3H3V5zm5 .5h13v2H8v-2zM3 10.5h3v3H3v-3zm5 .5h13v2H8v-2zM3 16h3v3H3v-3zm5 .5h13v2H8v-2z' },
   skate: { d: 'M6 2h5v7.5l5.6 2.2a4 4 0 0 1 2.4 3.7V17H5V3a1 1 0 0 1 1-1zM3 19h17v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1z' },
+  ticket: { d: 'M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3a3 3 0 0 0 0 6v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a3 3 0 0 0 0-6V6zm11 0v2h2V6h-2zm0 5v2h2v-2h-2zm0 5v2h2v-2h-2z' },
+  crown: { d: 'M2 7l5 4 5-7 5 7 5-4-2 11H4L2 7zm2 13h16v2H4v-2z' },
+  wave: { d: 'M2 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2v3c-2.5 0-2.5-2-5-2s-2.5 2-5 2-2.5-2-5-2-2.5 2-5 2v-3zm0-6c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2v3c-2.5 0-2.5-2-5-2s-2.5 2-5 2-2.5-2-5-2-2.5 2-5 2V9z' },
   link: { d: 'M10.6 13.4a1 1 0 0 1 0-1.4l3-3a1 1 0 1 1 1.4 1.4l-3 3a1 1 0 0 1-1.4 0zM8.5 20a4.5 4.5 0 0 1-3.2-7.7l2.5-2.5 1.4 1.4-2.5 2.5a2.5 2.5 0 0 0 3.5 3.5l2.5-2.5 1.4 1.4-2.5 2.5A4.5 4.5 0 0 1 8.5 20zm7.7-5.8-1.4-1.4 2.5-2.5a2.5 2.5 0 0 0-3.5-3.5l-2.5 2.5-1.4-1.4 2.5-2.5a4.5 4.5 0 0 1 6.4 6.4l-2.6 2.4z' },
 };
 ICONS.twitter = ICONS.x;
@@ -162,19 +165,39 @@ function buildShell() {
   new ResizeObserver(setHeight).observe(header);
 }
 
+function navLink(item) {
+  const href = item.href || '#';
+  const a = el('a', 'nav-link');
+  a.href = href;
+  a.append(icon(item.icon || 'link'), el('span', '', item.label));
+  // Links to a spot on a page (index.html#fifty-fifty) never count as the current page.
+  if (!href.includes('#') && isCurrentPage(href)) a.setAttribute('aria-current', 'page');
+  return a;
+}
+
+// A nav item with "children" is a group: its label is a small heading with its links listed underneath.
 function renderNav(nav) {
   const list = $('nav-list');
   const items = Array.isArray(nav) && nav.length ? nav : DEFAULT_NAV;
   list.replaceChildren();
 
   for (const item of items) {
-    const href = item.href || '#';
-    const a = el('a', 'nav-link');
-    a.href = href;
-    a.append(icon(item.icon || 'link'), el('span', '', item.label));
-    if (isCurrentPage(href)) a.setAttribute('aria-current', 'page');
     const li = el('li');
-    li.appendChild(a);
+    if (Array.isArray(item.children)) {
+      li.className = 'nav-group';
+      const heading = el('span', 'nav-group-title', item.label);
+      heading.id = `nav-group-${String(item.label).toLowerCase().replace(/\W+/g, '-')}`;
+      const sub = el('ul', 'nav-sublist');
+      sub.setAttribute('aria-labelledby', heading.id);
+      for (const child of item.children) {
+        const subLi = el('li');
+        subLi.appendChild(navLink(child));
+        sub.appendChild(subLi);
+      }
+      li.append(heading, sub);
+    } else {
+      li.appendChild(navLink(item));
+    }
     list.appendChild(li);
   }
 }
@@ -270,7 +293,7 @@ function richText(str) {
 }
 
 // "Got My Back" box: banner, shirt image, headline, numbered steps, payment QR codes, tournament facts.
-function renderFundraisingAlert(alert) {
+function renderFundraisingAlert(alert, players = [], team) {
   const section = $('fundraising-alert');
   if (!section || !alert || !alert.title) return;
 
@@ -319,16 +342,23 @@ function renderFundraisingAlert(alert) {
   const codes = (alert.payCodes || []).filter((c) => c.qr);
   if (codes.length) {
     const pay = $('alert-pay');
+    const form = team?.contactEmail && players.length ? payForm(players) : null;
+    if (form) pay.appendChild(form.box);
     const grid = el('div', 'pay-grid');
     for (const c of codes) {
       const url = safeUrl(c.url);
-      const card = url ? externalLink(url, 'pay-card') : el('div', 'pay-card');
+      const card = url ? externalLink(url, 'pay-card') : el(form ? 'button' : 'div', 'pay-card');
+      if (!url && form) card.type = 'button';
+      // Tapping a card also pulls up an email to the team with the player and shirt name filled in.
+      // A card that opens an app (Venmo) waits until the donor comes back to this page, so the two don't collide.
+      if (form) card.addEventListener('click', () => openPayEmail(team, alert.emailSubject, form, c.label, !!url));
       const img = el('img', 'pay-qr');
       img.src = c.qr;
       img.alt = `${c.label} QR code${c.handle ? ` for ${c.handle}` : ''}`;
       card.append(img, el('span', `pay-brand pay-${String(c.label).toLowerCase()}`, c.label));
       if (c.handle) card.appendChild(el('span', 'pay-handle', String(c.handle).replace(/(.)@/, '$1​@')));
       if (url) card.appendChild(el('span', 'pay-tap', 'Tap to open'));
+      else if (form) card.appendChild(el('span', 'pay-tap', 'Tap to email us'));
       grid.appendChild(card);
     }
     pay.appendChild(grid);
@@ -354,6 +384,60 @@ function renderFundraisingAlert(alert) {
   section.hidden = false;
 }
 
+// "Who are you supporting?" picker and shirt-name box above the Got My Back QR codes.
+function payForm(players) {
+  const box = el('div', 'pay-form');
+  const pick = el('label', 'pay-field');
+  pick.appendChild(el('span', '', 'Your player'));
+  const select = el('select');
+  select.appendChild(el('option', '', 'Choose a player…')).value = '';
+  const sorted = [...players].sort((a, b) => String(a.name || '').localeCompare(String(b.name || ''), 'en', { sensitivity: 'base' }));
+  for (const p of sorted) {
+    if (!p.name) continue;
+    select.appendChild(el('option', '', p.number != null ? `${p.name} #${p.number}` : p.name)).value = p.name;
+  }
+  pick.appendChild(select);
+
+  const named = el('label', 'pay-field');
+  named.appendChild(el('span', '', 'Name for the shirt'));
+  const input = el('input');
+  input.type = 'text';
+  input.autocomplete = 'name';
+  input.placeholder = 'e.g. The Smith Family';
+  named.appendChild(input);
+
+  box.append(pick, named);
+  const player = () => sorted.find((p) => p.name === select.value);
+  return { box, player, shirtName: () => input.value.trim() };
+}
+
+let pendingPayEmail = '';
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && pendingPayEmail) {
+    location.href = pendingPayEmail;
+    pendingPayEmail = '';
+  }
+});
+
+function openPayEmail(team, subject, form, method, waitForReturn) {
+  const p = form.player();
+  const player = p ? `${p.name}${p.number != null ? ` #${p.number}` : ''}` : '';
+  const body = [
+    `Hi ${team.shortName || 'team'},`,
+    '',
+    `I just sent a Got My Back donation with ${method}.`,
+    '',
+    `Player: ${player}`,
+    `Name for the shirt: ${form.shirtName()}`,
+    'Amount: ',
+    '',
+    'Thank you!',
+  ].join('\n');
+  const mailto = `mailto:${team.contactEmail}?subject=${encodeURIComponent(`${subject || 'Got My Back'}${player ? ` - ${p.name}` : ''}`)}&body=${encodeURIComponent(body)}`;
+  if (waitForReturn) pendingPayEmail = mailto;
+  else location.href = mailto;
+}
+
 function renderAbout(about) {
   const section = $('about');
   const paragraphs = about?.paragraphs || [];
@@ -376,6 +460,178 @@ function renderAbout(about) {
     link.href = url;
     link.textContent = about.linkText || 'Learn more';
     link.hidden = false;
+  }
+
+  section.hidden = false;
+}
+
+// 50/50 raffle card: jackpot that counts up, drawing date with a live countdown, and a ticket button.
+function renderFiftyFifty(ff) {
+  const section = $('fifty-fifty');
+  if (!section || !ff || !ff.drawDate) return;
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  $('fifty-kicker').textContent = ff.kicker || '50/50 Raffle';
+  $('fifty-title').textContent = ff.title || 'Feeling lucky?';
+  if (ff.jackpotNote) {
+    $('fifty-jackpot-note').textContent = ff.jackpotNote;
+    $('fifty-jackpot-note').hidden = false;
+  }
+
+  // Jackpot rolls up from $0 like a slot machine.
+  const jackpot = Number(ff.jackpot) || 0;
+  const pot = $('fifty-jackpot');
+  pot.textContent = money.format(jackpot);
+  if (!calm && jackpot > 0) {
+    const start = performance.now();
+    const step = (now) => {
+      const t = Math.min((now - start) / 1600, 1);
+      pot.textContent = money.format(Math.round(jackpot * (1 - (1 - t) ** 3)));
+      if (t < 1) requestAnimationFrame(step);
+      else pot.classList.add('is-landed');
+    };
+    requestAnimationFrame(step);
+  }
+
+  // Drawing date, e.g. "Sunday, November 15 · 7:00 PM".
+  const draw = parseDate(ff.drawDate);
+  const [hh, mm] = String(ff.drawTime || '').split(':').map(Number);
+  if (ff.drawTime) draw.setHours(hh || 0, mm || 0);
+  const dateText = draw.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+  const timeText = ff.drawTime ? draw.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) : '';
+  $('fifty-date').textContent = timeText ? `${dateText} · ${timeText}` : dateText;
+  if (ff.drawPlace) {
+    $('fifty-place').textContent = ff.drawPlace;
+    $('fifty-place').hidden = false;
+  }
+
+  const countdown = $('fifty-countdown');
+  const units = [['days', 86400], ['hrs', 3600], ['min', 60], ['sec', 1]].map(([label, secs]) => {
+    const box = el('span', 'fifty-unit');
+    const num = el('b', '', '0');
+    box.append(num, el('small', '', label));
+    countdown.appendChild(box);
+    return { num, secs };
+  });
+  // Without a drawTime the drawing counts as the end of that day.
+  const end = ff.drawTime ? draw : new Date(draw.getTime() + 86400000);
+  const tick = () => {
+    let left = Math.max(0, Math.floor((end - Date.now()) / 1000));
+    if (left === 0) {
+      clearInterval(timer);
+      countdown.hidden = true;
+      const done = $('fifty-done');
+      done.textContent = ff.winner ? `🎉 Congrats, ${ff.winner}! 🎉` : 'The drawing is done! Stay tuned for the lucky winner…';
+      done.hidden = false;
+      $('fifty-btn').hidden = true;
+      return;
+    }
+    for (const u of units) {
+      u.num.textContent = String(Math.floor(left / u.secs)).padStart(u.secs === 86400 ? 1 : 2, '0');
+      left %= u.secs;
+    }
+  };
+  const timer = setInterval(tick, 1000);
+  tick();
+
+  if (ff.ticketInfo) {
+    $('fifty-tickets').textContent = ff.ticketInfo;
+    $('fifty-tickets').hidden = false;
+  }
+  if (ff.note) {
+    $('fifty-note').textContent = ff.note;
+    $('fifty-note').hidden = false;
+  }
+
+  // The button opens buttonUrl in a new tab, or jumps to Donate Now if there's no link. A little confetti on the way.
+  const btn = $('fifty-btn');
+  $('fifty-btn-text').textContent = ff.buttonText || 'Get my tickets!';
+  const url = safeUrl(ff.buttonUrl);
+  if (url) {
+    btn.href = url;
+    btn.target = '_blank';
+    btn.rel = 'noopener';
+  }
+  if (!calm) btn.addEventListener('click', () => confetti(btn));
+
+  section.hidden = false;
+}
+
+function confetti(origin, colors = ['var(--accent)', 'var(--on-primary)', 'var(--accent-light)', 'var(--primary-tint)']) {
+  for (let i = 0; i < 28; i++) {
+    const bit = el('span', 'confetti-bit');
+    const angle = Math.random() * Math.PI * 2;
+    const dist = 60 + Math.random() * 90;
+    bit.style.setProperty('--dx', `${Math.cos(angle) * dist}px`);
+    bit.style.setProperty('--dy', `${Math.sin(angle) * dist - 40}px`);
+    bit.style.setProperty('--spin', `${Math.random() * 720 - 360}deg`);
+    bit.style.background = colors[i % colors.length];
+    origin.appendChild(bit);
+    bit.addEventListener('animationend', () => bit.remove());
+  }
+}
+
+// "Geaux KINGS Geaux!" tile: each tap on the crown shakes it and fires black-and-silver confetti.
+// Below it, the Kings game night details and a link to email the team for tickets.
+function renderGoKings(game, email) {
+  const tile = $('go-kings');
+  if (!tile) return;
+
+  if (game?.game) {
+    $('go-kings-game').textContent = game.game;
+    for (const [id, text] of [['go-kings-date', game.date], ['go-kings-text', game.text]]) {
+      if (text) {
+        $(id).textContent = text;
+        $(id).hidden = false;
+      }
+    }
+    if (email) {
+      const link = $('go-kings-email');
+      const subject = game.emailSubject ? `?subject=${encodeURIComponent(game.emailSubject)}` : '';
+      link.href = `mailto:${email}${subject}`;
+      link.textContent = game.emailText || 'Email us for tickets';
+      link.hidden = false;
+      $('go-kings-address').textContent = email;
+      $('go-kings-address').hidden = false;
+    }
+    $('go-kings-event').hidden = false;
+  }
+
+  $('go-kings-cheer').addEventListener('click', () => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    tile.classList.remove('is-cheering');
+    void tile.offsetWidth; // restart the shake animation on repeat taps
+    tile.classList.add('is-cheering');
+    confetti(tile, ['#A2AAAD', '#FFFFFF', '#111111', '#D9DDE0']);
+  });
+}
+
+// Surfboard fundraiser tile: a board on the waves with the team name on it, a short description and a button.
+function renderSurfboard(surf) {
+  const section = $('surfboard');
+  if (!section || !surf?.title) return;
+
+  $('surf-kicker').textContent = surf.kicker || 'Surfboard Fundraiser';
+  $('surf-title').textContent = surf.title;
+  $('surf-board-text').textContent = surf.boardText || '';
+  for (const [id, text] of [['surf-text', surf.text], ['surf-note', surf.note]]) {
+    if (text) {
+      $(id).textContent = text;
+      $(id).hidden = false;
+    }
+  }
+
+  // The button opens buttonUrl in a new tab, or jumps to Donate Now if there's no link.
+  const btn = $('surf-btn');
+  $('surf-btn-text').textContent = surf.buttonText || 'Participate';
+  const url = safeUrl(surf.buttonUrl);
+  if (url) {
+    btn.href = url;
+    btn.target = '_blank';
+    btn.rel = 'noopener';
+  }
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    btn.addEventListener('click', () => confetti(btn, ['#FFFFFF', '#7FD6E8', 'var(--accent)', '#1C8FB5']));
   }
 
   section.hidden = false;
@@ -495,11 +751,17 @@ async function init() {
     renderSocial(data.social);
 
     renderTeamPhoto(data.teamPhoto);
-    renderFundraisingAlert(data.fundraisingAlert);
+    renderFundraisingAlert(data.fundraisingAlert, data.players, data.team);
     renderAbout(data.about);
+    renderFiftyFifty(data.fiftyFifty);
+    renderSurfboard(data.surfboard);
     renderDonate(data.donateLinks);
+    renderGoKings(data.kingsGame, data.team?.contactEmail);
 
     renderPlayers(data.players);
+
+    // Sections appear only after data.json loads, so the browser's own jump to #fifty-fifty etc. misses them.
+    if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
   } catch (err) {
     console.error(err);
     renderNav(DEFAULT_NAV);
