@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Exported from the Jr Kings Fundraising finances app on Oct 18, 2026 9:29 PM.
+  <!-- Exported from the Jr Kings Fundraising finances app on Oct 24, 2026 1:21 PM.
        Don't edit this file: use "Export HTML" in the finances app again to update it. -->
   
   <base href="../">
@@ -12,7 +12,7 @@
   <title>Extra Skaters</title>
   <link rel="icon" href="Images/logo.png">
   <link rel="stylesheet" href="theme.css?v=6">
-  <link rel="stylesheet" href="styles.css?v=18">
+  <link rel="stylesheet" href="styles.css?v=22">
   <style>
     /* Report pages: colors come from the website's theme.css. */
     .rpt { --rpt-pos: #2f7d5b; --rpt-neg: #b5473a; display: flex; flex-direction: column; gap: 20px; }
@@ -36,6 +36,17 @@
     .rpt tr.total td { font-weight: 800; border-top: 2px solid var(--text); border-bottom: 0; }
     .rpt .small { font-size: 0.85rem; }
     .rpt-muted { color: var(--muted); }
+    .rpt-status { display: inline-block; margin-left: 4px; padding: 0 8px; border: 1px solid var(--border); border-radius: 999px;
+      font-size: 0.72rem; font-weight: 700; color: var(--muted); white-space: nowrap; vertical-align: 1px; }
+    .rpt-status-fully_paid { color: var(--rpt-pos); border-color: currentColor; }
+    .rpt-status-quoted { color: var(--primary); border-color: currentColor; }
+    .rpt-status-optional { border-style: dashed; }
+    .rpt-priority { display: inline-block; padding: 0 8px; border: 1px solid var(--primary); border-radius: 999px;
+      font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+    .rpt-priority-mandatory { background: var(--primary); color: var(--on-primary); }
+    .rpt-priority-nice_to_have { background: var(--primary-tint); color: var(--primary); }
+    .rpt tr.rpt-subtotal td { font-weight: 700; color: var(--muted); border-bottom: 0; }
+    .rpt tr.rpt-subtotal:first-child td { border-top: 2px solid var(--border); }
     .rpt-bar-cell { width: 38%; }
     .rpt-bar-track { display: flex; height: 10px; background: var(--primary-tint); border-radius: 5px; overflow: hidden; min-width: 60px; }
     .rpt-bar { height: 100%; }
@@ -58,6 +69,24 @@
     .rpt-note { margin: 12px 0 0; color: var(--muted); font-size: 0.85rem; }
     .rpt-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0 0 10px; color: var(--muted); font-size: 0.85rem; }
     .rpt-key { display: inline-block; width: 12px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+    /* Transactions page: one collapsible row per category */
+    .rpt-group-total { margin: -6px 0 12px; font-size: 1.05rem; }
+    .rpt-cat { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; background: var(--surface); }
+    .rpt-cat summary {
+      display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+      cursor: pointer; list-style: none; font-weight: 700;
+    }
+    .rpt-cat summary::-webkit-details-marker { display: none; }
+    .rpt-cat summary::before { content: "▸"; color: var(--primary); transition: transform 0.15s; }
+    .rpt-cat[open] summary::before { transform: rotate(90deg); }
+    .rpt-cat-name { flex: 1; min-width: 0; }
+    .rpt-cat-count {
+      min-width: 26px; padding: 1px 8px; border-radius: 999px; text-align: center;
+      background: var(--primary-tint); color: var(--primary); font-size: 0.8rem;
+    }
+    .rpt-cat-total { font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .rpt-cat table { margin: 0 0 6px; }
+    .rpt-cat th:first-child, .rpt-cat td:first-child { padding-left: 34px; }
     @media (max-width: 600px) { .rpt .hide-sm { display: none; } }
   </style>
 </head>
@@ -76,16 +105,16 @@
 
 <section class="card" aria-labelledby="rpt-title">
   <h1 id="rpt-title">Extra Skaters at Practice</h1>
-  <p class="rpt-meta">August 15, 2026 – October 20, 2026 · Updated October 18, 2026</p>
+  <p class="rpt-meta">August 15, 2026 – October 24, 2026 · Updated October 24, 2026</p>
   <p class="rpt-intro">Extra skaters who join a team practice pay $60.00 each.
     This page shows every practice, how many extra skaters came, and what has been paid.</p>
   <div class="rpt-stats">
-    <div class="rpt-stat"><div class="label">Practices</div><div class="value">27</div></div>
-    <div class="rpt-stat"><div class="label">Extra skaters attended</div><div class="value">30</div>
-      <div class="sub">$1,800.00 due</div></div>
-    <div class="rpt-stat"><div class="label">Extra skaters paid</div><div class="value pos">20</div>
-      <div class="sub">$1,200.00 received</div></div>
-    <div class="rpt-stat"><div class="label">Balance due</div><div class="value neg">$600.00</div>
+    <div class="rpt-stat"><div class="label">Practices</div><div class="value">28</div></div>
+    <div class="rpt-stat"><div class="label">Extra skaters attended</div><div class="value">33</div>
+      <div class="sub">$1,980.00 due</div></div>
+    <div class="rpt-stat"><div class="label">Extra skaters paid</div><div class="value pos">26</div>
+      <div class="sub">$1,560.00 received</div></div>
+    <div class="rpt-stat"><div class="label">Balance due</div><div class="value neg">$480.00</div>
       <div class="sub">practices so far</div></div>
   </div>
 </section>
@@ -473,8 +502,8 @@ z
    <g id="patch_13">
     <path d="M 444.165229 195.696 
 L 460.374379 195.696 
-L 460.374379 195.696 
-L 444.165229 195.696 
+L 460.374379 118.758857 
+L 444.165229 118.758857 
 z
 " clip-path="url(#p462490ef3c)" style="fill: #3b2a87"/>
    </g>
@@ -553,16 +582,16 @@ z
    <g id="patch_23">
     <path d="M 419.851503 195.696 
 L 436.060654 195.696 
-L 436.060654 144.404571 
-L 419.851503 144.404571 
+L 436.060654 41.821714 
+L 419.851503 41.821714 
 z
 " clip-path="url(#p462490ef3c)" style="fill: #f6b11c"/>
    </g>
    <g id="patch_24">
     <path d="M 460.374379 195.696 
 L 476.583529 195.696 
-L 476.583529 195.696 
-L 460.374379 195.696 
+L 476.583529 144.404571 
+L 460.374379 144.404571 
 z
 " clip-path="url(#p462490ef3c)" style="fill: #f6b11c"/>
    </g>
@@ -621,9 +650,9 @@ z
       <th class="num">Paid</th><th class="num">Balance due</th></tr></thead>
     <tbody>
     
-      <tr><td class="nowrap">October 2026</td><td class="num">8</td><td class="num">9</td>
-        <td class="num">$540.00</td><td class="num">$240.00</td>
-        <td class="num neg">$300.00</td></tr>
+      <tr><td class="nowrap">October 2026</td><td class="num">9</td><td class="num">12</td>
+        <td class="num">$720.00</td><td class="num">$600.00</td>
+        <td class="num neg">$180.00</td></tr>
     
       <tr><td class="nowrap">September 2026</td><td class="num">11</td><td class="num">14</td>
         <td class="num">$840.00</td><td class="num">$540.00</td>
@@ -634,9 +663,9 @@ z
         <td class="num ">$0.00</td></tr>
     
     </tbody>
-    <tfoot><tr class="total"><td>Total</td><td class="num">27</td><td class="num">30</td>
-      <td class="num">$1,800.00</td><td class="num">$1,200.00</td>
-      <td class="num neg">$600.00</td></tr></tfoot>
+    <tfoot><tr class="total"><td>Total</td><td class="num">28</td><td class="num">33</td>
+      <td class="num">$1,980.00</td><td class="num">$1,560.00</td>
+      <td class="num neg">$480.00</td></tr></tfoot>
   </table>
   </div>
 </section>
@@ -651,7 +680,7 @@ z
       <th>Status</th><th class="hide-sm">Notes</th></tr></thead>
     <tbody>
     
-      <tr><td class="nowrap">Tue Oct 20, 2026 <span class="rpt-chip">Upcoming</span></td>
+      <tr><td class="nowrap">Thu Oct 22, 2026</td>
         <td>TSPC</td>
         <td class="num">0</td>
         <td class="num"></td>
@@ -659,12 +688,20 @@ z
         <td><span class="rpt-chip ">No extra skaters</span></td>
         <td class="hide-sm rpt-muted small"></td></tr>
     
+      <tr><td class="nowrap">Tue Oct 20, 2026</td>
+        <td>TSPC</td>
+        <td class="num">3</td>
+        <td class="num">$180.00</td>
+        <td class="num">$120.00</td>
+        <td><span class="rpt-chip warn">Partly paid: $60.00 still due</span></td>
+        <td class="hide-sm rpt-muted small"></td></tr>
+    
       <tr><td class="nowrap">Sun Oct 18, 2026</td>
         <td>Lakewood</td>
         <td class="num">3</td>
         <td class="num">$180.00</td>
-        <td class="num"></td>
-        <td><span class="rpt-chip neg">Not paid yet</span></td>
+        <td class="num">$240.00</td>
+        <td><span class="rpt-chip warn">Overpaid by $60.00</span></td>
         <td class="hide-sm rpt-muted small"></td></tr>
     
       <tr><td class="nowrap">Sat Oct 17, 2026</td>
@@ -868,11 +905,14 @@ z
         <td class="hide-sm rpt-muted small"></td></tr>
     
     </tbody>
-    <tfoot><tr class="total"><td colspan="2">Total</td><td class="num">30</td>
-      <td class="num">$1,800.00</td><td class="num">$1,200.00</td><td></td><td class="hide-sm"></td></tr></tfoot>
+    <tfoot><tr class="total"><td colspan="2">Total</td><td class="num">33</td>
+      <td class="num">$1,980.00</td><td class="num">$1,560.00</td><td></td><td class="hide-sm"></td></tr></tfoot>
   </table>
   </div>
   
+  
+  <p class="rpt-note">2 payments totalling $178.76
+    haven&#x27;t been matched to a practice yet, so they aren&#x27;t counted above.</p>
   
   <p class="rpt-note">Paid skaters = amount received ÷ $60.00. Balance due counts practices up to today
     that haven't been fully paid for.</p>
@@ -884,6 +924,6 @@ z
 
   <footer id="site-footer" class="site-footer"></footer>
 
-  <script src="app.js?v=21"></script>
+  <script src="app.js?v=24"></script>
 </body>
 </html>

@@ -83,7 +83,7 @@
   "fiftyFifty": {
     "kicker": "50/50 Raffle",
     "title": "Feeling lucky?",
-    "jackpot": 500,
+    "jackpot": 398,
     "jackpotNote": "Half the pot goes to the winner, half sends the team to Quebec!",
     "drawDate": "2026-12-31",
     "drawTime": "19:00",
@@ -99,7 +99,7 @@
     "kicker": "Surfboard Fundraiser",
     "title": "Catch the wave!",
     "boardText": "JR KINGS",
-    "text": "SAMPLE - Describe the surfboard fundraiser here: what the board is, how to take part, and when it ends.",
+    "text": "Win a custom design Los Angeles Kings Surfboard",
     "buttonText": "Participate",
     "buttonUrl": "",
     "note": ""
