@@ -53,7 +53,7 @@
         "label": "Zelle",
         "qr": "Images/zelle_qr.png",
         "handle": "jrkings2014aaa@gmail.com",
-        "url": ""
+        "url": "https://enroll.zellepay.com/qr-codes?data=eyJ0b2tlbiI6Impya2luZ3MyMDE0YWFhQGdtYWlsLmNvbSIsIm5hbWUiOiJDaHJpcyIsImFjdGlvbiI6IlBBWU1FTlQifQ=="
       },
       {
         "label": "Venmo",
@@ -62,7 +62,7 @@
         "url": "https://venmo.com/code?user_id=4693719575955224094&created=1790382194.316657&printed=1"
       }
     ],
-    "payNote": "On your phone? Tap the Venmo code to open Venmo, or send a Zelle payment to the email shown. Pick your player first: when you tap a code, an email to the team pulls up with your player and shirt name filled in, so just add the amount and hit send.",
+    "payNote": "On your phone? Tap the Zelle or Venmo code to open the app. Pick your player first: when you tap a code, an email to the team pulls up with your player and shirt name filled in, so just add the amount and hit send.",
     "emailSubject": "Got My Back",
     "linkText": "Add your name",
     "linkUrl": ""
@@ -85,7 +85,7 @@
     "title": "Feeling lucky?",
     "jackpot": 500,
     "jackpotNote": "Half the pot goes to the winner, half sends the team to Quebec!",
-    "drawDate": "2026-11-15",
+    "drawDate": "2026-12-31",
     "drawTime": "19:00",
     "drawPlace": "SAMPLE - Toyota Sports Performance Center",
     "ticketInfo": "SAMPLE - 1 ticket $10 · 3 tickets $25",
@@ -115,7 +115,7 @@
 
   "goal": {
     "target": 50000,
-    "raised": 6221,
+    "raised": 6630,
     "purpose": "Your support helps with tournament costs, transportation, and lodging. Every dollar helps!",
     "deadline": "2027-02-08"
   },

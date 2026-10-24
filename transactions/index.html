@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Exported from the Jr Kings Fundraising finances app on Oct 21, 2026 10:10 PM.
+  <!-- Exported from the Jr Kings Fundraising finances app on Oct 23, 2026 6:46 PM.
        Don't edit this file: use "Export HTML" in the finances app again to update it. -->
   
   <base href="../">
@@ -12,7 +12,7 @@
   <title>Transactions</title>
   <link rel="icon" href="Images/logo.png">
   <link rel="stylesheet" href="theme.css?v=6">
-  <link rel="stylesheet" href="styles.css?v=18">
+  <link rel="stylesheet" href="styles.css?v=21">
   <style>
     /* Report pages: colors come from the website's theme.css. */
     .rpt { --rpt-pos: #2f7d5b; --rpt-neg: #b5473a; display: flex; flex-direction: column; gap: 20px; }
@@ -36,6 +36,17 @@
     .rpt tr.total td { font-weight: 800; border-top: 2px solid var(--text); border-bottom: 0; }
     .rpt .small { font-size: 0.85rem; }
     .rpt-muted { color: var(--muted); }
+    .rpt-status { display: inline-block; margin-left: 4px; padding: 0 8px; border: 1px solid var(--border); border-radius: 999px;
+      font-size: 0.72rem; font-weight: 700; color: var(--muted); white-space: nowrap; vertical-align: 1px; }
+    .rpt-status-fully_paid { color: var(--rpt-pos); border-color: currentColor; }
+    .rpt-status-quoted { color: var(--primary); border-color: currentColor; }
+    .rpt-status-optional { border-style: dashed; }
+    .rpt-priority { display: inline-block; padding: 0 8px; border: 1px solid var(--primary); border-radius: 999px;
+      font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+    .rpt-priority-mandatory { background: var(--primary); color: var(--on-primary); }
+    .rpt-priority-nice_to_have { background: var(--primary-tint); color: var(--primary); }
+    .rpt tr.rpt-subtotal td { font-weight: 700; color: var(--muted); border-bottom: 0; }
+    .rpt tr.rpt-subtotal:first-child td { border-top: 2px solid var(--border); }
     .rpt-bar-cell { width: 38%; }
     .rpt-bar-track { display: flex; height: 10px; background: var(--primary-tint); border-radius: 5px; overflow: hidden; min-width: 60px; }
     .rpt-bar { height: 100%; }
@@ -94,25 +105,25 @@
 
 <section class="card" aria-labelledby="rpt-title">
   <h1 id="rpt-title">Transactions</h1>
-  <p class="rpt-meta">October 1, 2026 – October 21, 2026 · Updated October 21, 2026</p>
+  <p class="rpt-meta">October 1, 2026 – October 23, 2026 · Updated October 23, 2026</p>
   <p class="rpt-intro">Every bank transaction in this period, grouped by category. Open a category to see its transactions.
     Names and bank details are left out.</p>
   <div class="rpt-stats">
-    <div class="rpt-stat"><div class="label">Money in</div><div class="value pos">$6,220.51</div></div>
+    <div class="rpt-stat"><div class="label">Money in</div><div class="value pos">$6,629.70</div></div>
     <div class="rpt-stat"><div class="label">Money out</div><div class="value neg">$3,569.82</div></div>
-    <div class="rpt-stat"><div class="label">Bank transactions</div><div class="value">47</div></div>
+    <div class="rpt-stat"><div class="label">Bank transactions</div><div class="value">52</div></div>
   </div>
 </section>
 
 
 <section class="card" aria-labelledby="rpt-group-in">
   <h2 id="rpt-group-in">Money in</h2>
-  <p class="rpt-group-total"><strong class="pos">$6,220.51</strong>
-    <span class="rpt-muted"> · 56 entries · 13 categories</span></p>
+  <p class="rpt-group-total"><strong class="pos">$6,629.70</strong>
+    <span class="rpt-muted"> · 59 entries · 14 categories</span></p>
   
   <details class="rpt-cat">
     <summary>
-      <span class="rpt-cat-name">Popcorn Fundraiser</span>
+      <span class="rpt-cat-name">Popcorn</span>
       <span class="rpt-cat-count">1</span>
       <span class="rpt-cat-total">$1,960.00</span>
     </summary>
@@ -129,12 +140,16 @@
   <details class="rpt-cat">
     <summary>
       <span class="rpt-cat-name">Extra Skaters at Clinics and Practice</span>
-      <span class="rpt-cat-count">17</span>
-      <span class="rpt-cat-total">$1,560.00</span>
+      <span class="rpt-cat-count">19</span>
+      <span class="rpt-cat-total">$1,738.76</span>
     </summary>
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
+      
+        <tr><td class="nowrap">Thu Oct 22, 2026</td><td>Venmo</td><td class="num">$58.76</td></tr>
+      
+        <tr><td class="nowrap">Thu Oct 22, 2026</td><td>Venmo</td><td class="num">$120.00</td></tr>
       
         <tr><td class="nowrap">Tue Oct 20, 2026</td><td>Bank transfer</td><td class="num">$120.00</td></tr>
       
@@ -176,45 +191,27 @@
   
   <details class="rpt-cat">
     <summary>
-      <span class="rpt-cat-name">Uncategorized income</span>
-      <span class="rpt-cat-count">5</span>
-      <span class="rpt-cat-total">$871.28</span>
+      <span class="rpt-cat-name">Got My Back T-Shirt</span>
+      <span class="rpt-cat-count">15</span>
+      <span class="rpt-cat-total">$1,130.65</span>
     </summary>
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
+      
+        <tr><td class="nowrap">Thu Oct 22, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
+      
+        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
       
         <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$196.00</td></tr>
       
+        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
+      
+        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
+      
         <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
       
-        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$347.21</td></tr>
-      
-        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$155.12</td></tr>
-      
-        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Cash deposit</td><td class="num">$124.00</td></tr>
-      
-      </tbody>
-    </table>
-  </details>
-  
-  <details class="rpt-cat">
-    <summary>
-      <span class="rpt-cat-name">Got Your Back T-Shirt Fundraiser</span>
-      <span class="rpt-cat-count">12</span>
-      <span class="rpt-cat-total">$836.75</span>
-    </summary>
-    <table>
-      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
-      <tbody>
-      
-        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
-      
-        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
-      
-        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
-      
-        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
+        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
       
         <tr><td class="nowrap">Fri Oct 16, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
       
@@ -238,7 +235,7 @@
   
   <details class="rpt-cat">
     <summary>
-      <span class="rpt-cat-name">Bake Me a Cake Fundraiser</span>
+      <span class="rpt-cat-name">Bake Me a Cake</span>
       <span class="rpt-cat-count">1</span>
       <span class="rpt-cat-total">$400.00</span>
     </summary>
@@ -247,6 +244,46 @@
       <tbody>
       
         <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$400.00</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">50/50 Raffle</span>
+      <span class="rpt-cat-count">3</span>
+      <span class="rpt-cat-total">$398.92</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Wed Oct 21, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
+      
+        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$347.21</td></tr>
+      
+        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$27.28</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Uncategorized income</span>
+      <span class="rpt-cat-count">3</span>
+      <span class="rpt-cat-total">$307.00</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Wed Oct 21, 2026</td><td>Deposit</td><td class="num">$108.00</td></tr>
+      
+        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Cash deposit</td><td class="num">$124.00</td></tr>
+      
+        <tr><td class="nowrap">Thu Oct 15, 2026</td><td>Zelle</td><td class="num">$75.00</td></tr>
       
       </tbody>
     </table>
@@ -286,35 +323,7 @@
   
   <details class="rpt-cat">
     <summary>
-      <span class="rpt-cat-name">Donations</span>
-      <span class="rpt-cat-count">7</span>
-      <span class="rpt-cat-total">$153.73</span>
-    </summary>
-    <table>
-      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
-      <tbody>
-      
-        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$27.28</td></tr>
-      
-        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
-      
-        <tr><td class="nowrap">Thu Oct 15, 2026</td><td>Zelle</td><td class="num">$75.00</td></tr>
-      
-        <tr><td class="nowrap">Tue Oct 13, 2026</td><td>Zelle</td><td class="num">$1.00</td></tr>
-      
-        <tr><td class="nowrap">Tue Oct 13, 2026</td><td>Zelle</td><td class="num">$1.50</td></tr>
-      
-        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Zelle</td><td class="num">$30.00</td></tr>
-      
-        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Zelle</td><td class="num">-$30.00</td></tr>
-      
-      </tbody>
-    </table>
-  </details>
-  
-  <details class="rpt-cat">
-    <summary>
-      <span class="rpt-cat-name">Buy a Puck Fundraiser</span>
+      <span class="rpt-cat-name">Buy a Puck</span>
       <span class="rpt-cat-count">1</span>
       <span class="rpt-cat-total">$138.00</span>
     </summary>
@@ -348,25 +357,9 @@
   
   <details class="rpt-cat">
     <summary>
-      <span class="rpt-cat-name">Other Income</span>
-      <span class="rpt-cat-count">1</span>
-      <span class="rpt-cat-total">$0.21</span>
-    </summary>
-    <table>
-      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
-      <tbody>
-      
-        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$0.21</td></tr>
-      
-      </tbody>
-    </table>
-  </details>
-  
-  <details class="rpt-cat">
-    <summary>
       <span class="rpt-cat-name">Snack Shack</span>
-      <span class="rpt-cat-count">6</span>
-      <span class="rpt-cat-total">-$40.46</span>
+      <span class="rpt-cat-count">7</span>
+      <span class="rpt-cat-total">$114.66</span>
     </summary>
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
@@ -382,7 +375,45 @@
       
         <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Zelle</td><td class="num">$8.00</td></tr>
       
+        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$155.12</td></tr>
+      
         <tr><td class="nowrap">Thu Oct 15, 2026</td><td>Card purchase</td><td class="num">-$76.46</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Straight Donations</span>
+      <span class="rpt-cat-count">3</span>
+      <span class="rpt-cat-total">$100.50</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Mon Oct 19, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
+      
+        <tr><td class="nowrap">Tue Oct 13, 2026</td><td>Zelle</td><td class="num">$1.00</td></tr>
+      
+        <tr><td class="nowrap">Tue Oct 13, 2026</td><td>Zelle</td><td class="num">$1.50</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Other Income</span>
+      <span class="rpt-cat-count">1</span>
+      <span class="rpt-cat-total">$0.21</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Bank transfer</td><td class="num">$0.21</td></tr>
       
       </tbody>
     </table>
@@ -513,6 +544,32 @@
   
 </section>
 
+<section class="card" aria-labelledby="rpt-group-transfer">
+  <h2 id="rpt-group-transfer">Transfers</h2>
+  <p class="rpt-group-total"><strong class="">$0.00</strong>
+    <span class="rpt-muted"> · 2 entries · 1 category</span></p>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Transfer Between Accounts</span>
+      <span class="rpt-cat-count">2</span>
+      <span class="rpt-cat-total">$0.00</span>
+    </summary>
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Zelle</td><td class="num">$30.00</td></tr>
+      
+        <tr><td class="nowrap">Thu Oct 1, 2026</td><td>Zelle</td><td class="num">-$30.00</td></tr>
+      
+      </tbody>
+    </table>
+  </details>
+  
+  <p class="rpt-note">Money moved between accounts: not counted as money in or out.</p>
+</section>
+
 
 <p class="rpt-note">One bank deposit can be split across several categories (for example, a deposit covering several
   fundraisers), so it can appear as several entries, each with part of its amount. Money out is shown as a positive amount;
@@ -524,6 +581,6 @@
 
   <footer id="site-footer" class="site-footer"></footer>
 
-  <script src="app.js?v=21"></script>
+  <script src="app.js?v=24"></script>
 </body>
 </html>

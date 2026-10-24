@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Exported from the Jr Kings Fundraising finances app on Oct 21, 2026 10:10 PM.
+  <!-- Exported from the Jr Kings Fundraising finances app on Oct 23, 2026 6:46 PM.
        Don't edit this file: use "Export HTML" in the finances app again to update it. -->
   
   <base href="../">
@@ -12,7 +12,7 @@
   <title>Team Finances</title>
   <link rel="icon" href="Images/logo.png">
   <link rel="stylesheet" href="theme.css?v=6">
-  <link rel="stylesheet" href="styles.css?v=18">
+  <link rel="stylesheet" href="styles.css?v=21">
   <style>
     /* Report pages: colors come from the website's theme.css. */
     .rpt { --rpt-pos: #2f7d5b; --rpt-neg: #b5473a; display: flex; flex-direction: column; gap: 20px; }
@@ -36,6 +36,17 @@
     .rpt tr.total td { font-weight: 800; border-top: 2px solid var(--text); border-bottom: 0; }
     .rpt .small { font-size: 0.85rem; }
     .rpt-muted { color: var(--muted); }
+    .rpt-status { display: inline-block; margin-left: 4px; padding: 0 8px; border: 1px solid var(--border); border-radius: 999px;
+      font-size: 0.72rem; font-weight: 700; color: var(--muted); white-space: nowrap; vertical-align: 1px; }
+    .rpt-status-fully_paid { color: var(--rpt-pos); border-color: currentColor; }
+    .rpt-status-quoted { color: var(--primary); border-color: currentColor; }
+    .rpt-status-optional { border-style: dashed; }
+    .rpt-priority { display: inline-block; padding: 0 8px; border: 1px solid var(--primary); border-radius: 999px;
+      font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+    .rpt-priority-mandatory { background: var(--primary); color: var(--on-primary); }
+    .rpt-priority-nice_to_have { background: var(--primary-tint); color: var(--primary); }
+    .rpt tr.rpt-subtotal td { font-weight: 700; color: var(--muted); border-bottom: 0; }
+    .rpt tr.rpt-subtotal:first-child td { border-top: 2px solid var(--border); }
     .rpt-bar-cell { width: 38%; }
     .rpt-bar-track { display: flex; height: 10px; background: var(--primary-tint); border-radius: 5px; overflow: hidden; min-width: 60px; }
     .rpt-bar { height: 100%; }
@@ -94,15 +105,15 @@
 
 <section class="card" aria-labelledby="rpt-title">
   <h1 id="rpt-title">Team Finances</h1>
-  <p class="rpt-meta">October 1, 2026 – October 21, 2026 · Updated October 21, 2026</p>
+  <p class="rpt-meta">October 1, 2026 – October 23, 2026 · Updated October 23, 2026</p>
   <p class="rpt-intro">Where the team's money comes from and where it goes. Figures come from the team bank account.</p>
   <div class="rpt-stats">
     <div class="rpt-stat"><div class="label">Starting balance</div><div class="value">$0.00</div></div>
     
-    <div class="rpt-stat"><div class="label">Money in</div><div class="value pos">$6,220.51</div></div>
+    <div class="rpt-stat"><div class="label">Money in</div><div class="value pos">$6,629.70</div></div>
     <div class="rpt-stat"><div class="label">Money out</div><div class="value neg">$3,569.82</div></div>
-    <div class="rpt-stat"><div class="label">Balance</div><div class="value">$2,650.69</div>
-      <div class="sub">as of Oct 21</div></div>
+    <div class="rpt-stat"><div class="label">Balance</div><div class="value">$3,059.88</div>
+      <div class="sub">as of Oct 23</div></div>
     
   </div>
 </section>
@@ -111,13 +122,13 @@
 <section class="card" aria-labelledby="rpt-goal-title">
   <h2 id="rpt-goal-title">Fundraising goal: Quebec Budget</h2>
   <div class="rpt-goal-head">
-    <span class="rpt-goal-raised"><strong>$6,221</strong> raised of $61,597</span>
-    <span class="rpt-goal-pct"><strong>10%</strong> of the goal · $55,376 to go</span>
+    <span class="rpt-goal-raised"><strong>$6,630</strong> raised of $61,597</span>
+    <span class="rpt-goal-pct"><strong>11%</strong> of the goal · $54,967 to go</span>
   </div>
   <div class="rpt-goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-       aria-valuenow="10"
-       aria-label="$6,221 raised of $61,597">
-    <div class="rpt-goal-fill" style="width: 10.1%"></div>
+       aria-valuenow="11"
+       aria-label="$6,630 raised of $61,597">
+    <div class="rpt-goal-fill" style="width: 10.8%"></div>
   </div>
   <p class="rpt-intro">Your support helps with tournament costs, transportation, and lodging. Every dollar helps!</p>
   <p class="rpt-note">Money raised from October 1, 2026 to February 28, 2027,
@@ -127,7 +138,7 @@
 
 <section class="card" aria-labelledby="rpt-balance-title">
   <h2 id="rpt-balance-title">Balance over time</h2>
-  <svg class="rpt-chart" role="img" aria-label="Bank balance over time" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500.8825 219.808" xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <svg class="rpt-chart" role="img" aria-label="Bank balance over time" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 495.7925 219.808" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
@@ -147,8 +158,8 @@
  <g id="figure_1">
   <g id="patch_1">
    <path d="M 0 219.808 
-L 500.8825 219.808 
-L 500.8825 0 
+L 495.7925 219.808 
+L 495.7925 0 
 L 0 0 
 z
 " style="fill: #ffffff"/>
@@ -181,51 +192,51 @@ L 0 3.5
     <g id="xtick_2">
      <g id="line2d_2">
       <g>
-       <use xlink:href="#m81ba357302" x="131.4725" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="123.356136" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_2">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="131.4725" y="197.686125" transform="rotate(-0 131.4725 197.686125)">05</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="123.356136" y="197.686125" transform="rotate(-0 123.356136 197.686125)">05</text>
      </g>
     </g>
     <g id="xtick_3">
      <g id="line2d_3">
       <g>
-       <use xlink:href="#m81ba357302" x="220.7525" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="204.519773" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_3">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="220.7525" y="197.686125" transform="rotate(-0 220.7525 197.686125)">09</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="204.519773" y="197.686125" transform="rotate(-0 204.519773 197.686125)">09</text>
      </g>
     </g>
     <g id="xtick_4">
      <g id="line2d_4">
       <g>
-       <use xlink:href="#m81ba357302" x="310.0325" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="285.683409" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_4">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="310.0325" y="197.686125" transform="rotate(-0 310.0325 197.686125)">13</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="285.683409" y="197.686125" transform="rotate(-0 285.683409 197.686125)">13</text>
      </g>
     </g>
     <g id="xtick_5">
      <g id="line2d_5">
       <g>
-       <use xlink:href="#m81ba357302" x="399.3125" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="366.847045" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_5">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="399.3125" y="197.686125" transform="rotate(-0 399.3125 197.686125)">17</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="366.847045" y="197.686125" transform="rotate(-0 366.847045 197.686125)">17</text>
      </g>
     </g>
     <g id="xtick_6">
      <g id="line2d_6">
       <g>
-       <use xlink:href="#m81ba357302" x="488.5925" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="448.010682" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_6">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="488.5925" y="197.686125" transform="rotate(-0 488.5925 197.686125)">21</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="448.010682" y="197.686125" transform="rotate(-0 448.010682 197.686125)">21</text>
      </g>
     </g>
     <g id="text_7">
@@ -255,127 +266,150 @@ L -3.5 0
     </g>
     <g id="ytick_2">
      <g id="line2d_9">
-      <path d="M 42.1925 146.121733 
-L 488.5925 146.121733 
+      <path d="M 42.1925 150.190025 
+L 488.5925 150.190025 
 " clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
      <g id="line2d_10">
       <g>
-       <use xlink:href="#m898c8d45ed" x="42.1925" y="146.121733" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="150.190025" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_9">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="149.161108" transform="rotate(-0 35.1925 149.161108)">$500</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="153.2294" transform="rotate(-0 35.1925 153.2294)">$500</text>
      </g>
     </g>
     <g id="ytick_3">
      <g id="line2d_11">
-      <path d="M 42.1925 115.699465 
-L 488.5925 115.699465 
+      <path d="M 42.1925 123.836051 
+L 488.5925 123.836051 
 " clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
      <g id="line2d_12">
       <g>
-       <use xlink:href="#m898c8d45ed" x="42.1925" y="115.699465" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="123.836051" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_10">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="118.73884" transform="rotate(-0 35.1925 118.73884)">$1,000</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="126.875426" transform="rotate(-0 35.1925 126.875426)">$1,000</text>
      </g>
     </g>
     <g id="ytick_4">
      <g id="line2d_13">
-      <path d="M 42.1925 85.277198 
-L 488.5925 85.277198 
+      <path d="M 42.1925 97.482076 
+L 488.5925 97.482076 
 " clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
      <g id="line2d_14">
       <g>
-       <use xlink:href="#m898c8d45ed" x="42.1925" y="85.277198" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="97.482076" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_11">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="88.316573" transform="rotate(-0 35.1925 88.316573)">$1,500</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="100.521451" transform="rotate(-0 35.1925 100.521451)">$1,500</text>
      </g>
     </g>
     <g id="ytick_5">
      <g id="line2d_15">
-      <path d="M 42.1925 54.85493 
-L 488.5925 54.85493 
+      <path d="M 42.1925 71.128101 
+L 488.5925 71.128101 
 " clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
      <g id="line2d_16">
       <g>
-       <use xlink:href="#m898c8d45ed" x="42.1925" y="54.85493" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="71.128101" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_12">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="57.894305" transform="rotate(-0 35.1925 57.894305)">$2,000</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="74.167476" transform="rotate(-0 35.1925 74.167476)">$2,000</text>
      </g>
     </g>
     <g id="ytick_6">
      <g id="line2d_17">
-      <path d="M 42.1925 24.432663 
-L 488.5925 24.432663 
+      <path d="M 42.1925 44.774127 
+L 488.5925 44.774127 
 " clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
      <g id="line2d_18">
       <g>
-       <use xlink:href="#m898c8d45ed" x="42.1925" y="24.432663" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="44.774127" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_13">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="27.472038" transform="rotate(-0 35.1925 27.472038)">$2,500</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="47.813502" transform="rotate(-0 35.1925 47.813502)">$2,500</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_19">
+      <path d="M 42.1925 18.420152 
+L 488.5925 18.420152 
+" clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="18.420152" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="21.459527" transform="rotate(-0 35.1925 21.459527)">$3,000</text>
      </g>
     </g>
    </g>
    <g id="FillBetweenPolyCollection_1">
     <defs>
-     <path id="mbbd59cdf1a" d="M 42.1925 -43.264 
+     <path id="m1befccaa89" d="M 42.1925 -43.264 
 L 42.1925 -43.264 
 L 42.1925 -43.264 
-L 42.1925 -97.476481 
-L 64.5125 -97.476481 
-L 64.5125 -82.265347 
-L 131.4725 -82.265347 
-L 131.4725 -85.916019 
-L 176.1125 -85.916019 
-L 176.1125 -93.217363 
-L 310.0325 -93.217363 
-L 310.0325 -93.369474 
-L 332.3525 -93.369474 
-L 332.3525 -68.308827 
-L 354.6725 -68.308827 
-L 354.6725 -68.172536 
-L 376.9925 -68.172536 
-L 376.9925 -98.947701 
-L 443.9525 -98.947701 
-L 443.9525 -197.242656 
-L 466.2725 -197.242656 
-L 466.2725 -204.544 
+L 42.1925 -90.226783 
+L 62.483409 -90.226783 
+L 62.483409 -77.049796 
+L 123.356136 -77.049796 
+L 123.356136 -80.212272 
+L 163.937955 -80.212272 
+L 163.937955 -86.537226 
+L 285.683409 -86.537226 
+L 285.683409 -86.668996 
+L 305.974318 -86.668996 
+L 305.974318 -64.959646 
+L 326.265227 -64.959646 
+L 326.265227 -64.84158 
+L 346.556136 -64.84158 
+L 346.556136 -91.501261 
+L 407.428864 -91.501261 
+L 407.428864 -176.65148 
+L 427.719773 -176.65148 
+L 427.719773 -182.976434 
+L 448.010682 -182.976434 
+L 448.010682 -189.956548 
+L 468.301591 -189.956548 
+L 468.301591 -204.544 
 L 488.5925 -204.544 
 L 488.5925 -204.544 
 L 488.5925 -43.264 
 L 488.5925 -43.264 
 L 488.5925 -43.264 
-L 466.2725 -43.264 
-L 466.2725 -43.264 
-L 443.9525 -43.264 
-L 443.9525 -43.264 
-L 376.9925 -43.264 
-L 376.9925 -43.264 
-L 354.6725 -43.264 
-L 354.6725 -43.264 
-L 332.3525 -43.264 
-L 332.3525 -43.264 
-L 310.0325 -43.264 
-L 310.0325 -43.264 
-L 176.1125 -43.264 
-L 176.1125 -43.264 
-L 131.4725 -43.264 
-L 131.4725 -43.264 
-L 64.5125 -43.264 
-L 64.5125 -43.264 
+L 468.301591 -43.264 
+L 468.301591 -43.264 
+L 448.010682 -43.264 
+L 448.010682 -43.264 
+L 427.719773 -43.264 
+L 427.719773 -43.264 
+L 407.428864 -43.264 
+L 407.428864 -43.264 
+L 346.556136 -43.264 
+L 346.556136 -43.264 
+L 326.265227 -43.264 
+L 326.265227 -43.264 
+L 305.974318 -43.264 
+L 305.974318 -43.264 
+L 285.683409 -43.264 
+L 285.683409 -43.264 
+L 163.937955 -43.264 
+L 163.937955 -43.264 
+L 123.356136 -43.264 
+L 123.356136 -43.264 
+L 62.483409 -43.264 
+L 62.483409 -43.264 
 L 42.1925 -43.264 
 L 42.1925 -43.264 
 L 42.1925 -43.264 
@@ -383,31 +417,35 @@ z
 " style="stroke: #1f4e8c; stroke-opacity: 0.08"/>
     </defs>
     <g clip-path="url(#p4a9c12c052)">
-     <use xlink:href="#mbbd59cdf1a" x="0" y="219.808" style="fill: #1f4e8c; fill-opacity: 0.08; stroke: #1f4e8c; stroke-opacity: 0.08"/>
+     <use xlink:href="#m1befccaa89" x="0" y="219.808" style="fill: #1f4e8c; fill-opacity: 0.08; stroke: #1f4e8c; stroke-opacity: 0.08"/>
     </g>
    </g>
-   <g id="line2d_19">
+   <g id="line2d_21">
     <path d="M 42.1925 176.544 
 L 42.1925 176.544 
-L 42.1925 122.331519 
-L 64.5125 122.331519 
-L 64.5125 137.542653 
-L 131.4725 137.542653 
-L 131.4725 133.891981 
-L 176.1125 133.891981 
-L 176.1125 126.590637 
-L 310.0325 126.590637 
-L 310.0325 126.438526 
-L 332.3525 126.438526 
-L 332.3525 151.499173 
-L 354.6725 151.499173 
-L 354.6725 151.635464 
-L 376.9925 151.635464 
-L 376.9925 120.860299 
-L 443.9525 120.860299 
-L 443.9525 22.565344 
-L 466.2725 22.565344 
-L 466.2725 15.264 
+L 42.1925 129.581217 
+L 62.483409 129.581217 
+L 62.483409 142.758204 
+L 123.356136 142.758204 
+L 123.356136 139.595728 
+L 163.937955 139.595728 
+L 163.937955 133.270774 
+L 285.683409 133.270774 
+L 285.683409 133.139004 
+L 305.974318 133.139004 
+L 305.974318 154.848354 
+L 326.265227 154.848354 
+L 326.265227 154.96642 
+L 346.556136 154.96642 
+L 346.556136 128.306739 
+L 407.428864 128.306739 
+L 407.428864 43.15652 
+L 427.719773 43.15652 
+L 427.719773 36.831566 
+L 448.010682 36.831566 
+L 448.010682 29.851452 
+L 468.301591 29.851452 
+L 468.301591 15.264 
 L 488.5925 15.264 
 L 488.5925 15.264 
 " clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #1f4e8c; stroke-width: 1.8; stroke-linecap: square"/>
@@ -439,25 +477,29 @@ L 488.5925 184.608
     <h2 id="rpt-income-title">Money in, by category</h2>
     <table>
       
-      <tr><td>Popcorn Fundraiser</td>
+      <tr><td>Popcorn</td>
         <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 100%"></div></div></td>
         <td class="num">$1,960.00</td></tr>
       
       <tr><td>Extra Skaters at Clinics and Practice</td>
-        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 80%"></div></div></td>
-        <td class="num">$1,560.00</td></tr>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 89%"></div></div></td>
+        <td class="num">$1,738.76</td></tr>
       
-      <tr><td>Uncategorized income</td>
-        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 44%"></div></div></td>
-        <td class="num">$871.28</td></tr>
+      <tr><td>Got My Back T-Shirt</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 58%"></div></div></td>
+        <td class="num">$1,130.65</td></tr>
       
-      <tr><td>Got Your Back T-Shirt Fundraiser</td>
-        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 43%"></div></div></td>
-        <td class="num">$836.75</td></tr>
-      
-      <tr><td>Bake Me a Cake Fundraiser</td>
+      <tr><td>Bake Me a Cake</td>
         <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 20%"></div></div></td>
         <td class="num">$400.00</td></tr>
+      
+      <tr><td>50/50 Raffle</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 20%"></div></div></td>
+        <td class="num">$398.92</td></tr>
+      
+      <tr><td>Uncategorized income</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 16%"></div></div></td>
+        <td class="num">$307.00</td></tr>
       
       <tr><td>Alo Yoga Raffle</td>
         <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 14%"></div></div></td>
@@ -467,11 +509,7 @@ L 488.5925 184.608
         <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 10%"></div></div></td>
         <td class="num">$200.00</td></tr>
       
-      <tr><td>Donations</td>
-        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 8%"></div></div></td>
-        <td class="num">$153.73</td></tr>
-      
-      <tr><td>Buy a Puck Fundraiser</td>
+      <tr><td>Buy a Puck</td>
         <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 7%"></div></div></td>
         <td class="num">$138.00</td></tr>
       
@@ -479,19 +517,23 @@ L 488.5925 184.608
         <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 6%"></div></div></td>
         <td class="num">$121.00</td></tr>
       
+      <tr><td>Snack Shack</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 6%"></div></div></td>
+        <td class="num">$114.66</td></tr>
+      
+      <tr><td>Straight Donations</td>
+        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 5%"></div></div></td>
+        <td class="num">$100.50</td></tr>
+      
       <tr><td>Other Income</td>
         <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 0%"></div></div></td>
         <td class="num">$0.21</td></tr>
-      
-      <tr><td>Snack Shack</td>
-        <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 0%"></div></div></td>
-        <td class="num">-$40.46</td></tr>
       
       <tr><td>Surfboard Fundraiser</td>
         <td class="rpt-bar-cell hide-sm"><div class="rpt-bar-track"><div class="rpt-bar income" style="width: 0%"></div></div></td>
         <td class="num">-$250.00</td></tr>
       
-      <tr class="total"><td>Total</td><td class="hide-sm"></td><td class="num">$6,220.51</td></tr>
+      <tr class="total"><td>Total</td><td class="hide-sm"></td><td class="num">$6,629.70</td></tr>
     </table>
   </section>
   <section class="card" aria-labelledby="rpt-expense-title">
@@ -532,12 +574,13 @@ L 488.5925 184.608
   <h2 id="rpt-budget-title">Spending against the budget</h2>
   <div class="rpt-scroll">
   <table>
-    <thead><tr><th>Category</th><th class="num">Budget</th><th class="num">Spent</th><th class="num">Remaining</th>
+    <thead><tr><th>Category</th><th>Priority</th><th class="num">Budget</th><th class="num">Spent</th><th class="num">Remaining</th>
       <th class="rpt-bar-cell hide-sm">Used</th></tr></thead>
     <tbody>
     
       <tr>
-        <td>Bank &amp; Payment Fees</td>
+        <td>Bank &amp; Payment Fees <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
         <td class="num">$250.00</td>
         <td class="num">$0.00</td>
         <td class="num ">$250.00</td>
@@ -548,7 +591,8 @@ L 488.5925 184.608
       </tr>
     
       <tr>
-        <td>Charter Bus</td>
+        <td>Charter Bus <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
         <td class="num">$22,392.00</td>
         <td class="num">$0.00</td>
         <td class="num ">$22,392.00</td>
@@ -559,7 +603,8 @@ L 488.5925 184.608
       </tr>
     
       <tr>
-        <td>Coaches Costs</td>
+        <td>Coaches Costs <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
         <td class="num">$9,540.00</td>
         <td class="num">$1,279.63</td>
         <td class="num ">$8,260.37</td>
@@ -570,7 +615,8 @@ L 488.5925 184.608
       </tr>
     
       <tr>
-        <td>Ice Time</td>
+        <td>Ice Time <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
         <td class="num">$1,500.00</td>
         <td class="num">$0.00</td>
         <td class="num ">$1,500.00</td>
@@ -581,7 +627,8 @@ L 488.5925 184.608
       </tr>
     
       <tr>
-        <td>Meals</td>
+        <td>Meals <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
         <td class="num">$4,500.00</td>
         <td class="num">$0.00</td>
         <td class="num ">$4,500.00</td>
@@ -592,7 +639,8 @@ L 488.5925 184.608
       </tr>
     
       <tr>
-        <td>Merchandise Costs</td>
+        <td>Merchandise Costs <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
         <td class="num">$6,000.00</td>
         <td class="num">$50.78</td>
         <td class="num ">$5,949.22</td>
@@ -603,7 +651,8 @@ L 488.5925 184.608
       </tr>
     
       <tr>
-        <td>Other Expenses</td>
+        <td>Other Expenses <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
         <td class="num">$6,175.00</td>
         <td class="num">$96.83</td>
         <td class="num ">$6,078.17</td>
@@ -614,7 +663,8 @@ L 488.5925 184.608
       </tr>
     
       <tr>
-        <td>Supplies &amp; Printing</td>
+        <td>Supplies &amp; Printing <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
         <td class="num">$250.00</td>
         <td class="num">$50.58</td>
         <td class="num ">$199.42</td>
@@ -625,7 +675,8 @@ L 488.5925 184.608
       </tr>
     
       <tr>
-        <td>Team Activities &amp; Entertainment</td>
+        <td>Team Activities &amp; Entertainment <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
         <td class="num">$5,890.00</td>
         <td class="num">$0.00</td>
         <td class="num ">$5,890.00</td>
@@ -636,7 +687,8 @@ L 488.5925 184.608
       </tr>
     
       <tr>
-        <td>Tournament Patches</td>
+        <td>Tournament Patches <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
         <td class="num">$850.00</td>
         <td class="num">$842.00</td>
         <td class="num ">$8.00</td>
@@ -647,7 +699,8 @@ L 488.5925 184.608
       </tr>
     
       <tr>
-        <td>Tournament Registration</td>
+        <td>Tournament Registration <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
         <td class="num">$1,250.00</td>
         <td class="num">$1,250.00</td>
         <td class="num ">$0.00</td>
@@ -658,7 +711,8 @@ L 488.5925 184.608
       </tr>
     
       <tr>
-        <td>Trading Pins</td>
+        <td>Trading Pins <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
         <td class="num">$3,000.00</td>
         <td class="num">$0.00</td>
         <td class="num ">$3,000.00</td>
@@ -669,7 +723,12 @@ L 488.5925 184.608
       </tr>
     
     </tbody>
-    <tfoot><tr class="total"><td>Total</td><td class="num">$61,597.00</td><td class="num">$3,569.82</td>
+    <tfoot>
+    
+      <tr class="rpt-subtotal"><td colspan="2">Mandatory total</td><td class="num">$61,597.00</td><td class="num">$3,569.82</td>
+        <td class="num ">$58,027.18</td><td class="hide-sm rpt-muted small">6% used</td></tr>
+    
+    <tr class="total"><td colspan="2">Total</td><td class="num">$61,597.00</td><td class="num">$3,569.82</td>
       <td class="num ">$58,027.18</td><td class="hide-sm"></td></tr></tfoot>
   </table>
   </div>
@@ -685,12 +744,12 @@ L 488.5925 184.608
     <thead><tr><th>Month</th><th class="num">Money in</th><th class="num">Money out</th><th class="num">Net</th><th class="num">Ending balance</th></tr></thead>
     <tbody>
     
-      <tr><td class="nowrap">October 2026</td><td class="num">$6,220.51</td><td class="num">$3,569.82</td>
-        <td class="num ">$2,650.69</td><td class="num">$2,650.69</td></tr>
+      <tr><td class="nowrap">October 2026</td><td class="num">$6,629.70</td><td class="num">$3,569.82</td>
+        <td class="num ">$3,059.88</td><td class="num">$3,059.88</td></tr>
     
     </tbody>
-    <tfoot><tr class="total"><td>Total</td><td class="num">$6,220.51</td><td class="num">$3,569.82</td>
-      <td class="num ">$2,650.69</td><td class="num">$2,650.69</td></tr></tfoot>
+    <tfoot><tr class="total"><td>Total</td><td class="num">$6,629.70</td><td class="num">$3,569.82</td>
+      <td class="num ">$3,059.88</td><td class="num">$3,059.88</td></tr></tfoot>
   </table>
   </div>
   
@@ -698,7 +757,7 @@ L 488.5925 184.608
 
 
 
-<p class="rpt-note">Updated October 21, 2026. Questions about the team's finances? Use the email address at the bottom of this page.</p>
+<p class="rpt-note">Updated October 23, 2026. Questions about the team's finances? Use the email address at the bottom of this page.</p>
 
       </div>
     </main>
@@ -706,6 +765,6 @@ L 488.5925 184.608
 
   <footer id="site-footer" class="site-footer"></footer>
 
-  <script src="app.js?v=21"></script>
+  <script src="app.js?v=24"></script>
 </body>
 </html>
