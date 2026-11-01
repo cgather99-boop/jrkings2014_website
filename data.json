@@ -93,6 +93,11 @@
     "kicker": "Surfboard Fundraiser",
     "title": "Catch the wave!",
     "boardText": "JR KINGS",
+    "photos": [
+      { "src": "Images/surfboard1_kings.jpg", "alt": "The white Los Angeles Jr Kings longboard with purple rails and the gold crown" },
+      { "src": "Images/surfboard2_kings.jpg", "alt": "Close-up of the crown and LOS ANGELES JR KINGS logo on the board" },
+      { "src": "Images/surfboard3_kings.jpg", "alt": "The purple surfboard" }
+    ],
     "text": "Win a custom design Los Angeles Kings Surfboard",
     "buttonText": "Participate",
     "buttonUrl": "",

@@ -434,6 +434,7 @@ a.pay-card:hover, button.pay-card:hover { border-color: var(--primary); }
   --surf-deep: #0E5E7E;
   order: 0;
   position: relative;
+  min-width: 0;
   overflow: hidden;
   text-align: center;
   color: #FFFFFF;
@@ -500,6 +501,52 @@ a.pay-card:hover, button.pay-card:hover { border-color: var(--primary); }
   0%, 100% { transform: translateY(0) rotate(-1.5deg); }
   50% { transform: translateY(-8px) rotate(1.5deg); }
 }
+
+/* Photos of the real board: three framed shots, the middle one raised, all bobbing out of step.
+   On narrow screens they become a swipeable row. */
+.surf.has-photos .surf-board { display: none; }
+.surf.has-photos .surf-scene { margin-top: -26px; }
+.surf-photos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  align-items: center;
+  max-width: 640px;
+  margin: 14px auto 0;
+  padding: 22px 6px 0;
+}
+.surf-photo {
+  display: block;
+  border: 5px solid #FFFFFF;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--primary-dark);
+  box-shadow: 0 0 0 3px var(--accent), 0 12px 22px rgba(14, 50, 80, 0.45);
+  transform: rotate(-4deg);
+  animation: surf-photo-bob 4s ease-in-out infinite;
+  transition: box-shadow 0.2s;
+}
+.surf-photo:nth-child(2) { transform: translateY(-12px) scale(1.08); z-index: 1; animation-delay: -1.3s; }
+.surf-photo:nth-child(3) { transform: rotate(4deg); animation-delay: -2.6s; }
+.surf-photo:hover, .surf-photo:focus-visible {
+  box-shadow: 0 0 0 4px var(--accent), 0 0 28px rgba(244, 178, 35, 0.9), 0 12px 22px rgba(14, 50, 80, 0.45);
+}
+.surf-photo img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+@keyframes surf-photo-bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
+}
+@container (max-width: 520px) {
+  .surf-photos {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-inline: -20px;
+    padding: 16px 20px 6px;
+  }
+  .surf-photo { flex: 0 0 62%; scroll-snap-align: center; }
+}
+
 .surf-waves {
   display: block;
   width: 200%;
@@ -538,9 +585,18 @@ a.pay-card:hover, button.pay-card:hover { border-color: var(--primary); }
   color: var(--on-primary);
   border: 3px solid var(--accent);
   background:
-    radial-gradient(circle at 15% 10%, color-mix(in srgb, var(--accent) 30%, transparent) 0 60px, transparent 61px),
     radial-gradient(circle at 95% 85%, color-mix(in srgb, var(--on-primary) 10%, transparent) 0 80px, transparent 81px),
     linear-gradient(160deg, var(--primary) 0%, var(--primary-dark) 100%);
+}
+/* Team logo in the top-left corner, behind the content */
+.fifty::before {
+  content: "";
+  position: absolute;
+  top: calc(10% - 60px);
+  left: calc(15% - 60px);
+  width: 120px;
+  height: 120px;
+  background: url("Images/logo.png") center / contain no-repeat;
 }
 .fifty > *:not(.fifty-sparkles) { position: relative; }
 
@@ -1008,7 +1064,7 @@ a.pay-card:hover, button.pay-card:hover { border-color: var(--primary); }
   .progress-fill { transition: none; }
   .fifty-sparkles i, .fifty-ticket, .fifty-btn, .fifty-btn:hover { animation: none; }
   .go-kings::before, .go-kings-crown { animation: none; }
-  .surf-board, .surf-waves { animation: none; }
+  .surf-board, .surf-waves, .surf-photo { animation: none; }
 }
 
 /* ---------- Phone refinements ---------- */

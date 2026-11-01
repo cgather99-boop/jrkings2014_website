@@ -614,6 +614,27 @@ function renderSurfboard(surf) {
   $('surf-kicker').textContent = surf.kicker || 'Surfboard Fundraiser';
   $('surf-title').textContent = surf.title;
   $('surf-board-text').textContent = surf.boardText || '';
+
+  // Photos of the real board replace the drawn one. Each opens full size when tapped.
+  const photos = (surf.photos || []).filter((p) => p?.src);
+  if (photos.length) {
+    const box = $('surf-photos');
+    for (const p of photos) {
+      const link = el('a', 'surf-photo');
+      link.href = p.src;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      const img = el('img');
+      img.src = p.src;
+      img.alt = p.alt || 'The surfboard';
+      img.loading = 'lazy';
+      link.append(img);
+      box.append(link);
+    }
+    box.hidden = false;
+    section.classList.add('has-photos');
+  }
+
   for (const [id, text] of [['surf-text', surf.text], ['surf-note', surf.note]]) {
     if (text) {
       $(id).textContent = text;
