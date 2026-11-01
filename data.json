@@ -121,21 +121,21 @@
 
   "players": [
     { "number": 11, "name": "Bastian (Bash) Daigle", "position": "Forward", "photo": "Images/Headshots/Bash.png", "flyer": "", "thankYou": "", "supporters": [] },
-    { "number": 9, "name": "Benjamin (Benji) Adoumie", "position": "Forward", "photo": "Images/Headshots/Benji.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 9, "name": "Benjamin (Benji) Adoumie", "position": "Forward", "photo": "Images/Headshots/Benji.png", "flyer": "", "thankYou": "", "supporters": ["Grandma Galyna"] },
     { "number": 97, "name": "Brooke Born", "position": "Defense", "photo": "Images/Headshots/Brooke.png", "flyer": "", "thankYou": "", "supporters": [] },
     { "number": 51, "name": "Carter Perosio", "position": "Goalie", "photo": "Images/Headshots/Carter.png", "flyer": "", "thankYou": "", "supporters": [] },
     { "number": 85, "name": "Charlie Fox", "position": "Goalie", "photo": "Images/Headshots/Charlie.png", "flyer": "", "thankYou": "", "supporters": [] },
     { "number": 21, "name": "Cru Martinson", "position": "Defense", "photo": "Images/Headshots/Cru.png", "flyer": "", "thankYou": "", "supporters": ["Burton Family"] },
     { "number": 29, "name": "Eli Baker", "position": "Forward", "photo": "Images/Headshots/Eli.png", "flyer": "", "thankYou": "", "supporters": [] },
-    { "number": 96, "name": "Henry Gathercole", "position": "Forward", "photo": "Images/Headshots/Henry.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 96, "name": "Henry Gathercole", "position": "Forward", "photo": "Images/Headshots/Henry.png", "flyer": "", "thankYou": "", "supporters": ["Michael and Leah Kingston","Tita y Abuelo","Gueli"] },
     { "number": 23, "name": "Hudson Jones", "position": "Defense", "photo": "Images/Headshots/Hudson.png", "flyer": "", "thankYou": "", "supporters": [] },
     { "number": 16, "name": "Mark Rettele", "position": "Forward", "photo": "Images/Headshots/Mark.png", "flyer": "", "thankYou": "", "supporters": [] },
-    { "number": 91, "name": "Micah Song", "position": "Forward", "photo": "Images/Headshots/Micah.png", "flyer": "Images/Flyer_Micah.jpeg", "thankYou": "", "supporters": ["Master Toys & Novelties","Charlotte Conn","Emery Kim","The Engstroms","Austin & Esther Chung","TOSHIMACLAN","The Nguy Family","Miles Kalavsky","Ikegami Family","Remy Dam & Family","The Yap Family","James Lee","Joy & Kai"] },
+    { "number": 91, "name": "Micah Song", "position": "Forward", "photo": "Images/Headshots/Micah.png", "flyer": "Images/Flyer_Micah.jpeg", "thankYou": "", "supporters": ["Master Toys & Novelties","Charlotte Conn","Emery Kim","The Engstroms","Austin & Esther Chung","TOSHIMACLAN","The Nguy Family","Miles Kalavsky","Ikegami Family","Remy Dam & Family","The Yap Family","Lee Family","Joy & Kai","Cousin Juni & Family","Song Grandparents","The Sungs","South Pas Crew"] },
     { "number": 78, "name": "Milo Su", "position": "Forward", "photo": "Images/Headshots/Milo.png", "flyer": "", "thankYou": "", "supporters": [] },
-    { "number": 44, "name": "Nicolas Van Den Bosch", "position": "Defense", "photo": "Images/Headshots/Nick.png", "flyer": "", "thankYou": "", "supporters": [] },
-    { "number": 79, "name": "Nixon Tebo", "position": "Forward", "photo": "Images/Headshots/Nixon.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 44, "name": "Nicolas Van Den Bosch", "position": "Defense", "photo": "Images/Headshots/Nick.png", "flyer": "", "thankYou": "", "supporters": ["Harrison Hanner-Zhang","Eric Carlsson-Zhang","Senna Hanner-Zhang","Marcella Ruiz"] },
+    { "number": 79, "name": "Nixon Tebo", "position": "Forward", "photo": "Images/Headshots/Nixon.png", "flyer": "", "thankYou": "", "supporters": ["Adam Lem","David Tebo","Ashley & Andrew Tebo"] },
     { "number": 87, "name": "Tristan Chang", "position": "Forward", "photo": "Images/Headshots/Tristan.png", "flyer": "", "thankYou": "", "supporters": [] },
-    { "number": 50, "name": "Vance Seeley", "position": "Forward", "photo": "Images/Headshots/Vance.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 50, "name": "Vance Seeley", "position": "Forward", "photo": "Images/Headshots/Vance.png", "flyer": "", "thankYou": "", "supporters": ["Mom and Dad"] },
     { "number": 71, "name": "Vincent Yang", "position": "Defense", "photo": "Images/Headshots/Vincent.png", "flyer": "", "thankYou": "", "supporters": [] }
 
     
@@ -145,7 +145,7 @@
 
 
   "donateLinks": [
-    { "label": "Zelle", "icon": "zelle", "url": "", "handle": "", "qr": "Images/zelle.png?v=2" }
+    { "label": "Zelle", "icon": "zelle", "url": "", "handle": "", "qr": "Images/zelle_qr.png?v=2" }
 
   ],
 
