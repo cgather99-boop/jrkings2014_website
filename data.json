@@ -44,7 +44,7 @@
     "imageNote": "",
     "stepsTitle": "How it works",
     "steps": [
-      "Scan the Zelle or Venmo code below.",
+      "Scan the Zelle code below.",
       "In the payment note, write **your player’s name + your name** for the shirt.",
       "Your name goes on the back of your player’s “Got My Back” shirt, and they’ll wear it in Quebec, carrying the names of the people who helped them get there."
     ],
@@ -54,15 +54,9 @@
         "qr": "Images/zelle_qr.png",
         "handle": "jrkings2014aaa@gmail.com",
         "url": "https://enroll.zellepay.com/qr-codes?data=eyJ0b2tlbiI6Impya2luZ3MyMDE0YWFhQGdtYWlsLmNvbSIsIm5hbWUiOiJDaHJpcyIsImFjdGlvbiI6IlBBWU1FTlQifQ=="
-      },
-      {
-        "label": "Venmo",
-        "qr": "Images/venmo_qr.png",
-        "handle": "@LAJrKings2014AAA",
-        "url": "https://venmo.com/code?user_id=4693719575955224094&created=1790382194.316657&printed=1"
       }
     ],
-    "payNote": "On your phone? Tap the Zelle or Venmo code to open the app. Pick your player first: when you tap a code, an email to the team pulls up with your player and shirt name filled in, so just add the amount and hit send.",
+    "payNote": "On your phone? Tap the Zelle code to open the app. Pick your player first: when you tap the code, an email to the team pulls up with your player and shirt name filled in, so just add the amount and hit send.",
     "emailSubject": "Got My Back",
     "linkText": "Add your name",
     "linkUrl": ""
@@ -90,8 +84,8 @@
     "drawPlace": "SAMPLE - Toyota Sports Performance Center",
     "ticketInfo": "SAMPLE - 1 ticket $10 · 3 tickets $25",
     "buttonText": "Get my tickets!",
-    "buttonUrl": "https://venmo.com/code?user_id=4693719575955224094&created=1790382194.316657&printed=1",
-    "note": "SAMPLE - Put “50/50 + your name” in the Venmo note. Need not be present to win.",
+    "buttonUrl": "",
+    "note": "SAMPLE - Put “50/50 + your name” in the Zelle note. Need not be present to win.",
     "winner": ""
   },
 
@@ -121,23 +115,23 @@
   },
 
   "players": [
-    { "number": 11, "name": "Bastian (Bash) Daigle", "position": "Forward", "photo": "Images/Headshots/Bash.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 9, "name": "Benjamin (Benji) Adoumie", "position": "Forward", "photo": "Images/Headshots/Benji.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 97, "name": "Brooke Born", "position": "Defense", "photo": "Images/Headshots/Brooke.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 51, "name": "Carter Perosio", "position": "Goalie", "photo": "Images/Headshots/Carter.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 85, "name": "Charlie Fox", "position": "Goalie", "photo": "Images/Headshots/Charlie.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 21, "name": "Cru Martinson", "position": "Defense", "photo": "Images/Headshots/Cru.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": ["Burton Family"] },
-    { "number": 29, "name": "Eli Baker", "position": "Forward", "photo": "Images/Headshots/Eli.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 96, "name": "Henry Gathercole", "position": "Forward", "photo": "Images/Headshots/Henry.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 23, "name": "Hudson Jones", "position": "Defense", "photo": "Images/Headshots/Hudson.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 16, "name": "Mark Rettele", "position": "Forward", "photo": "Images/Headshots/Mark.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 91, "name": "Micah Song", "position": "Forward", "photo": "Images/Headshots/Micah.png", "flyer": "Images/Flyer_Micah.jpeg", "venmo": "", "thankYou": "", "supporters": ["Master Toys & Novelties","Charlotte Conn","Emery Kim","The Engstroms","Austin & Esther Chung","TOSHIMACLAN","The Nguy Family","Miles Kalavsky","Ikegami Family","Remy Dam & Family","The Yap Family","James Lee","Joy & Kai"] },
-    { "number": 78, "name": "Milo Su", "position": "Forward", "photo": "Images/Headshots/Milo.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 44, "name": "Nicolas Van Den Bosch", "position": "Defense", "photo": "Images/Headshots/Nick.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 79, "name": "Nixon Tebo", "position": "Forward", "photo": "Images/Headshots/Nixon.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 87, "name": "Tristan Chang", "position": "Forward", "photo": "Images/Headshots/Tristan.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 50, "name": "Vance Seeley", "position": "Forward", "photo": "Images/Headshots/Vance.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] },
-    { "number": 71, "name": "Vincent Yang", "position": "Defense", "photo": "Images/Headshots/Vincent.png", "flyer": "", "venmo": "", "thankYou": "", "supporters": [] }
+    { "number": 11, "name": "Bastian (Bash) Daigle", "position": "Forward", "photo": "Images/Headshots/Bash.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 9, "name": "Benjamin (Benji) Adoumie", "position": "Forward", "photo": "Images/Headshots/Benji.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 97, "name": "Brooke Born", "position": "Defense", "photo": "Images/Headshots/Brooke.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 51, "name": "Carter Perosio", "position": "Goalie", "photo": "Images/Headshots/Carter.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 85, "name": "Charlie Fox", "position": "Goalie", "photo": "Images/Headshots/Charlie.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 21, "name": "Cru Martinson", "position": "Defense", "photo": "Images/Headshots/Cru.png", "flyer": "", "thankYou": "", "supporters": ["Burton Family"] },
+    { "number": 29, "name": "Eli Baker", "position": "Forward", "photo": "Images/Headshots/Eli.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 96, "name": "Henry Gathercole", "position": "Forward", "photo": "Images/Headshots/Henry.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 23, "name": "Hudson Jones", "position": "Defense", "photo": "Images/Headshots/Hudson.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 16, "name": "Mark Rettele", "position": "Forward", "photo": "Images/Headshots/Mark.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 91, "name": "Micah Song", "position": "Forward", "photo": "Images/Headshots/Micah.png", "flyer": "Images/Flyer_Micah.jpeg", "thankYou": "", "supporters": ["Master Toys & Novelties","Charlotte Conn","Emery Kim","The Engstroms","Austin & Esther Chung","TOSHIMACLAN","The Nguy Family","Miles Kalavsky","Ikegami Family","Remy Dam & Family","The Yap Family","James Lee","Joy & Kai"] },
+    { "number": 78, "name": "Milo Su", "position": "Forward", "photo": "Images/Headshots/Milo.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 44, "name": "Nicolas Van Den Bosch", "position": "Defense", "photo": "Images/Headshots/Nick.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 79, "name": "Nixon Tebo", "position": "Forward", "photo": "Images/Headshots/Nixon.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 87, "name": "Tristan Chang", "position": "Forward", "photo": "Images/Headshots/Tristan.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 50, "name": "Vance Seeley", "position": "Forward", "photo": "Images/Headshots/Vance.png", "flyer": "", "thankYou": "", "supporters": [] },
+    { "number": 71, "name": "Vincent Yang", "position": "Defense", "photo": "Images/Headshots/Vincent.png", "flyer": "", "thankYou": "", "supporters": [] }
 
     
   ],
@@ -146,7 +140,6 @@
 
 
   "donateLinks": [
-    { "label": "Venmo", "icon": "venmo", "url": "https://venmo.com/code?user_id=4693719575955224094&created=1790382194.316657&printed=1", "handle": "@LAJrKings2014AAA" },
     { "label": "Zelle", "icon": "zelle", "url": "", "handle": "", "qr": "Images/zelle.png?v=2" }
 
   ],
