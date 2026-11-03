@@ -44,7 +44,7 @@
     "imageNote": "",
     "stepsTitle": "How it works",
     "steps": [
-      "Scan the Zelle code below.",
+      "Scan the Zelle or Venmo code below.",
       "In the payment note, write **your player’s name + your name** for the shirt.",
       "Your name goes on the back of your player’s “Got My Back” shirt, and they’ll wear it in Quebec, carrying the names of the people who helped them get there."
     ],
@@ -54,9 +54,15 @@
         "qr": "Images/zelle_qr.png",
         "handle": "jrkings2014aaa@gmail.com",
         "url": "https://enroll.zellepay.com/qr-codes?data=eyJ0b2tlbiI6Impya2luZ3MyMDE0YWFhQGdtYWlsLmNvbSIsIm5hbWUiOiJDaHJpcyIsImFjdGlvbiI6IlBBWU1FTlQifQ=="
+      },
+      {
+        "label": "Venmo",
+        "qr": "Images/venmo_qr.jpg",
+        "handle": "@jrkings2014aaa",
+        "url": "https://www.paypal.com/qrcodes/venmocs/33a7c50b-c785-476e-a091-45574d83a71e?created=1793653416.238593"
       }
     ],
-    "payNote": "On your phone? Tap the Zelle code to open the app. Pick your player first: when you tap the code, an email to the team pulls up with your player and shirt name filled in, so just add the amount and hit send.",
+    "payNote": "On your phone? Tap the Zelle or Venmo code to open the app. Pick your player first: when you tap a code, an email to the team pulls up with your player and shirt name filled in, so just add the amount and hit send.",
     "emailSubject": "Got My Back",
     "linkText": "Add your name",
     "linkUrl": ""
@@ -85,7 +91,7 @@
     "ticketInfo": "SAMPLE - 1 ticket $10 · 3 tickets $25",
     "buttonText": "Get my tickets!",
     "buttonUrl": "",
-    "note": "SAMPLE - Put “50/50 + your name” in the Zelle note. Need not be present to win.",
+    "note": "SAMPLE - Put “50/50 + your name” in the Zelle or Venmo note. Need not be present to win.",
     "winner": ""
   },
 
@@ -145,6 +151,7 @@
 
 
   "donateLinks": [
+    { "label": "Venmo", "icon": "venmo", "url": "https://www.paypal.com/qrcodes/venmocs/33a7c50b-c785-476e-a091-45574d83a71e?created=1793653416.238593", "handle": "@jrkings2014aaa" },
     { "label": "Zelle", "icon": "zelle", "url": "", "handle": "", "qr": "Images/zelle_qr.png?v=2" }
 
   ],
