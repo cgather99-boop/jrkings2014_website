@@ -25,6 +25,7 @@
   "reportNav": [
     { "label": "Finances", "href": "finances/", "icon": "chart" },
     { "label": "Transactions", "href": "transactions/", "icon": "list" },
+    { "label": "Dues Tracker", "href": "finances/dues/", "icon": "calendar" },
     { "label": "Extra Skaters", "href": "extraskaters/", "icon": "skate" }
   ],
 
@@ -133,15 +134,15 @@
     { "number": 85, "name": "Charlie Fox", "position": "Goalie", "photo": "Images/Headshots/Charlie.png", "flyer": "", "thankYou": "", "supporters": [] },
     { "number": 21, "name": "Cru Martinson", "position": "Defense", "photo": "Images/Headshots/Cru.png", "flyer": "", "thankYou": "", "supporters": ["Burton Family"] },
     { "number": 29, "name": "Eli Baker", "position": "Forward", "photo": "Images/Headshots/Eli.png", "flyer": "", "thankYou": "", "supporters": [] },
-    { "number": 96, "name": "Henry Gathercole", "position": "Forward", "photo": "Images/Headshots/Henry.png", "flyer": "", "thankYou": "", "supporters": ["Michael and Leah Kingston","Tita y Abuelo","Gueli","Colleen & Jed McCarthy","The Shocker Family"] },
+    { "number": 96, "name": "Henry Gathercole", "position": "Forward", "photo": "Images/Headshots/Henry.png", "flyer": "", "thankYou": "", "supporters": ["Michael and Leah Kingston","Tita y Abuelo","Gueli","Colleen & Jed McCarthy","The Shocker Family","Titi Tere, Tio Howard, Lucia, Juan Miguel y Maria"] },
     { "number": 23, "name": "Hudson Jones", "position": "Defense", "photo": "Images/Headshots/Hudson.png", "flyer": "", "thankYou": "", "supporters": [] },
     { "number": 16, "name": "Mark Rettele", "position": "Forward", "photo": "Images/Headshots/Mark.png", "flyer": "", "thankYou": "", "supporters": [] },
-    { "number": 91, "name": "Micah Song", "position": "Forward", "photo": "Images/Headshots/Micah.png", "flyer": "Images/Flyer_Micah.jpeg", "thankYou": "", "supporters": ["Master Toys & Novelties","Charlotte Conn","Emery Kim","The Engstroms","Austin & Esther Chung","TOSHIMACLAN","The Nguy Family","Miles Kalavsky","Ikegami Family","Remy Dam & Family","The Yap Family","Lee Family","Joy & Kai","Cousin Juni & Family","Song Grandparents","The Sungs","South Pas Crew","Yoo Grandparents"] },
+    { "number": 91, "name": "Micah Song", "position": "Forward", "photo": "Images/Headshots/Micah.png", "flyer": "Images/Flyer_Micah.jpeg", "thankYou": "", "supporters": ["Master Toys & Novelties","Charlotte Conn","Emery Kim","The Engstroms","Austin & Esther Chung","TOSHIMACLAN","The Nguy Family","Miles Kalavsky","Ikegami Family","Remy Dam & Family","The Yap Family","Lee Family","Joy & Kai","Cousin Juni & Family","Song Grandparents","The Sungs","South Pas Crew","Yoo Grandparents","DENNIS JISUK PARK"] },
     { "number": 78, "name": "Milo Su", "position": "Forward", "photo": "Images/Headshots/Milo.png", "flyer": "", "thankYou": "", "supporters": [] },
     { "number": 44, "name": "Nicolas Van Den Bosch", "position": "Defense", "photo": "Images/Headshots/Nick.png", "flyer": "", "thankYou": "", "supporters": ["Harrison Hanner-Zhang","Eric Carlsson-Zhang","Senna Hanner-Zhang","Marcella Ruiz"] },
     { "number": 79, "name": "Nixon Tebo", "position": "Forward", "photo": "Images/Headshots/Nixon.png", "flyer": "", "thankYou": "", "supporters": ["Adam Lem","David Tebo","Ashley & Andrew Tebo"] },
     { "number": 87, "name": "Tristan Chang", "position": "Forward", "photo": "Images/Headshots/Tristan.png", "flyer": "", "thankYou": "", "supporters": ["Kaden K #45"] },
-    { "number": 50, "name": "Vance Seeley", "position": "Forward", "photo": "Images/Headshots/Vance.png", "flyer": "", "thankYou": "", "supporters": ["Mom and Dad","Katrina Rodriguez","Mr Cush and Ms Clair","Alix X","Alicia St. Cyr","Auntie Augusta"] },
+    { "number": 50, "name": "Vance Seeley", "position": "Forward", "photo": "Images/Headshots/Vance.png", "flyer": "", "thankYou": "", "supporters": ["Mom and Dad","Katrina Rodriguez","Mr Cush and Ms Clair","Alix X","Alicia St. Cyr","Auntie Augusta","Lori T","Mack Lester","Cooper"] },
     { "number": 71, "name": "Vincent Yang", "position": "Defense", "photo": "Images/Headshots/Vincent.png", "flyer": "", "thankYou": "", "supporters": [] }
 
     
