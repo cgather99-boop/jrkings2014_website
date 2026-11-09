@@ -9,11 +9,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
   <link rel="stylesheet" href="theme.css?v=6">
-  <link rel="stylesheet" href="styles.css?v=23">
+  <link rel="stylesheet" href="styles.css?v=28">
 </head>
 <body data-page="home">
   <!-- Header, sidebar, and footer are filled in by app.js (shared across pages). -->
   <header id="site-header" class="site-header"></header>
+  <!-- Scrolling thank-you strip with every player's Got My Back supporters -->
+  <div id="donor-ticker" class="donor-ticker" hidden></div>
 
   <div class="layout">
     <div class="left-col">
@@ -41,11 +43,12 @@
                 <h2 id="alert-title"></h2>
                 <p id="alert-text" hidden></p>
                 <div id="alert-steps" hidden></div>
-                <div id="alert-pay" class="alert-pay" hidden></div>
                 <div id="alert-info" class="alert-info" hidden></div>
                 <a id="alert-link" class="btn btn-accent" href="#" target="_blank" rel="noopener" hidden></a>
               </div>
             </div>
+            <!-- Player picker and pay codes run across the whole box, under the shirt and the steps -->
+            <div id="alert-pay" class="alert-pay" hidden></div>
           </section>
 
           <!-- 50/50 raffle and Geaux Kings side by side (stacked on narrow screens) -->
@@ -69,11 +72,13 @@
                 <p id="fifty-done" class="fifty-done" hidden></p>
               </div>
 
-              <p id="fifty-tickets" class="fifty-tickets" hidden></p>
-              <a id="fifty-btn" class="btn fifty-btn" href="#donate">
+              <div id="fifty-tickets" class="fifty-tickets" hidden></div>
+              <div id="fifty-pay" class="fifty-pay" hidden></div>
+              <a id="fifty-btn" class="btn fifty-btn" href="#donate" hidden>
                 <span id="fifty-btn-text"></span>
                 <span class="fifty-btn-icon" aria-hidden="true">🎟️</span>
               </a>
+              <div id="fifty-how" class="fifty-how" hidden></div>
               <p id="fifty-note" class="fifty-note" hidden></p>
             </section>
 
@@ -169,6 +174,6 @@
 
   <footer id="site-footer" class="site-footer"></footer>
 
-  <script src="app.js?v=25"></script>
+  <script src="app.js?v=27"></script>
 </body>
 </html>

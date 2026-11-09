@@ -23,5 +23,13 @@ if errorlevel 1 (
 
 echo Serving %CD% at http://localhost:%PORT%
 echo Press Ctrl+C to stop.
-start "" http://localhost:%PORT%
+call :open_url http://localhost:%PORT%
 python -m http.server %PORT% --bind 127.0.0.1
+exit /b
+
+:open_url
+rem Open the address in Google Chrome, or in the default browser if Chrome isn't installed.
+set "CHROME="
+for %%p in ("%ProgramFiles%" "%ProgramFiles(x86)%" "%LocalAppData%") do if not defined CHROME if exist "%%~p\Google\Chrome\Application\chrome.exe" set "CHROME=%%~p\Google\Chrome\Application\chrome.exe"
+if defined CHROME (start "" "%CHROME%" %1) else start "" %1
+exit /b

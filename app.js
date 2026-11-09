@@ -352,13 +352,8 @@ function renderFundraisingAlert(alert, players = [], team) {
       // Tapping a card also pulls up an email to the team with the player and shirt name filled in.
       // A card that opens an app (Venmo) waits until the donor comes back to this page, so the two don't collide.
       if (form) card.addEventListener('click', () => openPayEmail(team, alert.emailSubject, form, c.label, !!url));
-      const img = el('img', 'pay-qr');
-      img.src = c.qr;
-      img.alt = `${c.label} QR code${c.handle ? ` for ${c.handle}` : ''}`;
-      card.append(img, el('span', `pay-brand pay-${String(c.label).toLowerCase()}`, c.label));
-      if (c.handle) card.appendChild(el('span', 'pay-handle', String(c.handle).replace(/(.)@/, '$1​@')));
-      if (url) card.appendChild(el('span', 'pay-tap', 'Tap to open'));
-      else if (form) card.appendChild(el('span', 'pay-tap', 'Tap to email us'));
+      fillPayCard(card, c, url);
+      if (!url && form) card.appendChild(el('span', 'pay-tap', 'Tap to email us'));
       grid.appendChild(card);
     }
     pay.appendChild(grid);
@@ -465,7 +460,62 @@ function renderAbout(about) {
   section.hidden = false;
 }
 
-// 50/50 raffle card: jackpot that counts up, drawing date with a live countdown, and a ticket button.
+// Strip under the header that scrolls through every player's supporters, with "Merci", a fleur-de-lis
+// and the Kings logo taking turns between the names. Hover to pause.
+function renderDonorTicker(cfg, players = []) {
+  const box = $('donor-ticker');
+  if (!box || !cfg) return;
+  const names = [...new Set(players.flatMap((p) => p.supporters || []).map((s) => String(s).trim()).filter(Boolean))];
+  if (!names.length) return;
+
+  const picture = (src, className) => {
+    const img = el('img', className);
+    img.src = src;
+    img.alt = '';
+    return img;
+  };
+  const separators = [
+    () => el('span', 'ticker-merci', 'Merci'),
+    () => picture(cfg.fleur || 'Images/fleur_de_lis.png', 'ticker-icon'),
+    () => picture(cfg.logo || 'Images/logo.png', 'ticker-icon'),
+  ];
+  // Two copies of the list side by side: scrolling exactly one copy's width loops without a jump.
+  const track = (copy) => {
+    const list = el('ul', 'ticker-track');
+    if (copy) list.setAttribute('aria-hidden', 'true');
+    names.forEach((name, i) => {
+      const sep = el('li', 'ticker-sep');
+      sep.setAttribute('aria-hidden', 'true');
+      sep.appendChild(separators[i % separators.length]());
+      list.append(el('li', 'ticker-name', name), sep);
+    });
+    return list;
+  };
+
+  box.setAttribute('role', 'region');
+  box.setAttribute('aria-label', `${cfg.label || 'Got My Back'} supporters`);
+  if (cfg.label) box.appendChild(el('span', 'ticker-label', cfg.label));
+  const viewport = el('div', 'ticker-viewport');
+  const belt = el('div', 'ticker-belt');
+  belt.style.setProperty('--ticker-duration', `${Math.max(20, names.length * 3)}s`);
+  belt.append(track(false), track(true));
+  viewport.appendChild(belt);
+  box.appendChild(viewport);
+  box.hidden = false;
+}
+
+// A QR code card's picture, brand name, handle and (for a link) "Tap to open".
+function fillPayCard(card, c, url) {
+  const img = el('img', 'pay-qr');
+  img.src = c.qr;
+  img.alt = `${c.label} QR code${c.handle ? ` for ${c.handle}` : ''}`;
+  card.appendChild(img);
+  if (c.handle) card.appendChild(el('span', 'pay-handle', String(c.handle).replace(/(.)@/, '$1​@')));
+  if (url) card.appendChild(el('span', 'pay-tap', 'Tap to open'));
+}
+
+// 50/50 raffle card: jackpot that counts up, drawing date with a live countdown, ticket prices,
+// and the Zelle / Venmo codes to buy them (or a ticket button when there are no codes).
 function renderFiftyFifty(ff) {
   const section = $('fifty-fifty');
   if (!section || !ff || !ff.drawDate) return;
@@ -523,7 +573,7 @@ function renderFiftyFifty(ff) {
       const done = $('fifty-done');
       done.textContent = ff.winner ? `🎉 Congrats, ${ff.winner}! 🎉` : 'The drawing is done! Stay tuned for the lucky winner…';
       done.hidden = false;
-      $('fifty-btn').hidden = true;
+      for (const id of ['fifty-btn', 'fifty-pay', 'fifty-how']) $(id).hidden = true;
       return;
     }
     for (const u of units) {
@@ -531,28 +581,71 @@ function renderFiftyFifty(ff) {
       left %= u.secs;
     }
   };
-  const timer = setInterval(tick, 1000);
-  tick();
 
-  if (ff.ticketInfo) {
-    $('fifty-tickets').textContent = ff.ticketInfo;
-    $('fifty-tickets').hidden = false;
+  // Ticket prices as little gold tickets, e.g. "5 tickets $10"; or the older one-line ticketInfo.
+  const tickets = $('fifty-tickets');
+  const options = (ff.tickets || []).filter((t) => t.count && t.price != null);
+  if (options.length) {
+    if (ff.ticketsTitle) tickets.appendChild(el('p', 'fifty-label', ff.ticketsTitle));
+    const row = el('div', 'fifty-tix-row');
+    for (const t of options) {
+      const tix = el('div', 'fifty-tix');
+      tix.append(el('b', '', String(t.count)), el('span', '', t.count === 1 ? 'ticket' : 'tickets'),
+                 el('strong', '', money.format(Number(t.price) || 0)));
+      row.appendChild(tix);
+    }
+    tickets.appendChild(row);
+    tickets.hidden = false;
+  } else if (ff.ticketInfo) {
+    tickets.textContent = ff.ticketInfo;
+    tickets.hidden = false;
+  }
+
+  // Zelle / Venmo QR codes to buy tickets. A card with a url is also a link (on a phone, tap it instead of scanning).
+  const codes = (ff.payCodes || []).filter((c) => c.qr);
+  const btn = $('fifty-btn');
+  if (codes.length) {
+    const grid = el('div', 'pay-grid');
+    for (const c of codes) {
+      const url = safeUrl(c.url);
+      const card = url ? externalLink(url, 'pay-card') : el('div', 'pay-card');
+      fillPayCard(card, c, url);
+      if (url && !calm) card.addEventListener('click', () => confetti(card));
+      grid.appendChild(card);
+    }
+    $('fifty-pay').appendChild(grid);
+    $('fifty-pay').hidden = false;
+  } else {
+    // The button opens buttonUrl in a new tab, or jumps to Donate Now if there's no link. A little confetti on the way.
+    $('fifty-btn-text').textContent = ff.buttonText || 'Get my tickets!';
+    const url = safeUrl(ff.buttonUrl);
+    if (url) {
+      btn.href = url;
+      btn.target = '_blank';
+      btn.rel = 'noopener';
+    }
+    if (!calm) btn.addEventListener('click', () => confetti(btn));
+    btn.hidden = false;
+  }
+
+  // What to write in the payment note, as a numbered list.
+  const steps = (ff.noteSteps || []).filter(Boolean);
+  if (steps.length) {
+    const how = $('fifty-how');
+    if (ff.noteTitle) how.appendChild(el('p', 'fifty-label', ff.noteTitle));
+    const list = el('ol', 'fifty-how-list');
+    for (const s of steps) list.appendChild(el('li', '', s));
+    how.appendChild(list);
+    how.hidden = false;
   }
   if (ff.note) {
     $('fifty-note').textContent = ff.note;
     $('fifty-note').hidden = false;
   }
 
-  // The button opens buttonUrl in a new tab, or jumps to Donate Now if there's no link. A little confetti on the way.
-  const btn = $('fifty-btn');
-  $('fifty-btn-text').textContent = ff.buttonText || 'Get my tickets!';
-  const url = safeUrl(ff.buttonUrl);
-  if (url) {
-    btn.href = url;
-    btn.target = '_blank';
-    btn.rel = 'noopener';
-  }
-  if (!calm) btn.addEventListener('click', () => confetti(btn));
+  // Start the countdown last: once the drawing has passed it hides the codes and button.
+  const timer = setInterval(tick, 1000);
+  tick();
 
   section.hidden = false;
 }
@@ -771,6 +864,7 @@ async function init() {
     renderProgress(data.goal);
     renderSocial(data.social);
 
+    renderDonorTicker(data.donorTicker, data.players);
     renderTeamPhoto(data.teamPhoto);
     renderFundraisingAlert(data.fundraisingAlert, data.players, data.team);
     renderAbout(data.about);

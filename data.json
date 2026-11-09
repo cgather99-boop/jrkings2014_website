@@ -35,6 +35,12 @@
     "caption": ""
   },
 
+  "donorTicker": {
+    "label": "Got My Back",
+    "fleur": "Images/fleur_de_lis.png",
+    "logo": "Images/logo.png"
+  },
+
   "fundraisingAlert": {
     "banner": "Images/got_my_back_banner.png",
     "bannerAlt": "LA Jr. Kings 2014 AAA PeeWee. Got My Back: support our players’ journey to Quebec!",
@@ -157,7 +163,7 @@
     { "number": 96, "name": "Henry Gathercole", "position": "Forward", "photo": "Images/Headshots/Henry.png", "flyer": "", "thankYou": "", "supporters": ["Michael and Leah Kingston","Tita y Abuelo","Gueli","Colleen & Jed McCarthy","The Shocker Family","Titi Tere, Tio Howard, Lucia, Juan Miguel y Maria"] },
     { "number": 23, "name": "Hudson Jones", "position": "Defense", "photo": "Images/Headshots/Hudson.png", "flyer": "", "thankYou": "", "supporters": [] },
     { "number": 16, "name": "Mark Rettele", "position": "Forward", "photo": "Images/Headshots/Mark.png", "flyer": "", "thankYou": "", "supporters": [] },
-    { "number": 91, "name": "Micah Song", "position": "Forward", "photo": "Images/Headshots/Micah.png", "flyer": "Images/Flyer_Micah.jpeg", "thankYou": "", "supporters": ["Master Toys & Novelties","Charlotte Conn","Emery Kim","The Engstroms","Austin & Esther Chung","TOSHIMACLAN","The Nguy Family","Miles Kalavsky","Ikegami Family","Remy Dam & Family","The Yap Family","Lee Family","Joy & Kai","Cousin Juni & Family","Song Grandparents","The Sungs","South Pas Crew","Yoo Grandparents","DENNIS JISUK PARK"] },
+    { "number": 91, "name": "Micah Song", "position": "Forward", "photo": "Images/Headshots/Micah.png", "flyer": "", "thankYou": "", "supporters": ["Master Toys & Novelties","Charlotte Conn","Emery Kim","The Engstroms","Austin & Esther Chung","TOSHIMACLAN","The Nguy Family","Miles Kalavsky","Ikegami Family","Remy Dam & Family","The Yap Family","Lee Family","Joy & Kai","Cousin Juni & Family","Song Grandparents","The Sungs","South Pas Crew","Yoo Grandparents","DENNIS JISUK PARK"] },
     { "number": 78, "name": "Milo Su", "position": "Forward", "photo": "Images/Headshots/Milo.png", "flyer": "", "thankYou": "", "supporters": [] },
     { "number": 44, "name": "Nicolas Van Den Bosch", "position": "Defense", "photo": "Images/Headshots/Nick.png", "flyer": "", "thankYou": "", "supporters": ["Harrison Hanner-Zhang","Eric Carlsson-Zhang","Senna Hanner-Zhang","Marcella Ruiz"] },
     { "number": 79, "name": "Nixon Tebo", "position": "Forward", "photo": "Images/Headshots/Nixon.png", "flyer": "", "thankYou": "", "supporters": ["Adam Lem","David Tebo","Ashley & Andrew Tebo"] },

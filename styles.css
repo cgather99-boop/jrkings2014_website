@@ -108,6 +108,46 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   .team-name { font-size: 1.6rem; }
 }
 
+/* ---------- Got My Back supporters strip (under the header) ---------- */
+.donor-ticker {
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+  color: var(--on-primary);
+  border-bottom: 3px solid var(--accent);
+}
+.ticker-label {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 0.75rem;
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.ticker-viewport {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  -webkit-mask: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+          mask: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+}
+.ticker-belt { display: flex; width: max-content; animation: ticker-scroll var(--ticker-duration, 60s) linear infinite; }
+.donor-ticker:hover .ticker-belt { animation-play-state: paused; }
+/* The gap after the last item matches the gap between items, so the two copies join seamlessly */
+.ticker-track { display: flex; align-items: center; gap: 16px; margin: 0; padding: 6px 16px 6px 0; list-style: none; }
+.ticker-track li { display: flex; align-items: center; white-space: nowrap; }
+.ticker-name { font-size: 0.9rem; font-weight: 700; }
+.ticker-merci { font-family: 'Pacifico', 'Brush Script MT', cursive; font-size: 1rem; line-height: 1; color: var(--accent); }
+.ticker-icon { display: block; width: auto; height: 22px; }
+@keyframes ticker-scroll { to { transform: translateX(-50%); } }
+
 /* ---------- Page layout: sidebar + content ---------- */
 .layout {
   max-width: 1400px;
@@ -365,7 +405,9 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   font-size: 0.8rem; font-weight: 800;
 }
 .alert-em { color: #8A1E5F; font-weight: 800; }
-.alert-pay { margin-bottom: 16px; }
+.alert-pay { max-width: 560px; margin: 20px auto 0; }
+.alert-pay .pay-grid { grid-template-columns: repeat(auto-fit, minmax(130px, 220px)); justify-content: center; }
+.alert-pay .pay-note { text-align: center; }
 .pay-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
 .pay-card {
   display: flex; flex-direction: column; align-items: center; gap: 2px;
@@ -393,9 +435,6 @@ a.pay-card:hover, button.pay-card:hover { border-color: var(--primary); }
 }
 .pay-field select:focus, .pay-field input:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
 .pay-qr { display: block; width: 100%; max-width: 170px; height: auto; image-rendering: pixelated; }
-.pay-brand { margin-top: 6px; font-size: 1.35rem; font-weight: 900; line-height: 1.1; }
-.pay-zelle { color: #6D1ED4; }
-.pay-venmo { color: #008CFF; font-style: italic; text-transform: lowercase; }
 .pay-handle { font-size: 0.75rem; color: var(--muted); overflow-wrap: break-word; text-align: center; }
 .pay-tap { font-size: 0.75rem; font-weight: 700; color: var(--primary); }
 .pay-note { margin: 8px 0 0; font-size: 0.85rem; color: var(--muted); }
@@ -707,7 +746,32 @@ a.pay-card:hover, button.pay-card:hover { border-color: var(--primary); }
 .fifty-unit small { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.85; }
 .fifty-done { margin: 10px 0 0; font-weight: 800; color: var(--accent); }
 
-.fifty-tickets { margin: 0 0 10px; font-weight: 700; font-size: 0.9rem; }
+.fifty-tickets { margin: 0 0 14px; font-weight: 700; font-size: 0.9rem; }
+/* Ticket prices as small gold tickets, like the flyer */
+.fifty-tix-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-top: 6px; }
+.fifty-tix {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 7px 2px;
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: 6px;
+  outline: 2px dashed color-mix(in srgb, var(--on-accent) 35%, transparent);
+  outline-offset: -5px;
+  line-height: 1.1;
+}
+.fifty-tix b { font-size: 1.2rem; font-weight: 900; }
+.fifty-tix span { font-size: 0.55rem; font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; }
+.fifty-tix strong { margin-top: 2px; font-size: 1rem; font-weight: 900; }
+.fifty-pay { margin-bottom: 14px; }
+/* The tile is narrow, so the two codes sit side by side at a smaller size */
+.fifty-pay .pay-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.fifty-pay .pay-card { padding: 8px 6px; }
+.fifty-pay .pay-qr { max-width: 120px; }
+.fifty-pay .pay-handle { font-size: 0.65rem; }
+/* What to put in the payment note */
+.fifty-how { text-align: left; max-width: 260px; margin: 0 auto; }
+.fifty-how .fifty-label { text-align: center; margin-bottom: 4px; }
+.fifty-how-list { margin: 0; padding-left: 1.4em; font-weight: 800; }
 .fifty-btn {
   position: relative;
   width: 100%;
@@ -1065,6 +1129,10 @@ a.pay-card:hover, button.pay-card:hover { border-color: var(--primary); }
   .fifty-sparkles i, .fifty-ticket, .fifty-btn, .fifty-btn:hover { animation: none; }
   .go-kings::before, .go-kings-crown { animation: none; }
   .surf-board, .surf-waves, .surf-photo { animation: none; }
+  /* No scrolling strip: one copy of the names that can be swiped or scrolled sideways instead */
+  .ticker-belt { animation: none; }
+  .ticker-viewport { overflow-x: auto; }
+  .ticker-track[aria-hidden="true"] { display: none; }
 }
 
 /* ---------- Phone refinements ---------- */
