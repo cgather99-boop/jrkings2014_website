@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Exported from the Jr Kings Fundraising finances app on Nov 6, 2026 3:53 PM.
+  <!-- Exported from the Jr Kings Fundraising finances app on Nov 8, 2026 8:47 PM.
        Don't edit this file: use "Export HTML" in the finances app again to update it. -->
   
   <base href="../">
@@ -12,11 +12,21 @@
   <title>Transactions</title>
   <link rel="icon" href="Images/logo.png">
   <link rel="stylesheet" href="theme.css?v=6">
-  <link rel="stylesheet" href="styles.css?v=23">
+  <link rel="stylesheet" href="styles.css?v=27">
   <style>
     /* Report pages: colors come from the website's theme.css. */
     .rpt { --rpt-pos: #2f7d5b; --rpt-neg: #b5473a; display: flex; flex-direction: column; gap: 20px; }
     .rpt .card h1 { margin-bottom: 8px; }
+    .rpt-title-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+    .rpt-title-row h1 { margin: 0; }
+    .rpt-switch { display: flex; align-items: center; gap: 8px; }
+    .rpt-switch label { color: var(--muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+    .rpt-switch select {
+      min-height: 40px; padding: 6px 36px 6px 12px; border: 2px solid var(--primary); border-radius: 10px;
+      background: var(--surface); color: var(--text); font: inherit; font-weight: 700; cursor: pointer;
+    }
+    .rpt-switch select:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+    .rpt-switch noscript a { margin-left: 8px; font-weight: 700; }
     .rpt-meta { margin: 0; color: var(--muted); font-size: 0.9rem; }
     .rpt-intro { margin: 10px 0 0; }
     .rpt-stats { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-top: 16px; }
@@ -130,13 +140,13 @@
 
 <section class="card" aria-labelledby="rpt-title">
   <h1 id="rpt-title">Transactions</h1>
-  <p class="rpt-meta">October 1, 2026 – November 6, 2026 · Updated November 6, 2026</p>
+  <p class="rpt-meta">October 1, 2026 – November 8, 2026 · Updated November 8, 2026</p>
   <p class="rpt-intro">Every bank transaction in this period, newest first. Choose a category to see only its transactions.
     Names and bank details are left out.</p>
   <div class="rpt-stats">
-    <div class="rpt-stat"><div class="label">Money in</div><div class="value pos">$9,065.10</div></div>
+    <div class="rpt-stat"><div class="label">Money in</div><div class="value pos">$9,345.72</div></div>
     <div class="rpt-stat"><div class="label">Money out</div><div class="value neg">$6,159.90</div></div>
-    <div class="rpt-stat"><div class="label">Bank transactions</div><div class="value">94</div></div>
+    <div class="rpt-stat"><div class="label">Bank transactions</div><div class="value">110</div></div>
   </div>
 </section>
 
@@ -145,14 +155,14 @@
 <section class="card rpt-filters" aria-labelledby="rpt-filter-title" hidden>
   <h2 id="rpt-filter-title">Show transactions for</h2>
   <div class="rpt-filter-row">
-    <button type="button" class="rpt-filter" data-cat="" aria-pressed="true">All categories <span class="rpt-cat-count">113</span></button>
+    <button type="button" class="rpt-filter" data-cat="" aria-pressed="true">All categories <span class="rpt-cat-count">129</span></button>
   </div>
   
   <div class="rpt-filter-row" role="group" aria-label="Money in">
     <span class="rpt-filter-kind">Money in</span>
     
     <button type="button" class="rpt-filter rpt-filter-in" data-cat="in-got-my-back-t-shirt" aria-pressed="false"
-            data-name="Got My Back T-Shirt" data-total="$2,413.20">Got My Back T-Shirt <span class="rpt-cat-count">33</span></button>
+            data-name="Got My Back T-Shirt" data-total="$2,596.10">Got My Back T-Shirt <span class="rpt-cat-count">37</span></button>
     
     <button type="button" class="rpt-filter rpt-filter-in" data-cat="in-extra-skaters-at-practice" aria-pressed="false"
             data-name="Extra Skaters at Practice" data-total="$2,153.80">Extra Skaters at Practice <span class="rpt-cat-count">27</span></button>
@@ -188,7 +198,7 @@
             data-name="Other Income" data-total="$0.21">Other Income <span class="rpt-cat-count">1</span></button>
     
     <button type="button" class="rpt-filter rpt-filter-in" data-cat="in-surfboard-fundraiser" aria-pressed="false"
-            data-name="Surfboard Fundraiser" data-total="-$151.71">Surfboard Fundraiser <span class="rpt-cat-count">5</span></button>
+            data-name="Surfboard Fundraiser" data-total="-$53.99">Surfboard Fundraiser <span class="rpt-cat-count">9</span></button>
     
   </div>
   
@@ -198,20 +208,20 @@
     <button type="button" class="rpt-filter rpt-filter-out" data-cat="out-trading-pins" aria-pressed="false"
             data-name="Trading Pins" data-total="$1,920.00">Trading Pins <span class="rpt-cat-count">1</span></button>
     
-    <button type="button" class="rpt-filter rpt-filter-out" data-cat="out-tournament-patches" aria-pressed="false"
-            data-name="Tournament Patches" data-total="$1,512.08">Tournament Patches <span class="rpt-cat-count">3</span></button>
+    <button type="button" class="rpt-filter rpt-filter-out" data-cat="out-tournament-patches-licensing" aria-pressed="false"
+            data-name="Tournament Patches &amp; Licensing" data-total="$1,512.08">Tournament Patches &amp; Licensing <span class="rpt-cat-count">3</span></button>
     
-    <button type="button" class="rpt-filter rpt-filter-out" data-cat="out-coaches-costs" aria-pressed="false"
-            data-name="Coaches Costs" data-total="$1,279.63">Coaches Costs <span class="rpt-cat-count">1</span></button>
+    <button type="button" class="rpt-filter rpt-filter-out" data-cat="out-coaches-flights" aria-pressed="false"
+            data-name="Coaches Flights" data-total="$1,279.63">Coaches Flights <span class="rpt-cat-count">1</span></button>
     
-    <button type="button" class="rpt-filter rpt-filter-out" data-cat="out-tournament-registration" aria-pressed="false"
-            data-name="Tournament Registration" data-total="$1,250.00">Tournament Registration <span class="rpt-cat-count">1</span></button>
+    <button type="button" class="rpt-filter rpt-filter-out" data-cat="out-registration" aria-pressed="false"
+            data-name="Registration" data-total="$1,250.00">Registration <span class="rpt-cat-count">1</span></button>
     
     <button type="button" class="rpt-filter rpt-filter-out" data-cat="out-other-expenses" aria-pressed="false"
             data-name="Other Expenses" data-total="$96.83">Other Expenses <span class="rpt-cat-count">1</span></button>
     
-    <button type="button" class="rpt-filter rpt-filter-out" data-cat="out-merchandise-costs" aria-pressed="false"
-            data-name="Merchandise Costs" data-total="$50.78">Merchandise Costs <span class="rpt-cat-count">1</span></button>
+    <button type="button" class="rpt-filter rpt-filter-out" data-cat="out-required-team-apparel" aria-pressed="false"
+            data-name="Required Team Apparel" data-total="$50.78">Required Team Apparel <span class="rpt-cat-count">1</span></button>
     
     <button type="button" class="rpt-filter rpt-filter-out" data-cat="out-supplies-printing" aria-pressed="false"
             data-name="Supplies &amp; Printing" data-total="$50.58">Supplies &amp; Printing <span class="rpt-cat-count">1</span></button>
@@ -222,7 +232,7 @@
     <span class="rpt-filter-kind">Transfers</span>
     
     <button type="button" class="rpt-filter rpt-filter-transfer" data-cat="transfer-transfer-between-accounts" aria-pressed="false"
-            data-name="Transfer Between Accounts" data-total="$0.00">Transfer Between Accounts <span class="rpt-cat-count">5</span></button>
+            data-name="Transfer Between Accounts" data-total="$2,035.92">Transfer Between Accounts <span class="rpt-cat-count">13</span></button>
     
   </div>
   
@@ -231,12 +241,124 @@
 
 <section class="card" aria-labelledby="rpt-list-title">
   <h2 id="rpt-list-title">All transactions</h2>
-  <p class="rpt-group-total" id="rpt-showing" aria-live="polite">113 entries</p>
+  <p class="rpt-group-total" id="rpt-showing" aria-live="polite">129 entries</p>
   
   <div class="rpt-scroll">
   <table class="rpt-txns">
     <thead><tr><th>Date</th><th>Category</th><th class="hide-sm">Payment</th><th class="num">Amount</th></tr></thead>
     <tbody>
+    
+      <tr data-cat="transfer-transfer-between-accounts">
+        <td class="nowrap">Nov 6, 2026</td>
+        <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num">$254.51</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 6, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$50.00</td>
+      </tr>
+    
+      <tr data-cat="transfer-transfer-between-accounts">
+        <td class="nowrap">Nov 6, 2026</td>
+        <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num">$254.51</td>
+      </tr>
+    
+      <tr data-cat="transfer-transfer-between-accounts">
+        <td class="nowrap">Nov 6, 2026</td>
+        <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num">$254.51</td>
+      </tr>
+    
+      <tr data-cat="in-surfboard-fundraiser">
+        <td class="nowrap">Nov 6, 2026</td>
+        <td>Surfboard Fundraiser</td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$24.43</td>
+      </tr>
+    
+      <tr data-cat="in-surfboard-fundraiser">
+        <td class="nowrap">Nov 6, 2026</td>
+        <td>Surfboard Fundraiser</td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$24.43</td>
+      </tr>
+    
+      <tr data-cat="in-surfboard-fundraiser">
+        <td class="nowrap">Nov 6, 2026</td>
+        <td>Surfboard Fundraiser</td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$24.43</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 6, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$48.95</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 6, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$35.00</td>
+      </tr>
+    
+      <tr data-cat="in-surfboard-fundraiser">
+        <td class="nowrap">Nov 6, 2026</td>
+        <td>Surfboard Fundraiser</td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$24.43</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 6, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$48.95</td>
+      </tr>
+    
+      <tr data-cat="transfer-transfer-between-accounts">
+        <td class="nowrap">Nov 6, 2026</td>
+        <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="hide-sm">Check</td>
+        <td class="num">$1,781.41</td>
+      </tr>
+    
+      <tr data-cat="transfer-transfer-between-accounts">
+        <td class="nowrap">Nov 6, 2026</td>
+        <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="hide-sm">Check</td>
+        <td class="num">-$254.51</td>
+      </tr>
+    
+      <tr data-cat="transfer-transfer-between-accounts">
+        <td class="nowrap">Nov 6, 2026</td>
+        <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="hide-sm">Check</td>
+        <td class="num">-$254.51</td>
+      </tr>
+    
+      <tr data-cat="transfer-transfer-between-accounts">
+        <td class="nowrap">Nov 6, 2026</td>
+        <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="hide-sm">Check</td>
+        <td class="num">-$254.51</td>
+      </tr>
+    
+      <tr data-cat="transfer-transfer-between-accounts">
+        <td class="nowrap">Nov 5, 2026</td>
+        <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num">$254.51</td>
+      </tr>
     
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 5, 2026</td>
@@ -441,9 +563,9 @@
         <td class="num pos">$24.43</td>
       </tr>
     
-      <tr data-cat="out-tournament-patches">
+      <tr data-cat="out-tournament-patches-licensing">
         <td class="nowrap">Oct 27, 2026</td>
-        <td>Tournament Patches</td>
+        <td>Tournament Patches &amp; Licensing</td>
         <td class="hide-sm">Card purchase</td>
         <td class="num neg">-$670.08</td>
       </tr>
@@ -798,9 +920,9 @@
         <td class="num pos">-$76.46</td>
       </tr>
     
-      <tr data-cat="out-merchandise-costs">
+      <tr data-cat="out-required-team-apparel">
         <td class="nowrap">Oct 15, 2026</td>
-        <td>Merchandise Costs</td>
+        <td>Required Team Apparel</td>
         <td class="hide-sm">Card purchase</td>
         <td class="num neg">-$50.78</td>
       </tr>
@@ -819,9 +941,9 @@
         <td class="num pos">$75.00</td>
       </tr>
     
-      <tr data-cat="out-tournament-patches">
+      <tr data-cat="out-tournament-patches-licensing">
         <td class="nowrap">Oct 14, 2026</td>
-        <td>Tournament Patches</td>
+        <td>Tournament Patches &amp; Licensing</td>
         <td class="hide-sm">Withdrawal</td>
         <td class="num neg">-$424.00</td>
       </tr>
@@ -945,9 +1067,9 @@
         <td class="num pos">$21.00</td>
       </tr>
     
-      <tr data-cat="out-tournament-registration">
+      <tr data-cat="out-registration">
         <td class="nowrap">Oct 1, 2026</td>
-        <td>Tournament Registration</td>
+        <td>Registration</td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num neg">-$1,250.00</td>
       </tr>
@@ -994,9 +1116,9 @@
         <td class="num pos">$180.00</td>
       </tr>
     
-      <tr data-cat="out-tournament-patches">
+      <tr data-cat="out-tournament-patches-licensing">
         <td class="nowrap">Oct 1, 2026</td>
-        <td>Tournament Patches</td>
+        <td>Tournament Patches &amp; Licensing</td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num neg">-$418.00</td>
       </tr>
@@ -1008,9 +1130,9 @@
         <td class="num neg">-$50.58</td>
       </tr>
     
-      <tr data-cat="out-coaches-costs">
+      <tr data-cat="out-coaches-flights">
         <td class="nowrap">Oct 1, 2026</td>
-        <td>Coaches Costs</td>
+        <td>Coaches Flights</td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num neg">-$1,279.63</td>
       </tr>
@@ -1096,6 +1218,6 @@
 
   <footer id="site-footer" class="site-footer"></footer>
 
-  <script src="app.js?v=25"></script>
+  <script src="app.js?v=26"></script>
 </body>
 </html>

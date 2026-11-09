@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Exported from the Jr Kings Fundraising finances app on Nov 6, 2026 3:53 PM.
+  <!-- Exported from the Jr Kings Fundraising finances app on Nov 8, 2026 8:47 PM.
        Don't edit this file: use "Export HTML" in the finances app again to update it. -->
   
   <base href="../">
@@ -12,11 +12,21 @@
   <title>Extra Skaters</title>
   <link rel="icon" href="Images/logo.png">
   <link rel="stylesheet" href="theme.css?v=6">
-  <link rel="stylesheet" href="styles.css?v=23">
+  <link rel="stylesheet" href="styles.css?v=27">
   <style>
     /* Report pages: colors come from the website's theme.css. */
     .rpt { --rpt-pos: #2f7d5b; --rpt-neg: #b5473a; display: flex; flex-direction: column; gap: 20px; }
     .rpt .card h1 { margin-bottom: 8px; }
+    .rpt-title-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+    .rpt-title-row h1 { margin: 0; }
+    .rpt-switch { display: flex; align-items: center; gap: 8px; }
+    .rpt-switch label { color: var(--muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+    .rpt-switch select {
+      min-height: 40px; padding: 6px 36px 6px 12px; border: 2px solid var(--primary); border-radius: 10px;
+      background: var(--surface); color: var(--text); font: inherit; font-weight: 700; cursor: pointer;
+    }
+    .rpt-switch select:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+    .rpt-switch noscript a { margin-left: 8px; font-weight: 700; }
     .rpt-meta { margin: 0; color: var(--muted); font-size: 0.9rem; }
     .rpt-intro { margin: 10px 0 0; }
     .rpt-stats { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-top: 16px; }
@@ -130,7 +140,7 @@
 
 <section class="card" aria-labelledby="rpt-title">
   <h1 id="rpt-title">Extra Skaters at Practice</h1>
-  <p class="rpt-meta">August 15, 2026 – November 6, 2026 · Updated November 6, 2026</p>
+  <p class="rpt-meta">August 15, 2026 – November 8, 2026 · Updated November 8, 2026</p>
   <p class="rpt-intro">Extra skaters who join a team practice pay $60.00 each.
     This page shows every practice, how many extra skaters came, and what has been paid.</p>
   <div class="rpt-stats">
@@ -1038,6 +1048,6 @@ z
 
   <footer id="site-footer" class="site-footer"></footer>
 
-  <script src="app.js?v=25"></script>
+  <script src="app.js?v=26"></script>
 </body>
 </html>

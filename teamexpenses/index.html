@@ -1,0 +1,961 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Exported from the Jr Kings Fundraising finances app on Nov 8, 2026 8:47 PM.
+       Don't edit this file: use "Export HTML" in the finances app again to update it. -->
+  
+  <base href="../">
+  
+  <meta name="robots" content="noindex, nofollow">
+  <title>Team Expenses</title>
+  <link rel="icon" href="Images/logo.png">
+  <link rel="stylesheet" href="theme.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=27">
+  <style>
+    /* Report pages: colors come from the website's theme.css. */
+    .rpt { --rpt-pos: #2f7d5b; --rpt-neg: #b5473a; display: flex; flex-direction: column; gap: 20px; }
+    .rpt .card h1 { margin-bottom: 8px; }
+    .rpt-title-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+    .rpt-title-row h1 { margin: 0; }
+    .rpt-switch { display: flex; align-items: center; gap: 8px; }
+    .rpt-switch label { color: var(--muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+    .rpt-switch select {
+      min-height: 40px; padding: 6px 36px 6px 12px; border: 2px solid var(--primary); border-radius: 10px;
+      background: var(--surface); color: var(--text); font: inherit; font-weight: 700; cursor: pointer;
+    }
+    .rpt-switch select:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+    .rpt-switch noscript a { margin-left: 8px; font-weight: 700; }
+    .rpt-meta { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    .rpt-intro { margin: 10px 0 0; }
+    .rpt-stats { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-top: 16px; }
+    .rpt-stat { border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; background: var(--surface); }
+    .rpt-stat .label { color: var(--muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+    .rpt-stat .value { font-size: 1.45rem; font-weight: 800; color: var(--text); font-variant-numeric: tabular-nums; }
+    .rpt-stat .sub { color: var(--muted); font-size: 0.85rem; }
+    .rpt .pos { color: var(--rpt-pos); }
+    .rpt .neg { color: var(--rpt-neg); }
+    .rpt-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .rpt-scroll { overflow-x: auto; }
+    .rpt table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .rpt th, .rpt td { text-align: left; padding: 8px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .rpt th { color: var(--muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+    .rpt .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .rpt .nowrap { white-space: nowrap; }
+    .rpt tr.total td { font-weight: 800; border-top: 2px solid var(--text); border-bottom: 0; }
+    .rpt .small { font-size: 0.85rem; }
+    .rpt-muted { color: var(--muted); }
+    .rpt-status { display: inline-block; margin-left: 4px; padding: 0 8px; border: 1px solid var(--border); border-radius: 999px;
+      font-size: 0.72rem; font-weight: 700; color: var(--muted); white-space: nowrap; vertical-align: 1px; }
+    .rpt-status-fully_paid { color: var(--rpt-pos); border-color: currentColor; }
+    .rpt-status-quoted { color: var(--primary); border-color: currentColor; }
+    .rpt-status-optional { border-style: dashed; }
+    .rpt-priority { display: inline-block; padding: 0 8px; border: 1px solid var(--primary); border-radius: 999px;
+      font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+    .rpt-priority-mandatory { background: var(--primary); color: var(--on-primary); }
+    .rpt-priority-nice_to_have { background: var(--primary-tint); color: var(--primary); }
+    .rpt tr.rpt-subtotal td { font-weight: 700; color: var(--muted); border-bottom: 0; }
+    .rpt tr.rpt-subtotal:first-child td { border-top: 2px solid var(--border); }
+    .rpt-bar-cell { width: 38%; }
+    .rpt-bar-track { display: flex; height: 10px; background: var(--primary-tint); border-radius: 5px; overflow: hidden; min-width: 60px; }
+    .rpt-bar { height: 100%; }
+    .rpt-bar.income { background: var(--rpt-pos); }
+    .rpt-bar.expense, .rpt-bar.over { background: var(--rpt-neg); }
+    .rpt-bar.spent { background: var(--primary); }
+    .rpt-bar.planned { opacity: 0.35; background-image: repeating-linear-gradient(45deg, transparent 0 3px, rgba(255, 255, 255, 0.7) 3px 5px); }
+    .rpt-goal-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; margin-bottom: 10px; }
+    .rpt-goal-raised { font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+    .rpt-goal-raised strong { font-size: 1.7rem; font-weight: 800; color: var(--primary); margin-right: 2px; }
+    .rpt-goal-pct { font-size: 1.05rem; color: var(--muted); }
+    .rpt-goal-pct strong { color: var(--primary); }
+    .rpt-goal-bar { height: 22px; border: 2px solid var(--primary); border-radius: 999px; background: var(--primary-tint); overflow: hidden; }
+    .rpt-goal-fill { height: 100%; min-width: 18px; border-radius: 999px; background: var(--accent); }
+    .rpt-chart { display: block; width: 100%; height: auto; }
+    .rpt-chip { display: inline-block; font-size: 0.78rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+    .rpt-chip.pos { background: #e7f4ec; color: #1f5e42; }
+    .rpt-chip.warn { background: #fff6e0; color: #7a4f00; }
+    .rpt-chip.neg { background: #fbe9e7; color: #9a3328; }
+    .rpt-note { margin: 12px 0 0; color: var(--muted); font-size: 0.85rem; }
+    .rpt-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0 0 10px; color: var(--muted); font-size: 0.85rem; }
+    .rpt-key { display: inline-block; width: 12px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+    .rpt [hidden] { display: none !important; }
+    /* Finances page: one collapsible row per category, opening to its transactions */
+    .rpt-group-total { margin: -6px 0 12px; font-size: 1.05rem; }
+    .rpt-grid-note { margin-top: -8px; }
+    .rpt-cat { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; background: var(--surface); }
+    .rpt-cat summary {
+      display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+      cursor: pointer; list-style: none; font-weight: 700;
+    }
+    .rpt-cat summary::-webkit-details-marker { display: none; }
+    .rpt-cat summary::before { content: "▸"; color: var(--primary); transition: transform 0.15s; }
+    .rpt-cat[open] summary::before { transform: rotate(90deg); }
+    .rpt-cat summary:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; border-radius: 10px; }
+    .rpt-cat-name { flex: 1; min-width: 0; }
+    .rpt-cat-bar { flex: 0 0 34%; }
+    .rpt-cat-total { font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
+    .rpt-cat-total .small { display: block; font-weight: 400; }
+    .rpt-cat table { margin: 0 0 6px; }
+    .rpt-cat th:first-child, .rpt-cat td:first-child { padding-left: 34px; }
+    .rpt-cat-link { margin: 0; padding: 4px 12px 10px 34px; font-size: 0.85rem; }
+    .rpt-cats-total { display: flex; justify-content: space-between; padding: 10px 12px 0 34px;
+      border-top: 2px solid var(--text); margin-top: 4px; font-weight: 800; }
+    .rpt-cat-count {
+      min-width: 26px; padding: 1px 8px; border-radius: 999px; text-align: center;
+      background: var(--primary-tint); color: var(--primary); font-size: 0.8rem;
+    }
+    /* Transactions page: category buttons over one list, newest first */
+    .rpt-filters h2 { margin-bottom: 10px; }
+    .rpt-filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 8px; }
+    .rpt-filter-kind { flex-basis: 100%; color: var(--muted); font-size: 0.78rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.03em; margin-top: 4px; }
+    .rpt-filter {
+      display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; min-height: 36px;
+      border: 1px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--text);
+      font: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer;
+    }
+    .rpt-filter:hover { border-color: var(--primary); }
+    .rpt-filter:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+    .rpt-filter-in { border-left: 4px solid var(--rpt-pos); }
+    .rpt-filter-out { border-left: 4px solid var(--rpt-neg); }
+    .rpt-filter[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+    .rpt-filter[aria-pressed="true"] .rpt-cat-count { background: var(--on-primary); color: var(--primary); }
+    .rpt-txns .rpt-chip { background: var(--primary-tint); color: var(--primary); }
+    @media (max-width: 600px) { .rpt .hide-sm { display: none; } }
+  </style>
+</head>
+<body data-page="teamexpenses" data-nav="reportNav" data-no-donate data-no-social>
+  <!-- Header, sidebar, and footer are filled in by the website's app.js, like every other page. -->
+  <header id="site-header" class="site-header"></header>
+
+  <div class="layout">
+    <div class="left-col">
+      <nav id="sidebar" class="sidebar" aria-label="Site navigation"></nav>
+    </div>
+
+    <main class="content">
+      <div id="error" class="error" hidden></div>
+      <div class="rpt">
+
+<section class="card" aria-labelledby="rpt-title">
+  <div class="rpt-title-row">
+    <h1 id="rpt-title">Team Expenses</h1>
+    
+    
+    <div class="rpt-switch">
+      <label for="rpt-dashboard">Dashboard</label>
+      <select id="rpt-dashboard">
+        <option value="finances/">Quebec Tournament</option><option value="teamexpenses/" selected>Team Expenses</option>
+      </select>
+      <noscript><a href="finances/">Quebec Tournament</a></noscript>
+    </div>
+    <script>
+      document.getElementById("rpt-dashboard").addEventListener("change", function () {
+        location.href = new URL(this.value, document.baseURI).href;
+      });
+    </script>
+    
+  </div>
+  <p class="rpt-meta">October 1, 2026 – November 8, 2026 · Updated November 8, 2026</p>
+  <p class="rpt-intro">The team dues families pay and the season expenses they cover. Figures come from the team account.</p>
+  <div class="rpt-stats">
+    <div class="rpt-stat"><div class="label">Starting balance</div><div class="value">$0.00</div></div>
+    
+    <div class="rpt-stat"><div class="label">Money in</div><div class="value pos">$3,563.63</div></div>
+    <div class="rpt-stat"><div class="label">Money out</div><div class="value neg">$0.00</div></div>
+    <div class="rpt-stat"><div class="label">Balance</div><div class="value">$3,563.63</div>
+      <div class="sub">as of Nov 8</div></div>
+    
+  </div>
+</section>
+
+
+<section class="card" aria-labelledby="rpt-goal-title">
+
+  <h2 id="rpt-goal-title">Budget: Team Budget</h2>
+  <div class="rpt-goal-head">
+    <span class="rpt-goal-raised"><strong>$3,564</strong> collected of $40,750</span>
+    <span class="rpt-goal-pct"><strong>9%</strong> of the budget · $37,186 to go</span>
+  </div>
+  <div class="rpt-goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+       aria-valuenow="9"
+       aria-label="$3,564 collected of $40,750">
+    <div class="rpt-goal-fill" style="width: 8.7%"></div>
+  </div>
+  <p class="rpt-intro">Team Budget</p>
+  <p class="rpt-note">Money collected from April 1, 2026 to April 1, 2027,
+    compared with the total planned budget.</p>
+
+</section>
+
+
+<section class="card" aria-labelledby="rpt-balance-title">
+  <h2 id="rpt-balance-title">Balance over time</h2>
+  <svg class="rpt-chart" role="img" aria-label="Bank balance over time" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500.8825 219.808" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 219.808 
+L 500.8825 219.808 
+L 500.8825 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 42.1925 184.608 
+L 488.5925 184.608 
+L 488.5925 7.2 
+L 42.1925 7.2 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m81ba357302" d="M 0 0 
+L 0 3.5 
+" style="stroke: #5b6470; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m81ba357302" x="42.1925" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="42.1925" y="197.686125" transform="rotate(-0 42.1925 197.686125)">Oct</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m81ba357302" x="124.424079" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="124.424079" y="197.686125" transform="rotate(-0 124.424079 197.686125)">08</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m81ba357302" x="206.655658" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="206.655658" y="197.686125" transform="rotate(-0 206.655658 197.686125)">15</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m81ba357302" x="288.887237" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="288.887237" y="197.686125" transform="rotate(-0 288.887237 197.686125)">22</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m81ba357302" x="406.360921" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="406.360921" y="197.686125" transform="rotate(-0 406.360921 197.686125)">Nov</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m81ba357302" x="488.5925" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="488.5925" y="197.686125" transform="rotate(-0 488.5925 197.686125)">08</text>
+     </g>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="488.5925" y="210.205656" transform="rotate(-0 488.5925 210.205656)">2026-Nov</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_7">
+      <path d="M 42.1925 176.544 
+L 488.5925 176.544 
+" clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <defs>
+       <path id="m898c8d45ed" d="M 0 0 
+L -3.5 0 
+" style="stroke: #5b6470; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="176.544" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="179.583375" transform="rotate(-0 35.1925 179.583375)">$0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_9">
+      <path d="M 42.1925 153.915388 
+L 488.5925 153.915388 
+" clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="153.915388" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="156.954763" transform="rotate(-0 35.1925 156.954763)">$500</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_11">
+      <path d="M 42.1925 131.286776 
+L 488.5925 131.286776 
+" clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="131.286776" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="134.326151" transform="rotate(-0 35.1925 134.326151)">$1,000</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_13">
+      <path d="M 42.1925 108.658164 
+L 488.5925 108.658164 
+" clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="108.658164" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="111.697539" transform="rotate(-0 35.1925 111.697539)">$1,500</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_15">
+      <path d="M 42.1925 86.029553 
+L 488.5925 86.029553 
+" clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="86.029553" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="89.068928" transform="rotate(-0 35.1925 89.068928)">$2,000</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_17">
+      <path d="M 42.1925 63.400941 
+L 488.5925 63.400941 
+" clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="63.400941" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="66.440316" transform="rotate(-0 35.1925 66.440316)">$2,500</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_19">
+      <path d="M 42.1925 40.772329 
+L 488.5925 40.772329 
+" clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="40.772329" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="43.811704" transform="rotate(-0 35.1925 43.811704)">$3,000</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_21">
+      <path d="M 42.1925 18.143717 
+L 488.5925 18.143717 
+" clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="18.143717" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="21.183092" transform="rotate(-0 35.1925 21.183092)">$3,500</text>
+     </g>
+    </g>
+   </g>
+   <g id="FillBetweenPolyCollection_1">
+    <defs>
+     <path id="m0b1c48cb1a" d="M 42.1925 -43.264 
+L 42.1925 -43.264 
+L 382.866184 -43.264 
+L 382.866184 -123.885671 
+L 453.350395 -123.885671 
+L 453.350395 -135.404087 
+L 465.097763 -135.404087 
+L 465.097763 -204.544 
+L 488.5925 -204.544 
+L 488.5925 -204.544 
+L 488.5925 -43.264 
+L 488.5925 -43.264 
+L 488.5925 -43.264 
+L 465.097763 -43.264 
+L 465.097763 -43.264 
+L 453.350395 -43.264 
+L 453.350395 -43.264 
+L 382.866184 -43.264 
+L 382.866184 -43.264 
+L 42.1925 -43.264 
+z
+" style="stroke: #1f4e8c; stroke-opacity: 0.08"/>
+    </defs>
+    <g clip-path="url(#p4a9c12c052)">
+     <use xlink:href="#m0b1c48cb1a" x="0" y="219.808" style="fill: #1f4e8c; fill-opacity: 0.08; stroke: #1f4e8c; stroke-opacity: 0.08"/>
+    </g>
+   </g>
+   <g id="line2d_23">
+    <path d="M 42.1925 176.544 
+L 382.866184 176.544 
+L 382.866184 95.922329 
+L 453.350395 95.922329 
+L 453.350395 84.403913 
+L 465.097763 84.403913 
+L 465.097763 15.264 
+L 488.5925 15.264 
+L 488.5925 15.264 
+" clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #1f4e8c; stroke-width: 1.8; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 42.1925 184.608 
+L 42.1925 7.2 
+" style="fill: none; stroke: #d9dde3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 42.1925 184.608 
+L 488.5925 184.608 
+" style="fill: none; stroke: #d9dde3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p4a9c12c052">
+   <rect x="42.1925" y="7.2" width="446.4" height="177.408"/>
+  </clipPath>
+ </defs>
+</svg>
+
+  
+</section>
+
+<div class="rpt-grid">
+  <section class="card" aria-labelledby="rpt-income-title">
+    <h2 id="rpt-income-title">Money in, by category</h2>
+    
+
+
+
+<div class="rpt-cats">
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Uncategorized income</span>
+      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 100%"></span></span></span>
+      <span class="rpt-cat-total">$2,545.59</span>
+    </summary>
+    
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$2,545.59</td></tr>
+      
+      </tbody>
+    </table>
+    
+    
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Team Dues</span>
+      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 40%"></span></span></span>
+      <span class="rpt-cat-total">$1,018.04</span>
+    </summary>
+    
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr><td class="nowrap">Nov 6, 2026</td><td>Check</td><td class="num">$254.51</td></tr>
+      
+        <tr><td class="nowrap">Nov 6, 2026</td><td>Check</td><td class="num">$254.51</td></tr>
+      
+        <tr><td class="nowrap">Nov 6, 2026</td><td>Check</td><td class="num">$254.51</td></tr>
+      
+        <tr><td class="nowrap">Nov 5, 2026</td><td>Zelle</td><td class="num">$254.51</td></tr>
+      
+      </tbody>
+    </table>
+    
+    
+  </details>
+  
+  <div class="rpt-cats-total"><span>Total</span><span class="num">$3,563.63</span></div>
+</div>
+
+  </section>
+  <section class="card" aria-labelledby="rpt-expense-title">
+    <h2 id="rpt-expense-title">Money out, by category</h2>
+    
+
+
+
+<div class="rpt-cats">
+  
+  <p class="rpt-muted">No money out during this period.</p>
+  
+  
+</div>
+
+  </section>
+</div>
+<p class="rpt-note rpt-grid-note">Open a category to see its transactions. Money out is shown as a positive amount; a refund
+  shows as a negative one.</p>
+
+
+<section class="card" aria-labelledby="rpt-budget-title">
+  <h2 id="rpt-budget-title">Spending against the budget</h2>
+  <div class="rpt-scroll">
+  <table>
+    <thead><tr><th>Category</th><th>Priority</th><th class="num">Budget</th><th class="num">Spent</th><th class="num">Remaining</th>
+      <th class="rpt-bar-cell hide-sm">Used</th></tr></thead>
+    <tbody>
+    
+      <tr>
+        <td>Coaches Flights <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
+        <td class="num">$8,000.00</td>
+        <td class="num">$0.00</td>
+        <td class="num ">$8,000.00</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 0.0%"></div></div>
+          <span class="rpt-muted small">0%</span>
+        </td>
+      </tr>
+    
+      <tr>
+        <td>Coaches Hotels <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
+        <td class="num">$9,000.00</td>
+        <td class="num">$0.00</td>
+        <td class="num ">$9,000.00</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 0.0%"></div></div>
+          <span class="rpt-muted small">0%</span>
+        </td>
+      </tr>
+    
+      <tr>
+        <td>Coaches Per Diem <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
+        <td class="num">$4,000.00</td>
+        <td class="num">$0.00</td>
+        <td class="num ">$4,000.00</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 0.0%"></div></div>
+          <span class="rpt-muted small">0%</span>
+        </td>
+      </tr>
+    
+      <tr>
+        <td>Other Expenses <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
+        <td class="num">$1,000.00</td>
+        <td class="num">$0.00</td>
+        <td class="num ">$1,000.00</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 0.0%"></div></div>
+          <span class="rpt-muted small">0%</span>
+        </td>
+      </tr>
+    
+      <tr>
+        <td>Registration <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
+        <td class="num">$15,000.00</td>
+        <td class="num">$0.00</td>
+        <td class="num ">$15,000.00</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 0.0%"></div></div>
+          <span class="rpt-muted small">0%</span>
+        </td>
+      </tr>
+    
+      <tr>
+        <td>Shared Rental <span class="rpt-status rpt-status-estimated">Estimated</span></td>
+        <td><span class="rpt-priority rpt-priority-mandatory">Mandatory</span></td>
+        <td class="num">$3,750.00</td>
+        <td class="num">$0.00</td>
+        <td class="num ">$3,750.00</td>
+        <td class="hide-sm">
+          <div class="rpt-bar-track"><div class="rpt-bar spent" style="width: 0.0%"></div></div>
+          <span class="rpt-muted small">0%</span>
+        </td>
+      </tr>
+    
+    </tbody>
+    <tfoot>
+    
+      <tr class="rpt-subtotal"><td colspan="2">Mandatory total</td><td class="num">$40,750.00</td><td class="num">$0.00</td>
+        <td class="num ">$40,750.00</td><td class="hide-sm rpt-muted small">0% used</td></tr>
+    
+    <tr class="total"><td colspan="2">Total</td><td class="num">$40,750.00</td><td class="num">$0.00</td>
+      <td class="num ">$40,750.00</td><td class="hide-sm"></td></tr></tfoot>
+  </table>
+  </div>
+  
+</section>
+
+
+<section class="card" aria-labelledby="rpt-month-title">
+  <h2 id="rpt-month-title">Month by month</h2>
+  
+  <p class="rpt-legend"><span><span class="rpt-key" style="background: #2f7d5b"></span>Money in</span>
+    <span><span class="rpt-key" style="background: #b5473a"></span>Money out</span></p>
+  <svg class="rpt-chart" role="img" aria-label="Income and expenses by month" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 495.7925 195.72" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 195.72 
+L 495.7925 195.72 
+L 495.7925 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 42.1925 173.52 
+L 488.5925 173.52 
+L 488.5925 7.2 
+L 42.1925 7.2 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mf6d4f5b19b" d="M 0 0 
+L 0 3.5 
+" style="stroke: #5b6470; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mf6d4f5b19b" x="150.103244" y="173.52" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="150.103244" y="186.598125" transform="rotate(-0 150.103244 186.598125)">Oct 26</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mf6d4f5b19b" x="380.681756" y="173.52" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="380.681756" y="186.598125" transform="rotate(-0 380.681756 186.598125)">Nov 26</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <path d="M 42.1925 173.52 
+L 488.5925 173.52 
+" clip-path="url(#p8e126f1df4)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <defs>
+       <path id="ma2a291b5e9" d="M 0 0 
+L -3.5 0 
+" style="stroke: #5b6470; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#ma2a291b5e9" x="42.1925" y="173.52" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="176.559375" transform="rotate(-0 35.1925 176.559375)">$0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_5">
+      <path d="M 42.1925 151.295471 
+L 488.5925 151.295471 
+" clip-path="url(#p8e126f1df4)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#ma2a291b5e9" x="42.1925" y="151.295471" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="154.334846" transform="rotate(-0 35.1925 154.334846)">$500</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7">
+      <path d="M 42.1925 129.070941 
+L 488.5925 129.070941 
+" clip-path="url(#p8e126f1df4)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#ma2a291b5e9" x="42.1925" y="129.070941" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="132.110316" transform="rotate(-0 35.1925 132.110316)">$1,000</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_9">
+      <path d="M 42.1925 106.846412 
+L 488.5925 106.846412 
+" clip-path="url(#p8e126f1df4)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#ma2a291b5e9" x="42.1925" y="106.846412" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="109.885787" transform="rotate(-0 35.1925 109.885787)">$1,500</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_11">
+      <path d="M 42.1925 84.621882 
+L 488.5925 84.621882 
+" clip-path="url(#p8e126f1df4)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#ma2a291b5e9" x="42.1925" y="84.621882" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="87.661257" transform="rotate(-0 35.1925 87.661257)">$2,000</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_13">
+      <path d="M 42.1925 62.397353 
+L 488.5925 62.397353 
+" clip-path="url(#p8e126f1df4)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#ma2a291b5e9" x="42.1925" y="62.397353" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="65.436728" transform="rotate(-0 35.1925 65.436728)">$2,500</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_15">
+      <path d="M 42.1925 40.172823 
+L 488.5925 40.172823 
+" clip-path="url(#p8e126f1df4)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#ma2a291b5e9" x="42.1925" y="40.172823" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="43.212198" transform="rotate(-0 35.1925 43.212198)">$3,000</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_17">
+      <path d="M 42.1925 17.948294 
+L 488.5925 17.948294 
+" clip-path="url(#p8e126f1df4)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#ma2a291b5e9" x="42.1925" y="17.948294" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="20.987669" transform="rotate(-0 35.1925 20.987669)">$3,500</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 62.483409 173.52 
+L 150.103244 173.52 
+L 150.103244 173.52 
+L 62.483409 173.52 
+z
+" clip-path="url(#p8e126f1df4)" style="fill: #2f7d5b"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 293.061921 173.52 
+L 380.681756 173.52 
+L 380.681756 15.12 
+L 293.061921 15.12 
+z
+" clip-path="url(#p8e126f1df4)" style="fill: #2f7d5b"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 150.103244 173.52 
+L 237.723079 173.52 
+L 237.723079 173.52 
+L 150.103244 173.52 
+z
+" clip-path="url(#p8e126f1df4)" style="fill: #b5473a"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 380.681756 173.52 
+L 468.301591 173.52 
+L 468.301591 173.52 
+L 380.681756 173.52 
+z
+" clip-path="url(#p8e126f1df4)" style="fill: #b5473a"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 42.1925 173.52 
+L 42.1925 7.2 
+" style="fill: none; stroke: #d9dde3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 42.1925 173.52 
+L 488.5925 173.52 
+" style="fill: none; stroke: #d9dde3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="legend_1">
+    <g id="patch_9">
+     <path d="M 49.3925 20.47875 
+L 65.3925 20.47875 
+L 65.3925 14.87875 
+L 49.3925 14.87875 
+z
+" style="fill: #2f7d5b"/>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="71.7925" y="20.47875" transform="rotate(-0 71.7925 20.47875)">Income</text>
+    </g>
+    <g id="patch_10">
+     <path d="M 49.3925 32.479375 
+L 65.3925 32.479375 
+L 65.3925 26.879375 
+L 49.3925 26.879375 
+z
+" style="fill: #b5473a"/>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="71.7925" y="32.479375" transform="rotate(-0 71.7925 32.479375)">Expenses</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p8e126f1df4">
+   <rect x="42.1925" y="7.2" width="446.4" height="166.32"/>
+  </clipPath>
+ </defs>
+</svg>
+
+  
+  <div class="rpt-scroll">
+  <table>
+    <thead><tr><th>Month</th><th class="num">Money in</th><th class="num">Money out</th><th class="num">Net</th><th class="num">Ending balance</th></tr></thead>
+    <tbody>
+    
+      <tr><td class="nowrap">October 2026</td><td class="num">$0.00</td><td class="num">$0.00</td>
+        <td class="num ">$0.00</td><td class="num">$1,781.41</td></tr>
+    
+      <tr><td class="nowrap">November 2026</td><td class="num">$3,563.63</td><td class="num">$0.00</td>
+        <td class="num ">$3,563.63</td><td class="num">$3,563.63</td></tr>
+    
+    </tbody>
+    <tfoot><tr class="total"><td>Total</td><td class="num">$3,563.63</td><td class="num">$0.00</td>
+      <td class="num ">$3,563.63</td><td class="num">$3,563.63</td></tr></tfoot>
+  </table>
+  </div>
+  
+</section>
+
+
+
+<p class="rpt-note">Updated November 8, 2026. Questions about the team's finances? Use the email address at the bottom of this page.</p>
+
+      </div>
+    </main>
+  </div>
+
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <script src="app.js?v=26"></script>
+</body>
+</html>

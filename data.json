@@ -30,7 +30,7 @@
   ],
 
   "teamPhoto": {
-    "src": "Images/team_photo_new.jpg",
+    "src": "Images/LA JR KINGS 12AAA.JPEG",
     "alt": "Jr Kings players huddled around the net in purple and gold jerseys",
     "caption": ""
   },
@@ -40,8 +40,8 @@
     "bannerAlt": "LA Jr. Kings 2014 AAA PeeWee. Got My Back: support our players’ journey to Quebec!",
     "title": "Show them you’ve got their back on one unforgettable journey.",
     "description": "",
-    "image": "Images/got_my_back_shirt.jpg",
-    "imageAlt": "Back of the purple “Got My Back” shirt: the player’s name, the names of their supporters, and “Merci to all who donated!”",
+    "image": "Images/shirt-back-sleeve-logos.jpg",
+    "imageAlt": "Back of the purple “Got My Back” shirt: the player’s name, the names of their supporters, and “Merci to all who donated!”, with the Kings crown on one sleeve and a fleur-de-lis on the other",
     "imageNote": "",
     "stepsTitle": "How it works",
     "steps": [
@@ -85,14 +85,34 @@
     "kicker": "50/50 Raffle",
     "title": "Feeling lucky?",
     "jackpot": 398,
-    "jackpotNote": "Half the pot goes to the winner, half sends the team to Quebec!",
+    "jackpotNote": "50% to the winner · 50% to our team",
     "drawDate": "2026-12-31",
     "drawTime": "19:00",
-    "drawPlace": "SAMPLE - Toyota Sports Performance Center",
-    "ticketInfo": "SAMPLE - 1 ticket $10 · 3 tickets $25",
-    "buttonText": "Get my tickets!",
-    "buttonUrl": "",
-    "note": "SAMPLE - Put “50/50 + your name” in the Zelle or Venmo note. Need not be present to win.",
+    "drawPlace": "",
+    "ticketsTitle": "Choose your tickets",
+    "tickets": [
+      { "count": 1, "price": 3 },
+      { "count": 5, "price": 10 },
+      { "count": 10, "price": 15 },
+      { "count": 20, "price": 25 }
+    ],
+    "payCodes": [
+      {
+        "label": "Zelle",
+        "qr": "Images/zelle_qr.png",
+        "handle": "jrkings2014aaa@gmail.com",
+        "url": "https://enroll.zellepay.com/qr-codes?data=eyJ0b2tlbiI6Impya2luZ3MyMDE0YWFhQGdtYWlsLmNvbSIsIm5hbWUiOiJDaHJpcyIsImFjdGlvbiI6IlBBWU1FTlQifQ=="
+      },
+      {
+        "label": "Venmo",
+        "qr": "Images/venmo_qr.jpg",
+        "handle": "@jrkings2014aaa",
+        "url": "https://www.paypal.com/qrcodes/venmocs/33a7c50b-c785-476e-a091-45574d83a71e?created=1793653416.238593"
+      }
+    ],
+    "noteTitle": "In the payment note, include:",
+    "noteSteps": ["Your name & phone #", "“50/50”", "# of tickets"],
+    "note": "",
     "winner": ""
   },
 
@@ -107,7 +127,7 @@
     ],
     "text": "Win a custom design Los Angeles Kings Surfboard",
     "buttonText": "Participate",
-    "buttonUrl": "",
+    "buttonUrl": "https://www.instagram.com/p/Dfcyzutmb6q/?img_index=1",
     "note": ""
   },
 
@@ -121,7 +141,7 @@
 
   "goal": {
     "target": 50000,
-    "raised": 9065,
+    "raised": 9346,
     "purpose": "Your support helps with tournament costs, transportation, and lodging. Every dollar helps!",
     "deadline": "2027-02-08"
   },
@@ -157,5 +177,7 @@
 
   ],
 
-  "social": []
+  "social": [
+    { "platform": "instagram", "url": "https://www.instagram.com/jrkings2014aaaquebec/", "handle": "@jrkings2014aaaquebec" }
+  ]
 }
