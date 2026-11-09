@@ -133,8 +133,24 @@
       { "src": "Images/surfboard3_kings.jpg", "alt": "The purple surfboard" }
     ],
     "text": "Win a custom design Los Angeles Kings Surfboard",
-    "buttonText": "Participate",
-    "buttonUrl": "https://www.instagram.com/p/Dfcyzutmb6q/?img_index=1",
+    "payCodes": [
+      {
+        "label": "Zelle",
+        "qr": "Images/zelle_qr.png",
+        "handle": "jrkings2014aaa@gmail.com",
+        "url": "https://enroll.zellepay.com/qr-codes?data=eyJ0b2tlbiI6Impya2luZ3MyMDE0YWFhQGdtYWlsLmNvbSIsIm5hbWUiOiJDaHJpcyIsImFjdGlvbiI6IlBBWU1FTlQifQ=="
+      },
+      {
+        "label": "Venmo",
+        "qr": "Images/venmo_qr.jpg",
+        "handle": "@jrkings2014aaa",
+        "url": "https://www.paypal.com/qrcodes/venmocs/33a7c50b-c785-476e-a091-45574d83a71e?created=1793653416.238593"
+      }
+    ],
+    "noteTitle": "In the payment note, include:",
+    "noteSteps": ["“Surfboard”"],
+    "linkText": "See it on Instagram",
+    "linkUrl": "https://www.instagram.com/p/Dfcyzutmb6q/?img_index=1",
     "note": ""
   },
 

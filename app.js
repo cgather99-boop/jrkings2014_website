@@ -515,6 +515,20 @@ function fillPayCard(card, c, url) {
   if (url) card.appendChild(el('span', 'pay-tap', 'Tap to open'));
 }
 
+// A grid of Zelle / Venmo QR cards. A card with a url is also a link (on a phone, tap it instead of scanning).
+function payGrid(codes, confettiColors) {
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const grid = el('div', 'pay-grid');
+  for (const c of codes) {
+    const url = safeUrl(c.url);
+    const card = url ? externalLink(url, 'pay-card') : el('div', 'pay-card');
+    fillPayCard(card, c, url);
+    if (url && !calm) card.addEventListener('click', () => confetti(card, confettiColors));
+    grid.appendChild(card);
+  }
+  return grid;
+}
+
 // 50/50 raffle card: jackpot that counts up, drawing date with a live countdown, ticket prices,
 // and the Zelle / Venmo codes to buy them (or a ticket button when there are no codes).
 function renderFiftyFifty(ff) {
@@ -602,19 +616,11 @@ function renderFiftyFifty(ff) {
     tickets.hidden = false;
   }
 
-  // Zelle / Venmo QR codes to buy tickets. A card with a url is also a link (on a phone, tap it instead of scanning).
+  // Zelle / Venmo QR codes to buy tickets.
   const codes = (ff.payCodes || []).filter((c) => c.qr);
   const btn = $('fifty-btn');
   if (codes.length) {
-    const grid = el('div', 'pay-grid');
-    for (const c of codes) {
-      const url = safeUrl(c.url);
-      const card = url ? externalLink(url, 'pay-card') : el('div', 'pay-card');
-      fillPayCard(card, c, url);
-      if (url && !calm) card.addEventListener('click', () => confetti(card));
-      grid.appendChild(card);
-    }
-    $('fifty-pay').appendChild(grid);
+    $('fifty-pay').appendChild(payGrid(codes));
     $('fifty-pay').hidden = false;
   } else {
     // The button opens buttonUrl in a new tab, or jumps to Donate Now if there's no link. A little confetti on the way.
@@ -736,17 +742,35 @@ function renderSurfboard(surf) {
     }
   }
 
-  // The button opens buttonUrl in a new tab, or jumps to Donate Now if there's no link.
-  const btn = $('surf-btn');
-  $('surf-btn-text').textContent = surf.buttonText || 'Participate';
-  const url = safeUrl(surf.buttonUrl);
-  if (url) {
-    btn.href = url;
-    btn.target = '_blank';
-    btn.rel = 'noopener';
+  // Zelle / Venmo QR codes to enter.
+  const codes = (surf.payCodes || []).filter((c) => c.qr);
+  if (codes.length) {
+    $('surf-pay').appendChild(payGrid(codes, ['#FFFFFF', '#7FD6E8', 'var(--accent)', '#1C8FB5']));
+    $('surf-pay').hidden = false;
   }
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    btn.addEventListener('click', () => confetti(btn, ['#FFFFFF', '#7FD6E8', 'var(--accent)', '#1C8FB5']));
+
+  // What to write in the payment note, like the 50/50 tile: a numbered list, or a single line for one item.
+  const steps = (surf.noteSteps || []).filter(Boolean);
+  if (steps.length) {
+    const how = $('surf-how');
+    if (surf.noteTitle) how.appendChild(el('p', 'fifty-label', surf.noteTitle));
+    if (steps.length === 1) {
+      how.appendChild(el('p', 'surf-how-item', steps[0]));
+    } else {
+      const list = el('ol', 'surf-how-list');
+      for (const s of steps) list.appendChild(el('li', '', s));
+      how.appendChild(list);
+    }
+    how.hidden = false;
+  }
+
+  // A plain text link to the Instagram post (opens in a new tab).
+  const url = safeUrl(surf.linkUrl);
+  if (url) {
+    const link = $('surf-link');
+    link.href = url;
+    link.append(icon(surf.linkIcon || 'instagram'), el('span', '', surf.linkText || 'See it on Instagram'));
+    link.hidden = false;
   }
 
   section.hidden = false;

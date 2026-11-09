@@ -598,22 +598,28 @@ a.pay-card:hover, button.pay-card:hover { border-color: var(--primary); }
   to { transform: translateX(-50%); }
 }
 .surf-text { margin: 14px auto 0; max-width: 46ch; font-weight: 600; text-shadow: 0 1px 2px rgba(14, 94, 126, 0.6); }
-.surf-btn {
-  position: relative;
-  margin-top: 16px;
-  min-width: 220px;
-  padding-block: 14px;
-  font-size: 1.15rem;
-  font-weight: 900;
-  background: #FFFFFF;
-  border-color: #FFFFFF;
-  color: var(--surf-deep);
-  box-shadow: 0 5px 0 var(--surf-deep), 0 8px 18px rgba(0, 0, 0, 0.2);
+/* The two codes sit side by side on white cards, like the 50/50 tile */
+.surf-pay { margin: 16px auto 0; max-width: 440px; }
+.surf-pay .pay-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.surf-pay .pay-card { box-shadow: 0 4px 0 var(--surf-deep); }
+.surf-pay .pay-qr { max-width: 150px; }
+.surf-how { margin-top: 16px; text-shadow: 0 1px 2px rgba(14, 94, 126, 0.6); }
+.surf-how .fifty-label { opacity: 1; }
+.surf-how-item { margin: 2px 0 0; font-size: 1.15rem; font-weight: 900; }
+.surf-how-list { display: inline-block; margin: 4px 0 0; padding-left: 1.4em; text-align: left; font-weight: 800; }
+.surf-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-shadow: 0 1px 2px rgba(14, 94, 126, 0.6);
 }
-.surf-btn:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
-.surf-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--surf-deep); }
-.surf-btn-icon { display: inline-block; font-size: 1.3rem; transition: transform 0.2s; }
-.surf-btn:hover .surf-btn-icon { transform: rotate(-20deg) scale(1.2); }
+.surf-link:hover { color: var(--accent); }
+.surf-link svg { width: 1.1em; height: 1.1em; fill: currentColor; }
 .surf-note { margin: 12px 0 0; font-size: 0.8rem; opacity: 0.9; }
 
 /* ---------- 50/50 raffle ---------- */
