@@ -14,6 +14,7 @@
   "nav": [
     { "label": "Home", "href": "index.html", "icon": "home" },
     { "label": "Players", "href": "players.html", "icon": "users" },
+    { "label": "About Quebec", "href": "index.html#about", "icon": "pin" },
     { "label": "Fundraisers", "children": [
       { "label": "Got My Back", "href": "index.html#fundraising-alert", "icon": "shirt" },
       { "label": "50/50 Raffle", "href": "index.html#fifty-fifty", "icon": "ticket" },
