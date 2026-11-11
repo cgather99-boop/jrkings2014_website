@@ -32,6 +32,7 @@ const ICONS = {
   wave: { d: 'M2 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2v3c-2.5 0-2.5-2-5-2s-2.5 2-5 2-2.5-2-5-2-2.5 2-5 2v-3zm0-6c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2v3c-2.5 0-2.5-2-5-2s-2.5 2-5 2-2.5-2-5-2-2.5 2-5 2V9z' },
   link: { d: 'M10.6 13.4a1 1 0 0 1 0-1.4l3-3a1 1 0 1 1 1.4 1.4l-3 3a1 1 0 0 1-1.4 0zM8.5 20a4.5 4.5 0 0 1-3.2-7.7l2.5-2.5 1.4 1.4-2.5 2.5a2.5 2.5 0 0 0 3.5 3.5l2.5-2.5 1.4 1.4-2.5 2.5A4.5 4.5 0 0 1 8.5 20zm7.7-5.8-1.4-1.4 2.5-2.5a2.5 2.5 0 0 0-3.5-3.5l-2.5 2.5-1.4-1.4 2.5-2.5a4.5 4.5 0 0 1 6.4 6.4l-2.6 2.4z' },
 };
+ICONS.bag = { d: 'M8 7V6a4 4 0 0 1 8 0v1h3.2l1 15H3.8l1-15H8zm2 0h4V6a2 2 0 0 0-4 0v1zM8 10v2h2v-2H8zm6 0v2h2v-2h-2z' };
 ICONS.twitter = ICONS.x;
 
 const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
@@ -111,7 +112,8 @@ function empty(container, message) {
 function isCurrentPage(href) {
   const path = (p) => p.replace(/\/index\.html$/, '/');
   try {
-    return path(new URL(href.split('#')[0], document.baseURI).pathname) === path(location.pathname);
+    const url = new URL(href.split('#')[0], document.baseURI);
+    return url.origin === location.origin && path(url.pathname) === path(location.pathname);
   } catch {
     return false;
   }
@@ -171,6 +173,11 @@ function navLink(item) {
   const a = el('a', 'nav-link');
   a.href = href;
   a.append(icon(item.icon || 'link'), el('span', '', item.label));
+  // Links to another site (the merch store) open in a new tab so visitors keep their place here.
+  if (/^https?:\/\//i.test(href)) {
+    a.target = '_blank';
+    a.rel = 'noopener';
+  }
   // Links to a spot on a page (index.html#fifty-fifty) never count as the current page.
   if (!href.includes('#') && isCurrentPage(href)) a.setAttribute('aria-current', 'page');
   return a;
