@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Exported from the Jr Kings Fundraising finances app on Nov 8, 2026 8:47 PM.
+  <!-- Exported from the Jr Kings Fundraising finances app on Nov 11, 2026 9:32 PM.
        Don't edit this file: use "Export HTML" in the finances app again to update it. -->
   
   <base href="../">
@@ -12,21 +12,13 @@
   <title>Quebec Finances</title>
   <link rel="icon" href="Images/logo.png">
   <link rel="stylesheet" href="theme.css?v=6">
-  <link rel="stylesheet" href="styles.css?v=28">
+  <link rel="stylesheet" href="styles.css?v=29">
   <style>
     /* Report pages: colors come from the website's theme.css. */
     .rpt { --rpt-pos: #2f7d5b; --rpt-neg: #b5473a; display: flex; flex-direction: column; gap: 20px; }
     .rpt .card h1 { margin-bottom: 8px; }
     .rpt-title-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
     .rpt-title-row h1 { margin: 0; }
-    .rpt-switch { display: flex; align-items: center; gap: 8px; }
-    .rpt-switch label { color: var(--muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
-    .rpt-switch select {
-      min-height: 40px; padding: 6px 36px 6px 12px; border: 2px solid var(--primary); border-radius: 10px;
-      background: var(--surface); color: var(--text); font: inherit; font-weight: 700; cursor: pointer;
-    }
-    .rpt-switch select:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
-    .rpt-switch noscript a { margin-left: 8px; font-weight: 700; }
     .rpt-meta { margin: 0; color: var(--muted); font-size: 0.9rem; }
     .rpt-intro { margin: 10px 0 0; }
     .rpt-stats { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-top: 16px; }
@@ -122,6 +114,12 @@
     .rpt-filter[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
     .rpt-filter[aria-pressed="true"] .rpt-cat-count { background: var(--on-primary); color: var(--primary); }
     .rpt-txns .rpt-chip { background: var(--primary-tint); color: var(--primary); }
+    /* Finances pages: period buttons over the category lists */
+    .rpt-period { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .rpt-period[hidden] { display: none; }
+    .rpt-period-label { color: var(--muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+    .rpt-period-note { flex-basis: 100%; margin: 0; }
+    .rpt-period-note:empty { display: none; }
     @media (max-width: 600px) { .rpt .hide-sm { display: none; } }
   </style>
 </head>
@@ -141,31 +139,19 @@
 <section class="card" aria-labelledby="rpt-title">
   <div class="rpt-title-row">
     <h1 id="rpt-title">Quebec Finances</h1>
-    
-    
-    <div class="rpt-switch">
-      <label for="rpt-dashboard">Dashboard</label>
-      <select id="rpt-dashboard">
-        <option value="finances/" selected>Quebec Tournament</option><option value="teamexpenses/">Team Expenses</option>
-      </select>
-      <noscript><a href="teamexpenses/">Team Expenses</a></noscript>
-    </div>
-    <script>
-      document.getElementById("rpt-dashboard").addEventListener("change", function () {
-        location.href = new URL(this.value, document.baseURI).href;
-      });
-    </script>
-    
   </div>
-  <p class="rpt-meta">October 1, 2026 – November 8, 2026 · Updated November 8, 2026</p>
+  <p class="rpt-meta">October 1, 2026 – November 11, 2026 · Updated November 11, 2026</p>
   <p class="rpt-intro">Where the money for the Quebec tournament comes from and where it goes. Figures come from the team&#x27;s Quebec bank accounts.</p>
   <div class="rpt-stats">
     <div class="rpt-stat"><div class="label">Starting balance</div><div class="value">$0.00</div></div>
     
-    <div class="rpt-stat"><div class="label">Money in</div><div class="value pos">$9,345.72</div></div>
+    <div class="rpt-stat"><div class="label">Money in</div><div class="value pos">$9,855.93</div></div>
     <div class="rpt-stat"><div class="label">Money out</div><div class="value neg">$6,159.90</div></div>
-    <div class="rpt-stat"><div class="label">Balance</div><div class="value">$5,221.74</div>
-      <div class="sub">as of Nov 8</div></div>
+    <div class="rpt-stat"><div class="label">Balance</div><div class="value">$3,696.03</div>
+      <div class="sub">as of Nov 11</div></div>
+    
+    <div class="rpt-stat"><div class="label">Projected balance</div><div class="value">$3,696.03</div>
+      <div class="sub">after expected payments</div></div>
     
   </div>
 </section>
@@ -175,13 +161,13 @@
 
   <h2 id="rpt-goal-title">Fundraising goal: Quebec Budget</h2>
   <div class="rpt-goal-head">
-    <span class="rpt-goal-raised"><strong>$9,346</strong> raised of $58,475</span>
-    <span class="rpt-goal-pct"><strong>16%</strong> of the goal · $49,129 to go</span>
+    <span class="rpt-goal-raised"><strong>$9,856</strong> raised of $58,475</span>
+    <span class="rpt-goal-pct"><strong>17%</strong> of the goal · $48,619 to go</span>
   </div>
   <div class="rpt-goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-       aria-valuenow="16"
-       aria-label="$9,346 raised of $58,475">
-    <div class="rpt-goal-fill" style="width: 16.0%"></div>
+       aria-valuenow="17"
+       aria-label="$9,856 raised of $58,475">
+    <div class="rpt-goal-fill" style="width: 16.9%"></div>
   </div>
   <p class="rpt-intro">Your support helps with tournament costs, transportation, and lodging. Every dollar helps!</p>
   <p class="rpt-note">Money raised from October 1, 2026 to February 28, 2027,
@@ -192,7 +178,7 @@
 
 <section class="card" aria-labelledby="rpt-balance-title">
   <h2 id="rpt-balance-title">Balance over time</h2>
-  <svg class="rpt-chart" role="img" aria-label="Bank balance over time" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500.8825 219.808" xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <svg class="rpt-chart" role="img" aria-label="Bank balance over time" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 495.7925 219.808" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
@@ -212,8 +198,8 @@
  <g id="figure_1">
   <g id="patch_1">
    <path d="M 0 219.808 
-L 500.8825 219.808 
-L 500.8825 0 
+L 495.7925 219.808 
+L 495.7925 0 
 L 0 0 
 z
 " style="fill: #ffffff"/>
@@ -246,65 +232,75 @@ L 0 3.5
     <g id="xtick_2">
      <g id="line2d_2">
       <g>
-       <use xlink:href="#m81ba357302" x="124.424079" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="107.2925" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_2">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="124.424079" y="197.686125" transform="rotate(-0 124.424079 197.686125)">08</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="107.2925" y="197.686125" transform="rotate(-0 107.2925 197.686125)">08</text>
      </g>
     </g>
     <g id="xtick_3">
      <g id="line2d_3">
       <g>
-       <use xlink:href="#m81ba357302" x="206.655658" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="172.3925" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_3">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="206.655658" y="197.686125" transform="rotate(-0 206.655658 197.686125)">15</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="172.3925" y="197.686125" transform="rotate(-0 172.3925 197.686125)">15</text>
      </g>
     </g>
     <g id="xtick_4">
      <g id="line2d_4">
       <g>
-       <use xlink:href="#m81ba357302" x="288.887237" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="237.4925" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_4">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="288.887237" y="197.686125" transform="rotate(-0 288.887237 197.686125)">22</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="237.4925" y="197.686125" transform="rotate(-0 237.4925 197.686125)">22</text>
      </g>
     </g>
     <g id="xtick_5">
      <g id="line2d_5">
       <g>
-       <use xlink:href="#m81ba357302" x="406.360921" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="330.4925" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_5">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="406.360921" y="197.686125" transform="rotate(-0 406.360921 197.686125)">Nov</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="330.4925" y="197.686125" transform="rotate(-0 330.4925 197.686125)">Nov</text>
      </g>
     </g>
     <g id="xtick_6">
      <g id="line2d_6">
       <g>
-       <use xlink:href="#m81ba357302" x="488.5925" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="395.5925" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_6">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="488.5925" y="197.686125" transform="rotate(-0 488.5925 197.686125)">08</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="395.5925" y="197.686125" transform="rotate(-0 395.5925 197.686125)">08</text>
      </g>
     </g>
-    <g id="text_7">
+    <g id="xtick_7">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m81ba357302" x="460.6925" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="460.6925" y="197.686125" transform="rotate(-0 460.6925 197.686125)">15</text>
+     </g>
+    </g>
+    <g id="text_8">
      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="488.5925" y="210.205656" transform="rotate(-0 488.5925 210.205656)">2026-Nov</text>
     </g>
    </g>
    <g id="matplotlib.axis_2">
     <g id="ytick_1">
-     <g id="line2d_7">
+     <g id="line2d_8">
       <path d="M 42.1925 176.544 
 L 488.5925 176.544 
 " clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
-     <g id="line2d_8">
+     <g id="line2d_9">
       <defs>
        <path id="m898c8d45ed" d="M 0 0 
 L -3.5 0 
@@ -314,177 +310,230 @@ L -3.5 0
        <use xlink:href="#m898c8d45ed" x="42.1925" y="176.544" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
-     <g id="text_8">
+     <g id="text_9">
       <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="179.583375" transform="rotate(-0 35.1925 179.583375)">$0</text>
      </g>
     </g>
     <g id="ytick_2">
-     <g id="line2d_9">
-      <path d="M 42.1925 145.657744 
-L 488.5925 145.657744 
-" clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
-     </g>
      <g id="line2d_10">
-      <g>
-       <use xlink:href="#m898c8d45ed" x="42.1925" y="145.657744" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
-      </g>
-     </g>
-     <g id="text_9">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="148.697119" transform="rotate(-0 35.1925 148.697119)">$1,000</text>
-     </g>
-    </g>
-    <g id="ytick_3">
-     <g id="line2d_11">
-      <path d="M 42.1925 114.771487 
-L 488.5925 114.771487 
+      <path d="M 42.1925 155.983062 
+L 488.5925 155.983062 
 " clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
-     <g id="line2d_12">
+     <g id="line2d_11">
       <g>
-       <use xlink:href="#m898c8d45ed" x="42.1925" y="114.771487" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="155.983062" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_10">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="117.810862" transform="rotate(-0 35.1925 117.810862)">$2,000</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="159.022437" transform="rotate(-0 35.1925 159.022437)">$500</text>
      </g>
     </g>
-    <g id="ytick_4">
-     <g id="line2d_13">
-      <path d="M 42.1925 83.885231 
-L 488.5925 83.885231 
+    <g id="ytick_3">
+     <g id="line2d_12">
+      <path d="M 42.1925 135.422123 
+L 488.5925 135.422123 
 " clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
-     <g id="line2d_14">
+     <g id="line2d_13">
       <g>
-       <use xlink:href="#m898c8d45ed" x="42.1925" y="83.885231" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="135.422123" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_11">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="86.924606" transform="rotate(-0 35.1925 86.924606)">$3,000</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="138.461498" transform="rotate(-0 35.1925 138.461498)">$1,000</text>
      </g>
     </g>
-    <g id="ytick_5">
-     <g id="line2d_15">
-      <path d="M 42.1925 52.998975 
-L 488.5925 52.998975 
+    <g id="ytick_4">
+     <g id="line2d_14">
+      <path d="M 42.1925 114.861185 
+L 488.5925 114.861185 
 " clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
-     <g id="line2d_16">
+     <g id="line2d_15">
       <g>
-       <use xlink:href="#m898c8d45ed" x="42.1925" y="52.998975" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="114.861185" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_12">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="56.03835" transform="rotate(-0 35.1925 56.03835)">$4,000</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="117.90056" transform="rotate(-0 35.1925 117.90056)">$1,500</text>
      </g>
     </g>
-    <g id="ytick_6">
-     <g id="line2d_17">
-      <path d="M 42.1925 22.112718 
-L 488.5925 22.112718 
+    <g id="ytick_5">
+     <g id="line2d_16">
+      <path d="M 42.1925 94.300247 
+L 488.5925 94.300247 
 " clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
-     <g id="line2d_18">
+     <g id="line2d_17">
       <g>
-       <use xlink:href="#m898c8d45ed" x="42.1925" y="22.112718" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="94.300247" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_13">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="25.152093" transform="rotate(-0 35.1925 25.152093)">$5,000</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="97.339622" transform="rotate(-0 35.1925 97.339622)">$2,000</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_18">
+      <path d="M 42.1925 73.739309 
+L 488.5925 73.739309 
+" clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="73.739309" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="76.778684" transform="rotate(-0 35.1925 76.778684)">$2,500</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_20">
+      <path d="M 42.1925 53.17837 
+L 488.5925 53.17837 
+" clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_21">
+      <g>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="53.17837" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="56.217745" transform="rotate(-0 35.1925 56.217745)">$3,000</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_22">
+      <path d="M 42.1925 32.617432 
+L 488.5925 32.617432 
+" clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_23">
+      <g>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="32.617432" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="35.656807" transform="rotate(-0 35.1925 35.656807)">$3,500</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_24">
+      <path d="M 42.1925 12.056494 
+L 488.5925 12.056494 
+" clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_25">
+      <g>
+       <use xlink:href="#m898c8d45ed" x="42.1925" y="12.056494" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="35.1925" y="15.095869" transform="rotate(-0 35.1925 15.095869)">$4,000</text>
      </g>
     </g>
    </g>
    <g id="FillBetweenPolyCollection_1">
     <defs>
-     <path id="m0ab158020c" d="M 42.1925 -43.264 
+     <path id="m6e5f3b2409" d="M 42.1925 -43.264 
 L 42.1925 -43.264 
 L 42.1925 -43.264 
-L 42.1925 -70.783654 
-L 53.939868 -70.783654 
-L 53.939868 -63.06209 
-L 89.181974 -63.06209 
-L 89.181974 -64.915266 
-L 112.676711 -64.915266 
-L 112.676711 -68.621616 
-L 183.160921 -68.621616 
-L 183.160921 -68.698832 
-L 194.908289 -68.698832 
-L 194.908289 -55.977401 
-L 206.655658 -55.977401 
-L 206.655658 -55.908216 
-L 218.403026 -55.908216 
-L 218.403026 -71.530484 
-L 253.645132 -71.530484 
-L 253.645132 -121.42754 
-L 265.3925 -121.42754 
-L 265.3925 -125.133891 
-L 277.139868 -125.133891 
-L 277.139868 -129.224158 
-L 288.887237 -129.224158 
-L 288.887237 -137.772238 
-L 300.634605 -137.772238 
-L 300.634605 -145.634643 
-L 335.876711 -145.634643 
-L 335.876711 -164.399897 
-L 347.624079 -164.399897 
-L 347.624079 -145.215517 
-L 371.118816 -145.215517 
-L 371.118816 -43.264 
-L 382.866184 -43.264 
-L 382.866184 -153.306172 
-L 418.108289 -153.306172 
-L 418.108289 -104.752977 
-L 441.603026 -104.752977 
-L 441.603026 -111.564323 
-L 453.350395 -111.564323 
-L 453.350395 -140.855613 
-L 465.097763 -140.855613 
-L 465.097763 -204.544 
-L 488.5925 -204.544 
-L 488.5925 -204.544 
-L 488.5925 -43.264 
-L 488.5925 -43.264 
-L 488.5925 -43.264 
-L 465.097763 -43.264 
-L 465.097763 -43.264 
-L 453.350395 -43.264 
-L 453.350395 -43.264 
-L 441.603026 -43.264 
-L 441.603026 -43.264 
-L 418.108289 -43.264 
-L 418.108289 -43.264 
-L 382.866184 -43.264 
-L 382.866184 -43.264 
-L 371.118816 -43.264 
-L 371.118816 -43.264 
-L 347.624079 -43.264 
-L 347.624079 -43.264 
-L 335.876711 -43.264 
-L 335.876711 -43.264 
-L 300.634605 -43.264 
-L 300.634605 -43.264 
-L 288.887237 -43.264 
-L 288.887237 -43.264 
-L 277.139868 -43.264 
-L 277.139868 -43.264 
-L 265.3925 -43.264 
-L 265.3925 -43.264 
-L 253.645132 -43.264 
-L 253.645132 -43.264 
-L 218.403026 -43.264 
-L 218.403026 -43.264 
-L 206.655658 -43.264 
-L 206.655658 -43.264 
-L 194.908289 -43.264 
-L 194.908289 -43.264 
-L 183.160921 -43.264 
-L 183.160921 -43.264 
-L 112.676711 -43.264 
-L 112.676711 -43.264 
-L 89.181974 -43.264 
-L 89.181974 -43.264 
-L 53.939868 -43.264 
-L 53.939868 -43.264 
+L 42.1925 -79.903592 
+L 51.4925 -79.903592 
+L 51.4925 -69.623123 
+L 79.3925 -69.623123 
+L 79.3925 -72.090435 
+L 97.9925 -72.090435 
+L 97.9925 -77.025061 
+L 153.7925 -77.025061 
+L 153.7925 -77.127865 
+L 163.0925 -77.127865 
+L 163.0925 -60.190587 
+L 172.3925 -60.190587 
+L 172.3925 -60.098474 
+L 181.6925 -60.098474 
+L 181.6925 -80.897919 
+L 209.5925 -80.897919 
+L 209.5925 -147.330722 
+L 218.8925 -147.330722 
+L 218.8925 -152.265347 
+L 228.1925 -152.265347 
+L 228.1925 -157.711117 
+L 237.4925 -157.711117 
+L 237.4925 -169.092008 
+L 246.7925 -169.092008 
+L 246.7925 -179.559993 
+L 274.6925 -179.559993 
+L 274.6925 -204.544 
+L 283.9925 -204.544 
+L 283.9925 -179.001969 
+L 302.5925 -179.001969 
+L 302.5925 -43.264 
+L 311.8925 -43.264 
+L 311.8925 -116.518922 
+L 339.7925 -116.518922 
+L 339.7925 -51.875332 
+L 358.3925 -51.875332 
+L 358.3925 -60.94394 
+L 367.6925 -60.94394 
+L 367.6925 -99.942283 
+L 376.9925 -99.942283 
+L 376.9925 -184.736826 
+L 404.8925 -184.736826 
+L 404.8925 -188.078801 
+L 414.1925 -188.078801 
+L 414.1925 -195.25169 
+L 423.4925 -195.25169 
+L 423.4925 -195.25169 
+L 423.4925 -43.264 
+L 423.4925 -43.264 
+L 423.4925 -43.264 
+L 414.1925 -43.264 
+L 414.1925 -43.264 
+L 404.8925 -43.264 
+L 404.8925 -43.264 
+L 376.9925 -43.264 
+L 376.9925 -43.264 
+L 367.6925 -43.264 
+L 367.6925 -43.264 
+L 358.3925 -43.264 
+L 358.3925 -43.264 
+L 339.7925 -43.264 
+L 339.7925 -43.264 
+L 311.8925 -43.264 
+L 311.8925 -43.264 
+L 302.5925 -43.264 
+L 302.5925 -43.264 
+L 283.9925 -43.264 
+L 283.9925 -43.264 
+L 274.6925 -43.264 
+L 274.6925 -43.264 
+L 246.7925 -43.264 
+L 246.7925 -43.264 
+L 237.4925 -43.264 
+L 237.4925 -43.264 
+L 228.1925 -43.264 
+L 228.1925 -43.264 
+L 218.8925 -43.264 
+L 218.8925 -43.264 
+L 209.5925 -43.264 
+L 209.5925 -43.264 
+L 181.6925 -43.264 
+L 181.6925 -43.264 
+L 172.3925 -43.264 
+L 172.3925 -43.264 
+L 163.0925 -43.264 
+L 163.0925 -43.264 
+L 153.7925 -43.264 
+L 153.7925 -43.264 
+L 97.9925 -43.264 
+L 97.9925 -43.264 
+L 79.3925 -43.264 
+L 79.3925 -43.264 
+L 51.4925 -43.264 
+L 51.4925 -43.264 
 L 42.1925 -43.264 
 L 42.1925 -43.264 
 L 42.1925 -43.264 
@@ -492,56 +541,68 @@ z
 " style="stroke: #1f4e8c; stroke-opacity: 0.08"/>
     </defs>
     <g clip-path="url(#p4a9c12c052)">
-     <use xlink:href="#m0ab158020c" x="0" y="219.808" style="fill: #1f4e8c; fill-opacity: 0.08; stroke: #1f4e8c; stroke-opacity: 0.08"/>
+     <use xlink:href="#m6e5f3b2409" x="0" y="219.808" style="fill: #1f4e8c; fill-opacity: 0.08; stroke: #1f4e8c; stroke-opacity: 0.08"/>
     </g>
    </g>
-   <g id="line2d_19">
+   <g id="line2d_26">
     <path d="M 42.1925 176.544 
 L 42.1925 176.544 
-L 42.1925 149.024346 
-L 53.939868 149.024346 
-L 53.939868 156.74591 
-L 89.181974 156.74591 
-L 89.181974 154.892734 
-L 112.676711 154.892734 
-L 112.676711 151.186384 
-L 183.160921 151.186384 
-L 183.160921 151.109168 
-L 194.908289 151.109168 
-L 194.908289 163.830599 
-L 206.655658 163.830599 
-L 206.655658 163.899784 
-L 218.403026 163.899784 
-L 218.403026 148.277516 
-L 253.645132 148.277516 
-L 253.645132 98.38046 
-L 265.3925 98.38046 
-L 265.3925 94.674109 
-L 277.139868 94.674109 
-L 277.139868 90.583842 
-L 288.887237 90.583842 
-L 288.887237 82.035762 
-L 300.634605 82.035762 
-L 300.634605 74.173357 
-L 335.876711 74.173357 
-L 335.876711 55.408103 
-L 347.624079 55.408103 
-L 347.624079 74.592483 
-L 371.118816 74.592483 
-L 371.118816 176.544 
-L 382.866184 176.544 
-L 382.866184 66.501828 
-L 418.108289 66.501828 
-L 418.108289 115.055023 
-L 441.603026 115.055023 
-L 441.603026 108.243677 
-L 453.350395 108.243677 
-L 453.350395 78.952387 
-L 465.097763 78.952387 
-L 465.097763 15.264 
-L 488.5925 15.264 
-L 488.5925 15.264 
+L 42.1925 139.904408 
+L 51.4925 139.904408 
+L 51.4925 150.184877 
+L 79.3925 150.184877 
+L 79.3925 147.717565 
+L 97.9925 147.717565 
+L 97.9925 142.782939 
+L 153.7925 142.782939 
+L 153.7925 142.680135 
+L 163.0925 142.680135 
+L 163.0925 159.617413 
+L 172.3925 159.617413 
+L 172.3925 159.709526 
+L 181.6925 159.709526 
+L 181.6925 138.910081 
+L 209.5925 138.910081 
+L 209.5925 72.477278 
+L 218.8925 72.477278 
+L 218.8925 67.542653 
+L 228.1925 67.542653 
+L 228.1925 62.096883 
+L 237.4925 62.096883 
+L 237.4925 50.715992 
+L 246.7925 50.715992 
+L 246.7925 40.248007 
+L 274.6925 40.248007 
+L 274.6925 15.264 
+L 283.9925 15.264 
+L 283.9925 40.806031 
+L 302.5925 40.806031 
+L 302.5925 176.544 
+L 311.8925 176.544 
+L 311.8925 103.289078 
+L 339.7925 103.289078 
+L 339.7925 167.932668 
+L 358.3925 167.932668 
+L 358.3925 158.86406 
+L 367.6925 158.86406 
+L 367.6925 119.865717 
+L 376.9925 119.865717 
+L 376.9925 35.071174 
+L 404.8925 35.071174 
+L 404.8925 31.729199 
+L 414.1925 31.729199 
+L 414.1925 24.55631 
+L 423.4925 24.55631 
+L 423.4925 24.55631 
 " clip-path="url(#p4a9c12c052)" style="fill: none; stroke: #1f4e8c; stroke-width: 1.8; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_27">
+    <path d="M 423.4925 24.55631 
+L 423.4925 24.55631 
+L 423.4925 24.55631 
+L 488.5925 24.55631 
+L 488.5925 24.55631 
+" clip-path="url(#p4a9c12c052)" style="fill: none; stroke-dasharray: 6.4,4.8; stroke-dashoffset: 0; stroke: #1f4e8c; stroke-width: 1.6"/>
    </g>
    <g id="patch_3">
     <path d="M 42.1925 184.608 
@@ -553,6 +614,30 @@ L 42.1925 7.2
 L 488.5925 184.608 
 " style="fill: none; stroke: #d9dde3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
+   <g id="legend_1">
+    <g id="line2d_28">
+     <path d="M 49.3925 17.67875 
+L 57.3925 17.67875 
+L 57.3925 17.67875 
+L 65.3925 17.67875 
+L 65.3925 17.67875 
+" style="fill: none; stroke: #1f4e8c; stroke-width: 1.8; stroke-linecap: square"/>
+    </g>
+    <g id="text_18">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="71.7925" y="20.47875" transform="rotate(-0 71.7925 20.47875)">Bank balance</text>
+    </g>
+    <g id="line2d_29">
+     <path d="M 49.3925 29.679375 
+L 57.3925 29.679375 
+L 57.3925 29.679375 
+L 65.3925 29.679375 
+L 65.3925 29.679375 
+" style="fill: none; stroke-dasharray: 6.4,4.8; stroke-dashoffset: 0; stroke: #1f4e8c; stroke-width: 1.6"/>
+    </g>
+    <g id="text_19">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="71.7925" y="32.479375" transform="rotate(-0 71.7925 32.479375)">Projected with planned items</text>
+    </g>
+   </g>
   </g>
  </g>
  <defs>
@@ -562,13 +647,24 @@ L 488.5925 184.608
  </defs>
 </svg>
 
-  
+  <p class="rpt-note">The dashed line adds payments the team expects but that haven't reached the bank yet.</p>
 </section>
+
+
+<div class="rpt-period" id="rpt-period" data-end="2026-11-11" role="group" aria-label="Period for the category totals" hidden>
+  <span class="rpt-period-label">Show</span>
+  <button type="button" class="rpt-filter" data-days="7" aria-pressed="false">Last 7 days</button>
+  <button type="button" class="rpt-filter" data-days="10" aria-pressed="false">Last 10 days</button>
+  <button type="button" class="rpt-filter" data-days="30" aria-pressed="false">Last 30 days</button>
+  <button type="button" class="rpt-filter" data-days="" aria-pressed="true">Whole period</button>
+  <p class="rpt-note rpt-period-note" id="rpt-period-note" aria-live="polite"></p>
+</div>
 
 <div class="rpt-grid">
   <section class="card" aria-labelledby="rpt-income-title">
     <h2 id="rpt-income-title">Money in, by category</h2>
     
+
 
 
 
@@ -578,86 +674,94 @@ L 488.5925 184.608
     <summary>
       <span class="rpt-cat-name">Got My Back T-Shirt</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 100%"></span></span></span>
-      <span class="rpt-cat-total">$2,596.10</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$2,859.10</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
+        <tr data-date="2026-11-10" data-shown="50.00"><td class="nowrap">Nov 10, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+        <tr data-date="2026-11-10" data-shown="100.00"><td class="nowrap">Nov 10, 2026</td><td>Zelle</td><td class="num">$100.00</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Zelle</td><td class="num">$35.00</td></tr>
+        <tr data-date="2026-11-09" data-shown="15.00"><td class="nowrap">Nov 9, 2026</td><td>Zelle</td><td class="num">$15.00</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+        <tr data-date="2026-11-09" data-shown="98.00"><td class="nowrap">Nov 9, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
       
-        <tr><td class="nowrap">Nov 5, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
+        <tr data-date="2026-11-06" data-shown="50.00"><td class="nowrap">Nov 6, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
       
-        <tr><td class="nowrap">Nov 5, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+        <tr data-date="2026-11-06" data-shown="48.95"><td class="nowrap">Nov 6, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
       
-        <tr><td class="nowrap">Nov 5, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+        <tr data-date="2026-11-06" data-shown="35.00"><td class="nowrap">Nov 6, 2026</td><td>Zelle</td><td class="num">$35.00</td></tr>
       
-        <tr><td class="nowrap">Nov 5, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+        <tr data-date="2026-11-06" data-shown="48.95"><td class="nowrap">Nov 6, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
       
-        <tr><td class="nowrap">Nov 5, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
+        <tr data-date="2026-11-05" data-shown="50.00"><td class="nowrap">Nov 5, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
       
-        <tr><td class="nowrap">Nov 5, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
+        <tr data-date="2026-11-05" data-shown="48.95"><td class="nowrap">Nov 5, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
       
-        <tr><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
+        <tr data-date="2026-11-05" data-shown="48.95"><td class="nowrap">Nov 5, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
       
-        <tr><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
+        <tr data-date="2026-11-05" data-shown="48.95"><td class="nowrap">Nov 5, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
       
-        <tr><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$100.00</td></tr>
+        <tr data-date="2026-11-05" data-shown="98.00"><td class="nowrap">Nov 5, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
       
-        <tr><td class="nowrap">Oct 27, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+        <tr data-date="2026-11-05" data-shown="98.00"><td class="nowrap">Nov 5, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
       
-        <tr><td class="nowrap">Oct 26, 2026</td><td>Venmo</td><td class="num">$196.00</td></tr>
+        <tr data-date="2026-11-02" data-shown="50.00"><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
       
-        <tr><td class="nowrap">Oct 26, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+        <tr data-date="2026-11-02" data-shown="50.00"><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
       
-        <tr><td class="nowrap">Oct 26, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
+        <tr data-date="2026-11-02" data-shown="100.00"><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$100.00</td></tr>
       
-        <tr><td class="nowrap">Oct 26, 2026</td><td>Zelle</td><td class="num">$100.00</td></tr>
+        <tr data-date="2026-10-27" data-shown="48.95"><td class="nowrap">Oct 27, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
       
-        <tr><td class="nowrap">Oct 26, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
+        <tr data-date="2026-10-26" data-shown="196.00"><td class="nowrap">Oct 26, 2026</td><td>Venmo</td><td class="num">$196.00</td></tr>
       
-        <tr><td class="nowrap">Oct 23, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+        <tr data-date="2026-10-26" data-shown="48.95"><td class="nowrap">Oct 26, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
       
-        <tr><td class="nowrap">Oct 23, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+        <tr data-date="2026-10-26" data-shown="50.00"><td class="nowrap">Oct 26, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
       
-        <tr><td class="nowrap">Oct 23, 2026</td><td>Venmo</td><td class="num">$97.90</td></tr>
+        <tr data-date="2026-10-26" data-shown="100.00"><td class="nowrap">Oct 26, 2026</td><td>Zelle</td><td class="num">$100.00</td></tr>
       
-        <tr><td class="nowrap">Oct 22, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
+        <tr data-date="2026-10-26" data-shown="50.00"><td class="nowrap">Oct 26, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
       
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+        <tr data-date="2026-10-23" data-shown="48.95"><td class="nowrap">Oct 23, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
       
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+        <tr data-date="2026-10-23" data-shown="48.95"><td class="nowrap">Oct 23, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
       
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
+        <tr data-date="2026-10-23" data-shown="97.90"><td class="nowrap">Oct 23, 2026</td><td>Venmo</td><td class="num">$97.90</td></tr>
       
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
+        <tr data-date="2026-10-22" data-shown="98.00"><td class="nowrap">Oct 22, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
       
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$196.00</td></tr>
+        <tr data-date="2026-10-19" data-shown="48.95"><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
       
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
+        <tr data-date="2026-10-19" data-shown="48.95"><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
       
-        <tr><td class="nowrap">Oct 16, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
+        <tr data-date="2026-10-19" data-shown="98.00"><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
       
-        <tr><td class="nowrap">Oct 16, 2026</td><td>Zelle</td><td class="num">$100.00</td></tr>
+        <tr data-date="2026-10-19" data-shown="98.00"><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
       
-        <tr><td class="nowrap">Oct 16, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+        <tr data-date="2026-10-19" data-shown="196.00"><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$196.00</td></tr>
       
-        <tr><td class="nowrap">Oct 16, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+        <tr data-date="2026-10-19" data-shown="98.00"><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
       
-        <tr><td class="nowrap">Oct 16, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+        <tr data-date="2026-10-16" data-shown="50.00"><td class="nowrap">Oct 16, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
       
-        <tr><td class="nowrap">Oct 16, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+        <tr data-date="2026-10-16" data-shown="100.00"><td class="nowrap">Oct 16, 2026</td><td>Zelle</td><td class="num">$100.00</td></tr>
       
-        <tr><td class="nowrap">Oct 15, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
+        <tr data-date="2026-10-16" data-shown="48.95"><td class="nowrap">Oct 16, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
       
-        <tr><td class="nowrap">Oct 14, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+        <tr data-date="2026-10-16" data-shown="48.95"><td class="nowrap">Oct 16, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+      
+        <tr data-date="2026-10-16" data-shown="48.95"><td class="nowrap">Oct 16, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+      
+        <tr data-date="2026-10-16" data-shown="48.95"><td class="nowrap">Oct 16, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
+      
+        <tr data-date="2026-10-15" data-shown="50.00"><td class="nowrap">Oct 15, 2026</td><td>Zelle</td><td class="num">$50.00</td></tr>
+      
+        <tr data-date="2026-10-14" data-shown="48.95"><td class="nowrap">Oct 14, 2026</td><td>Venmo</td><td class="num">$48.95</td></tr>
       
       </tbody>
     </table>
@@ -668,67 +772,67 @@ L 488.5925 184.608
   <details class="rpt-cat">
     <summary>
       <span class="rpt-cat-name">Extra Skaters at Practice</span>
-      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 83%"></span></span></span>
-      <span class="rpt-cat-total">$2,153.80</span>
+      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 75%"></span></span></span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$2,153.80</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Oct 29, 2026</td><td>Venmo</td><td class="num">$58.76</td></tr>
+        <tr data-date="2026-10-29" data-shown="58.76"><td class="nowrap">Oct 29, 2026</td><td>Venmo</td><td class="num">$58.76</td></tr>
       
-        <tr><td class="nowrap">Oct 29, 2026</td><td>Venmo</td><td class="num">$58.76</td></tr>
+        <tr data-date="2026-10-29" data-shown="58.76"><td class="nowrap">Oct 29, 2026</td><td>Venmo</td><td class="num">$58.76</td></tr>
       
-        <tr><td class="nowrap">Oct 29, 2026</td><td>Venmo</td><td class="num">$60.00</td></tr>
+        <tr data-date="2026-10-29" data-shown="60.00"><td class="nowrap">Oct 29, 2026</td><td>Venmo</td><td class="num">$60.00</td></tr>
       
-        <tr><td class="nowrap">Oct 29, 2026</td><td>Venmo</td><td class="num">$60.00</td></tr>
+        <tr data-date="2026-10-29" data-shown="60.00"><td class="nowrap">Oct 29, 2026</td><td>Venmo</td><td class="num">$60.00</td></tr>
       
-        <tr><td class="nowrap">Oct 26, 2026</td><td>Venmo</td><td class="num">$45.00</td></tr>
+        <tr data-date="2026-10-26" data-shown="45.00"><td class="nowrap">Oct 26, 2026</td><td>Venmo</td><td class="num">$45.00</td></tr>
       
-        <tr><td class="nowrap">Oct 26, 2026</td><td>Venmo</td><td class="num">$15.00</td></tr>
+        <tr data-date="2026-10-26" data-shown="15.00"><td class="nowrap">Oct 26, 2026</td><td>Venmo</td><td class="num">$15.00</td></tr>
       
-        <tr><td class="nowrap">Oct 26, 2026</td><td>Venmo</td><td class="num">$58.76</td></tr>
+        <tr data-date="2026-10-26" data-shown="58.76"><td class="nowrap">Oct 26, 2026</td><td>Venmo</td><td class="num">$58.76</td></tr>
       
-        <tr><td class="nowrap">Oct 23, 2026</td><td>Venmo</td><td class="num">$58.76</td></tr>
+        <tr data-date="2026-10-23" data-shown="58.76"><td class="nowrap">Oct 23, 2026</td><td>Venmo</td><td class="num">$58.76</td></tr>
       
-        <tr><td class="nowrap">Oct 22, 2026</td><td>Venmo</td><td class="num">$120.00</td></tr>
+        <tr data-date="2026-10-22" data-shown="120.00"><td class="nowrap">Oct 22, 2026</td><td>Venmo</td><td class="num">$120.00</td></tr>
       
-        <tr><td class="nowrap">Oct 22, 2026</td><td>Venmo</td><td class="num">$58.76</td></tr>
+        <tr data-date="2026-10-22" data-shown="58.76"><td class="nowrap">Oct 22, 2026</td><td>Venmo</td><td class="num">$58.76</td></tr>
       
-        <tr><td class="nowrap">Oct 20, 2026</td><td>Bank transfer</td><td class="num">$120.00</td></tr>
+        <tr data-date="2026-10-20" data-shown="120.00"><td class="nowrap">Oct 20, 2026</td><td>Bank transfer</td><td class="num">$120.00</td></tr>
       
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$60.00</td></tr>
+        <tr data-date="2026-10-19" data-shown="60.00"><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$60.00</td></tr>
       
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$60.00</td></tr>
+        <tr data-date="2026-10-19" data-shown="60.00"><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$60.00</td></tr>
       
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$60.00</td></tr>
+        <tr data-date="2026-10-19" data-shown="60.00"><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$60.00</td></tr>
       
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Bank transfer</td><td class="num">$60.00</td></tr>
+        <tr data-date="2026-10-19" data-shown="60.00"><td class="nowrap">Oct 19, 2026</td><td>Bank transfer</td><td class="num">$60.00</td></tr>
       
-        <tr><td class="nowrap">Oct 16, 2026</td><td>Cash deposit</td><td class="num">$60.00</td></tr>
+        <tr data-date="2026-10-16" data-shown="60.00"><td class="nowrap">Oct 16, 2026</td><td>Cash deposit</td><td class="num">$60.00</td></tr>
       
-        <tr><td class="nowrap">Oct 14, 2026</td><td>Deposit</td><td class="num">$60.00</td></tr>
+        <tr data-date="2026-10-14" data-shown="60.00"><td class="nowrap">Oct 14, 2026</td><td>Deposit</td><td class="num">$60.00</td></tr>
       
-        <tr><td class="nowrap">Oct 7, 2026</td><td>Bank transfer</td><td class="num">$60.00</td></tr>
+        <tr data-date="2026-10-07" data-shown="60.00"><td class="nowrap">Oct 7, 2026</td><td>Bank transfer</td><td class="num">$60.00</td></tr>
       
-        <tr><td class="nowrap">Oct 7, 2026</td><td>Bank transfer</td><td class="num">$60.00</td></tr>
+        <tr data-date="2026-10-07" data-shown="60.00"><td class="nowrap">Oct 7, 2026</td><td>Bank transfer</td><td class="num">$60.00</td></tr>
       
-        <tr><td class="nowrap">Oct 5, 2026</td><td>Bank transfer</td><td class="num">$60.00</td></tr>
+        <tr data-date="2026-10-05" data-shown="60.00"><td class="nowrap">Oct 5, 2026</td><td>Bank transfer</td><td class="num">$60.00</td></tr>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$120.00</td></tr>
+        <tr data-date="2026-10-01" data-shown="120.00"><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$120.00</td></tr>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$120.00</td></tr>
+        <tr data-date="2026-10-01" data-shown="120.00"><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$120.00</td></tr>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$180.00</td></tr>
+        <tr data-date="2026-10-01" data-shown="180.00"><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$180.00</td></tr>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$120.00</td></tr>
+        <tr data-date="2026-10-01" data-shown="120.00"><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$120.00</td></tr>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$120.00</td></tr>
+        <tr data-date="2026-10-01" data-shown="120.00"><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$120.00</td></tr>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$180.00</td></tr>
+        <tr data-date="2026-10-01" data-shown="180.00"><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$180.00</td></tr>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Venmo</td><td class="num">$60.00</td></tr>
+        <tr data-date="2026-10-01" data-shown="60.00"><td class="nowrap">Oct 1, 2026</td><td>Venmo</td><td class="num">$60.00</td></tr>
       
       </tbody>
     </table>
@@ -739,15 +843,15 @@ L 488.5925 184.608
   <details class="rpt-cat">
     <summary>
       <span class="rpt-cat-name">Popcorn</span>
-      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 75%"></span></span></span>
-      <span class="rpt-cat-total">$1,960.00</span>
+      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 69%"></span></span></span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$1,960.00</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$1,960.00</td></tr>
+        <tr data-date="2026-10-01" data-shown="1960.00"><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$1,960.00</td></tr>
       
       </tbody>
     </table>
@@ -757,73 +861,26 @@ L 488.5925 184.608
   
   <details class="rpt-cat">
     <summary>
-      <span class="rpt-cat-name">Snack Shack</span>
-      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 25%"></span></span></span>
-      <span class="rpt-cat-total">$646.66</span>
-    </summary>
-    
-    <table>
-      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
-      <tbody>
-      
-        <tr><td class="nowrap">Nov 5, 2026</td><td>Deposit</td><td class="num">$276.00</td></tr>
-      
-        <tr><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$3.00</td></tr>
-      
-        <tr><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$4.00</td></tr>
-      
-        <tr><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$3.00</td></tr>
-      
-        <tr><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$10.00</td></tr>
-      
-        <tr><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$1.00</td></tr>
-      
-        <tr><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$7.00</td></tr>
-      
-        <tr><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$120.00</td></tr>
-      
-        <tr><td class="nowrap">Oct 21, 2026</td><td>Deposit</td><td class="num">$108.00</td></tr>
-      
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$155.12</td></tr>
-      
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Zelle</td><td class="num">$8.00</td></tr>
-      
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Zelle</td><td class="num">$10.00</td></tr>
-      
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Zelle</td><td class="num">$3.00</td></tr>
-      
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Zelle</td><td class="num">$9.00</td></tr>
-      
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Zelle</td><td class="num">$6.00</td></tr>
-      
-        <tr><td class="nowrap">Oct 15, 2026</td><td>Card purchase</td><td class="num">-$76.46</td></tr>
-      
-      </tbody>
-    </table>
-    <p class="rpt-cat-link"><a href="transactions/#cat=in-snack-shack">See Snack Shack on the Transactions page</a></p>
-    
-  </details>
-  
-  <details class="rpt-cat">
-    <summary>
       <span class="rpt-cat-name">50/50 Raffle</span>
-      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 21%"></span></span></span>
-      <span class="rpt-cat-total">$542.34</span>
+      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 26%"></span></span></span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$738.44</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Oct 26, 2026</td><td>Venmo</td><td class="num">$19.42</td></tr>
+        <tr data-date="2026-11-09" data-shown="196.10"><td class="nowrap">Nov 9, 2026</td><td>Venmo</td><td class="num">$196.10</td></tr>
       
-        <tr><td class="nowrap">Oct 21, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
+        <tr data-date="2026-10-26" data-shown="19.42"><td class="nowrap">Oct 26, 2026</td><td>Venmo</td><td class="num">$19.42</td></tr>
       
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Cash deposit</td><td class="num">$124.00</td></tr>
+        <tr data-date="2026-10-21" data-shown="24.43"><td class="nowrap">Oct 21, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
       
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$27.28</td></tr>
+        <tr data-date="2026-10-19" data-shown="124.00"><td class="nowrap">Oct 19, 2026</td><td>Cash deposit</td><td class="num">$124.00</td></tr>
       
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$347.21</td></tr>
+        <tr data-date="2026-10-19" data-shown="27.28"><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$27.28</td></tr>
+      
+        <tr data-date="2026-10-19" data-shown="347.21"><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$347.21</td></tr>
       
       </tbody>
     </table>
@@ -833,26 +890,77 @@ L 488.5925 184.608
   
   <details class="rpt-cat">
     <summary>
-      <span class="rpt-cat-name">Straight Donations</span>
-      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 18%"></span></span></span>
-      <span class="rpt-cat-total">$471.60</span>
+      <span class="rpt-cat-name">Snack Shack</span>
+      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 23%"></span></span></span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$646.66</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Nov 4, 2026</td><td>Venmo</td><td class="num">$196.10</td></tr>
+        <tr data-date="2026-11-05" data-shown="276.00"><td class="nowrap">Nov 5, 2026</td><td>Deposit</td><td class="num">$276.00</td></tr>
       
-        <tr><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
+        <tr data-date="2026-11-02" data-shown="3.00"><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$3.00</td></tr>
       
-        <tr><td class="nowrap">Oct 16, 2026</td><td>Bank transfer</td><td class="num">$100.00</td></tr>
+        <tr data-date="2026-11-02" data-shown="4.00"><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$4.00</td></tr>
       
-        <tr><td class="nowrap">Oct 15, 2026</td><td>Zelle</td><td class="num">$75.00</td></tr>
+        <tr data-date="2026-11-02" data-shown="3.00"><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$3.00</td></tr>
       
-        <tr><td class="nowrap">Oct 13, 2026</td><td>Zelle</td><td class="num">$1.50</td></tr>
+        <tr data-date="2026-11-02" data-shown="10.00"><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$10.00</td></tr>
       
-        <tr><td class="nowrap">Oct 13, 2026</td><td>Zelle</td><td class="num">$1.00</td></tr>
+        <tr data-date="2026-11-02" data-shown="1.00"><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$1.00</td></tr>
+      
+        <tr data-date="2026-11-02" data-shown="7.00"><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$7.00</td></tr>
+      
+        <tr data-date="2026-11-02" data-shown="120.00"><td class="nowrap">Nov 2, 2026</td><td>Zelle</td><td class="num">$120.00</td></tr>
+      
+        <tr data-date="2026-10-21" data-shown="108.00"><td class="nowrap">Oct 21, 2026</td><td>Deposit</td><td class="num">$108.00</td></tr>
+      
+        <tr data-date="2026-10-19" data-shown="155.12"><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$155.12</td></tr>
+      
+        <tr data-date="2026-10-19" data-shown="8.00"><td class="nowrap">Oct 19, 2026</td><td>Zelle</td><td class="num">$8.00</td></tr>
+      
+        <tr data-date="2026-10-19" data-shown="10.00"><td class="nowrap">Oct 19, 2026</td><td>Zelle</td><td class="num">$10.00</td></tr>
+      
+        <tr data-date="2026-10-19" data-shown="3.00"><td class="nowrap">Oct 19, 2026</td><td>Zelle</td><td class="num">$3.00</td></tr>
+      
+        <tr data-date="2026-10-19" data-shown="9.00"><td class="nowrap">Oct 19, 2026</td><td>Zelle</td><td class="num">$9.00</td></tr>
+      
+        <tr data-date="2026-10-19" data-shown="6.00"><td class="nowrap">Oct 19, 2026</td><td>Zelle</td><td class="num">$6.00</td></tr>
+      
+        <tr data-date="2026-10-15" data-shown="-76.46"><td class="nowrap">Oct 15, 2026</td><td>Card purchase</td><td class="num">-$76.46</td></tr>
+      
+      </tbody>
+    </table>
+    <p class="rpt-cat-link"><a href="transactions/#cat=in-snack-shack">See Snack Shack on the Transactions page</a></p>
+    
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Straight Donations</span>
+      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 17%"></span></span></span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$473.85</span></span>
+    </summary>
+    
+    <table>
+      <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+      
+        <tr data-date="2026-11-09" data-shown="2.25"><td class="nowrap">Nov 9, 2026</td><td>Zelle</td><td class="num">$2.25</td></tr>
+      
+        <tr data-date="2026-11-04" data-shown="196.10"><td class="nowrap">Nov 4, 2026</td><td>Venmo</td><td class="num">$196.10</td></tr>
+      
+        <tr data-date="2026-10-19" data-shown="98.00"><td class="nowrap">Oct 19, 2026</td><td>Venmo</td><td class="num">$98.00</td></tr>
+      
+        <tr data-date="2026-10-16" data-shown="100.00"><td class="nowrap">Oct 16, 2026</td><td>Bank transfer</td><td class="num">$100.00</td></tr>
+      
+        <tr data-date="2026-10-15" data-shown="75.00"><td class="nowrap">Oct 15, 2026</td><td>Zelle</td><td class="num">$75.00</td></tr>
+      
+        <tr data-date="2026-10-13" data-shown="1.50"><td class="nowrap">Oct 13, 2026</td><td>Zelle</td><td class="num">$1.50</td></tr>
+      
+        <tr data-date="2026-10-13" data-shown="1.00"><td class="nowrap">Oct 13, 2026</td><td>Zelle</td><td class="num">$1.00</td></tr>
       
       </tbody>
     </table>
@@ -863,15 +971,15 @@ L 488.5925 184.608
   <details class="rpt-cat">
     <summary>
       <span class="rpt-cat-name">Bake Me a Cake</span>
-      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 15%"></span></span></span>
-      <span class="rpt-cat-total">$400.00</span>
+      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 14%"></span></span></span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$400.00</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$400.00</td></tr>
+        <tr data-date="2026-10-01" data-shown="400.00"><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$400.00</td></tr>
       
       </tbody>
     </table>
@@ -882,15 +990,15 @@ L 488.5925 184.608
   <details class="rpt-cat">
     <summary>
       <span class="rpt-cat-name">Alo Yoga Raffle</span>
-      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 10%"></span></span></span>
-      <span class="rpt-cat-total">$270.00</span>
+      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 9%"></span></span></span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$270.00</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$270.00</td></tr>
+        <tr data-date="2026-10-01" data-shown="270.00"><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$270.00</td></tr>
       
       </tbody>
     </table>
@@ -901,15 +1009,15 @@ L 488.5925 184.608
   <details class="rpt-cat">
     <summary>
       <span class="rpt-cat-name">Fill the Cup Raffle</span>
-      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 8%"></span></span></span>
-      <span class="rpt-cat-total">$200.00</span>
+      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 7%"></span></span></span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$200.00</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$200.00</td></tr>
+        <tr data-date="2026-10-01" data-shown="200.00"><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$200.00</td></tr>
       
       </tbody>
     </table>
@@ -921,14 +1029,14 @@ L 488.5925 184.608
     <summary>
       <span class="rpt-cat-name">Buy a Puck</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 5%"></span></span></span>
-      <span class="rpt-cat-total">$138.00</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$138.00</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$138.00</td></tr>
+        <tr data-date="2026-10-01" data-shown="138.00"><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$138.00</td></tr>
       
       </tbody>
     </table>
@@ -940,14 +1048,14 @@ L 488.5925 184.608
     <summary>
       <span class="rpt-cat-name">Private Donation</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 1%"></span></span></span>
-      <span class="rpt-cat-total">$21.00</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$21.00</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$21.00</td></tr>
+        <tr data-date="2026-10-01" data-shown="21.00"><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$21.00</td></tr>
       
       </tbody>
     </table>
@@ -959,14 +1067,14 @@ L 488.5925 184.608
     <summary>
       <span class="rpt-cat-name">Other Income</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 0%"></span></span></span>
-      <span class="rpt-cat-total">$0.21</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$0.21</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$0.21</td></tr>
+        <tr data-date="2026-10-01" data-shown="0.21"><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$0.21</td></tr>
       
       </tbody>
     </table>
@@ -976,32 +1084,58 @@ L 488.5925 184.608
   
   <details class="rpt-cat">
     <summary>
+      <span class="rpt-cat-name">See&#x27;s Candy Fundraiser</span>
+      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 0%"></span></span></span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$0.00</span></span>
+    </summary>
+    
+    <p class="rpt-cat-link rpt-muted">No bank transactions yet in this period.</p>
+    
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Loteria Squares</span>
+      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 0%"></span></span></span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$0.00</span></span>
+    </summary>
+    
+    <p class="rpt-cat-link rpt-muted">No bank transactions yet in this period.</p>
+    
+  </details>
+  
+  <details class="rpt-cat">
+    <summary>
       <span class="rpt-cat-name">Surfboard Fundraiser</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 0%"></span></span></span>
-      <span class="rpt-cat-total">-$53.99</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">-$5.13</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
+        <tr data-date="2026-11-10" data-shown="24.43"><td class="nowrap">Nov 10, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
+        <tr data-date="2026-11-09" data-shown="24.43"><td class="nowrap">Nov 9, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
+        <tr data-date="2026-11-06" data-shown="24.43"><td class="nowrap">Nov 6, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
+        <tr data-date="2026-11-06" data-shown="24.43"><td class="nowrap">Nov 6, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
       
-        <tr><td class="nowrap">Nov 5, 2026</td><td>Zelle</td><td class="num">$25.00</td></tr>
+        <tr data-date="2026-11-06" data-shown="24.43"><td class="nowrap">Nov 6, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
       
-        <tr><td class="nowrap">Nov 4, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
+        <tr data-date="2026-11-06" data-shown="24.43"><td class="nowrap">Nov 6, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
       
-        <tr><td class="nowrap">Oct 29, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
+        <tr data-date="2026-11-05" data-shown="25.00"><td class="nowrap">Nov 5, 2026</td><td>Zelle</td><td class="num">$25.00</td></tr>
       
-        <tr><td class="nowrap">Oct 26, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
+        <tr data-date="2026-11-04" data-shown="24.43"><td class="nowrap">Nov 4, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
       
-        <tr><td class="nowrap">Oct 2, 2026</td><td>Withdrawal</td><td class="num">-$250.00</td></tr>
+        <tr data-date="2026-10-29" data-shown="24.43"><td class="nowrap">Oct 29, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
+      
+        <tr data-date="2026-10-26" data-shown="24.43"><td class="nowrap">Oct 26, 2026</td><td>Venmo</td><td class="num">$24.43</td></tr>
+      
+        <tr data-date="2026-10-02" data-shown="-250.00"><td class="nowrap">Oct 2, 2026</td><td>Withdrawal</td><td class="num">-$250.00</td></tr>
       
       </tbody>
     </table>
@@ -1009,7 +1143,10 @@ L 488.5925 184.608
     
   </details>
   
-  <div class="rpt-cats-total"><span>Total</span><span class="num">$9,345.72</span></div>
+  
+  <p class="rpt-muted rpt-period-empty" hidden>Nothing in this period.</p>
+  <div class="rpt-cats-total"><span>Total</span><span class="num rpt-cats-sum">$9,855.93</span></div>
+  
 </div>
 
   </section>
@@ -1019,20 +1156,21 @@ L 488.5925 184.608
 
 
 
+
 <div class="rpt-cats">
   
   <details class="rpt-cat">
     <summary>
       <span class="rpt-cat-name">Trading Pins</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar expense" style="width: 100%"></span></span></span>
-      <span class="rpt-cat-total">$1,920.00</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$1,920.00</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Nov 2, 2026</td><td>Venmo</td><td class="num">$1,920.00</td></tr>
+        <tr data-date="2026-11-02" data-shown="1920.00"><td class="nowrap">Nov 2, 2026</td><td>Venmo</td><td class="num">$1,920.00</td></tr>
       
       </tbody>
     </table>
@@ -1044,18 +1182,18 @@ L 488.5925 184.608
     <summary>
       <span class="rpt-cat-name">Tournament Patches &amp; Licensing</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar expense" style="width: 79%"></span></span></span>
-      <span class="rpt-cat-total">$1,512.08</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$1,512.08</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Oct 27, 2026</td><td>Card purchase</td><td class="num">$670.08</td></tr>
+        <tr data-date="2026-10-27" data-shown="670.08"><td class="nowrap">Oct 27, 2026</td><td>Card purchase</td><td class="num">$670.08</td></tr>
       
-        <tr><td class="nowrap">Oct 14, 2026</td><td>Withdrawal</td><td class="num">$424.00</td></tr>
+        <tr data-date="2026-10-14" data-shown="424.00"><td class="nowrap">Oct 14, 2026</td><td>Withdrawal</td><td class="num">$424.00</td></tr>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$418.00</td></tr>
+        <tr data-date="2026-10-01" data-shown="418.00"><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$418.00</td></tr>
       
       </tbody>
     </table>
@@ -1067,14 +1205,14 @@ L 488.5925 184.608
     <summary>
       <span class="rpt-cat-name">Coaches Flights</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar expense" style="width: 67%"></span></span></span>
-      <span class="rpt-cat-total">$1,279.63</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$1,279.63</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$1,279.63</td></tr>
+        <tr data-date="2026-10-01" data-shown="1279.63"><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$1,279.63</td></tr>
       
       </tbody>
     </table>
@@ -1086,14 +1224,14 @@ L 488.5925 184.608
     <summary>
       <span class="rpt-cat-name">Registration</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar expense" style="width: 65%"></span></span></span>
-      <span class="rpt-cat-total">$1,250.00</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$1,250.00</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$1,250.00</td></tr>
+        <tr data-date="2026-10-01" data-shown="1250.00"><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$1,250.00</td></tr>
       
       </tbody>
     </table>
@@ -1105,14 +1243,14 @@ L 488.5925 184.608
     <summary>
       <span class="rpt-cat-name">Other Expenses</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar expense" style="width: 5%"></span></span></span>
-      <span class="rpt-cat-total">$96.83</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$96.83</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Oct 14, 2026</td><td>Bank payment</td><td class="num">$96.83</td></tr>
+        <tr data-date="2026-10-14" data-shown="96.83"><td class="nowrap">Oct 14, 2026</td><td>Bank payment</td><td class="num">$96.83</td></tr>
       
       </tbody>
     </table>
@@ -1124,14 +1262,14 @@ L 488.5925 184.608
     <summary>
       <span class="rpt-cat-name">Required Team Apparel</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar expense" style="width: 3%"></span></span></span>
-      <span class="rpt-cat-total">$50.78</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$50.78</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Oct 15, 2026</td><td>Card purchase</td><td class="num">$50.78</td></tr>
+        <tr data-date="2026-10-15" data-shown="50.78"><td class="nowrap">Oct 15, 2026</td><td>Card purchase</td><td class="num">$50.78</td></tr>
       
       </tbody>
     </table>
@@ -1143,14 +1281,14 @@ L 488.5925 184.608
     <summary>
       <span class="rpt-cat-name">Supplies &amp; Printing</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar expense" style="width: 3%"></span></span></span>
-      <span class="rpt-cat-total">$50.58</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$50.58</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$50.58</td></tr>
+        <tr data-date="2026-10-01" data-shown="50.58"><td class="nowrap">Oct 1, 2026</td><td>Bank transfer</td><td class="num">$50.58</td></tr>
       
       </tbody>
     </table>
@@ -1158,13 +1296,125 @@ L 488.5925 184.608
     
   </details>
   
-  <div class="rpt-cats-total"><span>Total</span><span class="num">$6,159.90</span></div>
+  
+  <p class="rpt-muted rpt-period-empty" hidden>Nothing in this period.</p>
+  <div class="rpt-cats-total"><span>Total</span><span class="num rpt-cats-sum">$6,159.90</span></div>
+  
 </div>
 
   </section>
 </div>
-<p class="rpt-note rpt-grid-note">Open a category to see its transactions. Money out is shown as a positive amount; a refund
-  shows as a negative one.</p>
+<p class="rpt-note rpt-grid-note">Open a category to see its transactions. Use the buttons above to total just the last few days.
+  Money out is shown as a positive amount; a refund shows as a negative one.</p>
+<script>
+  // Period buttons: total each category from its transactions in the last N days up to the page's update date
+  // (data-end), hiding categories with nothing in that window. "Whole period" puts the page back as exported.
+  // The choice is kept in the address (#days=10) so a link can open straight to it.
+  (function () {
+    var bar = document.getElementById("rpt-period");
+    if (!bar) return;
+    var buttons = bar.querySelectorAll(".rpt-filter");
+    var note = document.getElementById("rpt-period-note");
+    var lists = document.querySelectorAll(".rpt-cats");
+    var end = new Date(bar.dataset.end + "T00:00:00");
+    var fmt = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+    var money = function (n) { return n < 0 ? "-" + fmt.format(-n) : fmt.format(Math.abs(n)); };
+    var iso = function (d) {
+      return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+    };
+    var nice = function (d, year) {
+      return d.toLocaleDateString("en-US", year ? { month: "short", day: "numeric", year: "numeric" } : { month: "short", day: "numeric" });
+    };
+
+    // Remember the exported totals and bar widths, to put back for "Whole period".
+    lists.forEach(function (list) {
+      var sum = list.querySelector(".rpt-cats-sum");
+      if (sum) sum.dataset.original = sum.textContent;
+      list.querySelectorAll(".rpt-cat").forEach(function (cat, i) {
+        cat.dataset.pos = i;
+        var posted = cat.querySelector(".rpt-cat-posted");
+        posted.dataset.original = posted.textContent;
+        cat.querySelectorAll(".rpt-bar").forEach(function (b) { b.dataset.original = b.style.width; });
+      });
+    });
+
+    function choose(days) {
+      buttons.forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.days === String(days || "") ? "true" : "false"); });
+      var from = null;
+      if (days) {
+        var start = new Date(end);
+        start.setDate(start.getDate() - (days - 1));
+        from = iso(start);
+        note.textContent = "Showing " + nice(start, start.getFullYear() !== end.getFullYear()) + " – " + nice(end, true) +
+          ": the " + days + " days up to the last update.";
+      } else {
+        note.textContent = "";
+      }
+      lists.forEach(function (list) {
+        var cats = list.querySelectorAll(".rpt-cat");
+        if (!cats.length) return;
+        var totals = [], top = 0, listTotal = 0, visible = 0;
+        cats.forEach(function (cat, i) {
+          var total = 0, count = 0;
+          cat.querySelectorAll("tbody tr[data-date]").forEach(function (tr) {
+            var on = !from || tr.dataset.date >= from;
+            tr.hidden = !on;
+            if (on) { total += parseFloat(tr.dataset.shown); count++; }
+          });
+          totals[i] = total;
+          var show = !from || count > 0;
+          cat.hidden = !show;
+          if (show) { visible++; listTotal += total; top = Math.max(top, total); }
+          var planned = cat.querySelector(".rpt-cat-planned");
+          if (planned) planned.hidden = !!from;
+        });
+        cats.forEach(function (cat, i) {
+          var posted = cat.querySelector(".rpt-cat-posted");
+          var bars = cat.querySelectorAll(".rpt-bar");
+          if (!from) {
+            posted.textContent = posted.dataset.original;
+            bars.forEach(function (b) { b.style.width = b.dataset.original; b.hidden = false; });
+            return;
+          }
+          posted.textContent = money(totals[i]);
+          bars.forEach(function (b, j) {
+            if (j === 0) { b.style.width = (top > 0 ? Math.max(totals[i], 0) / top * 100 : 0).toFixed(0) + "%"; }
+            else { b.hidden = true; }  // the planned segment
+          });
+        });
+        // Largest first for the chosen period; the exported order for the whole period.
+        var order = Array.prototype.map.call(cats, function (cat, i) { return { cat: cat, total: totals[i], i: i }; });
+        order.sort(function (a, b) {
+          return from ? (b.total - a.total) || (a.i - b.i) : (a.cat.dataset.pos - b.cat.dataset.pos);
+        });
+        var anchor = list.querySelector(".rpt-period-empty");
+        order.forEach(function (o) { list.insertBefore(o.cat, anchor); });
+        var sum = list.querySelector(".rpt-cats-sum");
+        if (sum) sum.textContent = from ? money(listTotal) : sum.dataset.original;
+        var empty = list.querySelector(".rpt-period-empty");
+        if (empty) empty.hidden = !from || visible > 0;
+      });
+    }
+
+    function fromHash() {
+      var m = /days=(\d+)/.exec(location.hash);
+      var days = m ? parseInt(m[1], 10) : 0;
+      choose(days > 0 ? days : 0);
+    }
+
+    buttons.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var days = b.dataset.days;
+        // Full path: a bare "#days=" would resolve against the page's <base href="../">.
+        history.replaceState(null, "", location.pathname + location.search + (days ? "#days=" + days : ""));
+        choose(days ? parseInt(days, 10) : 0);
+      });
+    });
+    window.addEventListener("hashchange", fromHash);
+    bar.hidden = false;
+    fromHash();
+  })();
+</script>
 
 
 <section class="card" aria-labelledby="rpt-budget-title">
@@ -1640,8 +1890,8 @@ z
    <g id="patch_4">
     <path d="M 293.061921 173.52 
 L 380.681756 173.52 
-L 380.681756 142.196154 
-L 293.061921 142.196154 
+L 380.681756 131.838578 
+L 293.061921 131.838578 
 z
 " clip-path="url(#p8e126f1df4)" style="fill: #2f7d5b"/>
    </g>
@@ -1711,24 +1961,22 @@ z
     <tbody>
     
       <tr><td class="nowrap">October 2026</td><td class="num">$7,802.72</td><td class="num">$4,239.90</td>
-        <td class="num ">$3,562.82</td><td class="num">$3,562.82</td></tr>
+        <td class="num ">$3,562.82</td><td class="num">$1,781.41</td></tr>
     
-      <tr><td class="nowrap">November 2026</td><td class="num">$1,543.00</td><td class="num">$1,920.00</td>
-        <td class="num neg">-$377.00</td><td class="num">$5,221.74</td></tr>
+      <tr><td class="nowrap">November 2026</td><td class="num">$2,053.21</td><td class="num">$1,920.00</td>
+        <td class="num ">$133.21</td><td class="num">$3,696.03</td></tr>
     
     </tbody>
-    <tfoot><tr class="total"><td>Total</td><td class="num">$9,345.72</td><td class="num">$6,159.90</td>
-      <td class="num ">$3,185.82</td><td class="num">$5,221.74</td></tr></tfoot>
+    <tfoot><tr class="total"><td>Total</td><td class="num">$9,855.93</td><td class="num">$6,159.90</td>
+      <td class="num ">$3,696.03</td><td class="num">$3,696.03</td></tr></tfoot>
   </table>
   </div>
-  
-  <p class="rpt-note">Ending balances include transfers between accounts, which are not counted as money in or out.</p>
   
 </section>
 
 
 
-<p class="rpt-note">Updated November 8, 2026. Questions about the team's finances? Use the email address at the bottom of this page.</p>
+<p class="rpt-note">Updated November 11, 2026. Questions about the team's finances? Use the email address at the bottom of this page.</p>
 
       </div>
     </main>
@@ -1736,6 +1984,6 @@ z
 
   <footer id="site-footer" class="site-footer"></footer>
 
-  <script src="app.js?v=27"></script>
+  <script src="app.js?v=28"></script>
 </body>
 </html>
