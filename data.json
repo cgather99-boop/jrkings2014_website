@@ -6,7 +6,7 @@
     "shortName": "Jr Kings",
     "tripName": "the Quebec International Pee-Wee Hockey Tournament",
     "tagline": "Help our players make it to the Quebec PeeWee Tournament!",
-    "logo": "Images/logo.png",
+    "logo": "Images/crown_logo_upscaled.png",
     "contactEmail": "jrkings2014aaa@gmail.com",
     "taxNote": "Donations may be tax-deductible. Contact us for a receipt."
   },
@@ -15,20 +15,25 @@
     { "label": "Home", "href": "index.html", "icon": "home" },
     { "label": "Players", "href": "players.html", "icon": "users" },
     { "label": "About Quebec", "href": "index.html#about", "icon": "pin" },
-    { "label": "Merch", "href": "https://jrkingshockeyfundraiser.company.site/", "icon": "bag" },
     { "label": "Fundraisers", "children": [
       { "label": "Got My Back", "href": "index.html#fundraising-alert", "icon": "shirt" },
       { "label": "50/50 Raffle", "href": "index.html#fifty-fifty", "icon": "ticket" },
       { "label": "Kings Night", "href": "index.html#go-kings", "icon": "crown" },
-      { "label": "Surfboard", "href": "index.html#surfboard", "icon": "wave" }
+      { "label": "Surfboard", "href": "index.html#surfboard", "icon": "wave" },
+      { "label": "Merch", "href": "https://jrkingshockeyfundraiser.company.site/", "icon": "bag" }
     ] }
   ],
 
   "reportNav": [
-    { "label": "Finances", "href": "finances/", "icon": "chart" },
-    { "label": "Transactions", "href": "transactions/", "icon": "list" },
-    { "label": "Dues Tracker", "href": "finances/dues/", "icon": "calendar" },
-    { "label": "Extra Skaters", "href": "extraskaters/", "icon": "skate" }
+    { "label": "Dashboard", "children": [
+      { "label": "Quebec", "href": "finances/", "icon": "pin" },
+      { "label": "Team", "href": "teamexpenses/", "icon": "users" }
+    ] },
+    { "label": "Reports", "children": [
+      { "label": "Transactions", "href": "transactions/", "icon": "list" },
+      { "label": "Dues Tracker", "href": "finances/dues/", "icon": "calendar" },
+      { "label": "Extra Skaters", "href": "extraskaters/", "icon": "skate" }
+    ] }
   ],
 
   "teamPhoto": {
@@ -166,7 +171,7 @@
   "goal": {
     "target": 50000,
     "raised": 9346,
-    "purpose": "Your support helps with tournament costs, transportation, and lodging. Every dollar helps!",
+    "purpose": "Help us make it to Quebec!",
     "deadline": "2027-02-08"
   },
 

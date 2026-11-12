@@ -145,8 +145,7 @@ const HEADER_HTML = `
   </div>`;
 
 const SIDEBAR_HTML = `
-  <ul id="nav-list" class="nav-list"></ul>
-  <a class="btn btn-accent sidebar-donate" href="index.html#donate">Donate Now</a>`;
+  <ul id="nav-list" class="nav-list"></ul>`;
 
 const FOOTER_HTML = `
   <img id="footer-logo" class="footer-logo" src="Images/logo.png" alt="">
@@ -157,8 +156,6 @@ const FOOTER_HTML = `
 function buildShell() {
   $('site-header').innerHTML = HEADER_HTML;
   $('sidebar').innerHTML = SIDEBAR_HTML;
-  // <body data-no-donate>: no Donate Now button in this page's sidebar (the report pages).
-  if ('noDonate' in document.body.dataset) document.querySelector('.sidebar-donate')?.remove();
   $('site-footer').innerHTML = FOOTER_HTML;
 
   // Keep --header-h in sync so the sticky sidebar and anchor scrolling sit below the header.

@@ -190,8 +190,6 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   color: var(--on-primary);
   box-shadow: inset 4px 0 0 var(--accent);
 }
-.sidebar-donate { padding-block: 8px; }
-
 /* Nav group (e.g. "Fundraisers"): small heading with its links underneath */
 .nav-group { flex: 1 1 100%; }
 .nav-group-title {
@@ -234,7 +232,6 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   .nav-link { padding: 10px 14px; }
   .nav-sublist { flex-direction: column; padding-left: 10px; }
   .nav-sublist .nav-link { padding-block: 8px; }
-  .sidebar-donate { margin-top: 8px; }
 
 }
 
@@ -1144,7 +1141,6 @@ a.pay-card:hover, button.pay-card:hover { border-color: var(--primary); }
 /* ---------- Phone refinements ---------- */
 @media (max-width: 899px) {
   .nav-list { flex: 1 1 100%; justify-content: space-between; }
-  .sidebar-donate { flex: 1 1 100%; }
 }
 @media (max-width: 599px) {
   .tagline { display: none; }
