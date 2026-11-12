@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Exported from the Jr Kings Fundraising finances app on Nov 10, 2026 7:21 AM.
+  <!-- Exported from the Jr Kings Fundraising finances app on Nov 11, 2026 9:32 PM.
        Don't edit this file: use "Export HTML" in the finances app again to update it. -->
   
   <base href="../../">
@@ -12,21 +12,13 @@
   <title>Dues Tracker</title>
   <link rel="icon" href="Images/logo.png">
   <link rel="stylesheet" href="theme.css?v=6">
-  <link rel="stylesheet" href="styles.css?v=28">
+  <link rel="stylesheet" href="styles.css?v=29">
   <style>
     /* Report pages: colors come from the website's theme.css. */
     .rpt { --rpt-pos: #2f7d5b; --rpt-neg: #b5473a; display: flex; flex-direction: column; gap: 20px; }
     .rpt .card h1 { margin-bottom: 8px; }
     .rpt-title-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
     .rpt-title-row h1 { margin: 0; }
-    .rpt-switch { display: flex; align-items: center; gap: 8px; }
-    .rpt-switch label { color: var(--muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
-    .rpt-switch select {
-      min-height: 40px; padding: 6px 36px 6px 12px; border: 2px solid var(--primary); border-radius: 10px;
-      background: var(--surface); color: var(--text); font: inherit; font-weight: 700; cursor: pointer;
-    }
-    .rpt-switch select:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
-    .rpt-switch noscript a { margin-left: 8px; font-weight: 700; }
     .rpt-meta { margin: 0; color: var(--muted); font-size: 0.9rem; }
     .rpt-intro { margin: 10px 0 0; }
     .rpt-stats { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-top: 16px; }
@@ -122,6 +114,12 @@
     .rpt-filter[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
     .rpt-filter[aria-pressed="true"] .rpt-cat-count { background: var(--on-primary); color: var(--primary); }
     .rpt-txns .rpt-chip { background: var(--primary-tint); color: var(--primary); }
+    /* Finances pages: period buttons over the category lists */
+    .rpt-period { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .rpt-period[hidden] { display: none; }
+    .rpt-period-label { color: var(--muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+    .rpt-period-note { flex-basis: 100%; margin: 0; }
+    .rpt-period-note:empty { display: none; }
     @media (max-width: 600px) { .rpt .hide-sm { display: none; } }
   </style>
 </head>
@@ -141,7 +139,7 @@
 
 <section class="card" aria-labelledby="rpt-title">
   <h1 id="rpt-title">Dues Tracker</h1>
-  <p class="rpt-meta">Team Budget · April 1, 2026 – April 1, 2027 · Updated November 10, 2026</p>
+  <p class="rpt-meta">Team Budget · April 1, 2026 – April 1, 2027 · Updated November 11, 2026</p>
   <p class="rpt-intro">The team budget is shared evenly by the players' families and paid in monthly installments.
     These are team totals: individual families' payments are not shown.</p>
   <div class="rpt-stats">
@@ -288,7 +286,7 @@
     </p>
 </section>
 
-<p class="rpt-note">Updated November 10, 2026. Questions about dues? Use the email address at the bottom of this page.</p>
+<p class="rpt-note">Updated November 11, 2026. Questions about dues? Use the email address at the bottom of this page.</p>
 
       </div>
     </main>
@@ -296,6 +294,6 @@
 
   <footer id="site-footer" class="site-footer"></footer>
 
-  <script src="app.js?v=27"></script>
+  <script src="app.js?v=28"></script>
 </body>
 </html>

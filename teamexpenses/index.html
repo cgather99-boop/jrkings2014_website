@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Exported from the Jr Kings Fundraising finances app on Nov 10, 2026 7:21 AM.
+  <!-- Exported from the Jr Kings Fundraising finances app on Nov 11, 2026 9:32 PM.
        Don't edit this file: use "Export HTML" in the finances app again to update it. -->
   
   <base href="../">
@@ -12,21 +12,13 @@
   <title>Team Expenses</title>
   <link rel="icon" href="Images/logo.png">
   <link rel="stylesheet" href="theme.css?v=6">
-  <link rel="stylesheet" href="styles.css?v=28">
+  <link rel="stylesheet" href="styles.css?v=29">
   <style>
     /* Report pages: colors come from the website's theme.css. */
     .rpt { --rpt-pos: #2f7d5b; --rpt-neg: #b5473a; display: flex; flex-direction: column; gap: 20px; }
     .rpt .card h1 { margin-bottom: 8px; }
     .rpt-title-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
     .rpt-title-row h1 { margin: 0; }
-    .rpt-switch { display: flex; align-items: center; gap: 8px; }
-    .rpt-switch label { color: var(--muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
-    .rpt-switch select {
-      min-height: 40px; padding: 6px 36px 6px 12px; border: 2px solid var(--primary); border-radius: 10px;
-      background: var(--surface); color: var(--text); font: inherit; font-weight: 700; cursor: pointer;
-    }
-    .rpt-switch select:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
-    .rpt-switch noscript a { margin-left: 8px; font-weight: 700; }
     .rpt-meta { margin: 0; color: var(--muted); font-size: 0.9rem; }
     .rpt-intro { margin: 10px 0 0; }
     .rpt-stats { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-top: 16px; }
@@ -122,6 +114,12 @@
     .rpt-filter[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
     .rpt-filter[aria-pressed="true"] .rpt-cat-count { background: var(--on-primary); color: var(--primary); }
     .rpt-txns .rpt-chip { background: var(--primary-tint); color: var(--primary); }
+    /* Finances pages: period buttons over the category lists */
+    .rpt-period { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .rpt-period[hidden] { display: none; }
+    .rpt-period-label { color: var(--muted); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+    .rpt-period-note { flex-basis: 100%; margin: 0; }
+    .rpt-period-note:empty { display: none; }
     @media (max-width: 600px) { .rpt .hide-sm { display: none; } }
   </style>
 </head>
@@ -141,33 +139,18 @@
 <section class="card" aria-labelledby="rpt-title">
   <div class="rpt-title-row">
     <h1 id="rpt-title">Team Expenses</h1>
-    
-    
-    <div class="rpt-switch">
-      <label for="rpt-dashboard">Dashboard</label>
-      <select id="rpt-dashboard">
-        <option value="finances/">Quebec Tournament</option><option value="teamexpenses/" selected>Team Expenses</option>
-      </select>
-      <noscript><a href="finances/">Quebec Tournament</a></noscript>
-    </div>
-    <script>
-      document.getElementById("rpt-dashboard").addEventListener("change", function () {
-        location.href = new URL(this.value, document.baseURI).href;
-      });
-    </script>
-    
   </div>
-  <p class="rpt-meta">October 1, 2026 – November 10, 2026 · Updated November 10, 2026</p>
+  <p class="rpt-meta">October 1, 2026 – November 11, 2026 · Updated November 11, 2026</p>
   <p class="rpt-intro">The team dues families pay and the season expenses they cover. Figures come from the team account.</p>
   <div class="rpt-stats">
     <div class="rpt-stat"><div class="label">Starting balance</div><div class="value">$0.00</div></div>
     
-    <div class="rpt-stat"><div class="label">Money in</div><div class="value pos">$34,111.93</div></div>
-    <div class="rpt-stat"><div class="label">Money out</div><div class="value neg">$30,548.30</div></div>
-    <div class="rpt-stat"><div class="label">Balance</div><div class="value">$3,563.63</div>
-      <div class="sub">as of Nov 10</div></div>
+    <div class="rpt-stat"><div class="label">Money in</div><div class="value pos">$34,620.95</div></div>
+    <div class="rpt-stat"><div class="label">Money out</div><div class="value neg">$30,885.23</div></div>
+    <div class="rpt-stat"><div class="label">Balance</div><div class="value">$3,735.72</div>
+      <div class="sub">as of Nov 11</div></div>
     
-    <div class="rpt-stat"><div class="label">Projected balance</div><div class="value">-$5,316.71</div>
+    <div class="rpt-stat"><div class="label">Projected balance</div><div class="value">-$5,144.62</div>
       <div class="sub">after expected payments</div></div>
     
   </div>
@@ -178,13 +161,13 @@
 
   <h2 id="rpt-goal-title">Budget: Team Budget</h2>
   <div class="rpt-goal-head">
-    <span class="rpt-goal-raised"><strong>$34,112</strong> collected of $40,750</span>
-    <span class="rpt-goal-pct"><strong>84%</strong> of the budget · $6,638 to go</span>
+    <span class="rpt-goal-raised"><strong>$34,621</strong> collected of $40,750</span>
+    <span class="rpt-goal-pct"><strong>85%</strong> of the budget · $6,129 to go</span>
   </div>
   <div class="rpt-goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-       aria-valuenow="84"
-       aria-label="$34,112 collected of $40,750">
-    <div class="rpt-goal-fill" style="width: 83.7%"></div>
+       aria-valuenow="85"
+       aria-label="$34,621 collected of $40,750">
+    <div class="rpt-goal-fill" style="width: 85.0%"></div>
   </div>
   <p class="rpt-intro">Team Budget</p>
   <p class="rpt-note">Money collected from April 1, 2026 to April 1, 2027,
@@ -195,7 +178,7 @@
 
 <section class="card" aria-labelledby="rpt-balance-title">
   <h2 id="rpt-balance-title">Balance over time</h2>
-  <svg class="rpt-chart" role="img" aria-label="Bank balance over time" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 498.67875 209.708494" xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <svg class="rpt-chart" role="img" aria-label="Bank balance over time" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 498.67875 206.808" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
@@ -214,8 +197,8 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 209.708494 
-L 498.67875 209.708494 
+   <path d="M 0 206.808 
+L 498.67875 206.808 
 L 498.67875 0 
 L 0 0 
 z
@@ -223,10 +206,10 @@ z
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 45.07875 187.508494 
-L 491.47875 187.508494 
-L 491.47875 10.100494 
-L 45.07875 10.100494 
+    <path d="M 45.07875 184.608 
+L 491.47875 184.608 
+L 491.47875 7.2 
+L 45.07875 7.2 
 z
 " style="fill: #ffffff"/>
    </g>
@@ -239,50 +222,50 @@ L 0 3.5
 " style="stroke: #5b6470; stroke-width: 0.8"/>
       </defs>
       <g>
-       <use xlink:href="#m81ba357302" x="45.07875" y="187.508494" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="45.07875" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_1">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="45.07875" y="200.586619" transform="rotate(-0 45.07875 200.586619)">Oct</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="45.07875" y="197.686125" transform="rotate(-0 45.07875 197.686125)">Oct</text>
      </g>
     </g>
     <g id="xtick_2">
      <g id="line2d_2">
       <g>
-       <use xlink:href="#m81ba357302" x="165.412663" y="187.508494" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="165.412663" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_2">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="165.412663" y="200.586619" transform="rotate(-0 165.412663 200.586619)">Nov</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="165.412663" y="197.686125" transform="rotate(-0 165.412663 197.686125)">Nov</text>
      </g>
     </g>
     <g id="xtick_3">
      <g id="line2d_3">
       <g>
-       <use xlink:href="#m81ba357302" x="281.864837" y="187.508494" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="281.864837" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_3">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="281.864837" y="200.586619" transform="rotate(-0 281.864837 200.586619)">Dec</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="281.864837" y="197.686125" transform="rotate(-0 281.864837 197.686125)">Dec</text>
      </g>
     </g>
     <g id="xtick_4">
      <g id="line2d_4">
       <g>
-       <use xlink:href="#m81ba357302" x="402.19875" y="187.508494" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m81ba357302" x="402.19875" y="184.608" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_4">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="402.19875" y="200.586619" transform="rotate(-0 402.19875 200.586619)">2027</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #5b6470" x="402.19875" y="197.686125" transform="rotate(-0 402.19875 197.686125)">2027</text>
      </g>
     </g>
    </g>
    <g id="matplotlib.axis_2">
     <g id="ytick_1">
      <g id="line2d_5">
-      <path d="M 45.07875 155.531109 
-L 491.47875 155.531109 
-" clip-path="url(#pd5d2eb1e23)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+      <path d="M 45.07875 155.756022 
+L 491.47875 155.756022 
+" clip-path="url(#p021a4c191f)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
      <g id="line2d_6">
       <defs>
@@ -291,171 +274,173 @@ L -3.5 0
 " style="stroke: #5b6470; stroke-width: 0.8"/>
       </defs>
       <g>
-       <use xlink:href="#m898c8d45ed" x="45.07875" y="155.531109" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m898c8d45ed" x="45.07875" y="155.756022" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_5">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="38.07875" y="158.570484" transform="rotate(-0 38.07875 158.570484)">-$4,000</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="38.07875" y="158.795397" transform="rotate(-0 38.07875 158.795397)">-$4,000</text>
      </g>
     </g>
     <g id="ytick_2">
      <g id="line2d_7">
-      <path d="M 45.07875 119.208176 
-L 491.47875 119.208176 
-" clip-path="url(#pd5d2eb1e23)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+      <path d="M 45.07875 119.433088 
+L 491.47875 119.433088 
+" clip-path="url(#p021a4c191f)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
      <g id="line2d_8">
       <g>
-       <use xlink:href="#m898c8d45ed" x="45.07875" y="119.208176" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m898c8d45ed" x="45.07875" y="119.433088" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_6">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="38.07875" y="122.247551" transform="rotate(-0 38.07875 122.247551)">-$2,000</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="38.07875" y="122.472463" transform="rotate(-0 38.07875 122.472463)">-$2,000</text>
      </g>
     </g>
     <g id="ytick_3">
      <g id="line2d_9">
-      <path d="M 45.07875 82.885242 
-L 491.47875 82.885242 
-" clip-path="url(#pd5d2eb1e23)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+      <path d="M 45.07875 83.110155 
+L 491.47875 83.110155 
+" clip-path="url(#p021a4c191f)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
      <g id="line2d_10">
       <g>
-       <use xlink:href="#m898c8d45ed" x="45.07875" y="82.885242" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m898c8d45ed" x="45.07875" y="83.110155" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_7">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="38.07875" y="85.924617" transform="rotate(-0 38.07875 85.924617)">$0</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="38.07875" y="86.14953" transform="rotate(-0 38.07875 86.14953)">$0</text>
      </g>
     </g>
     <g id="ytick_4">
      <g id="line2d_11">
-      <path d="M 45.07875 46.562309 
-L 491.47875 46.562309 
-" clip-path="url(#pd5d2eb1e23)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+      <path d="M 45.07875 46.787221 
+L 491.47875 46.787221 
+" clip-path="url(#p021a4c191f)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
      <g id="line2d_12">
       <g>
-       <use xlink:href="#m898c8d45ed" x="45.07875" y="46.562309" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m898c8d45ed" x="45.07875" y="46.787221" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_8">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="38.07875" y="49.601684" transform="rotate(-0 38.07875 49.601684)">$2,000</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="38.07875" y="49.826596" transform="rotate(-0 38.07875 49.826596)">$2,000</text>
      </g>
     </g>
     <g id="ytick_5">
      <g id="line2d_13">
-      <path d="M 45.07875 10.239375 
-L 491.47875 10.239375 
-" clip-path="url(#pd5d2eb1e23)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
+      <path d="M 45.07875 10.464288 
+L 491.47875 10.464288 
+" clip-path="url(#p021a4c191f)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
      <g id="line2d_14">
       <g>
-       <use xlink:href="#m898c8d45ed" x="45.07875" y="10.239375" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#m898c8d45ed" x="45.07875" y="10.464288" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_9">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="38.07875" y="13.27875" transform="rotate(-0 38.07875 13.27875)">$4,000</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="38.07875" y="13.503663" transform="rotate(-0 38.07875 13.503663)">$4,000</text>
      </g>
     </g>
    </g>
    <g id="FillBetweenPolyCollection_1">
     <defs>
-     <path id="m1177d5320a" d="M 45.07875 -126.823252 
-L 45.07875 -126.823252 
-L 157.649185 -126.823252 
-L 157.649185 -159.176271 
-L 180.93962 -159.176271 
-L 180.93962 -163.798546 
-L 184.821359 -163.798546 
-L 184.821359 -191.544 
-L 200.348315 -191.544 
-L 200.348315 -191.544 
-L 200.348315 -126.823252 
-L 200.348315 -126.823252 
-L 200.348315 -126.823252 
-L 184.821359 -126.823252 
-L 184.821359 -126.823252 
-L 180.93962 -126.823252 
-L 180.93962 -126.823252 
-L 157.649185 -126.823252 
-L 157.649185 -126.823252 
-L 45.07875 -126.823252 
+     <path id="m4a183c2c4a" d="M 45.07875 -123.697845 
+L 45.07875 -123.697845 
+L 157.649185 -123.697845 
+L 157.649185 -156.050864 
+L 184.821359 -156.050864 
+L 184.821359 -183.796318 
+L 196.466576 -183.796318 
+L 196.466576 -191.544 
+L 204.230054 -191.544 
+L 204.230054 -191.544 
+L 204.230054 -123.697845 
+L 204.230054 -123.697845 
+L 204.230054 -123.697845 
+L 196.466576 -123.697845 
+L 196.466576 -123.697845 
+L 184.821359 -123.697845 
+L 184.821359 -123.697845 
+L 157.649185 -123.697845 
+L 157.649185 -123.697845 
+L 45.07875 -123.697845 
 z
 " style="stroke: #1f4e8c; stroke-opacity: 0.08"/>
     </defs>
-    <g clip-path="url(#pd5d2eb1e23)">
-     <use xlink:href="#m1177d5320a" x="0" y="209.708494" style="fill: #1f4e8c; fill-opacity: 0.08; stroke: #1f4e8c; stroke-opacity: 0.08"/>
+    <g clip-path="url(#p021a4c191f)">
+     <use xlink:href="#m4a183c2c4a" x="0" y="206.808" style="fill: #1f4e8c; fill-opacity: 0.08; stroke: #1f4e8c; stroke-opacity: 0.08"/>
     </g>
    </g>
    <g id="line2d_15">
-    <path d="M 45.07875 82.885242 
-L 157.649185 82.885242 
-L 157.649185 50.532224 
-L 180.93962 50.532224 
-L 180.93962 45.909949 
-L 184.821359 45.909949 
-L 184.821359 18.164494 
-L 200.348315 18.164494 
-L 200.348315 18.164494 
-" clip-path="url(#pd5d2eb1e23)" style="fill: none; stroke: #1f4e8c; stroke-width: 1.8; stroke-linecap: square"/>
+    <path d="M 45.07875 83.110155 
+L 157.649185 83.110155 
+L 157.649185 50.757136 
+L 184.821359 50.757136 
+L 184.821359 23.011682 
+L 196.466576 23.011682 
+L 196.466576 15.264 
+L 204.230054 15.264 
+L 204.230054 15.264 
+" clip-path="url(#p021a4c191f)" style="fill: none; stroke: #1f4e8c; stroke-width: 1.8; stroke-linecap: square"/>
    </g>
    <g id="line2d_16">
-    <path d="M 200.348315 18.164494 
-L 246.929185 18.164494 
-L 246.929185 67.236778 
-L 301.273533 67.236778 
-L 301.273533 121.509778 
-L 464.306576 121.509778 
-L 464.306576 179.444494 
-L 491.47875 179.444494 
-L 491.47875 179.444494 
-" clip-path="url(#pd5d2eb1e23)" style="fill: none; stroke-dasharray: 6.4,4.8; stroke-dashoffset: 0; stroke: #1f4e8c; stroke-width: 1.6"/>
+    <path d="M 204.230054 15.264 
+L 204.230054 15.264 
+L 204.230054 15.264 
+L 246.929185 15.264 
+L 246.929185 64.336283 
+L 301.273533 64.336283 
+L 301.273533 118.609284 
+L 464.306576 118.609284 
+L 464.306576 176.544 
+L 491.47875 176.544 
+L 491.47875 176.544 
+" clip-path="url(#p021a4c191f)" style="fill: none; stroke-dasharray: 6.4,4.8; stroke-dashoffset: 0; stroke: #1f4e8c; stroke-width: 1.6"/>
    </g>
    <g id="line2d_17">
-    <path d="M 45.07875 82.885242 
-L 491.47875 82.885242 
-" clip-path="url(#pd5d2eb1e23)" style="fill: none; stroke: #5b6470; stroke-width: 0.8; stroke-linecap: square"/>
+    <path d="M 45.07875 83.110155 
+L 491.47875 83.110155 
+" clip-path="url(#p021a4c191f)" style="fill: none; stroke: #5b6470; stroke-width: 0.8; stroke-linecap: square"/>
    </g>
    <g id="patch_3">
-    <path d="M 45.07875 187.508494 
-L 45.07875 10.100494 
+    <path d="M 45.07875 184.608 
+L 45.07875 7.2 
 " style="fill: none; stroke: #d9dde3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_4">
-    <path d="M 45.07875 187.508494 
-L 491.47875 187.508494 
+    <path d="M 45.07875 184.608 
+L 491.47875 184.608 
 " style="fill: none; stroke: #d9dde3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="legend_1">
     <g id="line2d_18">
-     <path d="M 345.32125 20.579244 
-L 353.32125 20.579244 
-L 353.32125 20.579244 
-L 361.32125 20.579244 
-L 361.32125 20.579244 
+     <path d="M 345.32125 17.67875 
+L 353.32125 17.67875 
+L 353.32125 17.67875 
+L 361.32125 17.67875 
+L 361.32125 17.67875 
 " style="fill: none; stroke: #1f4e8c; stroke-width: 1.8; stroke-linecap: square"/>
     </g>
     <g id="text_10">
-     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="367.72125" y="23.379244" transform="rotate(-0 367.72125 23.379244)">Bank balance</text>
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="367.72125" y="20.47875" transform="rotate(-0 367.72125 20.47875)">Bank balance</text>
     </g>
     <g id="line2d_19">
-     <path d="M 345.32125 32.579869 
-L 353.32125 32.579869 
-L 353.32125 32.579869 
-L 361.32125 32.579869 
-L 361.32125 32.579869 
+     <path d="M 345.32125 29.679375 
+L 353.32125 29.679375 
+L 353.32125 29.679375 
+L 361.32125 29.679375 
+L 361.32125 29.679375 
 " style="fill: none; stroke-dasharray: 6.4,4.8; stroke-dashoffset: 0; stroke: #1f4e8c; stroke-width: 1.6"/>
     </g>
     <g id="text_11">
-     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="367.72125" y="35.379869" transform="rotate(-0 367.72125 35.379869)">Projected with planned items</text>
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="367.72125" y="32.479375" transform="rotate(-0 367.72125 32.479375)">Projected with planned items</text>
     </g>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="pd5d2eb1e23">
-   <rect x="45.07875" y="10.100494" width="446.4" height="177.408"/>
+  <clipPath id="p021a4c191f">
+   <rect x="45.07875" y="7.2" width="446.4" height="177.408"/>
   </clipPath>
  </defs>
 </svg>
@@ -463,10 +448,21 @@ L 361.32125 32.579869
   <p class="rpt-note">The dashed line adds payments the team expects but that haven't reached the bank yet.</p>
 </section>
 
+
+<div class="rpt-period" id="rpt-period" data-end="2026-11-11" role="group" aria-label="Period for the category totals" hidden>
+  <span class="rpt-period-label">Show</span>
+  <button type="button" class="rpt-filter" data-days="7" aria-pressed="false">Last 7 days</button>
+  <button type="button" class="rpt-filter" data-days="10" aria-pressed="false">Last 10 days</button>
+  <button type="button" class="rpt-filter" data-days="30" aria-pressed="false">Last 30 days</button>
+  <button type="button" class="rpt-filter" data-days="" aria-pressed="true">Whole period</button>
+  <p class="rpt-note rpt-period-note" id="rpt-period-note" aria-live="polite"></p>
+</div>
+
 <div class="rpt-grid">
   <section class="card" aria-labelledby="rpt-income-title">
     <h2 id="rpt-income-title">Money in, by category</h2>
     
+
 
 
 
@@ -476,22 +472,24 @@ L 361.32125 32.579869
     <summary>
       <span class="rpt-cat-name">Team Dues</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 100%"></span></span></span>
-      <span class="rpt-cat-total">$32,190.38</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$32,699.40</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$31,172.34</td></tr>
+        <tr data-date="2026-11-09" data-shown="254.51"><td class="nowrap">Nov 9, 2026</td><td>Zelle</td><td class="num">$254.51</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Check</td><td class="num">$254.51</td></tr>
+        <tr data-date="2026-11-09" data-shown="254.51"><td class="nowrap">Nov 9, 2026</td><td>Check</td><td class="num">$254.51</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Check</td><td class="num">$254.51</td></tr>
+        <tr data-date="2026-11-06" data-shown="31426.85"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$31,426.85</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Check</td><td class="num">$254.51</td></tr>
+        <tr data-date="2026-11-06" data-shown="254.51"><td class="nowrap">Nov 6, 2026</td><td>Check</td><td class="num">$254.51</td></tr>
       
-        <tr><td class="nowrap">Nov 5, 2026</td><td>Zelle</td><td class="num">$254.51</td></tr>
+        <tr data-date="2026-11-06" data-shown="254.51"><td class="nowrap">Nov 6, 2026</td><td>Check</td><td class="num">$254.51</td></tr>
+      
+        <tr data-date="2026-11-06" data-shown="254.51"><td class="nowrap">Nov 6, 2026</td><td>Check</td><td class="num">$254.51</td></tr>
       
       </tbody>
     </table>
@@ -503,14 +501,14 @@ L 361.32125 32.579869
     <summary>
       <span class="rpt-cat-name">Other Income</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 6%"></span></span></span>
-      <span class="rpt-cat-total">$1,921.55</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$1,921.55</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$1,921.55</td></tr>
+        <tr data-date="2026-11-06" data-shown="1921.55"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$1,921.55</td></tr>
       
       </tbody>
     </table>
@@ -518,7 +516,21 @@ L 361.32125 32.579869
     
   </details>
   
-  <div class="rpt-cats-total"><span>Total</span><span class="num">$34,111.93</span></div>
+  <details class="rpt-cat">
+    <summary>
+      <span class="rpt-cat-name">Merchandise Sales</span>
+      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar income" style="width: 0%"></span></span></span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$0.00</span></span>
+    </summary>
+    
+    <p class="rpt-cat-link rpt-muted">No bank transactions yet in this period.</p>
+    
+  </details>
+  
+  
+  <p class="rpt-muted rpt-period-empty" hidden>Nothing in this period.</p>
+  <div class="rpt-cats-total"><span>Total</span><span class="num rpt-cats-sum">$34,620.95</span></div>
+  
 </div>
 
   </section>
@@ -528,28 +540,29 @@ L 361.32125 32.579869
 
 
 
+
 <div class="rpt-cats">
   
   <details class="rpt-cat">
     <summary>
       <span class="rpt-cat-name">Registration</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar expense" style="width: 100%"></span></span></span>
-      <span class="rpt-cat-total">$11,796.86</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$11,796.86</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$2,350.00</td></tr>
+        <tr data-date="2026-11-06" data-shown="2350.00"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$2,350.00</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$1,820.83</td></tr>
+        <tr data-date="2026-11-06" data-shown="1820.83"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$1,820.83</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$2,400.00</td></tr>
+        <tr data-date="2026-11-06" data-shown="2400.00"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$2,400.00</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$2,651.03</td></tr>
+        <tr data-date="2026-11-06" data-shown="2651.03"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$2,651.03</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$2,575.00</td></tr>
+        <tr data-date="2026-11-06" data-shown="2575.00"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$2,575.00</td></tr>
       
       </tbody>
     </table>
@@ -561,38 +574,38 @@ L 361.32125 32.579869
     <summary>
       <span class="rpt-cat-name">Coaches Flights</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar expense" style="width: 68%"></span></span></span>
-      <span class="rpt-cat-total">$7,991.28</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$7,991.28</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$410.81</td></tr>
+        <tr data-date="2026-11-06" data-shown="410.81"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$410.81</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$638.81</td></tr>
+        <tr data-date="2026-11-06" data-shown="638.81"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$638.81</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$586.83</td></tr>
+        <tr data-date="2026-11-06" data-shown="586.83"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$586.83</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$586.83</td></tr>
+        <tr data-date="2026-11-06" data-shown="586.83"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$586.83</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$886.80</td></tr>
+        <tr data-date="2026-11-06" data-shown="886.80"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$886.80</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$886.80</td></tr>
+        <tr data-date="2026-11-06" data-shown="886.80"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$886.80</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$963.80</td></tr>
+        <tr data-date="2026-11-06" data-shown="963.80"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$963.80</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$963.80</td></tr>
+        <tr data-date="2026-11-06" data-shown="963.80"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$963.80</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$386.80</td></tr>
+        <tr data-date="2026-11-06" data-shown="386.80"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$386.80</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$993.81</td></tr>
+        <tr data-date="2026-11-06" data-shown="993.81"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$993.81</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$228.00</td></tr>
+        <tr data-date="2026-11-06" data-shown="228.00"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$228.00</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$246.98</td></tr>
+        <tr data-date="2026-11-06" data-shown="246.98"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$246.98</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$211.21</td></tr>
+        <tr data-date="2026-11-06" data-shown="211.21"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$211.21</td></tr>
       
       </tbody>
     </table>
@@ -604,20 +617,20 @@ L 361.32125 32.579869
     <summary>
       <span class="rpt-cat-name">Coaches Hotels</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar expense" style="width: 29%"></span><span class="rpt-bar expense planned" style="width: 36%"></span></span></span>
-      <span class="rpt-cat-total">$3,371.12<span class="rpt-muted small">+ $4,230.34 expected</span></span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$3,371.12</span><span class="rpt-muted small rpt-cat-planned">+ $4,230.34 expected</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$827.16</td></tr>
+        <tr data-date="2026-11-06" data-shown="827.16"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$827.16</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$827.16</td></tr>
+        <tr data-date="2026-11-06" data-shown="827.16"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$827.16</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$795.40</td></tr>
+        <tr data-date="2026-11-06" data-shown="795.40"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$795.40</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$921.40</td></tr>
+        <tr data-date="2026-11-06" data-shown="921.40"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$921.40</td></tr>
       
       </tbody>
     </table>
@@ -629,20 +642,20 @@ L 361.32125 32.579869
     <summary>
       <span class="rpt-cat-name">Coaches Per Diem</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar expense" style="width: 14%"></span><span class="rpt-bar expense planned" style="width: 20%"></span></span></span>
-      <span class="rpt-cat-total">$1,600.00<span class="rpt-muted small">+ $2,400.00 expected</span></span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$1,600.00</span><span class="rpt-muted small rpt-cat-planned">+ $2,400.00 expected</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$400.00</td></tr>
+        <tr data-date="2026-11-06" data-shown="400.00"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$400.00</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$400.00</td></tr>
+        <tr data-date="2026-11-06" data-shown="400.00"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$400.00</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$400.00</td></tr>
+        <tr data-date="2026-11-06" data-shown="400.00"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$400.00</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$400.00</td></tr>
+        <tr data-date="2026-11-06" data-shown="400.00"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$400.00</td></tr>
       
       </tbody>
     </table>
@@ -654,18 +667,18 @@ L 361.32125 32.579869
     <summary>
       <span class="rpt-cat-name">Shared Rental</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar expense" style="width: 8%"></span><span class="rpt-bar expense planned" style="width: 19%"></span></span></span>
-      <span class="rpt-cat-total">$976.16<span class="rpt-muted small">+ $2,250.00 expected</span></span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$976.16</span><span class="rpt-muted small rpt-cat-planned">+ $2,250.00 expected</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$338.34</td></tr>
+        <tr data-date="2026-11-06" data-shown="338.34"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$338.34</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$471.00</td></tr>
+        <tr data-date="2026-11-06" data-shown="471.00"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$471.00</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$166.82</td></tr>
+        <tr data-date="2026-11-06" data-shown="166.82"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$166.82</td></tr>
       
       </tbody>
     </table>
@@ -677,14 +690,14 @@ L 361.32125 32.579869
     <summary>
       <span class="rpt-cat-name">Refunds</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar expense" style="width: 16%"></span></span></span>
-      <span class="rpt-cat-total">$1,885.21</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$1,885.21</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$1,885.21</td></tr>
+        <tr data-date="2026-11-06" data-shown="1885.21"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$1,885.21</td></tr>
       
       </tbody>
     </table>
@@ -695,25 +708,29 @@ L 361.32125 32.579869
   <details class="rpt-cat">
     <summary>
       <span class="rpt-cat-name">Other Expenses</span>
-      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar expense" style="width: 10%"></span></span></span>
-      <span class="rpt-cat-total">$1,232.75</span>
+      <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar expense" style="width: 13%"></span></span></span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$1,569.68</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$617.98</td></tr>
+        <tr data-date="2026-11-09" data-shown="82.42"><td class="nowrap">Nov 9, 2026</td><td>Bank</td><td class="num">$82.42</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$59.51</td></tr>
+        <tr data-date="2026-11-06" data-shown="617.98"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$617.98</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$210.78</td></tr>
+        <tr data-date="2026-11-06" data-shown="59.51"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$59.51</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$50.00</td></tr>
+        <tr data-date="2026-11-06" data-shown="210.78"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$210.78</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$164.52</td></tr>
+        <tr data-date="2026-11-06" data-shown="50.00"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$50.00</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$129.96</td></tr>
+        <tr data-date="2026-11-06" data-shown="164.52"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$164.52</td></tr>
+      
+        <tr data-date="2026-11-06" data-shown="129.96"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$129.96</td></tr>
+      
+        <tr data-date="2026-11-06" data-shown="254.51"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$254.51</td></tr>
       
       </tbody>
     </table>
@@ -725,16 +742,16 @@ L 361.32125 32.579869
     <summary>
       <span class="rpt-cat-name">Ice Time</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar expense" style="width: 10%"></span></span></span>
-      <span class="rpt-cat-total">$1,150.00</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$1,150.00</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$650.00</td></tr>
+        <tr data-date="2026-11-06" data-shown="650.00"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$650.00</td></tr>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$500.00</td></tr>
+        <tr data-date="2026-11-06" data-shown="500.00"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$500.00</td></tr>
       
       </tbody>
     </table>
@@ -746,14 +763,14 @@ L 361.32125 32.579869
     <summary>
       <span class="rpt-cat-name">Equipment &amp; Uniforms</span>
       <span class="rpt-cat-bar hide-sm"><span class="rpt-bar-track"><span class="rpt-bar expense" style="width: 5%"></span></span></span>
-      <span class="rpt-cat-total">$544.92</span>
+      <span class="rpt-cat-total"><span class="rpt-cat-posted">$544.92</span></span>
     </summary>
     
     <table>
       <thead><tr><th>Date</th><th>Payment</th><th class="num">Amount</th></tr></thead>
       <tbody>
       
-        <tr><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$544.92</td></tr>
+        <tr data-date="2026-11-06" data-shown="544.92"><td class="nowrap">Nov 6, 2026</td><td>Bank transfer</td><td class="num">$544.92</td></tr>
       
       </tbody>
     </table>
@@ -761,13 +778,125 @@ L 361.32125 32.579869
     
   </details>
   
-  <div class="rpt-cats-total"><span>Total</span><span class="num">$30,548.30</span></div>
+  
+  <p class="rpt-muted rpt-period-empty" hidden>Nothing in this period.</p>
+  <div class="rpt-cats-total"><span>Total</span><span class="num rpt-cats-sum">$30,885.23</span></div>
+  
 </div>
 
   </section>
 </div>
-<p class="rpt-note rpt-grid-note">Open a category to see its transactions. Money out is shown as a positive amount; a refund
-  shows as a negative one.</p>
+<p class="rpt-note rpt-grid-note">Open a category to see its transactions. Use the buttons above to total just the last few days.
+  Money out is shown as a positive amount; a refund shows as a negative one.</p>
+<script>
+  // Period buttons: total each category from its transactions in the last N days up to the page's update date
+  // (data-end), hiding categories with nothing in that window. "Whole period" puts the page back as exported.
+  // The choice is kept in the address (#days=10) so a link can open straight to it.
+  (function () {
+    var bar = document.getElementById("rpt-period");
+    if (!bar) return;
+    var buttons = bar.querySelectorAll(".rpt-filter");
+    var note = document.getElementById("rpt-period-note");
+    var lists = document.querySelectorAll(".rpt-cats");
+    var end = new Date(bar.dataset.end + "T00:00:00");
+    var fmt = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+    var money = function (n) { return n < 0 ? "-" + fmt.format(-n) : fmt.format(Math.abs(n)); };
+    var iso = function (d) {
+      return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+    };
+    var nice = function (d, year) {
+      return d.toLocaleDateString("en-US", year ? { month: "short", day: "numeric", year: "numeric" } : { month: "short", day: "numeric" });
+    };
+
+    // Remember the exported totals and bar widths, to put back for "Whole period".
+    lists.forEach(function (list) {
+      var sum = list.querySelector(".rpt-cats-sum");
+      if (sum) sum.dataset.original = sum.textContent;
+      list.querySelectorAll(".rpt-cat").forEach(function (cat, i) {
+        cat.dataset.pos = i;
+        var posted = cat.querySelector(".rpt-cat-posted");
+        posted.dataset.original = posted.textContent;
+        cat.querySelectorAll(".rpt-bar").forEach(function (b) { b.dataset.original = b.style.width; });
+      });
+    });
+
+    function choose(days) {
+      buttons.forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.days === String(days || "") ? "true" : "false"); });
+      var from = null;
+      if (days) {
+        var start = new Date(end);
+        start.setDate(start.getDate() - (days - 1));
+        from = iso(start);
+        note.textContent = "Showing " + nice(start, start.getFullYear() !== end.getFullYear()) + " – " + nice(end, true) +
+          ": the " + days + " days up to the last update.";
+      } else {
+        note.textContent = "";
+      }
+      lists.forEach(function (list) {
+        var cats = list.querySelectorAll(".rpt-cat");
+        if (!cats.length) return;
+        var totals = [], top = 0, listTotal = 0, visible = 0;
+        cats.forEach(function (cat, i) {
+          var total = 0, count = 0;
+          cat.querySelectorAll("tbody tr[data-date]").forEach(function (tr) {
+            var on = !from || tr.dataset.date >= from;
+            tr.hidden = !on;
+            if (on) { total += parseFloat(tr.dataset.shown); count++; }
+          });
+          totals[i] = total;
+          var show = !from || count > 0;
+          cat.hidden = !show;
+          if (show) { visible++; listTotal += total; top = Math.max(top, total); }
+          var planned = cat.querySelector(".rpt-cat-planned");
+          if (planned) planned.hidden = !!from;
+        });
+        cats.forEach(function (cat, i) {
+          var posted = cat.querySelector(".rpt-cat-posted");
+          var bars = cat.querySelectorAll(".rpt-bar");
+          if (!from) {
+            posted.textContent = posted.dataset.original;
+            bars.forEach(function (b) { b.style.width = b.dataset.original; b.hidden = false; });
+            return;
+          }
+          posted.textContent = money(totals[i]);
+          bars.forEach(function (b, j) {
+            if (j === 0) { b.style.width = (top > 0 ? Math.max(totals[i], 0) / top * 100 : 0).toFixed(0) + "%"; }
+            else { b.hidden = true; }  // the planned segment
+          });
+        });
+        // Largest first for the chosen period; the exported order for the whole period.
+        var order = Array.prototype.map.call(cats, function (cat, i) { return { cat: cat, total: totals[i], i: i }; });
+        order.sort(function (a, b) {
+          return from ? (b.total - a.total) || (a.i - b.i) : (a.cat.dataset.pos - b.cat.dataset.pos);
+        });
+        var anchor = list.querySelector(".rpt-period-empty");
+        order.forEach(function (o) { list.insertBefore(o.cat, anchor); });
+        var sum = list.querySelector(".rpt-cats-sum");
+        if (sum) sum.textContent = from ? money(listTotal) : sum.dataset.original;
+        var empty = list.querySelector(".rpt-period-empty");
+        if (empty) empty.hidden = !from || visible > 0;
+      });
+    }
+
+    function fromHash() {
+      var m = /days=(\d+)/.exec(location.hash);
+      var days = m ? parseInt(m[1], 10) : 0;
+      choose(days > 0 ? days : 0);
+    }
+
+    buttons.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var days = b.dataset.days;
+        // Full path: a bare "#days=" would resolve against the page's <base href="../">.
+        history.replaceState(null, "", location.pathname + location.search + (days ? "#days=" + days : ""));
+        choose(days ? parseInt(days, 10) : 0);
+      });
+    });
+    window.addEventListener("hashchange", fromHash);
+    bar.hidden = false;
+    fromHash();
+  })();
+</script>
 
 
 <section class="card" aria-labelledby="rpt-budget-title">
@@ -1150,7 +1279,7 @@ L 361.32125 32.579869
   </div>
   
   <p class="rpt-note">Other spending with no budget line:
-    Refunds $1,885.21 · Other Expenses (no trip line) $344.48 · Ice Time $1,150.00 · Equipment &amp; Uniforms $544.92.</p>
+    Refunds $1,885.21 · Other Expenses (no trip line) $681.41 · Ice Time $1,150.00 · Equipment &amp; Uniforms $544.92.</p>
   
 </section>
 
@@ -1245,107 +1374,107 @@ L -3.5 0
     </g>
     <g id="ytick_2">
      <g id="line2d_5">
-      <path d="M 47.2825 150.302316 
-L 493.6825 150.302316 
+      <path d="M 47.2825 150.643678 
+L 493.6825 150.643678 
 " clip-path="url(#p8e1cbbac0e)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
      <g id="line2d_6">
       <g>
-       <use xlink:href="#ma2a291b5e9" x="47.2825" y="150.302316" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#ma2a291b5e9" x="47.2825" y="150.643678" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_4">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="40.2825" y="153.341691" transform="rotate(-0 40.2825 153.341691)">$5,000</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="40.2825" y="153.683053" transform="rotate(-0 40.2825 153.683053)">$5,000</text>
      </g>
     </g>
     <g id="ytick_3">
      <g id="line2d_7">
-      <path d="M 47.2825 127.084633 
-L 493.6825 127.084633 
+      <path d="M 47.2825 127.767356 
+L 493.6825 127.767356 
 " clip-path="url(#p8e1cbbac0e)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
      <g id="line2d_8">
       <g>
-       <use xlink:href="#ma2a291b5e9" x="47.2825" y="127.084633" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#ma2a291b5e9" x="47.2825" y="127.767356" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_5">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="40.2825" y="130.124008" transform="rotate(-0 40.2825 130.124008)">$10,000</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="40.2825" y="130.806731" transform="rotate(-0 40.2825 130.806731)">$10,000</text>
      </g>
     </g>
     <g id="ytick_4">
      <g id="line2d_9">
-      <path d="M 47.2825 103.866949 
-L 493.6825 103.866949 
+      <path d="M 47.2825 104.891034 
+L 493.6825 104.891034 
 " clip-path="url(#p8e1cbbac0e)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
      <g id="line2d_10">
       <g>
-       <use xlink:href="#ma2a291b5e9" x="47.2825" y="103.866949" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#ma2a291b5e9" x="47.2825" y="104.891034" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_6">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="40.2825" y="106.906324" transform="rotate(-0 40.2825 106.906324)">$15,000</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="40.2825" y="107.930409" transform="rotate(-0 40.2825 107.930409)">$15,000</text>
      </g>
     </g>
     <g id="ytick_5">
      <g id="line2d_11">
-      <path d="M 47.2825 80.649265 
-L 493.6825 80.649265 
+      <path d="M 47.2825 82.014712 
+L 493.6825 82.014712 
 " clip-path="url(#p8e1cbbac0e)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
      <g id="line2d_12">
       <g>
-       <use xlink:href="#ma2a291b5e9" x="47.2825" y="80.649265" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#ma2a291b5e9" x="47.2825" y="82.014712" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_7">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="40.2825" y="83.68864" transform="rotate(-0 40.2825 83.68864)">$20,000</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="40.2825" y="85.054087" transform="rotate(-0 40.2825 85.054087)">$20,000</text>
      </g>
     </g>
     <g id="ytick_6">
      <g id="line2d_13">
-      <path d="M 47.2825 57.431582 
-L 493.6825 57.431582 
+      <path d="M 47.2825 59.13839 
+L 493.6825 59.13839 
 " clip-path="url(#p8e1cbbac0e)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
      <g id="line2d_14">
       <g>
-       <use xlink:href="#ma2a291b5e9" x="47.2825" y="57.431582" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#ma2a291b5e9" x="47.2825" y="59.13839" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_8">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="40.2825" y="60.470957" transform="rotate(-0 40.2825 60.470957)">$25,000</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="40.2825" y="62.177765" transform="rotate(-0 40.2825 62.177765)">$25,000</text>
      </g>
     </g>
     <g id="ytick_7">
      <g id="line2d_15">
-      <path d="M 47.2825 34.213898 
-L 493.6825 34.213898 
+      <path d="M 47.2825 36.262068 
+L 493.6825 36.262068 
 " clip-path="url(#p8e1cbbac0e)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
      <g id="line2d_16">
       <g>
-       <use xlink:href="#ma2a291b5e9" x="47.2825" y="34.213898" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#ma2a291b5e9" x="47.2825" y="36.262068" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_9">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="40.2825" y="37.253273" transform="rotate(-0 40.2825 37.253273)">$30,000</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="40.2825" y="39.301443" transform="rotate(-0 40.2825 39.301443)">$30,000</text>
      </g>
     </g>
     <g id="ytick_8">
      <g id="line2d_17">
-      <path d="M 47.2825 10.996214 
-L 493.6825 10.996214 
+      <path d="M 47.2825 13.385746 
+L 493.6825 13.385746 
 " clip-path="url(#p8e1cbbac0e)" style="fill: none; stroke: #d9dde3; stroke-width: 0.6; stroke-linecap: square"/>
      </g>
      <g id="line2d_18">
       <g>
-       <use xlink:href="#ma2a291b5e9" x="47.2825" y="10.996214" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
+       <use xlink:href="#ma2a291b5e9" x="47.2825" y="13.385746" style="fill: #5b6470; stroke: #5b6470; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_10">
-      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="40.2825" y="14.035589" transform="rotate(-0 40.2825 14.035589)">$35,000</text>
+      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #5b6470" x="40.2825" y="16.425121" transform="rotate(-0 40.2825 16.425121)">$35,000</text>
      </g>
     </g>
    </g>
@@ -1376,8 +1505,8 @@ z
    <g id="patch_6">
     <path d="M 385.771756 173.52 
 L 473.391591 173.52 
-L 473.391591 31.667847 
-L 385.771756 31.667847 
+L 473.391591 32.211907 
+L 385.771756 32.211907 
 z
 " clip-path="url(#p8e1cbbac0e)" style="fill: #b5473a"/>
    </g>
@@ -1433,12 +1562,12 @@ z
       <tr><td class="nowrap">October 2026</td><td class="num">$0.00</td><td class="num">$0.00</td>
         <td class="num ">$0.00</td><td class="num">$1,781.41</td></tr>
     
-      <tr><td class="nowrap">November 2026</td><td class="num">$34,111.93</td><td class="num">$30,548.30</td>
-        <td class="num ">$3,563.63</td><td class="num">$3,563.63</td></tr>
+      <tr><td class="nowrap">November 2026</td><td class="num">$34,620.95</td><td class="num">$30,885.23</td>
+        <td class="num ">$3,735.72</td><td class="num">$3,735.72</td></tr>
     
     </tbody>
-    <tfoot><tr class="total"><td>Total</td><td class="num">$34,111.93</td><td class="num">$30,548.30</td>
-      <td class="num ">$3,563.63</td><td class="num">$3,563.63</td></tr></tfoot>
+    <tfoot><tr class="total"><td>Total</td><td class="num">$34,620.95</td><td class="num">$30,885.23</td>
+      <td class="num ">$3,735.72</td><td class="num">$3,735.72</td></tr></tfoot>
   </table>
   </div>
   
@@ -1446,7 +1575,7 @@ z
 
 
 
-<p class="rpt-note">Updated November 10, 2026. Questions about the team's finances? Use the email address at the bottom of this page.</p>
+<p class="rpt-note">Updated November 11, 2026. Questions about the team's finances? Use the email address at the bottom of this page.</p>
 
       </div>
     </main>
@@ -1454,6 +1583,6 @@ z
 
   <footer id="site-footer" class="site-footer"></footer>
 
-  <script src="app.js?v=27"></script>
+  <script src="app.js?v=28"></script>
 </body>
 </html>
