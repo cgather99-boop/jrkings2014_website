@@ -97,7 +97,7 @@
   "fiftyFifty": {
     "kicker": "50/50 Raffle",
     "title": "Feeling lucky?",
-    "jackpot": 398,
+    "jackpot": 420,
     "jackpotNote": "50% to the winner · 50% to our team",
     "drawDate": "2026-12-31",
     "drawTime": "19:00",
@@ -164,6 +164,8 @@
     "game": "LA Kings vs San Jose Sharks",
     "date": "Dec 9",
     "text": "$10 off each ticket sold helps get the kids to Quebec!",
+    "ticketUrl": "https://www.gofevo.com/event/2026273047",
+    "ticketText": "Buy Tickets",
     "emailText": "Request tickets",
     "emailSubject": "LA Kings vs Sharks tickets (Dec 9)"
   },
@@ -200,6 +202,18 @@
 
 
 
+  "sponsors": {
+    "title": "Our Sponsors",
+    "text": "Thank you to the businesses helping our players get to Quebec!",
+    "contactText": "Interested in sponsoring the team? Email us",
+    "tiers": [
+      { "level": "Gold", "sponsors": [] },
+      { "level": "Silver", "sponsors": [] },
+      { "level": "Bronze", "sponsors": [
+        { "name": "RAD - Rapid Athlete Development", "logo": "Images/RAD Logo Bronze Sponsor.png", "url": "" }
+      ] }
+    ]
+  },
   "donateLinks": [
     { "label": "Venmo", "icon": "venmo", "url": "https://www.paypal.com/qrcodes/venmocs/33a7c50b-c785-476e-a091-45574d83a71e?created=1793653416.238593", "handle": "@jrkings2014aaa" },
     { "label": "Zelle", "icon": "zelle", "url": "", "handle": "", "qr": "Images/zelle_qr.png?v=2" }
