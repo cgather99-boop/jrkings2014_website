@@ -984,6 +984,29 @@ a.pay-card:hover, button.pay-card:hover { border-color: var(--primary); }
   80% { transform: rotate(1deg) scale(1.01); }
 }
 
+/* ---------- Sponsors (home page, under Donate Now) ---------- */
+.order-sponsors { order: 3; }
+.sponsors-text { margin: -6px 0 14px; }
+.sponsor-tiers { display: flex; flex-direction: column; gap: 14px; }
+.sponsor-tier { --metal: #b0793f; --metal-tint: #f6ebdf; border: 1px solid var(--border); border-left: 5px solid var(--metal); border-radius: 10px; padding: 10px 12px 12px; }
+.sponsor-gold { --metal: #d4a017; --metal-tint: #fbf3d6; }
+.sponsor-silver { --metal: #9aa1ab; --metal-tint: #eff1f4; }
+.sponsor-bronze { --metal: #b0793f; --metal-tint: #f6ebdf; }
+.card .sponsor-level {
+  display: inline-block; margin: 0 0 10px; padding: 2px 12px; border-radius: 999px;
+  background: var(--metal-tint); color: var(--text); border: 1px solid var(--metal);
+  font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
+}
+.sponsor-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.sponsor { display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--text); }
+.sponsor img { display: block; width: 180px; max-width: 100%; height: auto; }
+.sponsor-name { font-weight: 700; }
+.sponsor-open {
+  flex: 1; margin: 0; padding: 14px; border: 2px dashed var(--metal); border-radius: 8px;
+  text-align: center; color: var(--muted); font-size: 0.9rem; font-style: italic;
+}
+.sponsors-contact { margin: 14px 0 0; font-size: 0.85rem; }
+
 /* ---------- Donate ---------- */
 .card-donate { border-top-color: var(--accent); }
 .donate-links { display: flex; flex-direction: column; gap: 10px; }

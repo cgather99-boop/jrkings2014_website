@@ -55,10 +55,10 @@
     "description": "",
     "image": "Images/shirt-back-sleeve-logos.jpg",
     "imageAlt": "Back of the purple “Got My Back” shirt: the player’s name, the names of their supporters, and “Merci to all who donated!”, with the Kings crown on one sleeve and a fleur-de-lis on the other",
-    "imageNote": "",
+    "imageNote": "$50 per name!",
     "stepsTitle": "How it works",
     "steps": [
-      "Scan the Zelle or Venmo code below.",
+      "Donate **$50** with the Zelle or Venmo code below.",
       "In the payment note, write **your player’s name + your name** for the shirt.",
       "Your name goes on the back of your player’s “Got My Back” shirt, and they’ll wear it in Quebec, carrying the names of the people who helped them get there."
     ],
@@ -76,7 +76,7 @@
         "url": "https://www.paypal.com/qrcodes/venmocs/33a7c50b-c785-476e-a091-45574d83a71e?created=1793653416.238593"
       }
     ],
-    "payNote": "On your phone? Tap the Zelle or Venmo code to open the app. Pick your player first: when you tap a code, an email to the team pulls up with your player and shirt name filled in, so just add the amount and hit send.",
+    "payNote": "On your phone? Tap the Zelle or Venmo code to open the app. Pick your player first: when you tap a code, an email to the team pulls up with your player and shirt name filled in, so just enter $50 and hit send.",
     "emailSubject": "Got My Back",
     "linkText": "Add your name",
     "linkUrl": ""

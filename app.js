@@ -689,7 +689,16 @@ function renderGoKings(game, email) {
         $(id).hidden = false;
       }
     }
-    if (email) {
+    // A ticket link (e.g. the team's Fevo page) takes over the button; otherwise it emails the team.
+    const ticketUrl = safeUrl(game.ticketUrl);
+    if (ticketUrl) {
+      const link = $('go-kings-email');
+      link.href = ticketUrl;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.textContent = game.ticketText || 'Buy Tickets';
+      link.hidden = false;
+    } else if (email) {
       const link = $('go-kings-email');
       const subject = game.emailSubject ? `?subject=${encodeURIComponent(game.emailSubject)}` : '';
       link.href = `mailto:${email}${subject}`;
@@ -826,6 +835,52 @@ function renderDonate(links = []) {
   }
 }
 
+// Sponsors card: one row per level (Gold, Silver, Bronze). A level with no sponsors yet shows an open spot.
+function renderSponsors(cfg, email) {
+  const section = $('sponsors');
+  const tiers = cfg?.tiers || [];
+  if (!section || !tiers.length) return;
+
+  $('sponsors-title').textContent = cfg.title || 'Our Sponsors';
+  if (cfg.text) {
+    const text = $('sponsors-text');
+    text.textContent = cfg.text;
+    text.hidden = false;
+  }
+
+  const list = $('sponsors-tiers');
+  for (const tier of tiers) {
+    const level = String(tier.level || '');
+    const box = el('div', `sponsor-tier sponsor-${level.toLowerCase().replace(/\W+/g, '-')}`);
+    box.appendChild(el('h3', 'sponsor-level', `${level} Sponsor${(tier.sponsors || []).length > 1 ? 's' : ''}`));
+    const logos = el('div', 'sponsor-logos');
+    for (const sp of tier.sponsors || []) {
+      const url = safeUrl(sp.url);
+      const wrap = url ? externalLink(url, 'sponsor') : el('div', 'sponsor');
+      if (sp.logo) {
+        const img = el('img');
+        img.src = sp.logo;
+        img.alt = sp.name || `${level} sponsor`;
+        img.loading = 'lazy';
+        wrap.appendChild(img);
+      } else wrap.appendChild(el('span', 'sponsor-name', sp.name || ''));
+      logos.appendChild(wrap);
+    }
+    if (!logos.children.length) logos.appendChild(el('p', 'sponsor-open', 'Your logo here'));
+    box.appendChild(logos);
+    list.appendChild(box);
+  }
+
+  const mail = safeUrl(email ? `mailto:${email}` : '');
+  if (mail && cfg.contactText) {
+    const note = $('sponsors-contact');
+    note.append(`${cfg.contactText} at `, externalLink(mail, '', email), '.');
+    note.hidden = false;
+  }
+
+  section.hidden = false;
+}
+
 // ---------- players page ----------
 
 function renderPlayers(players = []) {
@@ -900,6 +955,7 @@ async function init() {
     renderFiftyFifty(data.fiftyFifty);
     renderSurfboard(data.surfboard);
     renderDonate(data.donateLinks);
+    renderSponsors(data.sponsors, data.team?.contactEmail);
     renderGoKings(data.kingsGame, data.team?.contactEmail);
 
     renderPlayers(data.players);
