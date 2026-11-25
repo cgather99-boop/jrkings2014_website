@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Exported from the Jr Kings 2014 AAA finances app on Nov 18, 2026 12:29 PM.
+  <!-- Exported from the Jr Kings 2014 AAA finances app on Nov 24, 2026 9:05 PM.
        Don't edit this file: use "Export HTML" in the finances app again to update it. -->
   
   <base href="../">
@@ -38,6 +38,7 @@
     .rpt tr.total td { font-weight: 800; border-top: 2px solid var(--text); border-bottom: 0; }
     .rpt .small { font-size: 0.85rem; }
     .rpt-muted { color: var(--muted); }
+    .rpt-note-cell { color: var(--muted); font-size: 0.9rem; max-width: 28ch; overflow-wrap: anywhere; }
     .rpt-status { display: inline-block; margin-left: 4px; padding: 0 8px; border: 1px solid var(--border); border-radius: 999px;
       font-size: 0.72rem; font-weight: 700; color: var(--muted); white-space: nowrap; vertical-align: 1px; }
     .rpt-status-fully_paid { color: var(--rpt-pos); border-color: currentColor; }
@@ -138,13 +139,13 @@
 
 <section class="card" aria-labelledby="rpt-title">
   <h1 id="rpt-title">Transactions</h1>
-  <p class="rpt-meta">October 1, 2026 – November 18, 2026 · Updated November 18, 2026</p>
+  <p class="rpt-meta">October 1, 2026 – November 24, 2026 · Updated November 24, 2026</p>
   <p class="rpt-intro">Every bank transaction in this period, newest first. Choose a category to see only its transactions.
     Names and bank details are left out.</p>
   <div class="rpt-stats">
-    <div class="rpt-stat"><div class="label">Money in</div><div class="value pos">$13,176.15</div></div>
+    <div class="rpt-stat"><div class="label">Money in</div><div class="value pos">$17,074.27</div></div>
     <div class="rpt-stat"><div class="label">Money out</div><div class="value neg">$6,159.90</div></div>
-    <div class="rpt-stat"><div class="label">Bank transactions</div><div class="value">168</div></div>
+    <div class="rpt-stat"><div class="label">Bank transactions</div><div class="value">214</div></div>
   </div>
 </section>
 
@@ -153,20 +154,26 @@
 <section class="card rpt-filters" aria-labelledby="rpt-filter-title" hidden>
   <h2 id="rpt-filter-title">Show transactions for</h2>
   <div class="rpt-filter-row">
-    <button type="button" class="rpt-filter" data-cat="" aria-pressed="true">All categories <span class="rpt-cat-count">189</span></button>
+    <button type="button" class="rpt-filter" data-cat="" aria-pressed="true">All categories <span class="rpt-cat-count">235</span></button>
   </div>
   
   <div class="rpt-filter-row" role="group" aria-label="Money in">
     <span class="rpt-filter-kind">Money in</span>
     
     <button type="button" class="rpt-filter rpt-filter-in" data-cat="in-got-my-back-t-shirt" aria-pressed="false"
-            data-name="Got My Back T-Shirt" data-total="$5,350.57">Got My Back T-Shirt <span class="rpt-cat-count">70</span></button>
+            data-name="Got My Back T-Shirt" data-total="$6,170.57">Got My Back T-Shirt <span class="rpt-cat-count">85</span></button>
     
     <button type="button" class="rpt-filter rpt-filter-in" data-cat="in-extra-skaters-at-practice" aria-pressed="false"
             data-name="Extra Skaters at Practice" data-total="$2,153.80">Extra Skaters at Practice <span class="rpt-cat-count">27</span></button>
     
     <button type="button" class="rpt-filter rpt-filter-in" data-cat="in-popcorn" aria-pressed="false"
             data-name="Popcorn" data-total="$1,960.00">Popcorn <span class="rpt-cat-count">1</span></button>
+    
+    <button type="button" class="rpt-filter rpt-filter-in" data-cat="in-uncategorized-income" aria-pressed="false"
+            data-name="Uncategorized income" data-total="$1,576.12">Uncategorized income <span class="rpt-cat-count">29</span></button>
+    
+    <button type="button" class="rpt-filter rpt-filter-in" data-cat="in-fundraiser-buy-out" aria-pressed="false"
+            data-name="Fundraiser Buy Out" data-total="$1,500.00">Fundraiser Buy Out <span class="rpt-cat-count">2</span></button>
     
     <button type="button" class="rpt-filter rpt-filter-in" data-cat="in-5050-raffle" aria-pressed="false"
             data-name="50/50 Raffle" data-total="$841.44">50/50 Raffle <span class="rpt-cat-count">10</span></button>
@@ -175,7 +182,7 @@
             data-name="Snack Shack" data-total="$646.66">Snack Shack <span class="rpt-cat-count">16</span></button>
     
     <button type="button" class="rpt-filter rpt-filter-in" data-cat="in-thanksgiving-squares" aria-pressed="false"
-            data-name="Thanksgiving Squares" data-total="$515.32">Thanksgiving Squares <span class="rpt-cat-count">13</span></button>
+            data-name="Thanksgiving Squares" data-total="$615.32">Thanksgiving Squares <span class="rpt-cat-count">14</span></button>
     
     <button type="button" class="rpt-filter rpt-filter-in" data-cat="in-straight-donations" aria-pressed="false"
             data-name="Straight Donations" data-total="$473.85">Straight Donations <span class="rpt-cat-count">7</span></button>
@@ -194,9 +201,6 @@
     
     <button type="button" class="rpt-filter rpt-filter-in" data-cat="in-surfboard-fundraiser" aria-pressed="false"
             data-name="Surfboard Fundraiser" data-total="$107.30">Surfboard Fundraiser <span class="rpt-cat-count">15</span></button>
-    
-    <button type="button" class="rpt-filter rpt-filter-in" data-cat="in-uncategorized-income" aria-pressed="false"
-            data-name="Uncategorized income" data-total="$98.00">Uncategorized income <span class="rpt-cat-count">1</span></button>
     
     <button type="button" class="rpt-filter rpt-filter-in" data-cat="in-private-donation" aria-pressed="false"
             data-name="Private Donation" data-total="$21.00">Private Donation <span class="rpt-cat-count">1</span></button>
@@ -245,16 +249,385 @@
 
 <section class="card" aria-labelledby="rpt-list-title">
   <h2 id="rpt-list-title">All transactions</h2>
-  <p class="rpt-group-total" id="rpt-showing" aria-live="polite">189 entries</p>
+  <p class="rpt-group-total" id="rpt-showing" aria-live="polite">235 entries</p>
   
   <div class="rpt-scroll">
   <table class="rpt-txns">
-    <thead><tr><th>Date</th><th>Category</th><th class="hide-sm">Payment</th><th class="num">Amount</th></tr></thead>
+    <thead><tr><th>Date</th><th>Category</th><th>Notes</th><th class="hide-sm">Payment</th><th class="num">Amount</th></tr></thead>
     <tbody>
     
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 23, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$50.00</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 23, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$40.00</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 23, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$15.00</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 23, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$50.00</td>
+      </tr>
+    
+      <tr data-cat="in-fundraiser-buy-out">
+        <td class="nowrap">Nov 23, 2026</td>
+        <td>Fundraiser Buy Out</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$500.00</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 23, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$100.00</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 23, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$100.00</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 23, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$25.00</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 23, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$40.00</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 23, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$24.43</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 23, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$98.00</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 23, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$232.00</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 20, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$100.00</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 20, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$24.43</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 20, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$24.43</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 20, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$48.95</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 20, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$24.43</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 20, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$39.14</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 20, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$48.95</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 20, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$48.95</td>
+      </tr>
+    
+      <tr data-cat="in-thanksgiving-squares">
+        <td class="nowrap">Nov 19, 2026</td>
+        <td>Thanksgiving Squares</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$100.00</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 19, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$20.00</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 19, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$30.00</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 19, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$50.00</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 19, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$98.00</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 19, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$50.00</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 19, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$50.00</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 19, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$50.00</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 19, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$24.43</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 19, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$29.33</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 19, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$48.95</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 19, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$48.95</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 19, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$97.90</td>
+      </tr>
+    
+      <tr data-cat="in-fundraiser-buy-out">
+        <td class="nowrap">Nov 18, 2026</td>
+        <td>Fundraiser Buy Out</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$1,000.00</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 18, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$50.00</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 18, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$50.00</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 18, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$75.00</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 18, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$48.95</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 18, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$60.00</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 18, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$100.00</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 18, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$45.00</td>
+      </tr>
+    
+      <tr data-cat="in-got-my-back-t-shirt">
+        <td class="nowrap">Nov 18, 2026</td>
+        <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Zelle</td>
+        <td class="num pos">$50.00</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 18, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$4.81</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 18, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$19.52</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 18, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$24.43</td>
+      </tr>
+    
+      <tr data-cat="in-uncategorized-income">
+        <td class="nowrap">Nov 18, 2026</td>
+        <td>Uncategorized income</td>
+        <td class="rpt-note-cell"></td>
+        <td class="hide-sm">Venmo</td>
+        <td class="num pos">$39.14</td>
+      </tr>
+    
       <tr data-cat="in-thanksgiving-squares">
         <td class="nowrap">Nov 17, 2026</td>
         <td>Thanksgiving Squares</td>
+        <td class="rpt-note-cell">Patti Urzua</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$40.00</td>
       </tr>
@@ -262,6 +635,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 17, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - The LeFlem Family</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -269,6 +643,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 17, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Joel Saltzman</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -276,6 +651,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 17, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Sharma #35</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -283,6 +659,7 @@
       <tr data-cat="in-thanksgiving-squares">
         <td class="nowrap">Nov 17, 2026</td>
         <td>Thanksgiving Squares</td>
+        <td class="rpt-note-cell">Kim Tilley</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$40.00</td>
       </tr>
@@ -290,6 +667,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 17, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Benji - Kaviani</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$200.00</td>
       </tr>
@@ -297,6 +675,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 17, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Henry - Harrisons, Heeneys and Gathercoles</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$440.00</td>
       </tr>
@@ -304,6 +683,7 @@
       <tr data-cat="in-thanksgiving-squares">
         <td class="nowrap">Nov 17, 2026</td>
         <td>Thanksgiving Squares</td>
+        <td class="rpt-note-cell">Henry Gathercole</td>
         <td class="hide-sm">Check</td>
         <td class="num pos">$40.00</td>
       </tr>
@@ -311,6 +691,7 @@
       <tr data-cat="in-thanksgiving-squares">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Thanksgiving Squares</td>
+        <td class="rpt-note-cell">Puckbusters</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$20.00</td>
       </tr>
@@ -318,6 +699,7 @@
       <tr data-cat="in-surfboard-fundraiser">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Surfboard Fundraiser</td>
+        <td class="rpt-note-cell">Coach Jimmy</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$39.14</td>
       </tr>
@@ -325,6 +707,7 @@
       <tr data-cat="in-thanksgiving-squares">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Thanksgiving Squares</td>
+        <td class="rpt-note-cell">Coach Jimmy 19 and 24</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$39.14</td>
       </tr>
@@ -332,6 +715,7 @@
       <tr data-cat="in-thanksgiving-squares">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Thanksgiving Squares</td>
+        <td class="rpt-note-cell">Coach Rhett</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$39.14</td>
       </tr>
@@ -339,6 +723,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Daigle - Grandpa &amp; Grandma D</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -346,6 +731,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Daigle - Mimi &amp; Papa</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -353,6 +739,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Daigle - Jimmy Peplinski</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -360,6 +747,7 @@
       <tr data-cat="in-5050-raffle">
         <td class="nowrap">Nov 16, 2026</td>
         <td>50/50 Raffle</td>
+        <td class="rpt-note-cell">Jimmy Peplinski</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -367,6 +755,7 @@
       <tr data-cat="in-thanksgiving-squares">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Thanksgiving Squares</td>
+        <td class="rpt-note-cell">2 Grandpa<br>1 Spike</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$58.76</td>
       </tr>
@@ -374,6 +763,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Andrew StCyr</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$72.50</td>
       </tr>
@@ -381,6 +771,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - The Hammonds</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -388,6 +779,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - The Kim Family</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -395,6 +787,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Carter - Shawn Collins</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$98.00</td>
       </tr>
@@ -402,6 +795,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Tristan - James Phan</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$98.00</td>
       </tr>
@@ -409,6 +803,7 @@
       <tr data-cat="in-thanksgiving-squares">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Thanksgiving Squares</td>
+        <td class="rpt-note-cell">Alana Ogawa</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$20.00</td>
       </tr>
@@ -416,6 +811,7 @@
       <tr data-cat="in-thanksgiving-squares">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Thanksgiving Squares</td>
+        <td class="rpt-note-cell">Beech st</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$20.00</td>
       </tr>
@@ -423,6 +819,7 @@
       <tr data-cat="in-thanksgiving-squares">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Thanksgiving Squares</td>
+        <td class="rpt-note-cell">Milo 78 football square</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$20.00</td>
       </tr>
@@ -430,6 +827,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Eric Britton</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -437,6 +835,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - Jennifer Freeman</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -444,6 +843,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - Daniel Lee (MN Fam)</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$73.48</td>
       </tr>
@@ -451,6 +851,7 @@
       <tr data-cat="in-surfboard-fundraiser">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Surfboard Fundraiser</td>
+        <td class="rpt-note-cell">Steve Bogoyevac 310-872-6664</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$24.43</td>
       </tr>
@@ -458,6 +859,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - MAX #1</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -465,6 +867,7 @@
       <tr data-cat="in-thanksgiving-squares">
         <td class="nowrap">Nov 16, 2026</td>
         <td>Thanksgiving Squares</td>
+        <td class="rpt-note-cell">Coach Turc</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$39.14</td>
       </tr>
@@ -472,6 +875,7 @@
       <tr data-cat="in-surfboard-fundraiser">
         <td class="nowrap">Nov 13, 2026</td>
         <td>Surfboard Fundraiser</td>
+        <td class="rpt-note-cell">Jane Manzo</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$24.43</td>
       </tr>
@@ -479,6 +883,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 13, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Brooke - Papa</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$98.00</td>
       </tr>
@@ -486,6 +891,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 13, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Brooke - Jamie Born</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$98.00</td>
       </tr>
@@ -493,6 +899,7 @@
       <tr data-cat="in-thanksgiving-squares">
         <td class="nowrap">Nov 13, 2026</td>
         <td>Thanksgiving Squares</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$100.00</td>
       </tr>
@@ -500,6 +907,7 @@
       <tr data-cat="in-surfboard-fundraiser">
         <td class="nowrap">Nov 13, 2026</td>
         <td>Surfboard Fundraiser</td>
+        <td class="rpt-note-cell">Jason Owen 626-824-7031</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$24.43</td>
       </tr>
@@ -507,6 +915,7 @@
       <tr data-cat="in-5050-raffle">
         <td class="nowrap">Nov 13, 2026</td>
         <td>50/50 Raffle</td>
+        <td class="rpt-note-cell">Brandy Born/949.678.8506</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$24.43</td>
       </tr>
@@ -514,6 +923,7 @@
       <tr data-cat="in-thanksgiving-squares">
         <td class="nowrap">Nov 13, 2026</td>
         <td>Thanksgiving Squares</td>
+        <td class="rpt-note-cell">Daniel Bresler</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$39.14</td>
       </tr>
@@ -521,6 +931,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 13, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - Carmen Busch</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$39.14</td>
       </tr>
@@ -528,6 +939,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 12, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Henry - Tio David, Tia Arleth, Sara Y Andres</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$50.00</td>
       </tr>
@@ -535,6 +947,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 12, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Debbie Segal Roy</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -542,6 +955,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 12, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Carter - Kevin Foley</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -549,6 +963,7 @@
       <tr data-cat="in-uncategorized-income">
         <td class="nowrap">Nov 12, 2026</td>
         <td>Uncategorized income</td>
+        <td class="rpt-note-cell">RICHARD MARNELL - ask team????</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$98.00</td>
       </tr>
@@ -556,6 +971,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 12, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Boyd Family</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$98.00</td>
       </tr>
@@ -563,6 +979,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 12, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - The Webb Family<br>Paddle House</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$98.00</td>
       </tr>
@@ -570,6 +987,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 12, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Cooper Clan</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$196.10</td>
       </tr>
@@ -577,6 +995,7 @@
       <tr data-cat="in-5050-raffle">
         <td class="nowrap">Nov 12, 2026</td>
         <td>50/50 Raffle</td>
+        <td class="rpt-note-cell">JADON ARK</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$15.00</td>
       </tr>
@@ -584,6 +1003,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 12, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Grandma Sue and Richard</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -591,6 +1011,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 12, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Lucina Lopez</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -598,6 +1019,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 12, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Carter - Jaclyn Pink-Kikkert</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$98.00</td>
       </tr>
@@ -605,6 +1027,7 @@
       <tr data-cat="in-5050-raffle">
         <td class="nowrap">Nov 12, 2026</td>
         <td>50/50 Raffle</td>
+        <td class="rpt-note-cell">Tommy Tran 425-287-9333</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$14.62</td>
       </tr>
@@ -612,6 +1035,7 @@
       <tr data-cat="transfer-transfer-between-accounts">
         <td class="nowrap">Nov 12, 2026</td>
         <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Check</td>
         <td class="num">-$82.42</td>
       </tr>
@@ -619,6 +1043,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 10, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Grandma Kath</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$50.00</td>
       </tr>
@@ -626,6 +1051,7 @@
       <tr data-cat="in-surfboard-fundraiser">
         <td class="nowrap">Nov 10, 2026</td>
         <td>Surfboard Fundraiser</td>
+        <td class="rpt-note-cell">Jared Dougherty 323-206-2449</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$24.43</td>
       </tr>
@@ -633,6 +1059,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 10, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - PML 10BB DOUBLE CHAMPS ‘23-‘24</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$100.00</td>
       </tr>
@@ -640,6 +1067,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 9, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Henry - Titi Tere Pt 2</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$15.00</td>
       </tr>
@@ -647,6 +1075,7 @@
       <tr data-cat="in-surfboard-fundraiser">
         <td class="nowrap">Nov 9, 2026</td>
         <td>Surfboard Fundraiser</td>
+        <td class="rpt-note-cell">Chelsea Szabo 310-448-3181</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$24.43</td>
       </tr>
@@ -654,6 +1083,7 @@
       <tr data-cat="in-5050-raffle">
         <td class="nowrap">Nov 9, 2026</td>
         <td>50/50 Raffle</td>
+        <td class="rpt-note-cell">50-50 Kerry Baumann</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$196.10</td>
       </tr>
@@ -661,6 +1091,7 @@
       <tr data-cat="in-straight-donations">
         <td class="nowrap">Nov 9, 2026</td>
         <td>Straight Donations</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$2.25</td>
       </tr>
@@ -668,6 +1099,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 9, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - MacQueens</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$98.00</td>
       </tr>
@@ -675,6 +1107,7 @@
       <tr data-cat="transfer-transfer-between-accounts">
         <td class="nowrap">Nov 9, 2026</td>
         <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Check</td>
         <td class="num">-$254.51</td>
       </tr>
@@ -682,6 +1115,7 @@
       <tr data-cat="transfer-transfer-between-accounts">
         <td class="nowrap">Nov 6, 2026</td>
         <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num">$254.51</td>
       </tr>
@@ -689,6 +1123,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 6, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - DENNIS JISUK PARK</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$50.00</td>
       </tr>
@@ -696,6 +1131,7 @@
       <tr data-cat="transfer-transfer-between-accounts">
         <td class="nowrap">Nov 6, 2026</td>
         <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num">$254.51</td>
       </tr>
@@ -703,6 +1139,7 @@
       <tr data-cat="transfer-transfer-between-accounts">
         <td class="nowrap">Nov 6, 2026</td>
         <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num">$254.51</td>
       </tr>
@@ -710,6 +1147,7 @@
       <tr data-cat="in-surfboard-fundraiser">
         <td class="nowrap">Nov 6, 2026</td>
         <td>Surfboard Fundraiser</td>
+        <td class="rpt-note-cell">Ciani Grad</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$24.43</td>
       </tr>
@@ -717,6 +1155,7 @@
       <tr data-cat="in-surfboard-fundraiser">
         <td class="nowrap">Nov 6, 2026</td>
         <td>Surfboard Fundraiser</td>
+        <td class="rpt-note-cell">Khrystyna Pavlova</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$24.43</td>
       </tr>
@@ -724,6 +1163,7 @@
       <tr data-cat="in-surfboard-fundraiser">
         <td class="nowrap">Nov 6, 2026</td>
         <td>Surfboard Fundraiser</td>
+        <td class="rpt-note-cell">Brandy Born</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$24.43</td>
       </tr>
@@ -731,6 +1171,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 6, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Cooper</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -738,6 +1179,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 6, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Henry - Titi Tere, Tio Howard, JI, Lucia, JM y Maria</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$35.00</td>
       </tr>
@@ -745,6 +1187,7 @@
       <tr data-cat="in-surfboard-fundraiser">
         <td class="nowrap">Nov 6, 2026</td>
         <td>Surfboard Fundraiser</td>
+        <td class="rpt-note-cell">Michele Nordin</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$24.43</td>
       </tr>
@@ -752,6 +1195,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 6, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Mack Lester</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -759,6 +1203,7 @@
       <tr data-cat="transfer-transfer-between-accounts">
         <td class="nowrap">Nov 6, 2026</td>
         <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Check</td>
         <td class="num">$1,781.41</td>
       </tr>
@@ -766,6 +1211,7 @@
       <tr data-cat="transfer-transfer-between-accounts">
         <td class="nowrap">Nov 6, 2026</td>
         <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Check</td>
         <td class="num">-$254.51</td>
       </tr>
@@ -773,6 +1219,7 @@
       <tr data-cat="transfer-transfer-between-accounts">
         <td class="nowrap">Nov 6, 2026</td>
         <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Check</td>
         <td class="num">-$254.51</td>
       </tr>
@@ -780,6 +1227,7 @@
       <tr data-cat="transfer-transfer-between-accounts">
         <td class="nowrap">Nov 6, 2026</td>
         <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Check</td>
         <td class="num">-$254.51</td>
       </tr>
@@ -787,6 +1235,7 @@
       <tr data-cat="transfer-transfer-between-accounts">
         <td class="nowrap">Nov 5, 2026</td>
         <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num">$254.51</td>
       </tr>
@@ -794,6 +1243,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 5, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Auntie Augusta</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$50.00</td>
       </tr>
@@ -801,6 +1251,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 5, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Lori T.</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -808,6 +1259,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 5, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Alix X</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -815,6 +1267,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 5, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Alicia St. Cyr</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -822,6 +1275,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 5, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance -  Mr Cush and Ms Clair</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$98.00</td>
       </tr>
@@ -829,6 +1283,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 5, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Katrina Rodriguez</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$98.00</td>
       </tr>
@@ -836,6 +1291,7 @@
       <tr data-cat="in-snack-shack">
         <td class="nowrap">Nov 5, 2026</td>
         <td>Snack Shack</td>
+        <td class="rpt-note-cell">Snack Shack 11/1</td>
         <td class="hide-sm">Deposit</td>
         <td class="num pos">$276.00</td>
       </tr>
@@ -843,6 +1299,7 @@
       <tr data-cat="in-surfboard-fundraiser">
         <td class="nowrap">Nov 5, 2026</td>
         <td>Surfboard Fundraiser</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$25.00</td>
       </tr>
@@ -850,6 +1307,7 @@
       <tr data-cat="in-surfboard-fundraiser">
         <td class="nowrap">Nov 4, 2026</td>
         <td>Surfboard Fundraiser</td>
+        <td class="rpt-note-cell">Steven OBrien - 310-760-6509</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$24.43</td>
       </tr>
@@ -857,6 +1315,7 @@
       <tr data-cat="in-straight-donations">
         <td class="nowrap">Nov 4, 2026</td>
         <td>Straight Donations</td>
+        <td class="rpt-note-cell">Brooke - Megan Cunningham</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$196.10</td>
       </tr>
@@ -864,6 +1323,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 2, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - South Pas Crew</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$50.00</td>
       </tr>
@@ -871,6 +1331,7 @@
       <tr data-cat="in-snack-shack">
         <td class="nowrap">Nov 2, 2026</td>
         <td>Snack Shack</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$3.00</td>
       </tr>
@@ -878,6 +1339,7 @@
       <tr data-cat="in-snack-shack">
         <td class="nowrap">Nov 2, 2026</td>
         <td>Snack Shack</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$4.00</td>
       </tr>
@@ -885,6 +1347,7 @@
       <tr data-cat="in-snack-shack">
         <td class="nowrap">Nov 2, 2026</td>
         <td>Snack Shack</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$3.00</td>
       </tr>
@@ -892,6 +1355,7 @@
       <tr data-cat="in-snack-shack">
         <td class="nowrap">Nov 2, 2026</td>
         <td>Snack Shack</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$10.00</td>
       </tr>
@@ -899,6 +1363,7 @@
       <tr data-cat="in-snack-shack">
         <td class="nowrap">Nov 2, 2026</td>
         <td>Snack Shack</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$1.00</td>
       </tr>
@@ -906,6 +1371,7 @@
       <tr data-cat="in-snack-shack">
         <td class="nowrap">Nov 2, 2026</td>
         <td>Snack Shack</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$7.00</td>
       </tr>
@@ -913,6 +1379,7 @@
       <tr data-cat="in-snack-shack">
         <td class="nowrap">Nov 2, 2026</td>
         <td>Snack Shack</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$120.00</td>
       </tr>
@@ -920,6 +1387,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 2, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - Yoo Grandparents</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$50.00</td>
       </tr>
@@ -927,6 +1395,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Nov 2, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Henry - Colleen &amp; Jed McCarthy<br>Henry - The Shocker Family</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$100.00</td>
       </tr>
@@ -934,6 +1403,7 @@
       <tr data-cat="out-trading-pins">
         <td class="nowrap">Nov 2, 2026</td>
         <td>Trading Pins</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Venmo</td>
         <td class="num neg">-$1,920.00</td>
       </tr>
@@ -941,6 +1411,7 @@
       <tr data-cat="transfer-transfer-between-accounts">
         <td class="nowrap">Oct 30, 2026</td>
         <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Deposit</td>
         <td class="num">$1,781.41</td>
       </tr>
@@ -948,6 +1419,7 @@
       <tr data-cat="transfer-transfer-between-accounts">
         <td class="nowrap">Oct 29, 2026</td>
         <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Bank</td>
         <td class="num">-$3,562.82</td>
       </tr>
@@ -955,6 +1427,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 29, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell">Sutton</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$58.76</td>
       </tr>
@@ -962,6 +1435,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 29, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell">Matthew Cereno</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$58.76</td>
       </tr>
@@ -969,6 +1443,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 29, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$60.00</td>
       </tr>
@@ -976,6 +1451,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 29, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$60.00</td>
       </tr>
@@ -983,6 +1459,7 @@
       <tr data-cat="in-surfboard-fundraiser">
         <td class="nowrap">Oct 29, 2026</td>
         <td>Surfboard Fundraiser</td>
+        <td class="rpt-note-cell">Michael Thompson</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$24.43</td>
       </tr>
@@ -990,6 +1467,7 @@
       <tr data-cat="out-tournament-patches-licensing">
         <td class="nowrap">Oct 27, 2026</td>
         <td>Tournament Patches &amp; Licensing</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Card purchase</td>
         <td class="num neg">-$670.08</td>
       </tr>
@@ -997,6 +1475,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 27, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Tebo - Ashley &amp; Andrew Tebo</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -1004,6 +1483,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 26, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Tebo - Adam Lem<br>Tebo - David Tebo</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$196.00</td>
       </tr>
@@ -1011,6 +1491,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 26, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$45.00</td>
       </tr>
@@ -1018,6 +1499,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 26, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$15.00</td>
       </tr>
@@ -1025,6 +1507,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 26, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Nic - Marcella Ruiz</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -1032,6 +1515,7 @@
       <tr data-cat="in-surfboard-fundraiser">
         <td class="nowrap">Oct 26, 2026</td>
         <td>Surfboard Fundraiser</td>
+        <td class="rpt-note-cell">Briana Attaway</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$24.43</td>
       </tr>
@@ -1039,6 +1523,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 26, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$50.00</td>
       </tr>
@@ -1046,6 +1531,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 26, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Henry - Tita y Abuelo<br>Henry - Gueli</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$100.00</td>
       </tr>
@@ -1053,6 +1539,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 26, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Tristan - Susan Kigawa/Kaden K #45</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$50.00</td>
       </tr>
@@ -1060,6 +1547,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 26, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$58.76</td>
       </tr>
@@ -1067,6 +1555,7 @@
       <tr data-cat="in-5050-raffle">
         <td class="nowrap">Oct 26, 2026</td>
         <td>50/50 Raffle</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$19.42</td>
       </tr>
@@ -1074,6 +1563,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 23, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Nic - Senna Hanner-Zhang</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -1081,6 +1571,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 23, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Henry - Michael and Leah Kingston</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -1088,6 +1579,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 23, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell">jeffrey</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$58.76</td>
       </tr>
@@ -1095,6 +1587,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 23, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Benji - Grandma Galyna<br>Nic - Eric Carlsson-Zhang</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$97.90</td>
       </tr>
@@ -1102,6 +1595,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 22, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$120.00</td>
       </tr>
@@ -1109,6 +1603,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 22, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Nic - Harrison Hanner-Zhang</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$98.00</td>
       </tr>
@@ -1116,6 +1611,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 22, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$58.76</td>
       </tr>
@@ -1123,6 +1619,7 @@
       <tr data-cat="in-snack-shack">
         <td class="nowrap">Oct 21, 2026</td>
         <td>Snack Shack</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Deposit</td>
         <td class="num pos">$108.00</td>
       </tr>
@@ -1130,6 +1627,7 @@
       <tr data-cat="in-5050-raffle">
         <td class="nowrap">Oct 21, 2026</td>
         <td>50/50 Raffle</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$24.43</td>
       </tr>
@@ -1137,6 +1635,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 20, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$120.00</td>
       </tr>
@@ -1144,6 +1643,7 @@
       <tr data-cat="in-5050-raffle">
         <td class="nowrap">Oct 19, 2026</td>
         <td>50/50 Raffle</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Cash deposit</td>
         <td class="num pos">$124.00</td>
       </tr>
@@ -1151,6 +1651,7 @@
       <tr data-cat="in-snack-shack">
         <td class="nowrap">Oct 19, 2026</td>
         <td>Snack Shack</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$155.12</td>
       </tr>
@@ -1158,6 +1659,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 19, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - Lee Family</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -1165,6 +1667,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 19, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$60.00</td>
       </tr>
@@ -1172,6 +1675,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 19, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$60.00</td>
       </tr>
@@ -1179,6 +1683,7 @@
       <tr data-cat="in-5050-raffle">
         <td class="nowrap">Oct 19, 2026</td>
         <td>50/50 Raffle</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$27.28</td>
       </tr>
@@ -1186,6 +1691,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 19, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$60.00</td>
       </tr>
@@ -1193,6 +1699,7 @@
       <tr data-cat="in-5050-raffle">
         <td class="nowrap">Oct 19, 2026</td>
         <td>50/50 Raffle</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$347.21</td>
       </tr>
@@ -1200,6 +1707,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 19, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - Remy Dam &amp; Family</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -1207,6 +1715,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 19, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - Ikegami Family<br>Micah - Joy &amp; Kai</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$98.00</td>
       </tr>
@@ -1214,6 +1723,7 @@
       <tr data-cat="in-snack-shack">
         <td class="nowrap">Oct 19, 2026</td>
         <td>Snack Shack</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$8.00</td>
       </tr>
@@ -1221,6 +1731,7 @@
       <tr data-cat="in-snack-shack">
         <td class="nowrap">Oct 19, 2026</td>
         <td>Snack Shack</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$10.00</td>
       </tr>
@@ -1228,6 +1739,7 @@
       <tr data-cat="in-snack-shack">
         <td class="nowrap">Oct 19, 2026</td>
         <td>Snack Shack</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$3.00</td>
       </tr>
@@ -1235,6 +1747,7 @@
       <tr data-cat="in-snack-shack">
         <td class="nowrap">Oct 19, 2026</td>
         <td>Snack Shack</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$9.00</td>
       </tr>
@@ -1242,6 +1755,7 @@
       <tr data-cat="in-snack-shack">
         <td class="nowrap">Oct 19, 2026</td>
         <td>Snack Shack</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$6.00</td>
       </tr>
@@ -1249,6 +1763,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 19, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$60.00</td>
       </tr>
@@ -1256,6 +1771,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 19, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Cru - Burton Family</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$98.00</td>
       </tr>
@@ -1263,6 +1779,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 19, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - Austin &amp; Esther Chung<br>Micah - TOSHIMACLAN</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$196.00</td>
       </tr>
@@ -1270,6 +1787,7 @@
       <tr data-cat="in-straight-donations">
         <td class="nowrap">Oct 19, 2026</td>
         <td>Straight Donations</td>
+        <td class="rpt-note-cell">Ron Hawkins</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$98.00</td>
       </tr>
@@ -1277,6 +1795,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 19, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - Cousin Juni &amp; Family<br>Micah - Song Grandparents</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$98.00</td>
       </tr>
@@ -1284,6 +1803,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 16, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Cash deposit</td>
         <td class="num pos">$60.00</td>
       </tr>
@@ -1291,6 +1811,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - Miles Kalavsky</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$50.00</td>
       </tr>
@@ -1298,6 +1819,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - The Nguy Family</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$100.00</td>
       </tr>
@@ -1305,6 +1827,7 @@
       <tr data-cat="in-straight-donations">
         <td class="nowrap">Oct 16, 2026</td>
         <td>Straight Donations</td>
+        <td class="rpt-note-cell">Cru Martinson Private Family Donation</td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$100.00</td>
       </tr>
@@ -1312,6 +1835,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - Emery Kim</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -1319,6 +1843,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - Charlotte Conn</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -1326,6 +1851,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - The Yap Family</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -1333,6 +1859,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 16, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Vance - Mom and Dad</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -1340,6 +1867,7 @@
       <tr data-cat="in-snack-shack">
         <td class="nowrap">Oct 15, 2026</td>
         <td>Snack Shack</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Card purchase</td>
         <td class="num pos">-$76.46</td>
       </tr>
@@ -1347,6 +1875,7 @@
       <tr data-cat="out-required-team-apparel">
         <td class="nowrap">Oct 15, 2026</td>
         <td>Required Team Apparel</td>
+        <td class="rpt-note-cell">AIM Mail Center (Logos Cashiers Check)</td>
         <td class="hide-sm">Card purchase</td>
         <td class="num neg">-$50.78</td>
       </tr>
@@ -1354,6 +1883,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 15, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - The Engstroms</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$50.00</td>
       </tr>
@@ -1361,6 +1891,7 @@
       <tr data-cat="in-straight-donations">
         <td class="nowrap">Oct 15, 2026</td>
         <td>Straight Donations</td>
+        <td class="rpt-note-cell">DC Pools Straight Donation</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$75.00</td>
       </tr>
@@ -1368,6 +1899,7 @@
       <tr data-cat="out-tournament-patches-licensing">
         <td class="nowrap">Oct 14, 2026</td>
         <td>Tournament Patches &amp; Licensing</td>
+        <td class="rpt-note-cell">Got my back licensing and coaches licensing</td>
         <td class="hide-sm">Withdrawal</td>
         <td class="num neg">-$424.00</td>
       </tr>
@@ -1375,6 +1907,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 14, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Deposit</td>
         <td class="num pos">$60.00</td>
       </tr>
@@ -1382,6 +1915,7 @@
       <tr data-cat="out-other-expenses">
         <td class="nowrap">Oct 14, 2026</td>
         <td>Other Expenses</td>
+        <td class="rpt-note-cell">Martinson Quebec Shipping Receipts</td>
         <td class="hide-sm">Bank payment</td>
         <td class="num neg">-$96.83</td>
       </tr>
@@ -1389,6 +1923,7 @@
       <tr data-cat="in-got-my-back-t-shirt">
         <td class="nowrap">Oct 14, 2026</td>
         <td>Got My Back T-Shirt</td>
+        <td class="rpt-note-cell">Micah - Master Toys &amp; Novelties</td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$48.95</td>
       </tr>
@@ -1396,6 +1931,7 @@
       <tr data-cat="in-straight-donations">
         <td class="nowrap">Oct 13, 2026</td>
         <td>Straight Donations</td>
+        <td class="rpt-note-cell">Testing fund transfer</td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$1.50</td>
       </tr>
@@ -1403,6 +1939,7 @@
       <tr data-cat="in-straight-donations">
         <td class="nowrap">Oct 13, 2026</td>
         <td>Straight Donations</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num pos">$1.00</td>
       </tr>
@@ -1410,6 +1947,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 7, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell">10/1</td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$60.00</td>
       </tr>
@@ -1417,6 +1955,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 7, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell">10/1</td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$60.00</td>
       </tr>
@@ -1424,6 +1963,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 5, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell">9/29</td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$60.00</td>
       </tr>
@@ -1431,6 +1971,7 @@
       <tr data-cat="in-surfboard-fundraiser">
         <td class="nowrap">Oct 2, 2026</td>
         <td>Surfboard Fundraiser</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Withdrawal</td>
         <td class="num pos">-$250.00</td>
       </tr>
@@ -1438,6 +1979,7 @@
       <tr data-cat="transfer-transfer-between-accounts">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num">-$30.00</td>
       </tr>
@@ -1445,6 +1987,7 @@
       <tr data-cat="transfer-transfer-between-accounts">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Transfer Between Accounts <span class="rpt-chip">Transfer</span></td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Zelle</td>
         <td class="num">$30.00</td>
       </tr>
@@ -1452,6 +1995,7 @@
       <tr data-cat="in-popcorn">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Popcorn</td>
+        <td class="rpt-note-cell">1730 + 230</td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$1,960.00</td>
       </tr>
@@ -1459,6 +2003,7 @@
       <tr data-cat="in-fill-the-cup-raffle">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Fill the Cup Raffle</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$200.00</td>
       </tr>
@@ -1466,6 +2011,7 @@
       <tr data-cat="in-alo-yoga-raffle">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Alo Yoga Raffle</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$270.00</td>
       </tr>
@@ -1473,6 +2019,7 @@
       <tr data-cat="in-buy-a-puck">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Buy a Puck</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$138.00</td>
       </tr>
@@ -1480,6 +2027,7 @@
       <tr data-cat="in-bake-me-a-cake">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Bake Me a Cake</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$400.00</td>
       </tr>
@@ -1487,6 +2035,7 @@
       <tr data-cat="in-private-donation">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Private Donation</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$21.00</td>
       </tr>
@@ -1494,6 +2043,7 @@
       <tr data-cat="out-registration">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Registration</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num neg">-$1,250.00</td>
       </tr>
@@ -1501,6 +2051,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell">8/19</td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$120.00</td>
       </tr>
@@ -1508,6 +2059,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell">8/20</td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$120.00</td>
       </tr>
@@ -1515,6 +2067,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell">8/27</td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$180.00</td>
       </tr>
@@ -1522,6 +2075,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell">9/1</td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$120.00</td>
       </tr>
@@ -1529,6 +2083,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell">9/17</td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$120.00</td>
       </tr>
@@ -1536,6 +2091,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell">9/24</td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$180.00</td>
       </tr>
@@ -1543,6 +2099,7 @@
       <tr data-cat="out-tournament-patches-licensing">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Tournament Patches &amp; Licensing</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num neg">-$418.00</td>
       </tr>
@@ -1550,6 +2107,7 @@
       <tr data-cat="out-supplies-printing">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Supplies &amp; Printing</td>
+        <td class="rpt-note-cell">Mail, Envelopes, Binder</td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num neg">-$50.58</td>
       </tr>
@@ -1557,6 +2115,7 @@
       <tr data-cat="out-coaches-flights">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Coaches Flights</td>
+        <td class="rpt-note-cell">Coaches Flights (where?)</td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num neg">-$1,279.63</td>
       </tr>
@@ -1564,6 +2123,7 @@
       <tr data-cat="in-other-income">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Other Income</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Bank transfer</td>
         <td class="num pos">$0.21</td>
       </tr>
@@ -1571,6 +2131,7 @@
       <tr data-cat="in-extra-skaters-at-practice">
         <td class="nowrap">Oct 1, 2026</td>
         <td>Extra Skaters at Practice</td>
+        <td class="rpt-note-cell"></td>
         <td class="hide-sm">Venmo</td>
         <td class="num pos">$60.00</td>
       </tr>
