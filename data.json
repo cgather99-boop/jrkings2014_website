@@ -97,7 +97,7 @@
   "fiftyFifty": {
     "kicker": "50/50 Raffle",
     "title": "Feeling lucky?",
-    "jackpot": 428,
+    "jackpot": 434,
     "jackpotNote": "50% to the winner · 50% to our team",
     "drawDate": "2026-12-31",
     "drawTime": "19:00",
@@ -172,7 +172,7 @@
 
   "goal": {
     "target": 50000,
-    "raised": 17627,
+    "raised": 17968,
     "purpose": "Help us make it to Quebec!",
     "deadline": "2027-02-08"
   },
